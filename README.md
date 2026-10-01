@@ -2,7 +2,41 @@
 
 基于 Ubuntu 24.04、ROS2 Jazzy、Gazebo Harmonic 与 RViz2 的 DeepRobotics Lite3 四足机器人课程结课项目。当前仓库保存模型、可视化启动与基础仿真世界；目标是在车间通道中实现 A → B 导航、障碍物检测、局部避障、全局规划与必要时重新规划，并扩展动态障碍场景。
 
-项目计划复用具备底层移动能力的平台，不从零实现四足步态、足端轨迹、逆运动学、MPC 或 RL。**当前模型尚不具备已实现的速度控制或自主导航能力。**
+项目计划复用官方开源 RL 训练与部署成果，演示前训练或验证基础移动策略，演示时执行训练好的策略；不从零开发步态算法或新的 RL 算法。**当前模型尚不具备已实现的速度控制或自主导航能力，仓库也尚未包含 RL 策略或导航实现。**
+
+## 第一版方案与整体架构
+
+已确定使用 Gazebo 演示、RViz 观察，所有用户指令通过终端发送。地图根据 Gazebo 场景提前制作，第一版采用仿真实际位姿定位，后续再考虑 SLAM。地面允许平缓坡面和小幅起伏，但必须实际验证 RL 策略在 Gazebo 中能够稳定通行。
+
+导航包含已知障碍的全局绕行、激光检测临时新增障碍、局部避障、必要时重新规划，以及成功/无有效路径/执行受阻等不同结果。第一版不承诺实时识别陡坡、台阶和深坑，也不把新增静止障碍等同于移动障碍。
+
+- [整体架构、约 9 个节点、终端接口与结果定义](docs/ARCHITECTURE.md)
+- [开发路线、演示场景与后续扩展](docs/ROADMAP.md)
+
+以下是计划架构，**不是当前已经运行的节点图**。
+
+```mermaid
+flowchart LR
+    T["终端命令"] --> M["mission_manager<br/>任务、地图、启动管理"]
+    M --> P["Nav2 全局规划"]
+    P -->|"路线"| M
+    M --> C["Nav2 跟踪与局部避障"]
+    C -->|"速度要求"| L["lite3_motion_node<br/>执行训练好的 RL 策略"]
+    L -->|"关节动作"| G["Gazebo 中的 Lite3"]
+    G --> B["ros_gz_bridge"]
+    B -->|"激光与实际位姿"| N["障碍信息与位置处理"]
+    N --> P
+    N --> C
+    B -->|"关节与身体状态"| L
+    V["RViz：地图、激光、姿态和路径"]
+    M -.-> V
+    B -.-> V
+    P -.-> V
+```
+
+精简目标为约 **9 个节点（包含 RViz）**：`mission_manager`、`lite3_motion_node`、`ros_gz_bridge`、`robot_state_publisher`、`planner_server`、`global_costmap`、`controller_server`、`local_costmap`、`rviz2`。图中的“障碍信息与位置处理”是功能概括，不是额外节点。
+
+任务节点合并地图发布和启动管理，移动节点合并策略执行、位姿整理和手动/导航/停止模式。合并需要实现原来现成节点提供的必要功能；若复杂度影响可靠性，可恢复 `map_server` 与 `lifecycle_manager`，采用约 11 节点备用方案。关节执行方式和辅助程序也可能影响最终数量。
 
 ## 当前状态
 
@@ -25,7 +59,9 @@
 
 ### 尚未完成
 
-`/cmd_vel` 与速度控制、`/odom`、LiDAR 与 `/scan`、ROS/Gazebo topic bridge 配置、Nav2、A → B 导航、局部避障、全局路径规划、重新规划，以及动态障碍场景。RViz 的 2D Goal 工具只是配置项，不能证明导航功能已实现。
+RL 策略训练/加载及 Gazebo 关节执行接口、`/cmd_vel` 移动、`/odom` 与导航坐标关系、LiDAR 与 `/scan`、ROS/Gazebo bridge、预制地图、Nav2、终端任务入口、A → B、避障、重新规划与结果返回均未实现。SLAM、危险地形识别和移动障碍物是后续扩展。RViz 的 2D Goal 工具只是配置项，不能证明导航功能已实现。
+
+目前 `display.launch.py` 启动 `robot_state_publisher`、`joint_state_publisher_gui` 和 `rviz2` 三个主要节点。未来导航演示应改用仿真实际关节状态，停用关节滑块节点，避免两者发布冲突状态。
 
 ## 实际目录
 
@@ -36,6 +72,9 @@ lite3_ws/
 ├── .gitignore
 ├── README.md
 ├── THIRD_PARTY_NOTICES.md
+├── docs/
+│   ├── ARCHITECTURE.md
+│   └── ROADMAP.md
 ├── src/
 │   ├── lite3_description/
 │   │   ├── CMakeLists.txt
@@ -64,7 +103,7 @@ lite3_ws/
 └── log/                               (忽略)
 ```
 
-扫描时没有发现其他包、Xacro、导航 YAML、maps、scripts 或 controller 实现；后续新增有效项目文件仍应提交。
+当前目录仍没有控制/导航/接口 package、策略文件、导航 YAML、maps 或 Xacro。架构文档中的未来 package 和接口仅为规划，尚未创建。后续新增有效项目文件应正常提交。
 
 ## 环境和依赖
 
@@ -101,7 +140,7 @@ source ~/lite3_ws/install/setup.bash
 ros2 launch lite3_description display.launch.py
 ```
 
-使用 joint_state_publisher_gui 调整关节；RViz RobotModel 应使用 `/robot_description`，Fixed Frame 设为 `TORSO`。可用以下命令核查运行状态：
+当前只做模型显示，使用 joint_state_publisher_gui 调整关节；RViz RobotModel 应使用 `/robot_description`，Fixed Frame 设为 `TORSO`。未来导航演示会显示地图、激光和路线，切换到地图参考坐标并读取真实仿真关节状态。可用以下命令核查运行状态：
 
 ```bash
 ros2 param get /robot_state_publisher robot_description
@@ -144,14 +183,18 @@ ros2 run ros_gz_sim create   -world lite3_world   -file "$HOME/lite3_ws/install/
 
 ## Roadmap 与下一步开发入口
 
-1. 从 `src/lite3_gazebo/CMakeLists.txt` 开始补充 worlds 安装，再在该包增加 Gazebo launch，集中设置资源路径并 Spawn；同时补齐两个 package.xml 的运行依赖。
-2. 在 `lite3_gazebo` 集成具备移动能力的平台或明确的简化仿真控制方案，连接 `/cmd_vel`；不把关节 GUI 当作移动控制器。
-3. 建立 `/odom`、`odom → base_link` 与仿真时钟 bridge，并明确 `TORSO` 与导航 base frame 的关系。
-4. 增加 LiDAR、`/scan` 和相应 TF。
-5. 引入 Nav2 与地图/定位配置，完成 A → B、全局规划、局部避障和重新规划。
-6. 构建车间通道与动态障碍验证场景。
+1. **统一启动**：从 `src/lite3_gazebo/CMakeLists.txt` 开始补充 worlds 安装、Gazebo 必需插件、Spawn launch 和两个 package.xml 的运行依赖。
+2. **RL 基础移动**：核实官方开源策略与许可，单独训练/验证，再适配 Gazebo 关节接口。验收站立、前进、转向、停止，以及轻度起伏地面。
+3. **传感器与位置**：桥接实际关节、IMU、位姿、仿真时钟与激光；建立 `/odom` 和导航坐标关系。第一版使用仿真实际位姿，暂不加入自主定位。
+4. **地图与 Nav2**：制作与场景对应的地图，配置全局/局部障碍信息和规划/控制，使用机器狗实际当前位置作为起点。
+5. **终端任务闭环**：开发任务 Action、反馈、取消/停止、模式互斥、重新规划、超时和不同结果码；用户给定起点不一致时明确拒绝。
+6. **演示验收**：已知障碍绕行、途中新增障碍、执行中封路、初始无路、取消/异常，以及轻度起伏通行。
 
-资源路径可在后续通过 ROS launch 的环境变量动作与包 share 路径自动设置；本次只整理文档，不重构现有源码。
+有余力再扩展 SLAM 实时建图、静态地图标注危险地形、三维感知判断地形可通行性和移动障碍物。二维激光不能保证识别深坑；RL 训练也不能替代地形规划和 Gazebo 实测。
+
+详细阶段与验收要求见 [docs/ROADMAP.md](docs/ROADMAP.md)。官方候选为 [rl_training](https://github.com/DeepRoboticsLab/rl_training) 与 [Lite3_rl_deploy](https://github.com/DeepRoboticsLab/Lite3_rl_deploy)，不是已完成集成的依赖；训练/部署环境与 Gazebo 的迁移差异见 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。
+
+资源路径计划在未来统一 launch 中自动设置。当前可运行命令仍是上面的模型显示与手动 Spawn；文档中的导航接口示例尚不可运行。
 
 ## 第三方资源与许可证
 
