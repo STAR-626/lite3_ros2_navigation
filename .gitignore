@@ -1,0 +1,26 @@
+# colcon generated output (workspace root only)
+/build/
+/install/
+/log/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local IDE settings
+.vscode/
+.idea/
+
+# Editor and OS temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Local secrets; still review candidate files before every commit
+.env
+.env.*
+!.env.example
+!.env.sample
