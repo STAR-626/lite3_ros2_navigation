@@ -1,0 +1,26 @@
+{
+  "upstream_url": "https://github.com/DeepRoboticsLab/Lite3_rl_deploy.git",
+  "upstream_commit": "1c4a8f14c9c531903fa5a26783e3f9b99d1039d9",
+  "model_submodule_commit": "b452a1f404d37155400242f18e454fed8bcc51b8",
+  "license": "BSD-3-Clause (Copyright 2025 DeepRoboticsLab)",
+  "policy_path": "policy/ppo/policy.onnx",
+  "policy_sha256": "efa6581d314d8c0442881453d39fc082c09b28bbaa3029d328fcd61fa25b57c7",
+  "snapshot_sha256": {
+    "interface/user_command/keyboard_interface.hpp": "26dee543ea29d01b68ef2fc480e9517d6f0ae5226133c7403da72a4f32cd1455",
+    "run_policy/lite3_test_policy_runner_onnx.cpp": "65f394ea6004c918dcc45f08e94b7740f1074250dcf00c3b7bdd534da60aaa75",
+    "state_machine/rl_control_state_onnx.hpp": "4030e16f302cdb62368336981c2f2421480a2b0c4f3764c813312c9f6c1e1fa3"
+  },
+  "cmake_options": {
+    "BUILD_PLATFORM": "x86",
+    "BUILD_SIM": "ON",
+    "SEND_REMOTE": "OFF"
+  },
+  "captured_date": "2026-10-04",
+  "excluded": [
+    "build/",
+    ".venv/",
+    ".git/",
+    "MuJoCo generated logs",
+    "unmodified third-party source trees"
+  ]
+}

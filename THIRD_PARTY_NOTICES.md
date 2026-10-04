@@ -6,16 +6,28 @@ Lite3 robot model resources originate from DeepRobotics / DeepRoboticsLab.
 - Local upstream revision: `75824b516ecc8fa3f8f7ce5d6577e1e86d6b614f`
 - Copyright (c) 2024, DeepRoboticsLab
 - License: BSD 3-Clause; the complete unmodified local upstream license is preserved in `src/lite3_description/LICENSE.DeepRoboticsLab.txt`.
-- Local origin checkout: `~/deep_robotics_model`; that checkout is not included in this project.
+- Local origin checkout: `/home/ma/deep_robotics_model`; that checkout is not included in this project.
 
 ## Included resources
 
 The four files in `src/lite3_description/meshes/` (`hip.STL`, `shank.STL`, `thigh.STL`, `torso.STL`) match upstream `Lite3/urdf/meshes/` byte for byte (SHA-256 verified).
 
-`src/lite3_description/urdf/Lite3_original.urdf` matches upstream `Lite3/urdf/Lite3.urdf` byte for byte. `Lite3.urdf` is the project's adapted copy, using ROS package mesh paths; both copies retain their existing exporter comments and are preserved without modification during this synchronization.
+`src/lite3_description/urdf/Lite3_original.urdf` matches upstream `Lite3/urdf/Lite3.urdf` byte for byte. `Lite3.urdf` is the project's adapted copy, using ROS package mesh paths. `Lite3_gazebo.urdf` adds the project's Gazebo control plugin. All copies retain the model's existing exporter comments.
 
 ## Redistribution conditions
 
 Retain the upstream copyright notice, license conditions and disclaimer. For binary distribution, reproduce them in documentation or other accompanying materials. Do not use the copyright holder's or contributors' names to endorse derived products without prior written permission.
 
-This notice does not assign a license to independently authored project files. The two package.xml license declarations remain TODO; select the project's own license separately before offering broad reuse permissions.
+This notice does not assign a license to independently authored project files. The original description/gazebo package.xml license declarations remain TODO; select the project's own license separately before offering broad reuse permissions. The new lite3_control package has its own BSD-3-Clause LICENSE.
+
+## Pretrained policy and deployment adaptations
+
+- Upstream: https://github.com/DeepRoboticsLab/Lite3_rl_deploy
+- Exact revision: `1c4a8f14c9c531903fa5a26783e3f9b99d1039d9`.
+- Copyright (c) 2025, DeepRoboticsLab; BSD 3-Clause. The unmodified license is preserved at `external/lite3_rl_deploy/LICENSE.DeepRoboticsLab.txt`.
+- Included: the original `policy/ppo/policy.onnx`, three locally modified source snapshots and a replayable patch. See that directory's README and UPSTREAM.json for paths and SHA-256.
+- Local modifications: space-to-stop keyboard input, initialization of the previous ONNX action, and policy initialization before starting its thread.
+- The local upstream tree was checked for license notices; no separate policy-weight license notice was found. Preserve the upstream root license with the policy and keep this repository private. Recheck any supplemental weight terms before a future public release.
+- Do not imply upstream endorsement. Unmodified dependency repositories, bundled libraries, virtual environments and generated logs are not copied into this project.
+
+Lite3 pretrained policy and deployment source originate from DeepRobotics / DeepRoboticsLab.

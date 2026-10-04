@@ -1,0 +1,44 @@
+diff --git a/interface/user_command/keyboard_interface.hpp b/interface/user_command/keyboard_interface.hpp
+index 5fc2585..7cb4992 100644
+--- a/interface/user_command/keyboard_interface.hpp
++++ b/interface/user_command/keyboard_interface.hpp
+@@ -83,6 +83,13 @@ public:
+                 // std::lock_guard<std::mutex> lock(mtx_);  // 修改 usr_cmd_ 和读取 msfb_
+ 
+                 std::cout << "input: " << input << std::endl;
++                if(input == ' '){
++                 usr_cmd_.forward_vel_scale = 0.0f;
++                 usr_cmd_.side_vel_scale = 0.0f;
++                usr_cmd_.turnning_vel_scale = 0.0f;
++                std::cout << "Movement command set to zero" << std::endl;
++                continue;
++}
+                 if(input == 'r'){
+                     usr_cmd_.target_mode = int(RobotMotionState::JointDamping);
+                 }
+diff --git a/run_policy/lite3_test_policy_runner_onnx.cpp b/run_policy/lite3_test_policy_runner_onnx.cpp
+index 81e43b3..9ea42b6 100644
+--- a/run_policy/lite3_test_policy_runner_onnx.cpp
++++ b/run_policy/lite3_test_policy_runner_onnx.cpp
+@@ -142,6 +142,7 @@ void Lite3TestPolicyRunnerONNX::DisplayPolicyInfo() {
+ void Lite3TestPolicyRunnerONNX::OnEnter() {
+     run_cnt_ = 0;
+     current_obs_.setZero(obs_dim_);
++    last_action.setZero(act_dim_);
+     std::cout << "[ONNX ENTER] PolicyRunner entered: " << policy_name_ << std::endl;
+ }
+ 
+diff --git a/state_machine/rl_control_state_onnx.hpp b/state_machine/rl_control_state_onnx.hpp
+index 30621b4..35ecd74 100644
+--- a/state_machine/rl_control_state_onnx.hpp
++++ b/state_machine/rl_control_state_onnx.hpp
+@@ -100,8 +100,8 @@ public:
+     virtual void OnEnter() {
+         state_run_cnt_ = -1;
+         start_flag_ = true;
+-        run_policy_thread_ = std::thread(std::bind(&RLControlStateONNX::PolicyRunner, this));
+         policy_ptr_->OnEnter();
++        run_policy_thread_ = std::thread(std::bind(&RLControlStateONNX::PolicyRunner, this));
+         StateBase::msfb_.UpdateCurrentState(RobotMotionState::RLControlMode);
+         uc_ptr_->SetMotionStateFeedback(StateBase::msfb_);
+     };

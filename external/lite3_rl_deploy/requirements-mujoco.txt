@@ -1,0 +1,5 @@
+# Optional: reproduces the validated standalone MuJoCo environment.
+# Not required to run the C++ policy with Gazebo.
+numpy==1.26.4
+mujoco==3.14.0
+colorama==0.4.6
