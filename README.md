@@ -4,6 +4,8 @@
 
 **2026-10-04 当前进度：统一启动、固定站立和预训练 RL 的 Gazebo 平地运动链路已实现并做过后台测试；ROS2 `/cmd_vel`、`/odom`、`/scan` 和 Nav2 尚未实现。** 本次保存开发状态，不继续开发新功能。
 
+**给下一位 AI / 开发者：先读根目录 [AGENTS.md](AGENTS.md)，再按其顺序阅读接续记录和原整体规划。** 所需源码、策略、外部修改与恢复依据已保存，不需要旧聊天才能理解当前状态。新电脑仍需安装环境，并按外部恢复说明获取指定版本的官方依赖；仓库是 private，需要授权访问或提供本地 clone。
+
 ## 整体规划保持不变
 
 - 最终演示使用 Gazebo，同时打开 RViz 观察地图、激光、模型和路径。
@@ -66,6 +68,7 @@ Gazebo 不直接读取 ONNX；`rl_deploy` 读取并执行策略。MuJoCo 是之�
 ```text
 lite3_ws/
 ├── .gitignore
+├── AGENTS.md                      AI 接手阅读入口
 ├── README.md
 ├── THIRD_PARTY_NOTICES.md
 ├── docs/

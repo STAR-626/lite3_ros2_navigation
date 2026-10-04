@@ -9,10 +9,11 @@
 外部 RL 项目除虚拟环境之外没有未跟踪的自建文件；3个修改源码全部备份。另1个修改文件 MUJOCO_LOG.TXT 是生成日志，保留在本地但不提交。
 两个官方模型来源目录没有未保存源码修改。项目有效源码/资源没有外部符号链接。
 
-本次保存后共 37 个文件，全部清单如下；Git不保存空目录。目录概要见根 README。
+初次快照保存 37 个文件；补充根目录 AI 接手入口后共 38 个文件，全部清单如下；Git不保存空目录。目录概要见根 README。此次补充只更新文档，原架构与功能代码保持不变。
 
 ```text
 .gitignore
+AGENTS.md
 README.md
 THIRD_PARTY_NOTICES.md
 docs/ARCHITECTURE.md
