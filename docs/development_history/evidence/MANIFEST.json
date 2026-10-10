@@ -1,0 +1,47 @@
+[
+  {
+    "path": "docs/development_history/evidence/mission_action/mission-0.log",
+    "source": "/tmp/lite3-mission-action-jd16n1ih/mission-0.log",
+    "sha256": "1c38d75f5718bd990d735f258ace407a91062ea23e6732d5475d48f9846ed18a"
+  },
+  {
+    "path": "docs/development_history/evidence/mission_action/mission-14.log",
+    "source": "/tmp/lite3-mission-action-jd16n1ih/mission-14.log",
+    "sha256": "20a17274a7c21a4b0408be1ea13884aa677f90c348e9c0f8b45da6ce16e8bf73"
+  },
+  {
+    "path": "docs/development_history/evidence/mission_action/result.json",
+    "source": "/tmp/lite3-mission-action-jd16n1ih/result.json",
+    "sha256": "85e57d15e305d624b1a22e4e41d5578b6de501f983bfd60386a2c2f633625be8"
+  },
+  {
+    "path": "docs/development_history/evidence/short_route_success/mission.log",
+    "source": "/tmp/lite3-planned-route-m6lqf76z/mission.log",
+    "sha256": "3044b4b84a730fcb5b0165c1ace1d3a356f18d3ba3e14efeefbe95b9bc680536"
+  },
+  {
+    "path": "docs/development_history/evidence/short_route_success/result.json",
+    "source": "/tmp/lite3-planned-route-m6lqf76z/result.json",
+    "sha256": "372fe847b1912158f4beffb33cd64d65320f5b79dfd206fc12c73f0d64fa27f5"
+  },
+  {
+    "path": "docs/development_history/evidence/short_route_initial_cancel/mission.log",
+    "source": "/tmp/lite3-planned-route-6qwxm6qc/mission.log",
+    "sha256": "b32e1e1fa12f3c2861724062fa7e0fd9bbabcaa71eafb442c95b7aab5256dc9b"
+  },
+  {
+    "path": "docs/development_history/evidence/short_route_initial_cancel/result.json",
+    "source": "/tmp/lite3-planned-route-6qwxm6qc/result.json",
+    "sha256": "f5ef495cc2bbc491712859e78ead1076c7b20f70fc167f90516121b7e9799e64"
+  },
+  {
+    "path": "docs/development_history/evidence/warehouse_mission.log",
+    "source": "/home/ma/.ros/log/mission_manager_22366_1791623433295.log",
+    "sha256": "2b4005c12d1b01e6b8dbaafcd4312ce5b110503bba3430c13a591e1e8db9a2e7"
+  },
+  {
+    "path": "docs/development_history/evidence/warehouse_controller.log",
+    "source": "/home/ma/.ros/log/controller_server_11015_1791617895929.log",
+    "sha256": "e46ca69a268b4359739ee7bdaeedaefcd27c460f6918cc1e330e3a2b9fe2c617"
+  }
+]

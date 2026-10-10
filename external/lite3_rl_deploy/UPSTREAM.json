@@ -6,21 +6,41 @@
   "policy_path": "policy/ppo/policy.onnx",
   "policy_sha256": "efa6581d314d8c0442881453d39fc082c09b28bbaa3029d328fcd61fa25b57c7",
   "snapshot_sha256": {
-    "interface/user_command/keyboard_interface.hpp": "26dee543ea29d01b68ef2fc480e9517d6f0ae5226133c7403da72a4f32cd1455",
+    "interface/user_command/keyboard_interface.hpp": "377fbfe864bf249b09509a689d00f6bf22e1306cb3ca98585635cf6b7d9f0a40",
+    "interface/user_command/udp_velocity_interface.hpp": "77e32a5e9d77b833372ed154e29b2a752e5616f3190afffc4e6ede6c84d6418a",
+    "main.cpp": "bfcaf6bf2c730ab1d4470b6c684d9afba359111e80756e190142e4f48ebf272e",
     "run_policy/lite3_test_policy_runner_onnx.cpp": "65f394ea6004c918dcc45f08e94b7740f1074250dcf00c3b7bdd534da60aaa75",
-    "state_machine/rl_control_state_onnx.hpp": "4030e16f302cdb62368336981c2f2421480a2b0c4f3764c813312c9f6c1e1fa3"
+    "state_machine/rl_control_state_onnx.hpp": "020c40ddc442ce528c8e918841106a927b653624a5410de8b430e8783e9be5e4",
+    "state_machine/state_machine.hpp": "868e7b71dbaa1ba0b7616998ae58c424d1fb1f49eae4c8787c75ee43a0c2d358"
   },
   "cmake_options": {
     "BUILD_PLATFORM": "x86",
     "BUILD_SIM": "ON",
     "SEND_REMOTE": "OFF"
   },
-  "captured_date": "2026-10-04",
+  "captured_date": "2026-10-10",
   "excluded": [
     "build/",
     ".venv/",
     ".git/",
     "MuJoCo generated logs",
     "unmodified third-party source trees"
-  ]
+  ],
+  "added_paths": [
+    "interface/user_command/udp_velocity_interface.hpp"
+  ],
+  "ros_velocity_interface": {
+    "enable_flag": "--ros-velocity",
+    "bind": "127.0.0.1:30011",
+    "payload": "3 native float32: vx [m/s], vy [m/s], wz [rad/s]",
+    "timeout_ms": 250,
+    "policy_scale": [
+      0.8,
+      0.8,
+      0.8
+    ],
+    "space_stop_latch": true,
+    "resume_key": "c"
+  },
+  "verified_replay_date": "2026-10-10"
 }

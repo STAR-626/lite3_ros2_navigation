@@ -1,0 +1,2623 @@
+<sdf version="1.8">
+  <world name="large_warehouse">
+
+    
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics" />
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster" />
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands" />
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu" />
+
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    
+    <light type="directional" name="sun_main">
+      <cast_shadows>false</cast_shadows>
+      <pose>0 0 15.0 0 0 0</pose>
+      <diffuse>0.85 0.85 0.85 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.2 -0.2 -0.9</direction>
+    </light>
+    <light type="directional" name="sun_fill">
+      <cast_shadows>false</cast_shadows>
+      <pose>0 0 12.0 0 0 0</pose>
+      <diffuse>0.4 0.4 0.4 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <direction>0.2 0.2 -0.9</direction>
+    </light>
+
+    
+    
+    <model name="ground_plane">
+      <static>true</static>
+      <pose>0 0 0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal><size>25 25</size></plane></geometry>
+        </collision>
+      </link>
+    </model>
+
+    
+    <model name="concrete_floor">
+      <static>true</static>
+      <pose>0.038 0 0.0025 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10.6 10.4 0.005</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10.6 10.4 0.005</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.48 0.48 0.50 1</ambient>
+            <diffuse>0.56 0.56 0.58 1</diffuse>
+            <specular>0.06 0.06 0.06 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    
+    
+    
+    
+    <model name="wall_south">
+      <static>true</static><pose>0 -5.0 0.45 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>10.4 0.2 0.9</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>10.4 0.2 0.9</size></box></geometry>
+          <material><ambient>0.3 0.35 0.4 1</ambient><diffuse>0.3 0.35 0.4 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="wall_north">
+      <static>true</static><pose>0 5.0 0.45 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>10.4 0.2 0.9</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>10.4 0.2 0.9</size></box></geometry>
+          <material><ambient>0.3 0.35 0.4 1</ambient><diffuse>0.3 0.35 0.4 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="wall_west">
+      <static>true</static><pose>-5.1 0.0 0.45 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>0.2 10.0 0.9</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>0.2 10.0 0.9</size></box></geometry>
+          <material><ambient>0.3 0.35 0.4 1</ambient><diffuse>0.3 0.35 0.4 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="wall_east">
+      <static>true</static><pose>5.1757 0.0 0.45 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>0.2 10.0 0.9</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>0.2 10.0 0.9</size></box></geometry>
+          <material><ambient>0.3 0.35 0.4 1</ambient><diffuse>0.3 0.35 0.4 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Spawn Marker (Yellow, where bot currently is) -->
+    <model name="spawn_marker">
+      <static>true</static>
+      <pose>-4.5 -4.5 0.01 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.35</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1.0 0.85 0.0 1</ambient>
+            <diffuse>1.0 0.85 0.0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Destination Markers (Green) -->
+    <model name="destination_marker_1">
+      <static>true</static>
+      <pose>4.4586 4.3795 0.01 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.35</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.0 0.8 0.2 1</ambient>
+            <diffuse>0.0 0.8 0.2 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="destination_marker_2">
+      <static>true</static>
+      <pose>4.4590 -0.9218 0.03 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.35</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.0 0.8 0.2 1</ambient>
+            <diffuse>0.0 0.8 0.2 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Delivery Boxes at Station 1, 2, 3 (grounded at floor z=0.055) -->
+    <model name="box_obstacle_1">
+      <static>false</static>
+      <pose>-4.20 0.6173 0.055 0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>0.4</mass>
+          <inertia>
+            <ixx>0.000667</ixx>
+            <iyy>0.000667</iyy>
+            <izz>0.000667</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 0.1 0.1</size>
+           
+ </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 0.1 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box_obstacle_2">
+      <static>false</static>
+      <pose>-4.20 1.617 0.055 0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>0.4</mass>
+          <inertia>
+            <ixx>0.000667</ixx>
+            <iyy>0.000667</iyy>
+            <izz>0.000667</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 0.1 0.1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 0.1 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box_obstacle_3">
+      <static>false</static>
+      <pose>-4.20 2.617 0.055 0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>0.4</mass>
+          <inertia>
+            <ixx>0.000667</ixx>
+            <iyy>0.000667</iyy>
+            <izz>0.000667</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 0.1 0.1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 0.1 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_1">
+      <static>true</static>
+      <pose>-2.2101 2.5934 0.03 0 0 1.5697</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.765 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.765 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.765 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.765 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 -0.4 0.115 0 0 0</pose>
+          <geometry><box><size>0.24 0.3 0.18</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 -0.4 0.115 0 0 0</pose>
+          <geometry><box><size>0.24 0.3 0.18</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 0.3 0.1 0 0 0</pose>
+          <geometry><box><size>0.22 0.26 0.15</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 0.3 0.1 0 0 0</pose>
+          <geometry><box><size>0.22 0.26 0.15</size></box></geometry>
+          <material>
+            <ambient>0.15 0.35 0.65 1</ambient>
+            <diffuse>0.15 0.35 0.65 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 -0.2 0.5075 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 -0.2 0.5075 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b3">
+          <pose>0 0.35 0.4825 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.17</size></box></geometry>
+        </collision>
+        <visual name="vis_b3">
+          <pose>0 0.35 0.4825 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.17</size></box></geometry>
+          <material>
+            <ambient>0.75 0.22 0.2 1</ambient>
+            <diffuse>0.75 0.22 0.2 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b4">
+          <pose>0 -0.1 0.8625 0 0 0</pose>
+          <geometry><box><size>0.22 0.25 0.19</size></box></geometry>
+        </collision>
+        <visual name="vis_b4">
+          <pose>0 -0.1 0.8625 0 0 0</pose>
+          <geometry><box><size>0.22 0.25 0.19</size></box></geometry>
+          <material>
+            <ambient>0.42 0.46 0.5 1</ambient>
+            <diffuse>0.42 0.46 0.5 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c2">
+          <pose>0 0.2 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+        </collision>
+        <visual name="vis_c2">
+          <pose>0 0.2 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_2">
+      <static>true</static>
+      <pose>1.7745 2.6018 0.03 0 0 1.5697</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.765 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.765 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.765 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.765 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 0.2 0.125 0 0 0</pose>
+          <geometry><box><size>0.24 0.3 0.2</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 0.2 0.125 0 0 0</pose>
+          <geometry><box><size>0.24 0.3 0.2</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 -0.3 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 -0.3 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 0.15 0.4775 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.16</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 0.15 0.4775 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.16</size></box></geometry>
+          <material>
+            <ambient>0.2 0.55 0.35 1</ambient>
+            <diffuse>0.2 0.55 0.35 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b3">
+          <pose>0 -0.15 0.8525 0 0 0</pose>
+          <geometry><box><size>0.22 0.25 0.17</size></box></geometry>
+        </collision>
+        <visual name="vis_b3">
+          <pose>0 -0.15 0.8525 0 0 0</pose>
+          <geometry><box><size>0.22 0.25 0.17</size></box></geometry>
+          <material>
+            <ambient>0.15 0.35 0.65 1</ambient>
+            <diffuse>0.15 0.35 0.65 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_3">
+      <static>true</static>
+      <pose>3.8275 0.0136 0.03 0 0 1.5697</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.765 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.765 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.765 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.765 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.51 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 -0.2 0.115 0 0 0</pose>
+          <geometry><box><size>0.22 0.28 0.18</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 -0.2 0.115 0 0 0</pose>
+          <geometry><box><size>0.22 0.28 0.18</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 0.3 0.5075 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 0.3 0.5075 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 -0.1 0.8475 0 0 0</pose>
+          <geometry><box><size>0.2 0.22 0.16</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 -0.1 0.8475 0 0 0</pose>
+          <geometry><box><size>0.2 0.22 0.16</size></box></geometry>
+          <material>
+            <ambient>0.75 0.22 0.2 1</ambient>
+            <diffuse>0.75 0.22 0.2 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_4">
+      <static>true</static>
+      <pose>3.05 -1.610 0.03 0 0 0.0</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 -0.2 0.115 0 0 0</pose>
+          <geometry><box><size>0.22 0.26 0.18</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 -0.2 0.115 0 0 0</pose>
+          <geometry><box><size>0.22 0.26 0.18</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 0.18 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 0.18 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 -0.18 0.4725 0 0 0</pose>
+          <geometry><box><size>0.18 0.22 0.15</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 -0.18 0.4725 0 0 0</pose>
+          <geometry><box><size>0.18 0.22 0.15</size></box></geometry>
+          <material>
+            <ambient>0.15 0.35 0.65 1</ambient>
+            <diffuse>0.15 0.35 0.65 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b3">
+          <pose>0 0.08 0.8525 0 0 0</pose>
+          <geometry><box><size>0.2 0.25 0.17</size></box></geometry>
+        </collision>
+        <visual name="vis_b3">
+          <pose>0 0.08 0.8525 0 0 0</pose>
+          <geometry><box><size>0.2 0.25 0.17</size></box></geometry>
+          <material>
+            <ambient>0.42 0.46 0.5 1</ambient>
+            <diffuse>0.42 0.46 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_5">
+      <static>true</static>
+      <pose>4.65 -4.00 0.03 0 0 0.0</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 -0.2 0.115 0 0 0</pose>
+          <geometry><box><size>0.22 0.28 0.18</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 -0.2 0.115 0 0 0</pose>
+          <geometry><box><size>0.22 0.28 0.18</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 0.18 0.105 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.16</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 0.18 0.105 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.16</size></box></geometry>
+          <material>
+            <ambient>0.15 0.35 0.65 1</ambient>
+            <diffuse>0.15 0.35 0.65 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 -0.18 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 -0.18 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b3">
+          <pose>0 0.2 0.4725 0 0 0</pose>
+          <geometry><box><size>0.18 0.22 0.15</size></box></geometry>
+        </collision>
+        <visual name="vis_b3">
+          <pose>0 0.2 0.4725 0 0 0</pose>
+          <geometry><box><size>0.18 0.22 0.15</size></box></geometry>
+          <material>
+            <ambient>0.2 0.55 0.35 1</ambient>
+            <diffuse>0.2 0.55 0.35 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b4">
+          <pose>0 -0.08 0.8525 0 0 0</pose>
+          <geometry><box><size>0.22 0.24 0.17</size></box></geometry>
+        </collision>
+        <visual name="vis_b4">
+          <pose>0 -0.08 0.8525 0 0 0</pose>
+          <geometry><box><size>0.22 0.24 0.17</size></box></geometry>
+          <material>
+            <ambient>0.75 0.22 0.2 1</ambient>
+            <diffuse>0.75 0.22 0.2 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c2">
+          <pose>0 0.15 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+        </collision>
+        <visual name="vis_c2">
+          <pose>0 0.15 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_6">
+      <static>true</static>
+      <pose>4.65 2.6745 0.03 0 0 0.0</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 0.15 0.115 0 0 0</pose>
+          <geometry><box><size>0.22 0.25 0.18</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 0.15 0.115 0 0 0</pose>
+          <geometry><box><size>0.22 0.25 0.18</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 -0.15 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 -0.15 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 0.08 0.8475 0 0 0</pose>
+          <geometry><box><size>0.18 0.22 0.16</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 0.08 0.8475 0 0 0</pose>
+          <geometry><box><size>0.18 0.22 0.16</size></box></geometry>
+          <material>
+            <ambient>0.75 0.22 0.2 1</ambient>
+            <diffuse>0.75 0.22 0.2 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_7">
+      <static>true</static>
+      <pose>-2.2101 0.2662 0.03 0 0 0.0</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 0.18 0.11 0 0 0</pose>
+          <geometry><box><size>0.22 0.26 0.17</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 0.18 0.11 0 0 0</pose>
+          <geometry><box><size>0.22 0.26 0.17</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 -0.18 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 -0.18 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 0.08 0.8525 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.17</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 0.08 0.8525 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.17</size></box></geometry>
+          <material>
+            <ambient>0.2 0.55 0.35 1</ambient>
+            <diffuse>0.2 0.55 0.35 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_8">
+      <static>true</static>
+      <pose>0.1082 -1.788 0.03 0 0 -1.5766</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 -0.18 0.115 0 0 0</pose>
+          <geometry><box><size>0.24 0.28 0.18</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 -0.18 0.115 0 0 0</pose>
+          <geometry><box><size>0.24 0.28 0.18</size></box></geometry>
+          <material>
+            <ambient>0.15 0.35 0.65 1</ambient>
+            <diffuse>0.15 0.35 0.65 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 0.15 0.4775 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.16</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 0.15 0.4775 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.16</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 0 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 0 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_9">
+      <static>true</static>
+      <pose>-4.59 -1.47 0.03 0 0 0.0</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 0.18 0.11 0 0 0</pose>
+          <geometry><box><size>0.22 0.28 0.17</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 0.18 0.11 0 0 0</pose>
+          <geometry><box><size>0.22 0.28 0.17</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 -0.2 0.1 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.15</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 -0.2 0.1 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.15</size></box></geometry>
+          <material>
+            <ambient>0.42 0.46 0.5 1</ambient>
+            <diffuse>0.42 0.46 0.5 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b3">
+          <pose>0 -0.15 0.4775 0 0 0</pose>
+          <geometry><box><size>0.18 0.24 0.16</size></box></geometry>
+        </collision>
+        <visual name="vis_b3">
+          <pose>0 -0.15 0.4775 0 0 0</pose>
+          <geometry><box><size>0.18 0.24 0.16</size></box></geometry>
+          <material>
+            <ambient>0.75 0.22 0.2 1</ambient>
+            <diffuse>0.75 0.22 0.2 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 0.2 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 0.2 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b4">
+          <pose>0 0.08 0.8525 0 0 0</pose>
+          <geometry><box><size>0.22 0.26 0.17</size></box></geometry>
+        </collision>
+        <visual name="vis_b4">
+          <pose>0 0.08 0.8525 0 0 0</pose>
+          <geometry><box><size>0.22 0.26 0.17</size></box></geometry>
+          <material>
+            <ambient>0.15 0.35 0.65 1</ambient>
+            <diffuse>0.15 0.35 0.65 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c2">
+          <pose>0 -0.15 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+        </collision>
+        <visual name="vis_c2">
+          <pose>0 -0.15 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_10">
+      <static>true</static>
+      <pose>-0.6226 3.9863 0.03 0 0 0.0</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 0.18 0.11 0 0 0</pose>
+          <geometry><box><size>0.22 0.26 0.17</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 0.18 0.11 0 0 0</pose>
+          <geometry><box><size>0.22 0.26 0.17</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 -0.18 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 -0.18 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 0.08 0.8525 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.17</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 0.08 0.8525 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.17</size></box></geometry>
+          <material>
+            <ambient>0.2 0.55 0.35 1</ambient>
+            <diffuse>0.2 0.55 0.35 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_11">
+      <static>true</static>
+      <pose>-3.395 -2.203 0.03 0 0 -1.5776</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 -0.18 0.115 0 0 0</pose>
+          <geometry><box><size>0.24 0.28 0.18</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 -0.18 0.115 0 0 0</pose>
+          <geometry><box><size>0.24 0.28 0.18</size></box></geometry>
+          <material>
+            <ambient>0.15 0.35 0.65 1</ambient>
+            <diffuse>0.15 0.35 0.65 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 0.15 0.4775 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.16</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 0.15 0.4775 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.16</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 0 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 0 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_12">
+      <static>true</static>
+      <pose>-3.60 3.80 0.03 0 0 1.57</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 -0.2 0.115 0 0 0</pose>
+          <geometry><box><size>0.22 0.28 0.18</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 -0.2 0.115 0 0 0</pose>
+          <geometry><box><size>0.22 0.28 0.18</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 0.18 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 0.18 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 0.05 0.8525 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.17</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 0.05 0.8525 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.17</size></box></geometry>
+          <material>
+            <ambient>0.2 0.55 0.35 1</ambient>
+            <diffuse>0.2 0.55 0.35 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_13">
+      <static>true</static>
+      <pose>1.80 0.10 0.03 0 0 0.0</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 0.15 0.11 0 0 0</pose>
+          <geometry><box><size>0.22 0.25 0.17</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 0.15 0.11 0 0 0</pose>
+          <geometry><box><size>0.22 0.25 0.17</size></box></geometry>
+          <material>
+            <ambient>0.15 0.35 0.65 1</ambient>
+            <diffuse>0.15 0.35 0.65 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 -0.18 0.4775 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.16</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 -0.18 0.4775 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.16</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 0.1 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 0.1 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_14">
+      <static>true</static>
+      <pose>1.50 -3.60 0.03 0 0 0.0</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 -0.15 0.115 0 0 0</pose>
+          <geometry><box><size>0.24 0.26 0.18</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 -0.15 0.115 0 0 0</pose>
+          <geometry><box><size>0.24 0.26 0.18</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 0.18 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 0.18 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 -0.05 0.8475 0 0 0</pose>
+          <geometry><box><size>0.2 0.22 0.16</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 -0.05 0.8475 0 0 0</pose>
+          <geometry><box><size>0.2 0.22 0.16</size></box></geometry>
+          <material>
+            <ambient>0.75 0.22 0.2 1</ambient>
+            <diffuse>0.75 0.22 0.2 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_15">
+      <static>true</static>
+      <pose>2.20 4.10 0.03 0 0 1.57</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 0.18 0.11 0 0 0</pose>
+          <geometry><box><size>0.22 0.26 0.17</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 0.18 0.11 0 0 0</pose>
+          <geometry><box><size>0.22 0.26 0.17</size></box></geometry>
+          <material>
+            <ambient>0.15 0.35 0.65 1</ambient>
+            <diffuse>0.15 0.35 0.65 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 -0.18 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 -0.18 0.4975 0 0 0</pose>
+          <geometry><cone><radius>0.07</radius><length>0.2</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 0.08 0.8525 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.17</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 0.08 0.8525 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.17</size></box></geometry>
+          <material>
+            <ambient>0.2 0.55 0.35 1</ambient>
+            <diffuse>0.2 0.55 0.35 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="shelf_16">
+      <static>true</static>
+      <pose>-1.80 -3.80 0.03 0 0 1.57</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 -0.18 0.115 0 0 0</pose>
+          <geometry><box><size>0.24 0.28 0.18</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 -0.18 0.115 0 0 0</pose>
+          <geometry><box><size>0.24 0.28 0.18</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 0.15 0.4775 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.16</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 0.15 0.4775 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.16</size></box></geometry>
+          <material>
+            <ambient>0.75 0.22 0.2 1</ambient>
+            <diffuse>0.75 0.22 0.2 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 0 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 0 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+  <model name="shelf_17">
+      <static>true</static>
+      <pose>-0.4378 1.5866 0.03 0 0 2.1298</pose>
+      <link name="link">
+        
+        <collision name="col_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_left">
+          <pose>0 0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+        </collision>
+        <visual name="vis_right">
+          <pose>0 -0.545 0.575 0 0 0</pose>
+          <geometry><box><size>0.50 0.032 1.15</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_lower">
+          <pose>0 0 0.0125 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_1">
+          <pose>0 0 0.385 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+        </collision>
+        <visual name="vis_shelf_2">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.025</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+
+        
+        <collision name="col_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+        </collision>
+        <visual name="vis_upper">
+          <pose>0 0 1.140 0 0 0</pose>
+          <geometry><box><size>0.50 1.07 0.020</size></box></geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b1">
+          <pose>0 -0.18 0.115 0 0 0</pose>
+          <geometry><box><size>0.24 0.28 0.18</size></box></geometry>
+        </collision>
+        <visual name="vis_b1">
+          <pose>0 -0.18 0.115 0 0 0</pose>
+          <geometry><box><size>0.24 0.28 0.18</size></box></geometry>
+          <material>
+            <ambient>0.62 0.46 0.28 1</ambient>
+            <diffuse>0.62 0.46 0.28 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_b2">
+          <pose>0 0.15 0.4775 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.16</size></box></geometry>
+        </collision>
+        <visual name="vis_b2">
+          <pose>0 0.15 0.4775 0 0 0</pose>
+          <geometry><box><size>0.2 0.24 0.16</size></box></geometry>
+          <material>
+            <ambient>0.75 0.22 0.2 1</ambient>
+            <diffuse>0.75 0.22 0.2 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name="col_c1">
+          <pose>0 0 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+        </collision>
+        <visual name="vis_c1">
+          <pose>0 0 1.26 0 0 0</pose>
+          <geometry><cone><radius>0.08</radius><length>0.22</length></cone></geometry>
+          <material>
+            <ambient>0.95 0.42 0.05 1</ambient>
+            <diffuse>0.95 0.42 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>

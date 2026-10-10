@@ -1,0 +1,49 @@
+{
+  "scope": "This task only; visible user and assistant text; no internal reasoning, system/developer messages, raw tool output or image data",
+  "timezone": "Asia/Shanghai",
+  "cutoff_utc": "2026-10-10T11:14:40.143Z",
+  "segments": [
+    {
+      "segment": "rollout-2026-10-01T12-15-24-01a0f5ac-9861-74a2-a5b1-85d128991076.jsonl",
+      "sha256": "062be2be90a260374623de9b64daafa832cabdf0254de300ad8982d7683682b4"
+    },
+    {
+      "segment": "rollout-2026-10-01T22-19-19-01a0f5ac-9861-74a2-a5b1-85d128991076_01a0f7d5-80d2-7f60-a6d8-4e505b760bdf.jsonl",
+      "sha256": "e68244caca48056d6a179b46ddb9cbf8b33a28b71187fcc8f2e0a2fc4fb715d8"
+    },
+    {
+      "segment": "rollout-2026-10-04T21-19-01-01a0f5ac-9861-74a2-a5b1-85d128991076_01a10711-6065-7923-ad5a-465f40c2bf79.jsonl",
+      "sha256": "73de2f489198c9e1e1415b21816ac2f0bbad177455975ec8dea49fa9b0601c7e"
+    },
+    {
+      "segment": "rollout-2026-10-08T16-30-34-01a0f5ac-9861-74a2-a5b1-85d128991076_01a11aa2-b88f-7013-92eb-b4bf6dd55deb.jsonl",
+      "sha256": "c5456d3b9544a86caa800623d6c923c12eb2421d6137b15cca7e3e88b7619e1e"
+    },
+    {
+      "segment": "rollout-2026-10-10T11-14-22-01a0f5ac-9861-74a2-a5b1-85d128991076_01a123cd-f58e-78f1-89b5-4c1085472dd7.jsonl",
+      "sha256": "f631671a3fb2e328fb7a8c20bd09e5048660fb24c63e6918456e4a7b0821bbb0"
+    },
+    {
+      "segment": "rollout-2026-10-10T17-50-04-01a0f5ac-9861-74a2-a5b1-85d128991076_01a12538-39ad-7833-8d41-b738df496540.jsonl",
+      "sha256": "c4c8dfdbc5f21c2cc44d085ed860690a32d7f34375c9f2804162e088ff45cc28"
+    }
+  ],
+  "message_count": 541,
+  "role_counts": {
+    "user": 191,
+    "assistant": 350
+  },
+  "daily_files": {
+    "2026-10-01": 58,
+    "2026-10-02": 20,
+    "2026-10-03": 57,
+    "2026-10-04": 124,
+    "2026-10-08": 93,
+    "2026-10-09": 54,
+    "2026-10-10": 135
+  },
+  "omitted": {
+    "empty_or_environment_message": 32
+  },
+  "image_attachments_omitted": 15
+}

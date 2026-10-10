@@ -1,0 +1,37 @@
+# Goal：用户要求机器人去哪里。
+# 坐标属于 map，位置单位是米，朝向单位是弧度。
+float64 goal_x
+float64 goal_y
+float64 goal_yaw
+
+# 默认不检查用户填写的起点，从机器人实际位置出发。
+# check_start 为 false 时，start_x/start_y/start_yaw 不参与起点检查。
+bool check_start
+float64 start_x
+float64 start_y
+float64 start_yaw
+---
+# Result：任务结束后返回什么。以下是任务层编号，不是 Nav2 错误码。
+uint16 SUCCESS=0
+uint16 NO_PATH=1
+uint16 BLOCKED=2
+uint16 INVALID_GOAL=3
+uint16 START_MISMATCH=4
+uint16 MOTION_FAILED=5
+uint16 TIMEOUT=6
+uint16 CANCELED=7
+uint16 SYSTEM_ERROR=8
+
+uint16 result_code
+string message
+# 最终 map 位姿；节点应提供有效时间戳及朝向。
+geometry_msgs/PoseStamped final_pose
+uint32 retry_count
+---
+# Feedback：任务进行过程中告诉用户什么。
+string phase
+# 当前 map 位姿。
+geometry_msgs/PoseStamped current_pose
+# 剩余路线距离（米）；暂时无法计算时，节点应明确说明反馈阶段。
+float64 remaining_distance
+uint32 replan_count

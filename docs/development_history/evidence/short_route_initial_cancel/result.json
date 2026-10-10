@@ -1,0 +1,31 @@
+{
+  "log_directory": "/tmp/lite3-planned-route-6qwxm6qc",
+  "process_exit_code": 1,
+  "failure": "no physical progress",
+  "start": {
+    "x": -4.06237826151482,
+    "y": -3.999929847824481
+  },
+  "final": {
+    "x": -4.062389266489219,
+    "y": -3.9999298397598606
+  },
+  "distance_moved_m": 1.1004977353372746e-05,
+  "goal_position_error_m": 0.8623892693431845,
+  "two_second_post_task_drift_m": 1.000547366223717e-06,
+  "follow_status": [
+    5
+  ],
+  "planned_path_points": 32,
+  "nonzero_navigation_commands": 234,
+  "last_navigation_command": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "final_body_height_roll_pitch": [
+    0.3261176888304081,
+    -0.00021323942926961548,
+    -0.037919583603262336
+  ]
+}

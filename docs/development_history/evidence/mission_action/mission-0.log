@@ -1,0 +1,97 @@
+[INFO] [1791626573.931515734] [mission_manager]: 任务节点已启动，等待 /navigate_task；一次只接受一个任务
+[INFO] [1791626574.497112923] [mission_manager]: 接收导航任务：目标 (2.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626574.531714331] [mission_manager]: 任务阶段：SELECTING_NAVIGATION
+[INFO] [1791626574.532396910] [mission_manager]: 模拟导航模式；已有停止锁定必须由用户显式解除
+[INFO] [1791626574.532419809] [mission_manager]: 任务阶段：PLANNING
+[INFO] [1791626574.592544561] [mission_manager]: 获得完整路线：3个点
+[INFO] [1791626574.592580530] [mission_manager]: 任务阶段：FOLLOWING
+[WARN] [1791626574.767185921] [mission_manager]: 拒绝新任务：已有任务，或上次清理尚未确认
+[INFO] [1791626575.953927837] [mission_manager]: 任务结束：编号 0，已到达目标；等待下一次任务
+[INFO] [1791626575.972200267] [mission_manager]: 接收导航任务：目标 (3.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626575.981636764] [mission_manager]: 任务阶段：SELECTING_NAVIGATION
+[INFO] [1791626575.982116455] [mission_manager]: 模拟导航模式；已有停止锁定必须由用户显式解除
+[INFO] [1791626575.982132473] [mission_manager]: 任务阶段：PLANNING
+[INFO] [1791626576.034265078] [mission_manager]: 获得完整路线：3个点
+[INFO] [1791626576.034309036] [mission_manager]: 任务阶段：FOLLOWING
+[INFO] [1791626576.397669580] [mission_manager]: 任务结束：编号 0，已到达目标；等待下一次任务
+[INFO] [1791626576.413848056] [mission_manager]: 接收导航任务：目标 (2.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626576.431634108] [mission_manager]: 任务阶段：STOPPING
+[INFO] [1791626576.481604741] [mission_manager]: 任务结束：编号 4，填写的起点与实际 map 位姿不一致；导航任务已结束，运动停止锁定保持开启
+[INFO] [1791626576.494454372] [mission_manager]: 接收导航任务：目标 (nan, 1.00)，朝向 0.00 rad
+[INFO] [1791626576.531596627] [mission_manager]: 任务阶段：STOPPING
+[INFO] [1791626576.581591833] [mission_manager]: 任务结束：编号 3，目标或检查起点不是有效数字；导航任务已结束，运动停止锁定保持开启
+[INFO] [1791626576.595036203] [mission_manager]: 接收导航任务：目标 (2.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626576.631623510] [mission_manager]: 任务阶段：SELECTING_NAVIGATION
+[INFO] [1791626576.632277720] [mission_manager]: 模拟导航模式；已有停止锁定必须由用户显式解除
+[INFO] [1791626576.632283993] [mission_manager]: 任务阶段：PLANNING
+[INFO] [1791626576.684561737] [mission_manager]: 任务阶段：STOPPING
+[INFO] [1791626576.731613556] [mission_manager]: 任务结束：编号 1，规划失败，Nav2码 208：模拟规划错误；导航任务已结束，运动停止锁定保持开启
+[INFO] [1791626576.735764900] [mission_manager]: 接收导航任务：目标 (2.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626576.781612769] [mission_manager]: 任务阶段：SELECTING_NAVIGATION
+[INFO] [1791626576.781977932] [mission_manager]: 模拟导航模式；已有停止锁定必须由用户显式解除
+[INFO] [1791626576.781990945] [mission_manager]: 任务阶段：PLANNING
+[INFO] [1791626576.834075182] [mission_manager]: 任务阶段：STOPPING
+[INFO] [1791626576.881603949] [mission_manager]: 任务结束：编号 3，规划失败，Nav2码 204：模拟规划错误；导航任务已结束，运动停止锁定保持开启
+[INFO] [1791626576.896668182] [mission_manager]: 接收导航任务：目标 (2.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626576.931645941] [mission_manager]: 任务阶段：SELECTING_NAVIGATION
+[INFO] [1791626576.932195017] [mission_manager]: 模拟导航模式；已有停止锁定必须由用户显式解除
+[INFO] [1791626576.932200336] [mission_manager]: 任务阶段：PLANNING
+[INFO] [1791626576.984286896] [mission_manager]: 任务阶段：STOPPING
+[INFO] [1791626577.031609455] [mission_manager]: 任务结束：编号 8，规划失败，Nav2码 202：模拟规划错误；导航任务已结束，运动停止锁定保持开启
+[INFO] [1791626577.037356887] [mission_manager]: 接收导航任务：目标 (2.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626577.081677768] [mission_manager]: 任务阶段：SELECTING_NAVIGATION
+[INFO] [1791626577.082264110] [mission_manager]: 模拟导航模式；已有停止锁定必须由用户显式解除
+[INFO] [1791626577.082307771] [mission_manager]: 任务阶段：PLANNING
+[INFO] [1791626577.135287489] [mission_manager]: 任务阶段：STOPPING
+[INFO] [1791626577.181589215] [mission_manager]: 任务结束：编号 8，规划路线为空或坐标系不是 map；导航任务已结束，运动停止锁定保持开启
+[INFO] [1791626577.198203568] [mission_manager]: 接收导航任务：目标 (2.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626577.231652339] [mission_manager]: 任务阶段：SELECTING_NAVIGATION
+[INFO] [1791626577.232202328] [mission_manager]: 模拟导航模式；已有停止锁定必须由用户显式解除
+[INFO] [1791626577.232216252] [mission_manager]: 任务阶段：PLANNING
+[INFO] [1791626577.284877550] [mission_manager]: 获得完整路线：3个点
+[INFO] [1791626577.284912980] [mission_manager]: 任务阶段：FOLLOWING
+[INFO] [1791626577.408029436] [mission_manager]: 任务阶段：STOPPING
+[INFO] [1791626577.431631833] [mission_manager]: 任务结束：编号 8，路线跟随失败：Nav2码 105：模拟跟随错误；导航任务已结束，运动停止锁定保持开启
+[INFO] [1791626577.439604855] [mission_manager]: 接收导航任务：目标 (2.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626577.481628287] [mission_manager]: 任务阶段：SELECTING_NAVIGATION
+[INFO] [1791626577.482137717] [mission_manager]: 模拟导航模式；已有停止锁定必须由用户显式解除
+[INFO] [1791626577.482159197] [mission_manager]: 任务阶段：PLANNING
+[INFO] [1791626577.631620522] [mission_manager]: 任务阶段：STOPPING
+[INFO] [1791626577.681597149] [mission_manager]: 任务结束：编号 7，用户取消导航任务；导航任务已结束，运动停止锁定保持开启
+[INFO] [1791626577.697251271] [mission_manager]: 接收导航任务：目标 (2.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626577.731641725] [mission_manager]: 任务阶段：SELECTING_NAVIGATION
+[INFO] [1791626577.732198257] [mission_manager]: 模拟导航模式；已有停止锁定必须由用户显式解除
+[INFO] [1791626577.732213184] [mission_manager]: 任务阶段：PLANNING
+[INFO] [1791626577.784729097] [mission_manager]: 获得完整路线：3个点
+[INFO] [1791626577.784764017] [mission_manager]: 任务阶段：FOLLOWING
+[INFO] [1791626577.831589209] [mission_manager]: 任务阶段：STOPPING
+[INFO] [1791626577.881587367] [mission_manager]: 任务结束：编号 7，用户取消导航任务；导航任务已结束，运动停止锁定保持开启
+[INFO] [1791626577.898362005] [mission_manager]: 接收导航任务：目标 (2.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626577.931679981] [mission_manager]: 任务阶段：SELECTING_NAVIGATION
+[INFO] [1791626577.932362257] [mission_manager]: 模拟导航模式；已有停止锁定必须由用户显式解除
+[INFO] [1791626577.932397042] [mission_manager]: 任务阶段：PLANNING
+[INFO] [1791626577.984720909] [mission_manager]: 获得完整路线：3个点
+[INFO] [1791626577.984776523] [mission_manager]: 任务阶段：FOLLOWING
+[INFO] [1791626578.131770439] [mission_manager]: 任务阶段：STOPPING
+[INFO] [1791626578.481604384] [mission_manager]: 任务结束：编号 7，用户取消导航任务；导航任务已结束，运动停止锁定保持开启
+[INFO] [1791626578.500599126] [mission_manager]: 接收导航任务：目标 (2.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626578.531647930] [mission_manager]: 任务阶段：SELECTING_NAVIGATION
+[INFO] [1791626578.532338312] [mission_manager]: 模拟导航模式；已有停止锁定必须由用户显式解除
+[INFO] [1791626578.532367369] [mission_manager]: 任务阶段：PLANNING
+[INFO] [1791626578.584634479] [mission_manager]: 获得完整路线：3个点
+[INFO] [1791626578.584680956] [mission_manager]: 任务阶段：FOLLOWING
+[INFO] [1791626582.531617538] [mission_manager]: 任务阶段：STOPPING
+[INFO] [1791626582.581605058] [mission_manager]: 任务结束：编号 6，任务超过总时间预算；导航任务已结束，运动停止锁定保持开启
+[INFO] [1791626583.294862889] [mission_manager]: 接收导航任务：目标 (2.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626584.331619482] [mission_manager]: 任务阶段：STOPPING
+[INFO] [1791626584.381613292] [mission_manager]: 任务结束：编号 8，等待地图TF、Nav2或运动服务超时；导航任务已结束，运动停止锁定保持开启；最终位姿不可用（final_pose.frame_id为空）
+[INFO] [1791626584.599680002] [mission_manager]: 接收导航任务：目标 (2.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626584.631628661] [mission_manager]: 任务阶段：SELECTING_NAVIGATION
+[INFO] [1791626584.632232997] [mission_manager]: 模拟导航模式；已有停止锁定必须由用户显式解除
+[INFO] [1791626584.632238968] [mission_manager]: 任务阶段：PLANNING
+[INFO] [1791626584.684264866] [mission_manager]: 获得完整路线：3个点
+[INFO] [1791626584.684319318] [mission_manager]: 任务阶段：FOLLOWING
+[INFO] [1791626584.831605550] [mission_manager]: 任务阶段：STOPPING
+[INFO] [1791626585.681595327] [mission_manager]: 任务结束：编号 8，用户取消导航任务；未能确认停止锁定或下游任务结束，拒绝后续任务。请检查旧任务后重启任务节点
+[WARN] [1791626585.682844289] [mission_manager]: 拒绝新任务：已有任务，或上次清理尚未确认
+[INFO] [1791626586.305481824] [rclcpp]: signal_handler(SIGINT/SIGTERM)

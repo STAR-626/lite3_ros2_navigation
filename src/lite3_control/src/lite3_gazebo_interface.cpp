@@ -12,6 +12,8 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <gz/msgs/stringmsg.pb.h>
+#include <gz/msgs/odometry.pb.h>
+#include <gz/msgs/Utility.hh>
 #include <gz/transport/Node.hh>
 
 #include <gz/plugin/Register.hh>
@@ -48,6 +50,9 @@ private:
     int socket_ = -1;
     sockaddr_in controller_address_{};
     gz::transport::Node transport_;
+    gz::transport::Node::Publisher ground_truth_publisher_;
+    std::chrono::nanoseconds last_ground_truth_time_{0};
+    bool have_ground_truth_time_ = false;
     std::atomic<int> requested_mode_{-1};
     bool external_mode_ = false;
     bool have_command_ = false;
@@ -144,6 +149,48 @@ private:
         sendto(socket_, packet.data(), packet.size(), MSG_DONTWAIT,
                reinterpret_cast<const sockaddr *>(&controller_address_),
                sizeof(controller_address_));
+    }
+
+    void PublishGroundTruth(const gz::sim::UpdateInfo &info,
+                            const gz::sim::EntityComponentManager &ecm)
+    {
+        if (!ground_truth_publisher_ ||
+            body_entity_ == gz::sim::kNullEntity) return;
+
+        const auto now = std::chrono::duration_cast<std::chrono::nanoseconds>(
+            info.simTime);
+        if (have_ground_truth_time_ && now >= last_ground_truth_time_ &&
+            now - last_ground_truth_time_ < std::chrono::milliseconds(20)) return;
+
+        const gz::sim::Link body(body_entity_);
+        const auto pose = body.WorldPose(ecm);
+        const auto linear = body.WorldLinearVelocity(ecm);
+        const auto angular = body.WorldAngularVelocity(ecm);
+        if (!pose || !linear || !angular) return;
+        if (!pose->Pos().IsFinite() || !pose->Rot().IsFinite() ||
+            !linear->IsFinite() || !angular->IsFinite()) return;
+
+        gz::msgs::Odometry message;
+        const auto ns = now.count();
+        auto *header = message.mutable_header();
+        header->mutable_stamp()->set_sec(ns / 1000000000);
+        header->mutable_stamp()->set_nsec(ns % 1000000000);
+
+        auto *frame = header->add_data();
+        frame->set_key("frame_id");
+        frame->add_value("world");
+        auto *child = header->add_data();
+        child->set_key("child_frame_id");
+        child->add_value("TORSO");
+
+        gz::msgs::Set(message.mutable_pose(), *pose);
+        gz::msgs::Set(message.mutable_twist()->mutable_linear(),
+                     pose->Rot().RotateVectorReverse(*linear));
+        gz::msgs::Set(message.mutable_twist()->mutable_angular(),
+                     pose->Rot().RotateVectorReverse(*angular));
+        ground_truth_publisher_.Publish(message);
+        last_ground_truth_time_ = now;
+        have_ground_truth_time_ = true;
     }
 
 public:
@@ -271,6 +318,11 @@ public:
             std::cout << "[Lite3 UDP] Commands: 127.0.0.1:20001; state: 127.0.0.1:30010"
                       << std::endl;
         }
+        ground_truth_publisher_ = transport_.Advertise<gz::msgs::Odometry>(
+            "/lite3/ground_truth/odom");
+        if (!ground_truth_publisher_)
+            std::cerr << "[Lite3 pose] Cannot advertise ground truth." << std::endl;
+
         transport_.Subscribe("/lite3/control_mode",
                             &Lite3GazeboInterface::OnModeCommand, this);
         std::cout << "[Lite3 control] Mode: stand. Explicit external command required."
@@ -358,6 +410,7 @@ public:
         }
 
         SendState(info, ecm);
+        PublishGroundTruth(info, ecm);
 
         ++print_counter_;
         if (print_counter_ % 1000 != 0)

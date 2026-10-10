@@ -1,0 +1,85 @@
+[INFO] [1791617895.941967793] [controller_server]: 
+	controller_server lifecycle node launched. 
+	Waiting on external lifecycle transitions to activate
+	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[INFO] [1791617895.943491584] [controller_server]: Creating controller server
+[INFO] [1791617895.947618902] [local_costmap.local_costmap]: 
+	local_costmap lifecycle node launched. 
+	Waiting on external lifecycle transitions to activate
+	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[INFO] [1791617895.948332022] [local_costmap.local_costmap]: Creating Costmap
+[INFO] [1791617921.491530039] [controller_server]: Configuring controller interface
+[INFO] [1791617921.491565397] [controller_server]: getting progress checker plugins..
+[INFO] [1791617921.491666897] [controller_server]: getting goal checker plugins..
+[INFO] [1791617921.491761476] [controller_server]: Controller frequency set to 20.0000Hz
+[INFO] [1791617921.491790936] [local_costmap.local_costmap]: Configuring
+[INFO] [1791617921.496007814] [local_costmap.local_costmap]: Using plugin "static_layer"
+[INFO] [1791617921.507000133] [local_costmap.local_costmap]: Subscribing to the map topic (/map) with transient local durability
+[INFO] [1791617921.508559830] [local_costmap.local_costmap]: Initialized plugin "static_layer"
+[INFO] [1791617921.508576931] [local_costmap.local_costmap]: Using plugin "inflation_layer"
+[INFO] [1791617921.509052419] [local_costmap.local_costmap]: Initialized plugin "inflation_layer"
+[INFO] [1791617921.525636262] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 224 X 224 at 0.050000 m/pix
+[INFO] [1791617921.525961753] [controller_server]: Created progress_checker : progress_checker of type nav2_controller::SimpleProgressChecker
+[INFO] [1791617921.526316861] [controller_server]: Controller Server has progress_checker  progress checkers available.
+[INFO] [1791617921.527510162] [controller_server]: Created goal checker : goal_checker of type nav2_controller::SimpleGoalChecker
+[INFO] [1791617921.527967522] [controller_server]: Controller Server has goal_checker  goal checkers available.
+[INFO] [1791617921.530595207] [controller_server]: Created controller : FollowPath of type nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[INFO] [1791617921.536652862] [controller_server]: Controller Server has FollowPath  controllers available.
+[INFO] [1791617923.832377409] [controller_server]: Activating
+[INFO] [1791617923.832407621] [local_costmap.local_costmap]: Activating
+[INFO] [1791617923.832412791] [local_costmap.local_costmap]: Checking transform
+[INFO] [1791617923.832495617] [local_costmap.local_costmap]: start
+[INFO] [1791617923.882607001] [controller_server]: Activating controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[INFO] [1791621351.798117950] [controller_server]: Received a goal, begin computing control effort.
+[INFO] [1791621363.498258661] [controller_server]: Cancellation was successful. Stopping the robot.
+[INFO] [1791621363.498321262] [controller_server]: [follow_path] [ActionServer] Client requested to cancel the goal. Cancelling.
+[INFO] [1791621584.663755248] [controller_server]: Received a goal, begin computing control effort.
+[INFO] [1791621586.963922720] [controller_server]: Reached the goal!
+[INFO] [1791622009.330465694] [controller_server]: Received a goal, begin computing control effort.
+[INFO] [1791622010.530594231] [controller_server]: Reached the goal!
+[INFO] [1791622082.303995350] [controller_server]: Received a goal, begin computing control effort.
+[INFO] [1791622082.304070243] [controller_server]: Reached the goal!
+[INFO] [1791622258.443939998] [controller_server]: Received a goal, begin computing control effort.
+[ERROR] [1791622278.499444160] [controller_server]: Failed to make progress
+[WARN] [1791622278.499580409] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[INFO] [1791622551.372089118] [controller_server]: Received a goal, begin computing control effort.
+[ERROR] [1791622571.422294417] [controller_server]: Failed to make progress
+[WARN] [1791622571.422412054] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[INFO] [1791622578.340883637] [controller_server]: Received a goal, begin computing control effort.
+[INFO] [1791622589.741040029] [controller_server]: Passing new path to controller.
+[ERROR] [1791622598.391106841] [controller_server]: Failed to make progress
+[WARN] [1791622598.391207894] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[INFO] [1791622608.632550408] [controller_server]: Received a goal, begin computing control effort.
+[INFO] [1791622623.082695692] [controller_server]: Passing new path to controller.
+[ERROR] [1791622628.682817017] [controller_server]: Failed to make progress
+[WARN] [1791622628.682971424] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[INFO] [1791622639.353891670] [controller_server]: Received a goal, begin computing control effort.
+[INFO] [1791622655.254073431] [controller_server]: Passing new path to controller.
+[ERROR] [1791622659.404087993] [controller_server]: Failed to make progress
+[WARN] [1791622659.404163276] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[INFO] [1791622671.668623046] [controller_server]: Received a goal, begin computing control effort.
+[INFO] [1791622687.968856664] [controller_server]: Passing new path to controller.
+[ERROR] [1791622691.718834935] [controller_server]: Failed to make progress
+[WARN] [1791622691.718902782] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[INFO] [1791622695.963465132] [controller_server]: Received a goal, begin computing control effort.
+[ERROR] [1791622716.013740732] [controller_server]: Failed to make progress
+[WARN] [1791622716.013810104] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[INFO] [1791622725.161685041] [controller_server]: Received a goal, begin computing control effort.
+[ERROR] [1791622745.211889069] [controller_server]: Failed to make progress
+[WARN] [1791622745.211986171] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[INFO] [1791623434.528322698] [controller_server]: Received a goal, begin computing control effort.
+[INFO] [1791623478.328524120] [controller_server]: Reached the goal!
+[INFO] [1791627040.387884646] [controller_server]: Received a goal, begin computing control effort.
+[INFO] [1791627040.588039010] [controller_server]: Reached the goal!
+[INFO] [1791627056.037452478] [controller_server]: Received a goal, begin computing control effort.
+[INFO] [1791627056.037525929] [controller_server]: Reached the goal!
+[INFO] [1791627329.967357420] [controller_server]: Received a goal, begin computing control effort.
+[INFO] [1791627379.967530475] [controller_server]: Reached the goal!
+[INFO] [1791629830.110828177] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [1791629830.110902151] [controller_server]: Running Nav2 LifecycleNode rcl preshutdown (controller_server)
+[INFO] [1791629830.111150143] [controller_server]: Deactivating
+[INFO] [1791629830.111183505] [controller_server]: Deactivating controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[INFO] [1791629830.111509712] [local_costmap.local_costmap]: Deactivating
+[INFO] [1791629830.238498057] [controller_server]: Cleaning up
+[INFO] [1791629830.238586747] [controller_server]: Cleaning up controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[INFO] [1791629830.239283096] [local_costmap.local_costmap]: Cleaning up

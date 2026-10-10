@@ -449,5 +449,12 @@
             filename="liblite3_gazebo_interface.so"
             name="lite3_control::Lite3GazeboInterface">
         </plugin>
+       
+        <plugin
+            filename="gz-sim-joint-state-publisher-system"
+            name="gz::sim::systems::JointStatePublisher">
+            <topic>/lite3/joint_states</topic>
+            <update_rate>30</update_rate>
+        </plugin>
     </gazebo>
 </robot>

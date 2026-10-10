@@ -1,0 +1,9 @@
+[INFO] [1791626586.503492684] [mission_manager]: 任务节点已启动，等待 /navigate_task；一次只接受一个任务
+[INFO] [1791626587.070360823] [mission_manager]: 接收导航任务：目标 (2.00, 1.00)，朝向 0.00 rad
+[INFO] [1791626587.103616197] [mission_manager]: 任务阶段：SELECTING_NAVIGATION
+[INFO] [1791626587.104121895] [mission_manager]: 模拟导航模式；已有停止锁定必须由用户显式解除
+[INFO] [1791626587.104159694] [mission_manager]: 任务阶段：PLANNING
+[INFO] [1791626587.156436222] [mission_manager]: 任务阶段：STOPPING
+[INFO] [1791626588.003593502] [mission_manager]: 任务结束：编号 8，规划失败，Nav2码 208：模拟规划错误；未能确认停止锁定或下游任务结束，拒绝后续任务。请检查旧任务后重启任务节点
+[WARN] [1791626588.013837644] [mission_manager]: 拒绝新任务：已有任务，或上次清理尚未确认
+[INFO] [1791626588.034247139] [rclcpp]: signal_handler(SIGINT/SIGTERM)

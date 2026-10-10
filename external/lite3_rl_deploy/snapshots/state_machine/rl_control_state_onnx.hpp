@@ -57,9 +57,10 @@ private:
         // }
         // cmd_vel+=vel_delta;           
         // rbs_.cmd_vel_normlized = cmd_vel;
-        rbs_.cmd_vel_normlized = Vec3f(uc_ptr_->GetUserCommand().forward_vel_scale, 
-                                    uc_ptr_->GetUserCommand().side_vel_scale, 
-                                    uc_ptr_->GetUserCommand().turnning_vel_scale);
+        const auto velocity_command = uc_ptr_->GetUserCommand();
+        rbs_.cmd_vel_normlized = Vec3f(velocity_command.forward_vel_scale,
+                                    velocity_command.side_vel_scale,
+                                    velocity_command.turnning_vel_scale);
         
     }
 

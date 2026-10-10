@@ -1,0 +1,31 @@
+{
+  "log_directory": "/tmp/lite3-planned-route-m6lqf76z",
+  "process_exit_code": 0,
+  "failure": null,
+  "start": {
+    "x": -4.0025940060079925,
+    "y": -3.998744921741503
+  },
+  "final": {
+    "x": -3.3776095351938884,
+    "y": -4.039117429758234
+  },
+  "distance_moved_m": 0.6262870972344448,
+  "goal_position_error_m": 0.1818662153965915,
+  "two_second_post_task_drift_m": 0.032544434138932786,
+  "follow_status": [
+    4
+  ],
+  "planned_path_points": 30,
+  "nonzero_navigation_commands": 46,
+  "last_navigation_command": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "final_body_height_roll_pitch": [
+    0.34889806189225325,
+    -0.019950793336080255,
+    0.007180627454289584
+  ]
+}

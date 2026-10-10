@@ -11,6 +11,12 @@ find_package(gz_sim_vendor REQUIRED)
 find_package(gz_plugin_vendor REQUIRED)
 find_package(gz_transport_vendor REQUIRED)
 find_package(gz_msgs_vendor REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(std_srvs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
 
 find_package(gz-sim8 REQUIRED)
 find_package(gz-plugin2 REQUIRED COMPONENTS register)
@@ -48,6 +54,26 @@ target_link_libraries(lite3_gazebo_interface PRIVATE
 install(
   TARGETS lite3_gazebo_interface
   LIBRARY DESTINATION lib
+)
+
+add_executable(lite3_motion_node
+  src/lite3_motion_node.cpp
+)
+
+target_compile_features(lite3_motion_node PRIVATE cxx_std_17)
+
+ament_target_dependencies(lite3_motion_node
+  rclcpp
+  geometry_msgs
+  std_srvs
+  nav_msgs
+  tf2
+  tf2_ros
+)
+
+install(
+  TARGETS lite3_motion_node
+  DESTINATION lib/${PROJECT_NAME}
 )
 
 ament_package()

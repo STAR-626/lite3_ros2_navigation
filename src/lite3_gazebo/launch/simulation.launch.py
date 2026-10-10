@@ -20,7 +20,7 @@ def generate_launch_description():
 
     # 找到世界、机器人模型和启动文件。
     world_path = os.path.join(
-        gazebo_package_path, 'worlds', 'lite3_empty.sdf'
+        gazebo_package_path, 'worlds', 'large_warehouse.sdf'
     )
 
     urdf_path = os.path.join(
@@ -77,20 +77,51 @@ def generate_launch_description():
         executable='create',
         name='spawn_lite3',
         arguments=[
-            '-world', 'lite3_world',
+            '-world', 'large_warehouse',
             '-file', urdf_path,
             '-name', 'Lite3',
-            '-x', '0.0',
-            '-y', '0.0',
+            '-x', '-4.0',
+            '-y', '-4.0',
             # 初始站姿的脚底接近地面，避免高处落地冲击压弯后腿。
-            '-z', '0.36',
+            '-z', '0.365',
         ],
         output='screen'
     )
 
-    # 复用我们已经写好的模型显示启动文件。
+    # 仿真时关闭滑块，使用 Gazebo 的关节状态和仿真时间。
     start_display = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(display_launch_path)
+        PythonLaunchDescriptionSource(display_launch_path),
+        launch_arguments={
+            'use_gui': 'false',
+            'use_sim_time': 'true',
+            'fixed_frame': 'odom',
+        }.items()
+    )
+
+    # 单向桥接实际关节、机身状态和时钟，统一 ROS2 侧的话题名称。
+    start_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='ros_gz_bridge',
+        arguments=[
+            '/lite3/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',
+            '/world/large_warehouse/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
+            '/lite3/ground_truth/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
+        ],
+        remappings=[
+            ('/lite3/joint_states', '/joint_states'),
+            ('/world/large_warehouse/clock', '/clock'),
+        ],
+        output='screen'
+    )
+
+    # 启动运动节点，接收 ROS2 速度并转发给 RL 程序。
+    start_motion = Node(
+        package='lite3_control',
+        executable='lite3_motion_node',
+        name='lite3_motion_node',
+        parameters=[{'use_sim_time': True}],
+        output='screen'
     )
 
     return LaunchDescription([
@@ -98,5 +129,7 @@ def generate_launch_description():
         set_plugin_path,
         start_gazebo,
         spawn_lite3,
+        start_bridge,
         start_display,
+        start_motion,
     ])

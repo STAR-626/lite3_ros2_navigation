@@ -25,9 +25,21 @@ This notice does not assign a license to independently authored project files. T
 - Upstream: https://github.com/DeepRoboticsLab/Lite3_rl_deploy
 - Exact revision: `1c4a8f14c9c531903fa5a26783e3f9b99d1039d9`.
 - Copyright (c) 2025, DeepRoboticsLab; BSD 3-Clause. The unmodified license is preserved at `external/lite3_rl_deploy/LICENSE.DeepRoboticsLab.txt`.
-- Included: the original `policy/ppo/policy.onnx`, three locally modified source snapshots and a replayable patch. See that directory's README and UPSTREAM.json for paths and SHA-256.
-- Local modifications: space-to-stop keyboard input, initialization of the previous ONNX action, and policy initialization before starting its thread.
+- Included: the original `policy/ppo/policy.onnx`, six locally modified/new source snapshots and a replayable patch. See that directory's README and UPSTREAM.json for paths and SHA-256.
+- Local modifications: space-to-stop keyboard input, initialization of the previous ONNX action, policy initialization before starting its thread, and the opt-in local UDP velocity adapter with input synchronization and stop handling.
 - The local upstream tree was checked for license notices; no separate policy-weight license notice was found. Preserve the upstream root license with the policy and keep this repository private. Recheck any supplemental weight terms before a future public release.
 - Do not imply upstream endorsement. Unmodified dependency repositories, bundled libraries, virtual environments and generated logs are not copied into this project.
 
 Lite3 pretrained policy and deployment source originate from DeepRobotics / DeepRoboticsLab.
+
+## Warehouse world and matching map
+
+- Source recorded during import: https://github.com/PalashMendhe/robotics-amr-ws
+- Fixed import revision: `c64bd49f2764b9d80941b51cff61b761d0112f87`.
+- Included resources: `src/lite3_gazebo/worlds/large_warehouse.sdf` and matching `maps/large_warehouse.pgm` / `.yaml`.
+- MIT License, Copyright (c) 2026 Palash Siddharth Mendhe; the imported license text is preserved unchanged as `src/lite3_gazebo/worlds/LICENSE.large_warehouse.txt`.
+- Retain the copyright and permission notice with these resources. The source project's other robots, arm code, dependencies and entire repository are not copied.
+
+## Project development archive
+
+`docs/development_history` contains this project's available visible conversation text and selected test evidence, exported at the owner's request. No screenshots, other conversations, internal reasoning or raw tool credentials are included. Historical text is a development record, not the current operation manual or a blanket license for third-party resources.
