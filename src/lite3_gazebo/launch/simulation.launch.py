@@ -6,8 +6,12 @@ from ament_index_python.packages import (
     get_package_prefix,
 )
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, SetEnvironmentVariable
+from launch.actions import (DeclareLaunchArgument, IncludeLaunchDescription,
+                            SetEnvironmentVariable, RegisterEventHandler, EmitEvent)
+from launch.event_handlers import OnProcessExit
+from launch.events import Shutdown
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration, PythonExpression
 
 from launch_ros.actions import Node
 
@@ -48,7 +52,8 @@ def generate_launch_description():
     )
 
     plugin_paths = [
-        os.path.join(get_package_prefix('lite3_control'), 'lib')
+        os.path.join(get_package_prefix('lite3_control'), 'lib'),
+        os.path.join(get_package_prefix('lite3_gazebo'), 'lib'),
     ]
 
     existing_plugin_path = os.environ.get(
@@ -62,11 +67,25 @@ def generate_launch_description():
         value=os.pathsep.join(plugin_paths)
     )
 
-    # 复用官方 Gazebo 启动文件；不加 -r，初始保持暂停。
+    gui_plugin_paths = [os.path.join(get_package_prefix('lite3_gazebo'), 'lib')]
+    if os.environ.get('GZ_GUI_PLUGIN_PATH'):
+        gui_plugin_paths.append(os.environ['GZ_GUI_PLUGIN_PATH'])
+    set_gui_plugin_path = SetEnvironmentVariable(
+        name='GZ_GUI_PLUGIN_PATH', value=os.pathsep.join(gui_plugin_paths))
+    gui_config_path = os.path.join(gazebo_package_path, 'config', 'target_picker.config')
+
+    # 默认仍保持暂停；完整导航入口可以选择自动播放或关闭 GUI。
     start_gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(gazebo_launch_path),
         launch_arguments={
-            'gz_args': f'-v 3 {shlex.quote(world_path)}',
+            'gz_args': PythonExpression([
+                "'-v 3 ' + ('-s ' if '", LaunchConfiguration('gui'),
+                "'.lower() == 'false' else '') + ('-r ' if '",
+                LaunchConfiguration('paused'), "'.lower() == 'false' else '') + ",
+                "'\"' + '", LaunchConfiguration('world'), "' + '\"'",
+                " + (' --gui-config ' + ", repr(shlex.quote(gui_config_path)),
+                " if '", LaunchConfiguration('target_picker'), "'.lower() == 'true' else '')",
+            ]),
             'on_exit_shutdown': 'true',
         }.items()
     )
@@ -94,7 +113,10 @@ def generate_launch_description():
         launch_arguments={
             'use_gui': 'false',
             'use_sim_time': 'true',
-            'fixed_frame': 'odom',
+            'fixed_frame': LaunchConfiguration('fixed_frame'),
+            'rviz': LaunchConfiguration('rviz'),
+            'rviz_config': LaunchConfiguration('rviz_config'),
+            'urdf_file': urdf_path,
         }.items()
     )
 
@@ -107,7 +129,10 @@ def generate_launch_description():
             '/lite3/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',
             '/world/large_warehouse/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
             '/lite3/ground_truth/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
+            '/lite3/selected_goal@geometry_msgs/msg/PoseStamped[gz.msgs.Pose',
+            '/lite3/lidar/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked',
         ],
+        parameters=[{'qos_overrides./lite3/lidar/points.publisher.reliability': 'best_effort'}],
         remappings=[
             ('/lite3/joint_states', '/joint_states'),
             ('/world/large_warehouse/clock', '/clock'),
@@ -124,12 +149,33 @@ def generate_launch_description():
         output='screen'
     )
 
+    start_perception = Node(
+        package='lite3_perception', executable='pointcloud_obstacles',
+        name='lite3_pointcloud_obstacles',
+        parameters=[os.path.join(get_package_share_directory('lite3_perception'),
+                                 'config', 'flat_ground.yaml')], output='screen')
+    perception_exit = RegisterEventHandler(OnProcessExit(
+        target_action=start_perception,
+        on_exit=[EmitEvent(event=Shutdown(reason='雷达处理节点退出，关闭本套仿真'))]))
+
     return LaunchDescription([
+        DeclareLaunchArgument('gui', default_value='true'),
+        DeclareLaunchArgument('world', default_value=world_path,
+                              description='SDF世界绝对路径；本启动桥接要求world名large_warehouse'),
+        DeclareLaunchArgument('paused', default_value='true'),
+        DeclareLaunchArgument('rviz', default_value='true'),
+        DeclareLaunchArgument('target_picker', default_value='true'),
+        DeclareLaunchArgument('fixed_frame', default_value='odom'),
+        DeclareLaunchArgument('rviz_config', default_value=os.path.join(
+            description_package_path, 'rviz', 'lite3.rviz')),
         set_resource_path,
         set_plugin_path,
+        set_gui_plugin_path,
         start_gazebo,
         spawn_lite3,
         start_bridge,
         start_display,
         start_motion,
+        perception_exit,
+        start_perception,
     ])

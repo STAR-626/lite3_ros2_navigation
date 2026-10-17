@@ -1,0 +1,6 @@
+<library path="lite3_avoidance_controller">
+  <class name="lite3_navigation::AvoidanceController"
+         type="lite3_navigation::AvoidanceController" base_class_type="nav2_core::Controller">
+    <description>MPPI avoidance with native RPP goal approach and collision-aware rotation.</description>
+  </class>
+</library>

@@ -1,0 +1,20 @@
+lite3_pointcloud_obstacles:
+  ros__parameters:
+    use_sim_time: true
+    # 当前 concrete_floor 顶面z=0.005，限平地模式。
+    ground_height: 0.005
+    ground_tolerance: 0.02
+    # 固定保守上限，不声称动态测出了所有姿态的最高点。
+    max_obstacle_height: 0.65
+    min_range: 0.12
+    max_range: 12.0
+    scan_samples: 720
+    scan_period: 0.1
+    max_cloud_age: 0.3
+    # 连续观测紧凑物体后的短期匀速占据估计；原始障碍/清除消息不变。
+    forecast_enabled: true
+    forecast_horizon: 2.5
+    forecast_padding: 0.10
+    # TORSO参考的机身/腿运动包围盒；这部分近身范围不可用作障碍观测。
+    self_min: [-0.38, -0.28, -0.50]
+    self_max: [0.38, 0.28, 0.18]

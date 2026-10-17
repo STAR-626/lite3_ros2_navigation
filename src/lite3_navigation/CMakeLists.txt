@@ -15,7 +15,19 @@ find_package(nav2_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(lite3_interfaces REQUIRED)
 find_package(std_srvs REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(visualization_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+find_package(nav2_core REQUIRED)
+find_package(pluginlib REQUIRED)
+
+add_library(lite3_avoidance_controller SHARED src/avoidance_controller.cpp)
+target_compile_features(lite3_avoidance_controller PRIVATE cxx_std_17)
+ament_target_dependencies(lite3_avoidance_controller nav2_core pluginlib tf2_ros tf2_geometry_msgs rclcpp)
+pluginlib_export_plugin_description_file(nav2_core controller_plugins.xml)
+install(TARGETS lite3_avoidance_controller LIBRARY DESTINATION lib)
+install(FILES LICENSE DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -30,9 +42,13 @@ if(BUILD_TESTING)
 endif()
 
 install(
-  DIRECTORY config
+  DIRECTORY config launch rviz
   DESTINATION share/${PROJECT_NAME}
 )
+
+install(PROGRAMS scripts/bringup_runtime.py DESTINATION lib/${PROJECT_NAME})
+install(PROGRAMS scripts/navigate.py DESTINATION lib/${PROJECT_NAME} RENAME navigate)
+install(PROGRAMS scripts/moving_obstacle.py DESTINATION lib/${PROJECT_NAME} RENAME moving_obstacle)
 
 add_executable(mission_manager src/mission_manager.cpp)
 
@@ -45,6 +61,8 @@ ament_target_dependencies(mission_manager
   geometry_msgs
   lite3_interfaces
   std_srvs
+  std_msgs
+  visualization_msgs
   tf2_ros
 )
 

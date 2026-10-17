@@ -1,5 +1,82 @@
 # Lite3 导航任务节点
 
+**2026-10-17 完整轮廓与受阻优化（当前版本）：** 默认全局规划改为Smac Lattice，
+在5cm地图上结合机身朝向和0.84×0.40m矩形检查路线；MPPI允许必要的短距离后退（最低-0.30m/s）。
+受阻恢复增加近期失败路段软代价，促使有替代路线时换路；不把失败路段当作真实障碍。
+RViz只默认显示当前接受执行的路线，结束/恢复清空，并显示任务状态；状态查询保留最后结果。
+总开关、任务Action、20cm内切半径、RL和原整体规划保持；未新增常驻节点。
+操作、回退、错误及新增话题见[终端手册](../../docs/TERMINAL_COMMANDS.md)顶部，
+本轮证据和限制见[完整轮廓优化记录](../../docs/FOOTPRINT_REPLANNING.md)。较早NavFn说明为历史阶段。
+
+
+## 2026-10-17持续避让入口
+
+反应时间后续调优：3实际秒无10cm平移或0.20rad转向才判无进展；首次恢复等0.5秒，
+连续无路时等待递增至最多2秒，恢复运动后新受阻窗口重置。MPPI控制失败容忍0.5仿真秒。
+
+默认完整bringup使用controller_mppi.yaml；controller.yaml保留RPP。
+任务受阻支持内部暂停/等待/有限重规划，Action反馈replan_count、结果retry_count真实计数。
+内部暂停不解除用户停止锁定，用户取消/总开关关闭仍终止任务。
+配置/限制见[持续避让说明](../../docs/CONTINUOUS_AVOIDANCE.md)，
+命令以[终端手册](../../docs/TERMINAL_COMMANDS.md)为准，实际验证见SESSION_HANDOFF。
+下方带日期的较早验收为历史记录，当前功能以本节和终端手册为准。
+
+## 最新交互（2026-10-13）
+
+任务节点新增 `/lite3/set_navigation_enabled` 总开关（默认关闭）、Gazebo新选点入口和
+`/lite3/navigation_status`。终端 `ros2 run lite3_navigation navigate X Y 角度` 默认度数；
+原NavigateTask仍用弧度。两个入口共用任务状态机，无额外常驻节点。
+先开启总开关才会执行目标；关闭协调取消/停止，失败清理后需要显式重新开启。
+开启操作确认没有旧任务后选择导航并解除停止；普通目标本身仍不自动解锁。
+忙碌点击不排队，重复选点消息只执行一次，开关重开不执行旧点。
+应用更新/命令/错误分类见 [交互手册](../../docs/NAVIGATION_INTERACTION.md)。
+以下旧Action命令必须先开启总开关。本机先隔离编译测试，重启并构建后才应用新版本。
+
+## 完整系统简化启动（2026-10-12）
+
+已新增 `ros2 launch lite3_navigation bringup.launch.py`。日常只需要两个终端：一个保持整套系统运行，另一个发送任务或检查状态。
+它自动加载仓库、生成 Lite3、播放仿真、打开导航 RViz、启动运动/桥接/模型节点、加载安装目录中的地图、发布 map→odom、配置并激活 Nav2、准备已有 RL 程序，确认 Gazebo external 接管后再启动常驻 mission_manager。
+不会自动发送导航目标。原来的单模块和多终端方式仍可调试，但不要与完整入口同时运行。
+
+修改后首次构建（本机此次已完成）：
+
+```bash
+source /opt/ros/jazzy/setup.bash
+cd /home/ma/lite3_ws
+colcon build --packages-select lite3_description lite3_control lite3_gazebo lite3_perception lite3_navigation
+```
+
+终端 1，每次启动：
+
+```bash
+source /opt/ros/jazzy/setup.bash
+source /home/ma/lite3_ws/install/setup.bash
+ros2 launch lite3_navigation bringup.launch.py
+```
+
+等待 `[Lite3 startup] READY` 和任务节点的启动提示。无需手动点击播放、按 z/c、发布 external 或逐个调用 lifecycle。
+RL 源码与策略未改变，仍使用 `/home/ma/Lite3_rl_deploy/build/rl_deploy --ros-velocity`；启动辅助程序用伪终端完成原有 z/c 准备，依据仿真数据、生命周期响应、策略进入日志和实际插件接管日志确认顺序，不是固定 sleep 后假定就绪。
+临时 ROS 节点 `lite3_startup` 就绪后销毁，辅助进程继续监管其自己启动的 RL。启动阶段先锁定速度，完成后解除本次启动锁定；运行阶段仍沿用原任务失败/取消后显式解锁的规则。
+
+终端 2：
+
+```bash
+source /opt/ros/jazzy/setup.bash
+source /home/ma/lite3_ws/install/setup.bash
+ros2 service call /lite3/set_navigation_enabled std_srvs/srv/SetBool "{data: true}"
+ros2 action send_goal /navigate_task lite3_interfaces/action/NavigateTask \
+  '{goal_x: 4.0, goal_y: 4.0, goal_yaw: 0.0}' --feedback
+```
+
+取消、返回基地和模式切换仍使用已有接口，详见 TERMINAL_COMMANDS。取消/失败后先确认清理完成，再按需显式解除停止锁定，不由 launch 自动恢复旧任务。
+退出时先取消并确认正在执行的任务结束，再在终端 1 按 Ctrl+C；launch 回收本次启动的组件和 RL。等待退出完成后再启动，Gazebo 包装进程退出时端口可能短暂延后释放。
+
+可选参数：`gui:=false rviz:=false` 不打开窗口，`rl_dir:=/实际路径/Lite3_rl_deploy` 指定已有外部项目，`startup_timeout:=180` 延长启动总等待（实际秒）。
+端口 20001/30010/30011 被占用时拒绝重复启动，不自动杀其他进程。初始暂停或反复重启导致启动失败时查看启动终端日志。
+完整 RL 原始输出写入本次 ROS launch 日志目录的 `rl-deploy.log`。终端显示重要状态，不需要用户打开额外 RL 终端。
+模型、地图、RL 权重、控制器速度、任务协议和未来规划均保持原样。
+
+
 `mission_manager` 现在常驻，提供 `/navigate_task`（`lite3_interfaces/action/NavigateTask`）。
 面对终端是 Action 服务端，面对 Nav2 是规划/跟随客户端；不增加常驻节点。
 原来的单次启动参数程序完整保存在 `mission_manager_once.cpp`，可执行名为
@@ -34,11 +111,11 @@
 | 7 | CANCELED | 用户取消且清理确认完成 |
 | 8 | SYSTEM_ERROR | TF/服务/路线/控制器异常，或清理无法确认 |
 
-2 BLOCKED、5 MOTION_FAILED 保留原接口定义，目前没有重规划重试和跌倒检测，不产生这两个结果。
-Nav2 原始错误码保留在 message 中；例如控制器 105 目前归为 SYSTEM_ERROR，不能据此认定机器人被围住。
+2 BLOCKED用于有限恢复预算耗尽；5 MOTION_FAILED的跌倒分类仍未实现。
+Nav2原始错误码保留在message中；104/105/106默认先触发暂停/等待/重规划，不能据此认定物理碰撞。
 任务结果编号与 Action 的 SUCCEEDED/ABORTED/CANCELED 是不同字段。
 用户取消但清理失败时，Action 状态为 CANCELED，任务 result_code 为 SYSTEM_ERROR，应看结果说明。
-retry_count/replan_count 当前均为0。
+retry_count/replan_count现在按实际重规划次数累计；enable_replanning=false时沿原一次规划行为。
 
 ## 构建
 
@@ -129,3 +206,9 @@ ROS_DOMAIN_ID=178 python3 /home/ma/lite3_ws/src/lite3_navigation/test/check_miss
 
 下一步由用户在现有仿真中验收新入口；后续完善 `/stop_task`、状态查询、
 重新规划/受阻重试、跌倒处理、地图与生命周期管理，雷达仍后接。
+
+### 本次实际验证（2026-10-12）
+
+三包构建及新旧 launch 参数查询通过。在 ROS_DOMAIN_ID=180、独立 Gazebo 分区中实际启动无 GUI 完整系统：地图、规划器、控制器均 active（3）；地图224×224；12关节、map→TORSO TF、/navigate_task 服务端正常；就绪后临时 startup ROS 节点已销毁；运动/任务节点各一个，导航速度发布者一个。RL 自动 idle→standup→rl_control、ONNX ENTER，实际插件确认 external；默认零速下机器人稳定在约(-3.994,-4.000)。没有发送导航目标或非零速度，此验证不替代用户 GUI/新路线行走验收。
+已发 SIGINT 结束此次 launch，自己的 RL 和节点退出，20001/30010/30011 全部释放；Gazebo 的 Ruby 包装进程由 launch 的 SIGTERM 超时回收机制结束。另验证 RL 文件缺失、UDP30011占用、同一ROS域遗留map_server均在启动组件之前拒绝，且不终止其他进程；空ROS域接受完整启动计划。
+初次测试发现本机rclpy未提供qos_profile_clock，已改为明确的best-effort时钟QoS并构建、重新通过上述实际启动。无额外系统安装、无RL源码修改、无Git提交/推送。

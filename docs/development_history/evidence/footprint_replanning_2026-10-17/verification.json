@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": [
+    "source/install planner.yaml",
+    "source/install planner_navfn.yaml",
+    "source/install controller_mppi.yaml",
+    "source/install bringup.launch.py",
+    "source/install navigation.rviz",
+    "Python/YAML/XML and RViz Topic property",
+    "UDP 20001/30010/30011 free",
+    "original ARCHITECTURE and ROADMAP untouched",
+    "changed scope git diff --check",
+    "handbook bash syntax 64 blocks (not executed)",
+    "evidence gzip SHA256 verified"
+  ]
+}

@@ -1,0 +1,13 @@
+mission_manager:
+  ros__parameters:
+    use_sim_time: true
+    enable_replanning: true
+    max_replans: 5
+    replan_wait: 0.5
+    replan_wait_max: 2.0
+    recovery_timeout: 25.0
+    stuck_timeout: 3.0
+    progress_distance: 0.10
+    progress_angle: 0.20
+    planning_timeout: 8.0
+    task_timeout: 120.0

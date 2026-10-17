@@ -58,6 +58,7 @@ def main():
         state = node.create_publisher(Odometry, '/lite3/ground_truth/odom', 10)
         mode = node.create_client(SetBool, '/lite3/set_navigation_mode')
         stop = node.create_client(SetBool, '/lite3/set_stop')
+        pause = node.create_client(SetBool, '/lite3/set_navigation_pause')
         odometry = []
         transforms = []
         node.create_subscription(Odometry, '/odom', odometry.append, 10)
@@ -127,7 +128,7 @@ def main():
                 if (manual.get_subscription_count() == 1 and
                         navigation.get_subscription_count() == 1 and
                         state.get_subscription_count() == 1 and
-                        mode.service_is_ready() and stop.service_is_ready()):
+                        mode.service_is_ready() and stop.service_is_ready() and pause.service_is_ready()):
                     return
             raise AssertionError('ROS 接口发现超时或重复订阅者')
 
@@ -170,6 +171,23 @@ def main():
         samples(0.2, ((navigation, command(2.0, -2.0, 3.0)),))
         assert_velocity(samples(0.25, ((navigation, command(2.0, -2.0, 3.0)),)),
                         (0.8, -0.8, 0.8), '导航速度三个分量保留限幅')
+
+        service(pause, True)
+        assert_velocity(samples(0.3, both), zero, '内部暂停立即清零且持续拒绝导航速度')
+        service(stop, True)
+        service(pause, False)
+        assert_velocity(samples(0.3, both), zero, '内部恢复不能解除用户停止锁定')
+        service(stop, False)
+        samples(0.15, both)
+        assert_velocity(samples(0.25, both), (-0.4, 0.2, -0.2), '显式解锁后接收新的导航速度')
+        service(pause, True)
+        service(mode, False)
+        samples(0.15, both)
+        assert_velocity(samples(0.25, both), (0.21, -0.13, 0.3), '内部导航暂停不锁定手动来源')
+        service(mode, True)
+        assert_velocity(samples(0.25, both), zero, '模式切换不绕过尚未解除的导航暂停')
+        service(pause, False)
+        assert_velocity(samples(0.25), zero, '解除内部暂停不重放缓存速度')
 
         service(stop, True)
         assert_velocity(samples(0.3, both), zero, '停止锁定持续拒绝两个来源')

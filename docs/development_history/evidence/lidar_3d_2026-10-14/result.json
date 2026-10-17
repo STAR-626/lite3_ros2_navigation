@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "raw_points": 22320,
+  "ground_points": 7710,
+  "ground_height_minmax": [
+    -0.014283125024650234,
+    0.024703976326021615
+  ],
+  "obstacle_height_minmax": [
+    0.02504501177390711,
+    0.6499098368863929
+  ],
+  "projected_scan_frame": "base_footprint",
+  "test_box_xy": [
+    -3.159733244646635,
+    -3.999931949481684
+  ],
+  "costmap_before": {
+    "/global_costmap/costmap": 0,
+    "/local_costmap/costmap": 0
+  },
+  "low_box_marked": {
+    "/global_costmap/costmap": 100,
+    "/local_costmap/costmap": 100
+  },
+  "low_box_removed": {
+    "/global_costmap/costmap": 0,
+    "/local_costmap/costmap": 0
+  },
+  "above_band_not_marked": {
+    "/global_costmap/costmap": 0,
+    "/local_costmap/costmap": 0
+  },
+  "rl_started": false,
+  "motion_goal_sent": false,
+  "date": "2026-10-14",
+  "ros_domain": 193,
+  "method": "Actual Gazebo Lite3 standing simulation + actual Nav2 planner/controller costmaps; no RL, no FollowPath/velocity goal",
+  "ground_voxel_plugin": "lite3_perception::FlatGroundVoxelLayer",
+  "nav2_costmap_version": "1.3.13-1noble.20260921.024946",
+  "geometry_unit_tests": 3,
+  "visible_box_persisted": true,
+  "rviz_visual_validation": false,
+  "walking_validation": false
+}

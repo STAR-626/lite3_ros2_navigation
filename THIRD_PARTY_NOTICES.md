@@ -40,6 +40,24 @@ Lite3 pretrained policy and deployment source originate from DeepRobotics / Deep
 - MIT License, Copyright (c) 2026 Palash Siddharth Mendhe; the imported license text is preserved unchanged as `src/lite3_gazebo/worlds/LICENSE.large_warehouse.txt`.
 - Retain the copyright and permission notice with these resources. The source project's other robots, arm code, dependencies and entire repository are not copied.
 
+## Gazebo GUI configuration and target picker
+
+`src/lite3_gazebo/config/target_picker.config` derives from the installed Gazebo
+Sim 8 default `gui/gui.config` (source: https://github.com/gazebosim/gz-sim/tree/gz-sim8/src/gui).
+The local changes add the Lite3 picker and adjust window dimensions. The upstream
+Apache-2.0 license is included as `config/LICENSE.gui-config.Apache-2.0.txt`.
+The new independently authored `gui/Lite3TargetPicker.*`, `gui/target_picker.qrc`
+and picker tests use BSD-3-Clause; their text is in `gui/LICENSE` and is installed
+with the plugin. This does not change the licensing of older package files.
+
 ## Project development archive
 
 `docs/development_history` contains this project's available visible conversation text and selected test evidence, exported at the owner's request. No screenshots, other conversations, internal reasoning or raw tool credentials are included. Historical text is a development record, not the current operation manual or a blanket license for third-party resources.
+
+## Smac Lattice runtime dependency (2026-10-17)
+
+Navigation uses the installed ROS2 Jazzy `nav2_smac_planner` plugin and its packaged
+5cm/0.5m/diff motion primitives. Launch resolves the installed package share directory;
+no copy of that upstream repository or primitive asset is embedded here. Upstream:
+https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_smac_planner .
+See the installed package's LICENSE when redistributing its binaries/assets.

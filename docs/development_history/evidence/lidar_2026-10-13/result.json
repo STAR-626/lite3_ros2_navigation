@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "scan_frame": "lidar_link",
+  "samples": 720,
+  "sim_rate_hz": 10,
+  "front_before_m": 1.7043392658233643,
+  "front_with_box_m": 0.7753379940986633,
+  "front_after_removal_m": 1.704339861869812,
+  "scan_stamp_tf_available": true,
+  "finite_min_m": 0.9001085758209229,
+  "date": "2026-10-13",
+  "method": "Actual Gazebo Harmonic headless standing robot, ROS domain 191, isolated Gazebo partition, no RL/velocity/navigation commands",
+  "qos": "BEST_EFFORT",
+  "motion_validation": false,
+  "rviz_visual_validation": false,
+  "nav2_obstacle_layer_connected": false,
+  "slam_connected": false,
+  "readonly_check_script": {
+    "passed": true,
+    "frame": "lidar_link",
+    "samples": 720,
+    "finite_hits": 711,
+    "nearest_hit_m": 0.9001132845878601,
+    "sim_receiving_rate_hz": 10.01001001001001,
+    "scan_stamp_tf_available": true,
+    "sensor_height_in_odom_m": 0.47402941756404865
+  }
+}

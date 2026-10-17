@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="/Lite3TargetPicker">
+    <file>Lite3TargetPicker.qml</file>
+  </qresource>
+</RCC>

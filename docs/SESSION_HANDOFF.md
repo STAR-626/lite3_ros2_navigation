@@ -1,4 +1,434 @@
-# 接续开发记录（最新更新 2026-10-10）
+# 接续开发记录（最新更新 2026-10-17）
+
+## 2026-10-17：按用户要求完整同步GitHub
+
+用户在本轮明确授权把全部已完成成果、必要说明和最近bug修复过程同步到现有GitHub。
+目标STAR-626/lite3_ros2_navigation，private/main，提交作者STAR-626 <hanchao.ma@outlook.com>。
+保存六个包、感知/导航优化/GUI/配置/世界地图、测试脚本和证据；外部RL六份源码、补丁与策略均重新核对并重放一致。
+README改为当前统一介绍，旧版原样归档；新增根CHANGELOG，按现象→诊断→修复→失败→最终测试整理。
+已有ARCHITECTURE/ROADMAP原文保留；最新功能读README/终端手册/本记录，旧检查点按日期阅读。
+完整文件树/清单和SHA256见PROJECT_TREE、PROJECT_FILES、SNAPSHOT_MANIFEST；检查范围/排除和许可见SYNC_AUDIT。
+本轮只做同步整理与静态/恢复检查，没有再次运行机器人，也不把原有测试称为全新电脑验收。
+推送是否成功和最终commit以Git历史及GitHub main为准，清单不循环记录本次commit自身hash。
+
+
+## 2026-10-17：完整轮廓、换路偏好及显示优化（当前最终安装）
+
+用户针对“中心线有路但身体过不去、卡住后不换路”授权优化，已退出系统并自行安装Smac1.3.13。
+默认planner改原生SmacPlannerLattice、5cm diff运动集，launch用实际share路径覆盖空占位。
+目标tolerance=0，矩形仍.84×.40m、20cm内切半径、膨胀.6；全局更新5Hz。
+planner_navfn.yaml保留原配置，planner:=navfn对比回退。
+默认MPPI vx_min=-.30、vx_max=.40并优先前进，Lattice允许反向扩展；controller:=rpp时launch关闭反向扩展。
+近目标RPP NoValidControl时回到原生MPPI机动，goal_approach_retry=2实际秒后再试RPP，碰撞检查从未关闭。
+
+现有global_costmap新增RoutePenaltyLayer（不加节点）：接收mission_manager失败路线Path，
+代价200/.18m/12实际秒，保留真实障碍/未知，任务结束清空；是偏好，不是虚构障碍。
+mission_manager新增执行路径/lite3/navigation_path、任务文字/lite3/navigation_marker，
+恢复/结束清除路径；RViz原/plan仅保留默认关闭的规划预览，避免旧线误导。
+get_navigation_state新增last_result_code/message，IDLE仍可看最后结果。
+初始Nav2目标206→任务INVALID_GOAL3、起点205→BLOCKED2；恢复中仍等待/有限重试。
+原用户取消、停止优先、3秒无进展/首次.5等待/最多5次恢复规则保留，不改RL和原整体架构。
+
+本轮实际验证（不能混作旧版本结果）：
+- 域200任务协议/显示/结果分类15项，域206真实RoutePenaltyLayer4项通过。
+- 域204真实NavFn/Lattice：50cm直角通道旧算法156点，新算法208无路；开阔图可规划，
+  软代价使路线改变约.213m；原用户快照目标完整轮廓受阻，新算法206。
+- 域197+GZ_PARTITION=lite3_avoidance_validation_20261017：最终仓库(-4,-4)到(4,3.5,0)SUCCESS、重规划0，
+  最终(3.999498,3.436021)、yaw约.19364；日志实际出现终点RPP拒绝→MPPI机动→到达。
+- 最终移动箱子途中投放/持续.18m/s横穿，主任务SUCCESS、重规划5，追加90°目标也成功；
+  接触数据有心跳，机器狗-箱子接触0。并非所有动态场景保证，5次恢复已接近次数上限。
+- 中间失败全部归档：旧(4,4,0)雷达图目标轮廓触边；仅前进限制下移动箱子BLOCKED；
+  后退启用后终点RPP卡住。分别修正目标明确拒绝、匹配后退动作、RPP受阻交还MPPI后复测。
+
+源码和默认install已构建；新用户终端需要source后启动。未在默认用户域发运动任务，未提交/推送Git。
+证据含完整原始结果/失败/本轮诊断图，见docs/development_history/evidence/footprint_replanning_2026-10-17/README.md。
+详细说明docs/FOOTPRINT_REPLANNING.md；操作与新接口docs/TERMINAL_COMMANDS.md顶部。
+整仓git diff --check发现原有URDF CRLF行尾被判空白；本轮navigation/perception/文档范围检查通过，未无关重写URDF。
+下一步请用户现场验收原受阻场景；不要继续缩小轮廓或关闭碰撞检查来强行通过。
+仍无SLAM、崎岖地面剔除、跌倒恢复、多物体/任意动态场景保证。
+
+
+## 2026-10-17：用户要求缩短停车等待，已更新并复测
+
+此节更新下方第一版的旧时间值：stuck_timeout从8改3实际秒；replan_wait从2改.5实际秒，
+新增replan_wait_max=2，同一受阻窗口连续无路按.5→1→2→2退避；新受阻窗口重置首等。
+新增progress_angle=.20rad，有效平移10cm或转向.20rad任一刷新进展，避免3秒误杀正常原地转向。
+MPPI failure_tolerance从1.5改.5仿真秒。最多5次/恢复25秒/任务120秒/取消停止优先均保持。
+不修改RL、.4/.6速度上限、20cm轮廓或整体架构。参数是启动时读取，不能只param set就假定运行逻辑改变。
+
+用户本轮再次确认退出bringup后构建导航包。独立200域12项恢复协议通过（旧10+转向跨pi进展/时序退避）；
+独立197域真实移动箱子+追加90度导航通过，结果0、retry3、728条非空接触消息，机器狗与箱子接触0。
+WAITING_OBSTACLE→REPLANNING日志间隔约.50/.55/.55仿真秒；不等于“看到任何箱子后.5秒必绕过”。
+未比较相同随机轨迹的总到达时间，不宣称整程必然更快。证据
+`docs/development_history/evidence/faster_replanning_2026-10-17/`保存完整结果/哈希/边界。
+源码/默认install已更新；实际测试退出，UDP端口全部释放；未提交或推送Git。
+用户重启正常bringup、等READY、开启总开关即可继续选点/终端导航。手册与CONTINUOUS_AVOIDANCE已同步。
+下方“82项/8秒/2秒”等为第一版历史验证，不是本轮当前默认值或新验收总数。
+
+
+## 2026-10-17：持续避让第一版已构建安装并完成有限实际验收
+
+用户授权实施持续移动物体避让，确认退出旧bringup，并自行安装MPPI（Jazzy1.3.13）。
+此次没有修改RL源码/权重，没有新增常驻ROS节点，没有改原ARCHITECTURE/ROADMAP，未提交/推送Git。
+实际系统测试只在ROS域197、GZ_PARTITION=lite3_avoidance_validation_20261017；各次顺序执行。
+
+### 当前实际实现
+
+- 默认controller=mppi。FollowPath插件是本包AvoidanceController：途中调用原生MPPI，
+  距最终目标0.65m内切原生RPP短接近/原地转向，0.80m退出防反复切换。两者同一controller_server/costmap，
+  原生碰撞检查保持；没有额外速度发布节点。RPP GoalApproach速度0.32、转向0.6、角加速度12；
+  max_robot_pose_search_dist=1000使晚接管时能在完整长路径中找到实际位置（此前默认2m导致长路线103）。
+- MPPI配置controller_mppi.yaml独立，vx_max=.4、wz_max=.6、vy=0、DiffDrive；60×.05=3s预测，1500候选，
+  ax_max=8/az_max=12；不在输出端硬抬高速度。VelocityDeadbandCritic最终关闭，避免持续逼迫前进。
+  goal_checker.stateful=false且xy/yaw=.20m/rad；任务层仍.25，必须同时达标，没有放宽成功标准。
+  原controller.yaml RPP整套配置仍可用controller:=rpp enable_replanning:=false回退。
+- 原感知节点增加motion_forecast.py紧凑物体短期近邻关联/匀速拟合：odom中8cm网格，至少6帧/0.5仿真秒，
+  最近9帧、速度.08～.8、残差≤.035；双边界位移一致、尺寸变化≤.081m抑制静止物体视角误检。
+  默认未来2.5仿真秒、.25s取样、观测包围盒额外.10m；不是物体识别/完整多目标跟踪。
+  /lite3/perception/forecast新增PointCloud2(odom/原仿真戳/BEST_EFFORT/depth1)，不是实测回波。
+  原障碍/清除/地面/scan语义不变。status JSON增加moving_clusters/forecast_points。
+- ForecastLayer独立叠加在全局及MPPI局部图的voxel后/inflation前，每轮清除旧预测再标记；空帧、
+  .5仿真秒或1实际秒超时移除预测；保留静态图/实测体素，不拿预测做射线清除。真实传感器断流仍由voxel新鲜度阻挡。
+  感知配置flat_ground.yaml的forecast_enabled/horizon/padding需构建重启；仅平地。
+- mission_manager内部RECOVERY_STOPPING→WAITING_OBSTACLE→REPLANNING→RECOVERY_RESUMING→FOLLOWING。
+  默认104/105/106或8实际秒无10cm位置进展触发，等待2秒、全任务最多5次重规划；单次受阻窗口25秒、
+  规划8秒、任务120秒。初始无路1，有限恢复耗尽BLOCKED=2；不是物理接触/跌倒分类。
+  反馈replan_count/结果retry_count真实累计，重规划仍从实际位置到原目标。
+- motion新增/lite3/set_navigation_pause SetBool，仅暂停导航来源并清零，不更改用户stop_locked。
+  自动恢复不调用set_stop(false)；用户取消/总开关false/系统故障优先。迟到响应清理后才释放busy。
+- moving_obstacle CLI及40cm实体动态箱子，Gazebo独立/lite3/dynamic_box/cmd_vel（不是ROS机器人速度）。
+  工具查询实际scene拒绝已有同名实体；有限实际时间运动，Ctrl+C/结束发零速，--remove可移除。
+  create/remove的Boolean只是请求入队，不能当作实体唯一/已消失证明，测试已据此检查实际scene。
+  自定义BoxContacts只请求物理碰撞ContactSensorData并在发布间隔累积接触对，20Hz含空帧，纯验收不改变力。
+  默认world不自动加入箱子；箱子真值只供测试，导航不订阅。正常world几何未因本功能改变。
+
+### 已实际通过及证据
+
+完整证据目录：docs/development_history/evidence/continuous_avoidance_2026-10-17/。
+README/summary.json/manifest.json说明每项范围、来源/哈希；*.json.gz是完整结果无损压缩。
+trajectories.png展示实际轨迹。没有用“消息收到/规划出线”代替真实行走验收。
+
+1. 真实Gazebo/RL空地响应采样；0.2m/s可慢走、0.2rad/s转向弱，0.6rad/s平均约.55；
+   0.6m/s后1.5秒零速仍移约.097m，不能称为普遍阈值/最坏制动界限。rl_response.json。
+2. 移动箱子：机器人前进.35m后投放40cm箱子，以.18m/s横穿；雷达/预测/两图/NavFn/MPPI/RPP/RL真实闭环。
+   任务SUCCESS、重规划3次、非空接触消息681、机器狗-箱子接触0；追加目标(-.5,-2,90°)也成功，接触检查覆盖全过程。
+   moving_with_turn.json.gz（/tmp/lite3-avoidance-moving-kdh9ix5a/result.json）。
+3. 途中新增静止箱子：SUCCESS、重规划0、非空接触消息228、机器狗-箱子接触0。
+   static_box.json.gz（/tmp/lite3-avoidance-static-d2iatxpv/result.json）。
+4. 最终配置原仓库到(4,4,0)SUCCESS、重规划0，最终(3.99055,3.91422)、yaw约.196rad。
+   warehouse.json.gz（/tmp/lite3-avoidance-clear-kraggnjs/result.json）；没有记录全部货架接触，不能宣称全仓库零接触。
+5. 真实任务旧协议16项/总开关15项/新恢复10项，域198/199/200；真实运动节点+UDP24项域201。
+   均不代表实际被围死Gazebo验收。感知几何/运动估计单元9项；真实Nav2 ForecastLayer TF/清除/过期/静态图保留4项域202；
+   无机器狗Gazebo工具有限停车/同名拒绝/Ctrl+C/移除4项域203。总82项模块/协议检查。
+
+### 失败与实际限制必须保留
+
+早期纯反应式MPPI虽绕行仍与移动箱子擦碰，因此增加短期雷达运动估计；不能把早期到达算无碰撞。
+后续发现目标附近漂出容差、纯MPPI转圈、长路线RPP晚接管103，均保存失败JSON并修正后复测。
+它们不应被解释为已解决所有动态避障。当前是有限单物体、平地、低速横穿第一版；
+快速迎面/突然转向/多目标合并遮挡/视角假运动/真实被围死/仓库动态物体组合还需逐步验收。
+20cm用户指定内切半径、完整轮廓.84×.40m继续保留，站姿宽约.375m，不能保证完整步态外摆。
+没有SLAM/崎岖地面分割/跌倒恢复/重新训练。原固定地图+仿真真值定位方案保留。
+
+### 操作与接续
+
+四包已构建安装；source后正常bringup，不自动发目标，总开关仍默认false。
+默认用户域没有发送运动任务。测试全部退出，实际UDP端口20001/30010/30011已释放（最终交付前再次检查）。
+日常两终端命令、移动箱子位置/速度/时间单位、停止/退出及参数见docs/TERMINAL_COMMANDS.md；
+具体实现与边界见docs/CONTINUOUS_AVOIDANCE.md。后续更改接口必须同步手册。
+下一步先由用户可见验收已知目标/新箱子/移动箱子，再扩展仓库动态场景和速度/遮挡边界；整体SLAM规划不变。
+
+
+## 2026-10-17：持续避让实施中的历史检查点（被上方最终记录更新）
+
+用户明确要求持续避让移动物体，已授权执行，并确认退出bringup。
+MPPI安装需sudo密码，助手sudo -n失败后用户自行安装完成，版本Jazzy1.3.13。
+未修改原RL/模型策略。用户系统保持退出，测试只用独立ROS域和专用GZ分区。
+
+已编码/构建：motion新增set_navigation_pause（仅导航来源暂停，不解除set_stop用户锁）；
+MM默认enable_replanning=true，104/105/106或8秒无10cm位置进展→暂停/取消旧FollowPath→
+等待2秒→实际位置重规划原目标→解除内部暂停→FollowPath；全任务最多5次重规划，
+恢复窗口25秒、任务120秒、规划8秒，初始无路1、恢复耗尽2、用户取消/关闭优先。
+反馈/结果记录真实次数。内部恢复不调用set_stop(false)，迟到暂停响应清理后才释放busy。
+mission.yaml新配置；MPPI单独controller_mppi.yaml，RPP原文件保留。
+bringup默认mppi/恢复true，支持controller:=rpp enable_replanning:=false回退。
+world/map_yaml绝对路径参数用于配套隔离场景，simulation桥接仍要求world名large_warehouse。
+
+已通过：独立198域旧任务16项、199域总开关15项、200域新恢复10项，201域实际运动/UDP
+24项（含暂停不能解除用户停止、仅导航暂停、清除缓存等；准确数量见JSON）。
+证据临时目录：/tmp/lite3-mission-action-2jyf234l、/tmp/lite3-navigation-gate-7otcu7yl、
+/tmp/lite3-replanning-u2j9z89e、/tmp/lite3-motion-modes-2mfqs6tf。
+
+独立197域、GZ_PARTITION=lite3_avoidance_validation_20261017，真实Gazebo/RL空地校准通过，
+日志/tmp/lite3-rl-response-rnd0mo53/result.json。0.2m/s空地可慢走，原地0.2rad/s响应弱，
+0.6rad/s约0.55rad/s平均，0.6m/s后1.5秒零速仍移约0.097m；不是普遍阈值。
+MPPI初始ax_max=2导致反复输出约0.1~0.15m/s而不走，已改候选ax_max=8/az_max=12和
+vx低速惩罚weight12，未在输出端硬放大速度。真实空地3.5m目标成功、retry0，
+/tmp/lite3-avoidance-clear-i0zclzyq/result.json。
+
+新增worlds/lite3_dynamic_box.sdf带VelocityControl/PosePublisher/接触传感器，40cm立方体，
+独立Gazebo话题/lite3/dynamic_box/cmd_vel。主world添加Contact系统，不改几何。
+moving_obstacle.py新CLI尚待最终构建安装/验收。两次途中加入0.18m/s横穿箱子后，真实MPPI
+已偏离原直线并到达，但接触传感器无消息，因此测试脚本严格判为未通过，不能宣称无接触。
+失败记录/tmp/lite3-avoidance-moving-6w6euakz、/tmp/lite3-avoidance-moving-22p82uay。
+首个测试桥接命名冲突及FastDDS首次服务发现已在工具中修正（辅助bridge改名+2秒发现等待）。
+Contact源码调查发现读取contact/topic，已加嵌套topic但仍无数据；当前正在独立仅箱子+地面
+分区lite3_contact_probe_20261017排查（exec session78106），不占用机器人UDP。
+check_continuous_avoidance.py新加入costmap_at_box判定和--turn追加90度任务，尚未跑到turn。
+接下来必须修复接触记录，再验证moving/static/turn和仓库，保存实际证据及完成文档。
+README/AGENTS/终端手册/CONTINUOUS_AVOIDANCE已更新；source/install最终一致和退出端口待收尾。
+未提交/推送Git，原用户成果和整体架构保留。禁止把工作中测试记录当作已全部完成。
+
+## 2026-10-17：用户进一步指定20cm青圈
+
+用户先要求减半，助手解释15cm比实际站立半宽还小后，用户指定20cm。
+两图footprint横向顶点从±.28改为±.18，padding保持.02；实际检查x±.42/y±.20，
+内切半径.20，前后长度/外围inflation .6/速度/碰撞开关/RL/感知均不改。
+按仿真调试值使用：站立碰撞投影宽约.375m，总检查宽.40m仅多约.025m，
+没有完整步态外摆覆盖保证，实走/窄通道待验收。NavFn完整朝向局限继续保留。
+check_navigation_footprint.py增加50cm通道新旧矩形对照及38cm过窄检查，
+与旧圆/前方箱子/横向朝向一起共6项，独立域196真实Nav2均通过。
+新矩形50cm通道发布正速度后被测试主动取消；其余碰撞案例无正速度并104。
+不是Gazebo实际行走。证据development_history/evidence/navigation_footprint_2026-10-17/result_20cm.json。
+导航包已构建安装、源/安装配置一致，文档bash语法/Python/JSON/格式通过；测试进程全部退出。
+未更改默认域运行参数、未发送实际任务/速度；用户关闭总开关并重启bringup后生效。
+README/AGENTS/手册10.1同步最新值；较早30cm段落及其证据为历史，不再是默认配置。
+
+## 2026-10-17：用户授权缩小青色区，改全局/局部矩形导航轮廓
+
+用户截图报告明明可通行却停车。只读日志确认RPP detected collision ahead，
+0.3秒patience后104；实际参数两图radius=.4、padding=.01、inflation=.6/scaling3。
+不能据此断言唯一根因是轮廓，前瞻轨迹/切弯和新增障碍也可能相关。
+当前站姿通过实际TF和URDF全部primitive碰撞体支持函数计算：base_footprint下
+x[-.343516,.250140]、y[-.187612,.187476]，尺寸约.594×.375m；不是完整步态包络。
+
+用户明确要求把青色区域改小。两份config替换robot_radius为同一矩形footprint：
+[[.40,.28],[-.40,.28],[-.40,-.28],[.40,-.28]]，padding=.02。
+实际外沿x±.42/y±.30，内切半径.30；保留前后和腿部余量，仍需实走验收。
+不改inflation=.6、scaling3、速度、0.3秒等待、碰撞开关、RL或感知。
+NavFn仍只做网格代价规划，不是完整矩形朝向规划；RPP完整轮廓拦截保留，
+不保证所有狭窄转弯可走，也未增加任务自动重规划。
+
+新增test/check_navigation_footprint.py，独立ROS域196、真实controller_server/RPP/StaticLayer/
+InflationLayer、合成静态地图和固定TF/odom；没有Gazebo/RL/运动节点/UDP。
+4项实际检查通过：.70m直通道旧圆无正速度并104，新矩形有正速度（随后主动取消）；
+前方箱子仍104、横向朝向无法容纳长边时仍104。不是机器人真实穿过通道。
+证据见development_history/evidence/navigation_footprint_2026-10-17/result.json。
+colcon build --packages-select lite3_navigation通过，两份config已安装；运行中旧配置
+不热改，用户须关闭总开关→退出bringup→重新启动，手册10.1写明核对和退出。
+没有发送默认域任务、速度或改其参数；未重启/终止用户系统，未提交/推送Git。
+
+## 2026-10-17：准备用户手动新障碍验收，未自动投放或发目标
+
+后续用户报告箱子已出现。只读检查实际odom约(-1.232,-2.407)、yaw=-.254rad，
+导航开关false、IDLE；全局costmap箱子中心99（ROS OccupancyGrid代价映射）。
+请求ComputePathToPose只做预览，到(-3.25,1.79)状态4/error0，193点、5.103米，
+路径距箱子中心最近约.946米；未调用FollowPath或移动/开关服务。
+已在终端手册9.3补开启总开关→navigate -3.25 1.79 90及停止命令；待用户实际行走验收。
+无无箱子对照，不能把此预览当作路线因箱子改变的证据，也不是中途自动重规划。
+
+用户询问下一步。只读检查完整bringup正在运行，任务IDLE、busy=false、fault=false，
+总开关true；机器狗约(-3.255,1.787)，yaw=.184rad。
+新增独立手动模型src/lite3_gazebo/worlds/lidar_test_box.sdf：lite3_demo_box，
+固定位置(-2.25,1.79,.205)，尺寸.3×.3×.4，static、有visual/collision。
+不include到原world，不自动加载，不改PGM；添加命令直接用src绝对路径无需build。
+终端手册9.3同步关闭总开关→手动添加→看雷达/costmap→指定模型移除的命令与含义。
+本轮未调用Gazebo写服务或运动/任务接口，尚待用户确认可见新增/移除效果和新路线行走。
+原104案例注明历史无雷达阶段，修正“当前未接雷达”的过时措辞。
+任务仍一次规划后FollowPath，没有自动重规划。本轮不提交/推送Git。
+
+## 2026-10-14：三维雷达、平地过滤、二维障碍costmap已实测标记和清除
+
+用户明确授权三维扫描→平地版地面剔除→二维障碍投影。新增lite3_perception包和
+lite3_pointcloud_obstacles一个ROS节点，随simulation/bringup自动启动。原五个包、
+任务Action/总开关、RL与速度控制保持；controller_server参数与修改前YAML对比一致。
+原始GPU点云720×31层、垂直-60°～+30°、10Hz仿真时间、0.12～12米，
+同一bridge发布/lite3/lidar/points(PointCloud2,lidar_link,BEST_EFFORT)。
+雷达TORSO前移0.30米，上方0.15米，传感器/TF一致；只增视觉不加质量/碰撞。
+原安装低箱子无回波，确认下扫机身遮挡后前移；遮挡/盲区仍存在，不承诺全覆盖。
+
+新节点查扫描同戳odom/TORSO/base_footprint TF，非阻塞重试，过期0.3秒丢弃，
+按odom平地z=0.005、容差0.02筛选障碍(0.025,0.65]；TORSO包围盒自身掩蔽。
+0.65为正常站姿包含雷达的固定保守上限，不是动态最高点计算。
+obstacles用于标记，clearing保留真实地面/高处回波端点用于清除，ground用于显示。
+/scan现在由感知节点发布，是base_footprint的720方向二维障碍投影，不能再视为
+原lidar_link的单层物理LaserScan；SLAM使用需要以后单独验证，不直接承诺可用。
+
+全局/局部costmap保留static和inflation，加入三维体素层。
+原生VoxelLayer移除低箱子时会保留底部残影，补充FlatGroundVoxelLayer继承插件：
+仅对地面回波在深拷贝观察中补偿基类2*resolution端点退让，使最终射线回到实测
+地面附近；普通障碍保留基类保守行为，不清理地面后方/遮挡区，不改原ROS点云。
+已安装Nav2 costmap 1.3.13；换版本需复核基类算法并重跑集成验证。
+网格origin_z=0、z_resolution=.05、z_voxels=14；sensor_frame显式lidar_link，
+不拿地面虚拟/scan原点射线清除。两观察源expected_update_rate=.5秒。
+完整启动等新鲜感知才就绪；处理节点退出关闭仿真。RViz提供投影、3D障碍、
+绿色Ground Points和全局/局部costmap显示，站立/运动可见性用户验收仍待进行。
+
+验证：3项几何语义检查覆盖地面/自身/低高物体/20°倾斜/投影最近距离。
+真实Gazebo机器狗站立+真实Nav2在独立域193/专用GZ分区通过：每帧22320采样位置；
+低箱子(尺寸.2×.3×.15m)加入后两costmap区域0→100，持续存在不被误清除；
+移除后两图恢复0。高箱子下沿0.75m高于上限，两个区域仍0。
+过滤输出满足地面容差/障碍高度，投影frame=base_footprint。没有RL/FollowPath/
+导航速度任务。证据docs/development_history/evidence/lidar_3d_2026-10-14/result.json，
+复测src/lite3_perception/test/check_costmap_scene.py只能独立域192/193/194且专用分区。
+曾有重复域测试服务发现及残留进程，核对专用域/分区后仅回收自己的旧测试进程。
+用户中途重新启动默认bringup20918；立即退出助手冲突测试，改无UDP固定传感器场景。
+用户再次明确退出后才完成真实机器狗站立验证，没有终止用户的进程或发送移动任务。
+中途只读检查用户已启动的三维数据/投影同戳TF通过，10Hz、720投影方向、690有效方向。
+四包构建安装已完成；终端手册/README/RUNBOOK同步，源check_scan已更新语义。
+最终再次核对四包安装资源与源码、XML/YAML/Python/手册bash语法通过；
+与本轮升级前保存的URDF转换SDF比较，原质量/惯量/关节及碰撞几何和位姿一致。
+测试进程已退出，20001/30010/30011端口空闲；最终用户可见测试前保持退出。
+需重启bringup加载最后的平地体素扩展，不是source自动热更新。
+
+当前仅平地三维障碍感知/标记/清除，未实现SLAM/起伏地面分割/自动重规划。
+RPP仍沿原路径，发现新阻挡可能停止/任务失败，不把本次标记测试称为动态绕行成功。
+后续先用户RViz验收地面/障碍，再验证静态新障碍导航并补有限重规划。
+本轮没有Git提交/推送，用户此前编辑/临时文档锁文件未删除。
+
+## 2026-10-13：接入二维模拟雷达，实际扫描与场景变化验证通过
+
+用户明确希望后续SLAM实时建图，授权本轮先接雷达。保留已知地图导航、RL、任务协议
+和原整体架构；当前未接Nav2障碍层/重规划/SLAM，不把看见扫描称为自主避障完成。
+Lite3_gazebo.urdf增加lidar_link固定TF/小圆柱外观，TORSO传感器偏移(0,0,0.15)，
+GPU二维360°/720点/10Hz仿真时间/0.12～12米，无噪声模型，frame_id=lidar_link。
+fixed link默认并入TORSO，无新增质量/惯量/碰撞；比较SDF转换前后的原惯性、关节、
+碰撞几何/位姿一致。新增gazebo扩展使转换器显式输出空默认ODE接触/摩擦标签，未改系数。
+gz_frame_id是Gazebo扩展，转换器可能提示不属于SDF并复制保留；实测正确输出帧名。
+已有world Sensors插件直接复用；同一ros_gz_bridge单向/scan桥接、publisher BEST_EFFORT。
+display.launch新增urdf_file可选参数，仿真使用spawn同一个URDF保证TF一致，独立展示
+仍默认Lite3.urdf；原Lite3.urdf/Lite3_original.urdf未修改。navigation.rviz自动显示扫描。
+
+本机无项目运行进程时，三包lite3_description/gazebo/navigation正常构建安装通过。
+独立ROS_DOMAIN_ID=191、GZ_PARTITION=lite3_lidar_validation_20261013的无GUI站立仿真
+实测/scan一个bridge发布者、BEST_EFFORT、每帧720、有效710回波、无NaN、仿真接收10Hz；
+odom→lidar_link与扫描时刻TF可用，机身站立约z=0.327，雷达约z=0.477。
+在测试世界新增可见/碰撞箱子后正前方距离从1.70434米降至0.77534米，移除恢复1.70434米。
+验证的是真实Gazebo GPU扫描经ROS桥接，并未把障碍坐标直接写成扫描消息。
+未启动RL、发速度或导航任务；后台测试/临时箱子已退出/清除。
+证据docs/development_history/evidence/lidar_2026-10-13/result.json。
+只读复测脚本src/lite3_gazebo/test/check_scan.py需已启动仿真，检查扫描与同时间戳TF，
+不会添加箱子或发控制命令；操作手册第9.1节同步了验收命令。
+新增脚本也在第二次独立后台仿真中实跑通过，约10.01Hz仿真接收、711有效回波、
+扫描时刻TF可用；RViz YAML、手册bash语法及四份安装资源与源码一致检查通过。
+保留原URDF CRLF，diff --check使用临时cr-at-eol选项通过，不更改Git配置。
+第二次测试launch退出后Gazebo server子进程残留，核对独立分区/ROS域后仅向该测试
+PID11941发送SIGINT回收；三个UDP控制端口已确认空闲，未改已有退出逻辑。
+尚待用户可见RViz轮廓对齐及RL运动中雷达质量验收，尤其俯仰时地面误回波。
+下一步先验收，再接Nav2障碍层；SLAM模式以后需替换固定map→odom与静态地图来源。
+本轮未提交/推送Git。
+
+## 2026-10-13：统一终端操作手册及后续持续维护要求
+
+用户要求所有终端交互命令独立放在一个文档，并随后续开发同步更新。
+已根据实际launch/节点/CLI/接口及本机teleop_twist_keyboard 2.4.1源码，重新整理
+docs/TERMINAL_COMMANDS.md，作为统一日常操作入口；保留独立调试命令并明确不与bringup并行。
+包含环境、构建/重启、两终端启动、只读状态、总开关、度数/弧度双入口、可选起点检查、
+取消/停止锁定、手动/键盘、位置/TF/图查询、参数/错误、退出与速查表。
+指出标准Action取消仅覆盖终端Action任务，GUI内部任务需关闭总开关；键盘工具是i/j/k/l
+而非WASD，未虚构repeat_rate等本机未提供的参数；纯查询不驱动机器人。
+最新状态查询仍注明需要更新节点才可用，没有把源码准备称为当前进程自动升级。
+README和RUNBOOK加入入口链接，AGENTS写入持久维护要求：每次交互变更同次更新手册，
+核对单位/前置条件/消息和安装状态，更新日期/记录，下一位AI同样执行。
+本次只改文档，不重编译/运行项目、不发导航或速度、不提交推送Git。
+
+## 2026-10-13补充：状态查询及实际104失败诊断
+
+用户询问总开关是否自动关闭、如何查询，以及navigate -2.195 4.159 0报104原因。
+实际当前节点12846日志：获得77点Path，FollowPath开始就连续collision ahead，约0.3秒
+Controller patience exceeded，结果8/停止清理完成，总开关自动关闭。控制器failure_tolerance
+为0.3、期望速度0.6（用户此前修改保留），当前记录位置约(-0.700,2.811)。
+能确认是地图代价/碰撞预测阻止控制，不是x/y解析错误；未判定贴货架、切角、漂移或
+几何配置是哪一种根因。仍没有雷达/动态障碍感知，不调整/关闭碰撞检查，也不自动重试移动。
+用户本次实际新入口日志已有多个成功目标，例如Gazebo(3.907311,-2.883676)、412点Path、
+约21.55秒Reached the goal；只是这条特定目标失败，不能称双入口整体不可用或任意目标均可达。
+
+此前navigation_status是最近运行事件，非实际布尔查询。补充现有mission_manager的
+/lite3/get_navigation_state Trigger：success为查询成功，message为JSON，包含
+navigation_enabled/busy/fault_latched/switch_pending/phase。不更改开关/运动或增节点。
+另补Nav2 error_msg空且code104时的中文含义，保留码8与具体controller日志入口。
+本次仍隔离构建在/tmp，用户运行的节点/库未覆盖；需退出后仅构建lite3_navigation重启。
+最终15项独立ROS域179模拟Nav2检查通过，证据/tmp/lite3-navigation-gate-2wxndx7q/result.json，
+覆盖查询关闭/开启/行走/清理后状态不产生运动副作用，以及104空文本含义补充。
+编译和diff检查通过，当前进程12456/12482/12846保留；没有实机/仿真移动测试、
+参数修改或Git提交推送。
+
+## 2026-10-13：导航总开关及双入口已编码并隔离验证，应用待用户重启构建
+
+用户要求总开关开启后可Gazebo选点立即导航，或终端输入x/y/角度，非法输入明确返回。
+已在现有mission_manager中增加/lite3/set_navigation_enabled SetBool（默认关闭），
+异步确认TF/Nav2/运动服务→导航来源→显式解锁后才回复开启成功。关闭立即禁用入口，
+取消本任务并确认输入停止/子任务终止；故障不虚称安全停止。普通任务不会自动解锁。
+失败/取消/超时清理后关闭总开关；成功后仍可接下个目标。忙碌/故障不覆盖/排队。
+GUI目标与Action目标共享同一Task（可空客户端handle），不增加常驻节点或自调用Action。
+/lite3/navigation_status String输出最近状态/进度/结果；终端navigate临时客户端用三个位置
+参数，默认角度为度数[-180,180]，转换Action弧度[-pi,pi]。非数字/NaN/Inf/范围错误
+在客户端返回3；服务器同样检查有限数字/弧度，Nav2负责地图外/占据区检查及无路结果。
+关闭时Action目标返回8+NAVIGATION_DISABLED，忙碌Action拒绝，GUI打印原因。
+无需新增接口枚举；内部门控取消可能Action ABORTED+result7，标准取消仍CANCELED。
+
+GUI选点按点击系统时间戳去重：每次点击新戳，2Hz重发保留戳，实际bridge已确认保留。
+门控开启系统时间后才允许新点；关闭/忙碌时点击消费但不排队、不重放。当前点击默认
+朝向0，橙色标记是最后点击位置而非当前执行目标。QML已更换文案，并放大以免裁切。
+当前world/map/odom一致；header.stamp是UI命令标识，不是机器人仿真状态时间。
+开启总开关是用户显式授权的解锁，未改变任务自动停止/清理规则。
+
+原仿真PID7439、GazeboGUI7618、RL7817仍在运行，禁止覆盖已加载GUI库。
+这次编译使用/tmp/lite3-nav-gate-build与/tmp/lite3-nav-gate-install，本机默认install
+尚未应用新版；让用户先结束任务并退出旧launch，再正常构建gazebo/navigation后重启。
+没有终止用户系统，也没发真实速度/任务、改RL/controller参数/总体规划或提交推送。
+最终13项新门控协议检查域179通过（证据/tmp/lite3-navigation-gate-4t37pzuw/result.json），
+包括开启尚未完成时关闭请求优先；16项原任务回归域178通过
+（/tmp/lite3-mission-action-f0nxhtf2/result.json）。
+回归测试中的显式开关解锁独立核对，任务生成停止请求仍全部true。
+GUI实际库/QML事件测试及真实ROSbridge收到4条同点击标识PoseStamped通过；
+未进行真实Gazebo鼠标+机器人行走的新版联动验收。使用/恢复见NAVIGATION_INTERACTION。
+下方2026-10-12只选点文案是历史状态，不能覆盖本次进度。
+
+## 2026-10-12：Gazebo 选点预览，暂不发送导航任务
+
+新增 lite3_gazebo/gui/Lite3TargetPicker C++/QML GUI 插件和 config/target_picker.config，
+simulation launch 设置 GZ_GUI_PLUGIN_PATH 并默认加载面板，既有桥接新增
+/lite3/selected_goal（Gazebo Pose→ROS PoseStamped，map坐标）。不新增ROS节点，
+不修改任务/运动节点、RL、速度配置、ARCHITECTURE或ROADMAP，也不发送Action/速度。
+选择按钮→单击地面→橙色GUI标记+坐标，支持重新选择、取消和复制。
+Gazebo坐标事件先于鼠标释放事件，两事件配对后排除拖动，GUI线程更新QML与状态；
+拒绝NaN和高度不在[-0.02,0.15]m的点击，但还不做地图可通行性检查。
+按2Hz发布当前选点，默认姿态w=1，时间戳0表示预览坐标；当前world/map/odom一致，
+未来定位改变需转换坐标。标记只有GUI渲染，无碰撞/地图影响；退出删除自己的ns/id。
+选点只保存在当前进程，无开始导航按钮、朝向选择或跨重启持久保存。
+源码与安装已准备；用户需重启原bringup加载新面板，再实际点击地面验收。
+新依赖Qt5/gz_gui_vendor本机已有；默认GUI布局沿用Gazebo Sim8并附Apache2许可，
+新组件BSD3许可另存，不更改旧文件许可证。此功能未提交/推送Git。
+
+验证记录：插件编译、真实QML加载/交互、标准场景事件过滤、坐标/复制/周期发布、
+GUI标记请求与清理，以及实际ROS桥接检查见下方最新验证补充。
+测试隔离，不操作用户窗口，不以事件注入代替真实3D射线选点可见性验收。
+下一步在现有任务链路接入用户确认后的选点导航，不另造任务服务器。
+
+本次实际验证：lite3_gazebo构建成功；CTest target_picker_interaction通过。
+测试程序通过Gazebo插件加载器动态加载库/QML，选点按钮触发、拖动/高处/NaN拒绝、
+选中后普通点击保持目标、取消保留、复制坐标、迟到订阅获取周期消息、GUI标记请求
+及删除自己的标记均通过。面板QML离屏截图检查文字完整可读。
+真实ros_gz_bridge在独立ROS域182/独立Gazebo分区收到4条PoseStamped，
+map坐标(-2.5,3.25,0)、姿态w=1，未出现/cmd_vel或/nav_cmd_vel发布者。
+测试进程已退出，未启动RL，不操作用户的Gazebo窗口。用户真实三维点击/标记显示待验收。
+测试源码在src/lite3_gazebo/test；未执行整包全部lint或新路线行走测试。
+
+## 2026-10-12：完整系统 launch 入口
+
+用户要求减少启动终端。新增 src/lite3_navigation/launch/bringup.launch.py、scripts/bringup_runtime.py 和 rviz/navigation.rviz；已有 simulation/display launch 新增可选参数且原默认行为保留。lite3_gazebo 安装 maps，导航包安装新资源并补齐运行依赖。
+完整入口自动播放 Gazebo，等待新鲜 /odom、12 关节与仿真时钟，启动阶段锁定速度，顺序配置/激活 map_server、planner_server、controller_server，用伪终端启动已有 RL 并发送原 z/c 状态切换，等待 ONNX ENTER 后请求 external。launch 捕获实际插件 Mode: external 日志确认接管，然后解除此次启动锁并启动常驻 mission_manager。未自动发送任务。
+辅助 ROS 节点就绪后销毁，进程监管自己的 RL 并在退出时回收；UDP 端口占用拒绝新启动，重要子进程退出关闭本套系统。RL 源码/策略、Gazebo 插件、控制器参数、原任务/运动节点源码和 ARCHITECTURE/ROADMAP 未改。仍无雷达、临时障碍感知或重规划。
+启动：source Jazzy 和工作空间后 ros2 launch lite3_navigation bringup.launch.py；另一个终端发送 /navigate_task。不与旧多终端入口并行。测试状态见文末/最新验证补充，不能把启动测试当作新路线行走验收。此次未提交或推送 Git。
+
+
+### 本次实际验证（2026-10-12）
+
+三包构建及新旧 launch 参数查询通过。在 ROS_DOMAIN_ID=180、独立 Gazebo 分区中实际启动无 GUI 完整系统：地图、规划器、控制器均 active（3）；地图224×224；12关节、map→TORSO TF、/navigate_task 服务端正常；就绪后临时 startup ROS 节点已销毁；运动/任务节点各一个，导航速度发布者一个。RL 自动 idle→standup→rl_control、ONNX ENTER，实际插件确认 external；默认零速下机器人稳定在约(-3.994,-4.000)。没有发送导航目标或非零速度，此验证不替代用户 GUI/新路线行走验收。
+已发 SIGINT 结束此次 launch，自己的 RL 和节点退出，20001/30010/30011 全部释放；Gazebo 的 Ruby 包装进程由 launch 的 SIGTERM 超时回收机制结束。另验证 RL 文件缺失、UDP30011占用、同一ROS域遗留map_server均在启动组件之前拒绝，且不终止其他进程；空ROS域接受完整启动计划。
+最终安装版本在加入旧ROS节点预检后再次实际自动启动成功。退出时Gazebo端口曾在包装进程返回后短暂占用，随后的进程/UDP检查确认已全部回收；不将瞬时占用误称为遗留RL进程。独立图预检使用自己的Context和SingleThreadedExecutor，不依赖默认rclpy上下文。
+初次测试发现本机rclpy未提供qos_profile_clock，已改为明确的best-effort时钟QoS并构建、重新通过上述实际启动。无额外系统安装、无RL源码修改、无Git提交/推送。
 
 ## 完整保存与开发过程归档
 

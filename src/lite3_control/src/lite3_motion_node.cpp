@@ -99,6 +99,20 @@ public:
                         get_logger(), "%s", response->message.c_str());
                 });
 
+        navigation_pause_service_ = create_service<std_srvs::srv::SetBool>(
+            "/lite3/set_navigation_pause",
+            [this](std_srvs::srv::SetBool::Request::SharedPtr request,
+                   std_srvs::srv::SetBool::Response::SharedPtr response)
+            {
+                navigation_paused_ = request->data;
+                ClearVelocity();
+                response->success = true;
+                response->message = navigation_paused_
+                    ? "导航内部暂停，导航速度已清零；用户停止锁定保持原样"
+                    : "导航内部暂停已解除，等待新速度；用户停止锁定保持原样";
+                RCLCPP_INFO(get_logger(), "%s", response->message.c_str());
+            });
+
         odometry_publisher_ = create_publisher<nav_msgs::msg::Odometry>(
             "/odom", 10);
         transform_broadcaster_ =
@@ -166,13 +180,15 @@ private:
         bool from_navigation)
     {
         // 非当前来源和锁定期间的消息均不改变目标，也不刷新超时计时。
-        if (stop_locked_ || from_navigation != navigation_mode_)
+        if (stop_locked_ || from_navigation != navigation_mode_ ||
+            (from_navigation && navigation_paused_))
         {
             RCLCPP_INFO_THROTTLE(
                 get_logger(), *get_clock(), 2000,
                 "忽略 %s：%s",
                 from_navigation ? "/nav_cmd_vel" : "/cmd_vel",
-                stop_locked_ ? "停止锁定中" : "不属于当前控制模式");
+                stop_locked_ ? "停止锁定中" :
+                (from_navigation && navigation_paused_ ? "导航内部暂停中" : "不属于当前控制模式"));
             return;
         }
 
@@ -350,11 +366,13 @@ private:
     // 所有回调由 main 中的单线程 spin 串行执行。
     bool navigation_mode_ = false;
     bool stop_locked_ = false;
+    bool navigation_paused_ = false;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr
         nav_cmd_vel_subscription_;
     rclcpp::Service<std_srvs::srv::SetBool>::SharedPtr
         navigation_mode_service_;
     rclcpp::Service<std_srvs::srv::SetBool>::SharedPtr stop_service_;
+    rclcpp::Service<std_srvs::srv::SetBool>::SharedPtr navigation_pause_service_;
 
     geometry_msgs::msg::Twist target_velocity_{};
     std::chrono::steady_clock::time_point last_command_time_{};

@@ -1,0 +1,14 @@
+[
+  {
+    "file": "replanning_protocol.json",
+    "source": "/tmp/lite3-replanning-3ntlxhfd/result.json",
+    "original_sha256": "6c2b4a356262ce0ffa313d43ad21400e9496e81b34c94c2d288af2dec122a7f3",
+    "stored_sha256": "6c2b4a356262ce0ffa313d43ad21400e9496e81b34c94c2d288af2dec122a7f3"
+  },
+  {
+    "file": "moving_with_turn.json.gz",
+    "source": "/tmp/lite3-avoidance-moving-z6_ej8y5/result.json",
+    "original_sha256": "73fcf0a497caa7ead21b9fa4cfc562c4ed5e85d3d170b6da257e831a5ba929ba",
+    "stored_sha256": "22587e34fcc35a8e23ffa35329b493a5329b3d4c9bd63e8813214dfd6fba2fe1"
+  }
+]

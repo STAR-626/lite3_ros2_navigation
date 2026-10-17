@@ -1,0 +1,102 @@
+[
+  {
+    "file": "original_snapshot.json.gz",
+    "source": "/tmp/lite3-stuck-readonly-4syy85_v/snapshot.json",
+    "uncompressed_sha256": "f077d3422f405e0fadc0035fbf91ac740631a41cbe1f1246a8115d251ff45dda"
+  },
+  {
+    "file": "original_plan.json.gz",
+    "source": "/tmp/lite3-stuck-readonly-4syy85_v/plan_only.json",
+    "uncompressed_sha256": "cfd033a54bc41659642cee78b481de2b5a9dd746dff7370d27f82c611811f681"
+  },
+  {
+    "file": "original_footprint_check.json.gz",
+    "source": "/tmp/lite3-stuck-readonly-4syy85_v/footprint_path_check.json",
+    "uncompressed_sha256": "3aa6ee0c04f75f987e342a9ab163a9c66ce616a8633c17c472487d303ee87bda"
+  },
+  {
+    "file": "protocol_final.json.gz",
+    "source": "/tmp/lite3-replanning-g9o691pi/result.json",
+    "uncompressed_sha256": "72447fedbe9b6a5b58cc84a44a65d142f11be9e06dc5ae4631d2aefe57995bcf"
+  },
+  {
+    "file": "route_layer.json.gz",
+    "source": "/tmp/lite3-route-penalty-yj3pu9yi/result.json",
+    "uncompressed_sha256": "c96c5eca45161b3a813ab8303dbc13b209aefc4c865e12c4555bb8faa2b1f751"
+  },
+  {
+    "file": "narrow_corner.json.gz",
+    "source": "/tmp/lite3-lattice-snapshot-kri147ht/result.json",
+    "uncompressed_sha256": "d8f13d4d342fdd7cd5057f629e0b54afc3ec9ca25ed59cdf758782ea33a1df95"
+  },
+  {
+    "file": "original_goal_rejected.json.gz",
+    "source": "/tmp/lite3-lattice-snapshot-5oyu0bkx/result.json",
+    "uncompressed_sha256": "f2fde2d376a643525710b1511d4c55a270530d0d72e72adbcb3df1367d7880ef"
+  },
+  {
+    "file": "soft_preference.json.gz",
+    "source": "/tmp/lite3-lattice-snapshot-2ey55jn3/result.json",
+    "uncompressed_sha256": "a45eaa141ac36a32510947dbd4f87d4283003dac7d04b122775b780667f8228d"
+  },
+  {
+    "file": "warehouse_final.json.gz",
+    "source": "/tmp/lite3-avoidance-clear-t6pp_exh/result.json",
+    "uncompressed_sha256": "13cd27ebf9ec8f44fe71765a142aee915f575412dbdd3c868ced5ba70bc1afcb"
+  },
+  {
+    "file": "warehouse_final.log.gz",
+    "source": "/tmp/lite3-avoidance-clear-t6pp_exh/bringup.log",
+    "uncompressed_sha256": "5ba9f9ae743a04585aee6447190ece092007503dc245a319bf35046971ff79e7"
+  },
+  {
+    "file": "moving_before_final_approach_fix.json.gz",
+    "source": "/tmp/lite3-avoidance-moving-r5kluzp6/result.json",
+    "uncompressed_sha256": "8f2ae257a0c4c857f54fc24d8159c07f75ede6aadcf11d9cc9cd831ec0a38416"
+  },
+  {
+    "file": "failed_warehouse_goal.json.gz",
+    "source": "/tmp/lite3-avoidance-clear-7jd27gsb/result.json",
+    "uncompressed_sha256": "26a423b51d85dfc80959cffa96ade836ca6062c6f50355907b5a5fe9c11d56f4"
+  },
+  {
+    "file": "failed_forward_only_moving.json.gz",
+    "source": "/tmp/lite3-avoidance-moving-kovstlwb/result.json",
+    "uncompressed_sha256": "a954cb5937237af0dbcf2ad734bed05749969539fb3cc2cf20a1291cb7906be2"
+  },
+  {
+    "file": "failed_final_approach.json.gz",
+    "source": "/tmp/lite3-avoidance-clear-u3qv9mh7/result.json",
+    "uncompressed_sha256": "df234fba59ed73d3fe88db09bd25ad7c9bd5e25f3370a2a1035f330b5268a785"
+  },
+  {
+    "file": "failed_final_approach.log.gz",
+    "source": "/tmp/lite3-avoidance-clear-u3qv9mh7/bringup.log",
+    "uncompressed_sha256": "0d20e8f93c4625b8fc0ba7175f360ae214b5f3ef91c71a62f2265eb1c9468b2e"
+  },
+  {
+    "file": "failed_warehouse_goal_costmap.json.gz",
+    "source": "/tmp/lite3-avoidance-clear-7jd27gsb/global_costmap.json",
+    "uncompressed_sha256": "cbed1a0a91e516106573cc42951cee38250ebf5b8f02f26bae60a8645892aa12"
+  },
+  {
+    "file": "failed_forward_only_costmap.json.gz",
+    "source": "/tmp/lite3-avoidance-moving-kovstlwb/global_costmap.json",
+    "uncompressed_sha256": "501f089514d4cb606e10a9a7d057c7e4185d0012af7ccbffcd8cadf9fa4ed512"
+  },
+  {
+    "file": "moving_final.json.gz",
+    "source": "/tmp/lite3-avoidance-moving-9l19of6t/result.json",
+    "uncompressed_sha256": "5b04b86276ae8c543616f5139d8cfdbfaf753e800906e46c698e5c24139121d3"
+  },
+  {
+    "file": "moving_final.log.gz",
+    "source": "/tmp/lite3-avoidance-moving-9l19of6t/bringup.log",
+    "uncompressed_sha256": "1a8d0719a218ec6d7b4b6611144bb522f15f7a66b08fe16da0a30cb68a29485b"
+  },
+  {
+    "file": "lattice_preferred_path.json.gz",
+    "source": "/tmp/lite3-lattice-snapshot-2ey55jn3/preferred_result.json",
+    "uncompressed_sha256": "9dc8fb9e2d36d7d3976d47261015e0418d09ae811c9e5159fe08d3583ae928ba"
+  }
+]

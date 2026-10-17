@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-17",
+  "environment": "Ubuntu 24.04 / ROS2 Jazzy, isolated ROS_DOMAIN_ID=196",
+  "scope": "Real Nav2 controller/RPP and static/inflation costmaps with synthetic map, fixed TF and odometry. No Gazebo, RL, motion node or UDP. Not a physical traversal test.",
+  "configured_footprint_m": [[0.4, 0.28], [-0.4, 0.28], [-0.4, -0.28], [0.4, -0.28]],
+  "padding_m": 0.02,
+  "observed_padded_footprint_m": [[0.42, 0.30], [-0.42, 0.30], [-0.42, -0.30], [0.42, -0.30]],
+  "corridor_width_m": 0.70,
+  "cases": [
+    {"case": "old_circle", "positive_velocity": false, "action_status": 6, "error_code": 104},
+    {"case": "rectangle_corridor", "positive_velocity": true, "action_status": 5, "error_code": 0, "note": "Controller allowed forward motion; test canceled task intentionally, no simulated robot motion."},
+    {"case": "rectangle_front_blocked", "positive_velocity": false, "action_status": 6, "error_code": 104},
+    {"case": "rectangle_sideways_blocked", "positive_velocity": false, "action_status": 6, "error_code": 104}
+  ],
+  "build": "colcon build --packages-select lite3_navigation: passed",
+  "remaining": "Restart user bringup to load installed configuration; verify actual gait envelope and narrow corridor traversal. NavFn still lacks full polygon orientation collision planning."
+}

@@ -7,10 +7,29 @@ planner_server:
     planner_plugins: ["GridBased"]
 
     GridBased:
-      plugin: "nav2_navfn_planner::NavfnPlanner"
-      tolerance: 0.1
-      use_astar: true
+      plugin: "nav2_smac_planner::SmacPlannerLattice"
+      tolerance: 0.0
       allow_unknown: false
+      # bringup按实际安装位置填入diff运动集，匹配5cm地图，含原地转向。
+      lattice_filepath: ""
+      max_iterations: 1000000
+      max_on_approach_iterations: 1000
+      terminal_checking_interval: 500
+      max_planning_time: 3.0
+      allow_reverse_expansion: true
+      smooth_path: false
+      cache_obstacle_heuristic: false
+      cost_penalty: 3.0
+      rotation_penalty: 5.0
+      reverse_penalty: 2.0
+      change_penalty: 0.0
+      non_straight_penalty: 1.05
+      retrospective_penalty: 0.015
+      analytic_expansion_ratio: 3.5
+      analytic_expansion_max_length: 2.5
+      analytic_expansion_max_cost: 200.0
+      lookup_table_size: 20.0
+      debug_visualizations: false
 
 global_costmap:
   global_costmap:
@@ -20,19 +39,76 @@ global_costmap:
       robot_base_frame: base_footprint
       transform_tolerance: 0.3
 
-      update_frequency: 2.0
+      update_frequency: 5.0
       publish_frequency: 1.0
       resolution: 0.05
       rolling_window: false
       track_unknown_space: true
-      robot_radius: 0.4
+      # 与局部图保持相同轮廓/内切半径，缩小横向保守区。
+      # 用户指定20cm青圈的仿真调试值；包含padding后的总宽度0.40m。
+      # Lattice在规划时检查矩形随朝向的碰撞；执行阶段仍保留完整轮廓检查。
+      footprint: "[[0.40, 0.18], [-0.40, 0.18], [-0.40, -0.18], [0.40, -0.18]]"
+      footprint_padding: 0.02
 
-      plugins: ["static_layer", "inflation_layer"]
+      plugins: ["static_layer", "voxel_layer", "forecast_layer", "route_penalty_layer", "inflation_layer"]
 
       static_layer:
         plugin: "nav2_costmap_2d::StaticLayer"
         map_topic: /map
         map_subscribe_transient_local: true
+
+      voxel_layer:
+        plugin: "lite3_perception::FlatGroundVoxelLayer"
+        enabled: true
+        footprint_clearing_enabled: true
+        ground_height: 0.005
+        ground_tolerance: 0.02
+        origin_z: 0.0
+        z_resolution: 0.05
+        z_voxels: 14
+        min_obstacle_height: 0.025
+        max_obstacle_height: 0.65
+        mark_threshold: 0
+        unknown_threshold: 14
+        publish_voxel_map: false
+        observation_sources: marking clearing
+        marking:
+          topic: /lite3/perception/obstacles
+          data_type: PointCloud2
+          sensor_frame: lidar_link
+          marking: true
+          clearing: false
+          min_obstacle_height: 0.025
+          max_obstacle_height: 0.65
+          obstacle_min_range: 0.12
+          obstacle_max_range: 12.0
+          observation_persistence: 0.0
+          # 秒；无新点云时costmap不再被视为新鲜。
+          expected_update_rate: 0.5
+        clearing:
+          topic: /lite3/perception/clearing
+          data_type: PointCloud2
+          sensor_frame: lidar_link
+          marking: false
+          clearing: true
+          # 清除射线保留地面/高处有效回波，不用投影scan的虚拟原点。
+          min_obstacle_height: -0.1
+          max_obstacle_height: 12.0
+          raytrace_min_range: 0.12
+          raytrace_max_range: 12.0
+          observation_persistence: 0.0
+          expected_update_rate: 0.5
+
+      forecast_layer:
+        plugin: "lite3_perception::ForecastLayer"
+        enabled: true
+        timeout: 0.5
+
+      route_penalty_layer:
+        plugin: "lite3_perception::RoutePenaltyLayer"
+        timeout: 12.0
+        radius: 0.18
+        cost: 200
 
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"

@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-17",
+  "scope": "Gazebo Harmonic + ROS2 Jazzy + original RL; isolated domains, no git commit/push",
+  "protocol_checks": {
+    "legacy_mission": 16,
+    "navigation_gate": 15,
+    "bounded_replanning": 10,
+    "motion_udp": 24,
+    "forecast_geometry": 9,
+    "real_forecast_layer": 4,
+    "moving_box_cli": 4
+  },
+  "actual_scenarios": [
+    {
+      "file": "moving_with_turn.json.gz",
+      "result_code": 0,
+      "retry_count": 3,
+      "turn_result_code": 0,
+      "robot_box_contact_count": 0,
+      "contact_messages": 681,
+      "note": "0.4m box moving at 0.18m/s; added after robot advanced 0.35m; box truth diagnostic only"
+    },
+    {
+      "file": "static_box.json.gz",
+      "result_code": 0,
+      "retry_count": 0,
+      "robot_box_contact_count": 0,
+      "contact_messages": 228
+    },
+    {
+      "file": "warehouse.json.gz",
+      "result_code": 0,
+      "retry_count": 0,
+      "final_xy": [
+        3.990546592714467,
+        3.9142180638222768
+      ],
+      "note": "original warehouse/map; this test has no box contact logger and does not prove all furniture contact absence"
+    }
+  ],
+  "limitations": [
+    "flat ground only",
+    "finite single-box tests, not arbitrary moving objects",
+    "short-term constant velocity estimate; occlusion and view changes may cause missing/false tracks",
+    "20cm lateral inscribed radius is user-selected and not a full gait envelope",
+    "persistent blockage verified with mocked Nav2, not a physically enclosed Gazebo robot",
+    "no SLAM or learned locomotion changes"
+  ],
+  "final_controller": "AvoidanceController: native MPPI en route, native RPP goal approach within 0.65m; RPP first-path search 1000m to support late handoff",
+  "source_sha256": {
+    "src/lite3_navigation/src/avoidance_controller.cpp": "a7523d8daa3f1611cc20acf9af0ab17b8535294aa881a40611bc069c2d46c22f",
+    "src/lite3_navigation/src/mission_manager.cpp": "72c68c464bc025e7a48f98a44c5520ad23b5af5a68a2a9f9773cc6061abb4378",
+    "src/lite3_navigation/config/controller_mppi.yaml": "98638b11b2ca3267796b0274c076e1fb1adf7c4a48be901542489257e6b3ccd9",
+    "src/lite3_perception/scripts/motion_forecast.py": "88b9c452b1c4213345457b1dcd16413f3bbc2cefe8032642c76c04650e462b91",
+    "src/lite3_perception/src/forecast_layer.cpp": "4b078f84436720733dc2bb753fb1e568b0a983bfb68b5bb48bffc4071d6ad502",
+    "src/lite3_control/src/lite3_motion_node.cpp": "0334cf7b4c8904e720c113934072e94e6f83b7fde68eb8ffe4388a1033dab2f5"
+  }
+}

@@ -25,6 +25,92 @@
 - 轻度起伏必须实测；SLAM、危险地形理解、移动障碍和完整自训练流程属于后续。
 - 最终任务结果及起点检查沿用原架构，不替换为新的任务方案。
 
+## 2026-10-17：本次同步补充
+
+用户已明确要求提交/推送现有private仓库；下方“本轮不提交推送”属于此前功能实现阶段的历史记录。
+当前README为统一最新入口，旧版已原样归档。根CHANGELOG保存最近bug发现、修复、失败和复测；
+PROJECT_FILES/TREE、SYNC_AUDIT及SNAPSHOT_MANIFEST保存本次扫描和校验，不改变原整体规划。
+
+## 2026-10-17：完整轮廓与任务显示优化（最新）
+
+用户已退出bringup并安装nav2_smac_planner。默认planner改Smac Lattice，5cm diff运动集，
+目标tolerance=0，完整矩形仍.84×.40m/20cm内切半径；原NavFn保存在planner_navfn.yaml，planner:=navfn回退。
+默认MPPI允许vx_min=-.30，Lattice反向扩展；controller:=rpp时launch关闭反向扩展。
+任务恢复给global新增RoutePenaltyLayer软代价200/.18m/12wall秒，结束清空，不是假传感器障碍。
+新增执行路径navigation_path/Marker，原/plan仅关闭的调试预览；状态JSON新增last_result_code/message。
+源头检查发现(4,4,0)旧目标在一次实时雷达图部分轮廓受阻，新版拒绝不是规划器故障；可测试(4,3.5,0)。
+本轮失败/修复/最终安装与测试以SESSION_HANDOFF顶部及FOOTPRINT_REPLANNING为准。
+没有新增节点、不改RL/原ARCHITECTURE/ROADMAP、不提交推送。必须同步终端手册。
+
+## 2026-10-13：二维雷达接入与后续SLAM意向
+
+2026-10-17反应调优最新：stuck_timeout=3、replan_wait=.5、replan_wait_max=2，
+连续无路指数退避，恢复运动后的新受阻窗口重置首等；progress_angle=.20rad，正常原地转向算进展。
+MPPI failure_tolerance=.5仿真秒。新旧验收分开见SESSION_HANDOFF，任务最多5次/用户停止优先保持。
+
+2026-10-17持续避让最新：用户授权实施。默认MPPI配置单独controller_mppi.yaml，
+原controller.yaml保留RPP；bringup支持controller/enable_replanning及配套world/map_yaml。
+任务管理增加pause→等待→有限重规划；motion增加set_navigation_pause，不能解除用户stop。
+接口/参数/校准和真实Gazebo验收以SESSION_HANDOFF顶部为准，不能仅凭源码宣称全部通过。
+新增moving_obstacle临时CLI和模型，不自动投放；现有感知节点增加紧凑雷达物体短期运动估计，
+独立ForecastLayer逐帧清除/过期。不是完整多目标识别或SLAM，节点总体分工不改。
+
+2026-10-17最新：用户要求青色碰撞区进一步调到20cm。两costmap矩形footprint(.80×.36m)、
+padding=.02，实际外沿x±.42/y±.20，替代同日早先30cm配置。保留inflation=.6、速度/RL。
+站立投影宽约.375m，总检查宽.40m侧向余量很小；不能声称覆盖完整步态。
+隔离检查/构建安装实际状态以SESSION_HANDOFF最新记录为准，用户须重启生效。
+实走和完整步态外沿待验收；NavFn不做完整矩形朝向检查，RPP碰撞拦截仍开。
+详细依据和限制见SESSION_HANDOFF顶部、终端手册10.1；不能宣称已解决所有窄通道。
+
+2026-10-14最新：用户授权三维雷达/平地地面筛选/二维障碍投影。
+新增lite3_perception与一个处理节点；31×720点云、前移TORSO x=0.30 z=0.15，
+floor z=0.005/tolerance=0.02/障碍(0.025,0.65]；同戳TF补偿，自己掩蔽。
+/scan变为base_footprint二维障碍投影；raw为/lite3/lidar/points。
+global/local costmap增加VoxelLayer，障碍标记源和保留地面的清除射线源分开，
+真实lidar_link射线原点；静态层/膨胀层保留，不用投影scan清除。
+启动等待感知新鲜，处理节点退出关闭系统。最新验证/安装状态以SESSION_HANDOFF顶部为准。
+仅平地；未实现SLAM、起伏分割或任务自动重规划。新接手者必须先看/scan的语义变化。
+
+用户已明确希望后续实时SLAM建图，本次授权先接雷达；保留原架构和先前已知地图入口。
+Lite3_gazebo.urdf增加TORSO上方0.15米二维GPU雷达，/scan、lidar_link、720点、360°、
+10Hz仿真时间、0.12～12米；无附加惯性/碰撞，不修改RL或控制参数。
+仿真display传入实际生成的URDF，standalone默认Lite3.urdf不变；复用bridge BEST_EFFORT
+发布LaserScan；navigation.rviz显示扫描。三包默认build/install已更新，测试时无用户运行进程。
+独立域191/GZ分区后台站立仿真验证真实扫描、同时间戳TF、箱子添加/移除的测距变化，
+未启动RL/导航任务，测试已退出。雷达运动中质量/用户可见RViz待验收。
+Nav2仍静态层+膨胀层，未接障碍层/重规划/SLAM；下一步先让用户检查扫描对齐。
+操作手册第9.1节、check_scan.py和SESSION_HANDOFF保存实际验收/限制。
+
+## 2026-10-13：总开关和双导航入口
+
+同日最新补充：/lite3/get_navigation_state Trigger只读查询JSON状态（success表示查询成功），
+及Nav2 104空错误文本的中文补充已编码，隔离15项检查通过，默认install待退出后构建。
+实际用户目标(-2.195,4.159,0)已规划77点，控制器预测碰撞并在0.3秒后104，
+失败后关闭总开关并锁定停止；未判定具体碰撞几何根因，未修改速度/碰撞配置。
+
+用户要求已实现于源码：现有mission_manager增加默认关闭的导航总开关，开启后
+Gazebo新选点或终端navigate X Y角度共用任务状态机；CLI默认度数，Action仍弧度。
+显式开启才确认系统并解锁，关闭协调取消停止，失败清理后需重开。无新增常驻节点。
+GUI点击系统时间标识去重和防旧点重放，普通消息重发不执行第二次。
+13项新协议、16项回归、真实GUI插件和bridge验证通过，未做真实新版行走。
+为保护运行中的GUI库只在/tmp隔离构建，默认install仍旧版，待用户退出后构建应用。
+详细状态见SESSION_HANDOFF顶部，命令见NAVIGATION_INTERACTION。RL/控制参数/整体规划未改。
+
+## 2026-10-12：新增 Gazebo 选点预览
+
+用户接受GUI选点入口。lite3_gazebo已新增Lite3TargetPicker GUI插件，simulation默认
+加载项目GUI配置；当前只选位置、显示标记/坐标、复制，并通过现有bridge发布
+/lite3/selected_goal PoseStamped。没有开始导航按钮，不发Action/速度、不加ROS节点。
+当前world/map/odom一致；高度过滤不是地图可通行性检查。真实3D点击需用户重启验收。
+详见SESSION_HANDOFF顶部及RUNBOOK。总体规划、RL、任务协议和控制参数保持原样。
+
+## 2026-10-12：完整系统 launch 入口
+
+用户要求减少启动终端。新增 src/lite3_navigation/launch/bringup.launch.py、scripts/bringup_runtime.py 和 rviz/navigation.rviz；已有 simulation/display launch 新增可选参数且原默认行为保留。lite3_gazebo 安装 maps，导航包安装新资源并补齐运行依赖。
+完整入口自动播放 Gazebo，等待新鲜 /odom、12 关节与仿真时钟，启动阶段锁定速度，顺序配置/激活 map_server、planner_server、controller_server，用伪终端启动已有 RL 并发送原 z/c 状态切换，等待 ONNX ENTER 后请求 external。launch 捕获实际插件 Mode: external 日志确认接管，然后解除此次启动锁并启动常驻 mission_manager。未自动发送任务。
+辅助 ROS 节点就绪后销毁，进程监管自己的 RL 并在退出时回收；UDP 端口占用拒绝新启动，重要子进程退出关闭本套系统。RL 源码/策略、Gazebo 插件、控制器参数、原任务/运动节点源码和 ARCHITECTURE/ROADMAP 未改。仍无雷达、临时障碍感知或重规划。
+启动：source Jazzy 和工作空间后 ros2 launch lite3_navigation bringup.launch.py；另一个终端发送 /navigate_task。不与旧多终端入口并行。测试状态见文末/最新验证补充，不能把启动测试当作新路线行走验收。此次未提交或推送 Git。
+
 ## 最新进度（2026-10-10）
 
 同步补充：用户要求把从开始至今的成果和开发过程完整保存到GitHub。已归档本任务541条可获取可见文字（191用户/350助手）、时间线、当前启动/交互/汇报素材、现存验证证据和实际依赖版本；不含图片附件、内部推理、工具原始输出或账号数据。历史讨论可能被后续修正，以当前源码/README/SESSION_HANDOFF为准。
@@ -115,6 +201,16 @@ Gazebo 与 MuJoCo 不互相通信；运行 Gazebo 控制时不要同时运行 Mu
 零速度停止行走和速度输入超时归零；不要跳过运动验收直接实现导航。
 
 ## 本地检查、恢复与沟通
+
+### 用户要求：终端操作手册持续同步（2026-10-13）
+
+- `docs/TERMINAL_COMMANDS.md` 是独立、统一的日常终端交互操作手册。
+- 后续每次新增或修改启动方式、CLI命令、服务/Action/话题、参数、单位、状态/错误信息，
+  或取消/停止/模式切换规则，必须在同一次开发中同步更新该文档，再交付结果。
+- 更新“最后更新”日期和文末记录；核对实际源码与已安装程序，不把未实现功能写成可用命令。
+- 新源码尚需构建/重启才生效时必须注明。区分日常入口和单模块调试，避免重复运行节点。
+- 每条命令写清终端、前置条件、作用、变量单位和退出方式，保留用户容易复制的完整命令。
+- README/RUNBOOK等文档链接至该手册；后续AI接手同样遵守此维护要求。
 
 - 用户是初学者，使用中文和具体解释；路径用绝对路径，不用波浪符号。
 - 原机器路径是 `/home/ma/lite3_ws` 与 `/home/ma/Lite3_rl_deploy`。

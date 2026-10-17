@@ -62,6 +62,15 @@ class NavMocks(Node):
             cancel_callback=lambda _: CancelResponse.ACCEPT, callback_group=self.group)
         self.create_service(SetBool, '/lite3/set_stop', self.stop, callback_group=self.group)
         self.create_service(SetBool, '/lite3/set_navigation_mode', self.mode, callback_group=self.group)
+        self.metrics['pauses'] = []
+        self.create_service(SetBool, '/lite3/set_navigation_pause', self.pause, callback_group=self.group)
+
+    def pause(self, request, response):
+        with self.lock:
+            self.metrics['pauses'].append(request.data)
+        time.sleep(self.cfg.get('pause_delay', 0.0) if not request.data else 0.0)
+        response.success = self.cfg.get('pause_ok', True)
+        return response
 
     def broadcast(self):
         with self.lock:
@@ -88,6 +97,7 @@ class NavMocks(Node):
     def mode(self, request, response):
         with self.lock:
             self.metrics['modes'].append(request.data)
+        time.sleep(self.cfg.get('mode_delay', 0.0))
         response.success = True
         response.message = '模拟导航模式'
         return response
@@ -109,9 +119,9 @@ class NavMocks(Node):
                 return ComputePathToPose.Result()
             time.sleep(0.01)
         result = ComputePathToPose.Result()
-        result.error_code = cfg.get('plan_error', 0)
+        result.error_code = cfg['plan_errors'].pop(0) if cfg.get('plan_errors') else cfg.get('plan_error', 0)
         if result.error_code:
-            result.error_msg = '模拟规划错误'
+            result.error_msg = cfg.get('plan_error_message', '模拟规划错误')
             handle.abort()
             return result
         result.path = RosPath()
@@ -136,7 +146,8 @@ class NavMocks(Node):
             self.metrics['follows'] += 1
             self.metrics['paths'].append(copy.deepcopy(handle.request.path))
         start = time.monotonic()
-        while time.monotonic() - start < cfg.get('follow_delay', 1.2):
+        duration = cfg['follow_delays'].pop(0) if cfg.get('follow_delays') else cfg.get('follow_delay', 1.2)
+        while time.monotonic() - start < duration:
             if handle.is_cancel_requested and not cfg.get('ignore_cancel'):
                 with self.lock:
                     self.metrics['follow_canceled'] += 1
@@ -148,9 +159,9 @@ class NavMocks(Node):
             handle.publish_feedback(feedback)
             time.sleep(0.03)
         result = FollowPath.Result()
-        result.error_code = cfg.get('follow_error', 0)
+        result.error_code = cfg['follow_errors'].pop(0) if cfg.get('follow_errors') else cfg.get('follow_error', 0)
         if result.error_code:
-            result.error_msg = '模拟跟随错误'
+            result.error_msg = cfg.get('follow_error_msg', '模拟跟随错误')
             handle.abort()
             return result
         p = handle.request.path.poses[-1].pose
@@ -172,6 +183,7 @@ def main():
         raise RuntimeError(f'该 ROS 域已有其他节点，拒绝测试：{existing}')
     mocks = NavMocks()
     client = ActionClient(client_node, NavigateTask, '/navigate_task')
+    gate = client_node.create_client(SetBool, '/lite3/set_navigation_enabled')
     executor = MultiThreadedExecutor(num_threads=8)
     executor.add_node(client_node)
     executor.add_node(mocks)
@@ -183,15 +195,28 @@ def main():
     log_file = None
     passed = []
 
+    def enable_navigation():
+        assert gate.wait_for_service(timeout_sec=5.0)
+        before = len(mocks.metrics['stops'])
+        response = get(gate.call_async(SetBool.Request(data=True)), 8.0)
+        assert response.success, response.message
+        # Explicit user enable is allowed to unlock; audit task-generated stops separately.
+        assert mocks.metrics['stops'][before:] == [False]
+        del mocks.metrics['stops'][before:]
+
     def launch():
         nonlocal process, log_file
         log_file = (log_dir / f'mission-{len(passed)}.log').open('w')
         process = subprocess.Popen([str(executable), '--ros-args',
             '-p', 'use_sim_time:=false', '-p', 'task_timeout:=4.0',
             '-p', 'server_timeout:=1.0', '-p', 'cleanup_timeout:=0.8',
-            '-p', 'pose_max_age:=0.5'], stdout=log_file, stderr=subprocess.STDOUT)
+            '-p', 'pose_max_age:=0.5', '-p', 'enable_replanning:=false'], stdout=log_file, stderr=subprocess.STDOUT)
         assert client.wait_for_server(timeout_sec=5.0)
         time.sleep(0.35)
+        original_stop_ok = mocks.stop_ok
+        mocks.stop_ok = True
+        enable_navigation()
+        mocks.stop_ok = original_stop_ok
 
     def shutdown_process():
         nonlocal process
@@ -216,6 +241,9 @@ def main():
         assert response.result.result_code == expected, response.result
         assert response.status == status, response
         assert process.poll() is None, '任务结束后常驻节点退出了'
+        if expected != 0 and mocks.stop_ok and mocks.publish_tf and \
+                '拒绝后续任务' not in response.result.message:
+            enable_navigation()
         return response.result
 
     def mark(name):
@@ -298,6 +326,7 @@ def main():
         result(h, 8)
         mocks.publish_tf = True
         time.sleep(0.2)
+        enable_navigation()
         mark('缺失/过期位姿不会启动导航')
 
         # 接受响应晚于清理期限：先报故障并拒绝新任务，晚到目标依然取消。
@@ -322,7 +351,7 @@ def main():
         mark('停止服务拒绝时不会虚假报告已安全停止')
         assert mocks.metrics['modes'] and all(mocks.metrics['modes'])
         assert mocks.metrics['stops'] and all(mocks.metrics['stops'])
-        mark('任务节点只选择导航和锁定停止，从不自动解除停止')
+        mark('任务执行不自动解锁；测试显式开启总开关的解锁单独核对')
         output = {'passed': passed, 'count': len(passed), 'domain': os.environ['ROS_DOMAIN_ID'],
                   'actual_robot_motion': False, 'log_dir': str(log_dir)}
         (log_dir/'result.json').write_text(json.dumps(output, ensure_ascii=False, indent=2))

@@ -1,0 +1,86 @@
+[
+  {
+    "file": "mission_protocol.json",
+    "source": "/tmp/lite3-mission-action-2jyf234l/result.json",
+    "original_sha256": "464d705aef778ef8ccfe9926b82ae9d91ea9e9ce9dbcb46dfe4017efe79d713a",
+    "stored_sha256": "464d705aef778ef8ccfe9926b82ae9d91ea9e9ce9dbcb46dfe4017efe79d713a"
+  },
+  {
+    "file": "navigation_gate.json",
+    "source": "/tmp/lite3-navigation-gate-7otcu7yl/result.json",
+    "original_sha256": "3f7575bef3442ebcb1f37dcfc202afc1220598f2d151957d35340e5591f742a3",
+    "stored_sha256": "3f7575bef3442ebcb1f37dcfc202afc1220598f2d151957d35340e5591f742a3"
+  },
+  {
+    "file": "replanning.json",
+    "source": "/tmp/lite3-replanning-u2j9z89e/result.json",
+    "original_sha256": "a3c28f97c68f096e91535d26d1b9248ed18b18c08f3ab6596836ec929e7eef33",
+    "stored_sha256": "a3c28f97c68f096e91535d26d1b9248ed18b18c08f3ab6596836ec929e7eef33"
+  },
+  {
+    "file": "motion_modes.json",
+    "source": "/tmp/lite3-motion-modes-2mfqs6tf/result.json",
+    "original_sha256": "b2efbaf406962e6243208e968540a0a42214793b9e115218e87d59b4c6ad7f00",
+    "stored_sha256": "b2efbaf406962e6243208e968540a0a42214793b9e115218e87d59b4c6ad7f00"
+  },
+  {
+    "file": "rl_response.json",
+    "source": "/tmp/lite3-rl-response-rnd0mo53/result.json",
+    "original_sha256": "65d1cee234494cac204ee36ba2b346f99172eaed4f0f80c5a4add7d33523a302",
+    "stored_sha256": "65d1cee234494cac204ee36ba2b346f99172eaed4f0f80c5a4add7d33523a302"
+  },
+  {
+    "file": "forecast_layer.json",
+    "source": "/tmp/lite3-forecast-layer-wa6megt9/result.json",
+    "original_sha256": "d4ec494437f62f19d236af9b787c71e139bc71c1bb1ea3761de10882ca17308f",
+    "stored_sha256": "d4ec494437f62f19d236af9b787c71e139bc71c1bb1ea3761de10882ca17308f"
+  },
+  {
+    "file": "moving_box_cli.json",
+    "source": "/tmp/lite3-box-cli-9n0szuqh/result.json",
+    "original_sha256": "d53f3b0215e1481708d0b855f674621582864c88dc6ce8efb273c7f05d402d37",
+    "stored_sha256": "d53f3b0215e1481708d0b855f674621582864c88dc6ce8efb273c7f05d402d37"
+  },
+  {
+    "file": "moving_with_turn.json.gz",
+    "source": "/tmp/lite3-avoidance-moving-kdh9ix5a/result.json",
+    "original_sha256": "45bc62b48151555ec06c16c54af9163c60afe8f3ae0b4c07da45558b3ed9f7df",
+    "stored_sha256": "384ebf1a0aa8e643922bcc467129c4b26ebea7f94416af7e5b81695014f79ac4"
+  },
+  {
+    "file": "static_box.json.gz",
+    "source": "/tmp/lite3-avoidance-static-d2iatxpv/result.json",
+    "original_sha256": "906cdb708ca9b200ad94a14b2b58a28f29bfa04897b06dd5e9b476d30e4750a1",
+    "stored_sha256": "72d5bc9a65ba541c5c69e0c633a556d74b812666ce891e4a917e50c6cde1f7d3"
+  },
+  {
+    "file": "failed_reactive_collision.json.gz",
+    "source": "/tmp/lite3-avoidance-moving-1au0s75a/result.json",
+    "original_sha256": "0350b99e03ec6f9d494332f4eeec4fb21657b9a8ada96820fc294c9697fcdff4",
+    "stored_sha256": "7dc37fcbfdff6aa50c9a31c3e0c0268dc25b6aabe59986543ab6fb1fb359017e"
+  },
+  {
+    "file": "failed_goal_drift.json.gz",
+    "source": "/tmp/lite3-avoidance-moving-p1kbqr51/result.json",
+    "original_sha256": "e7db9eb3581e4af54281066124bff0560711c250e7c513710d8d087db67c9110",
+    "stored_sha256": "358b93fd5c0411f395c1103e65ed8fb2b832c1948b21f9427ece400bfd48ea0b"
+  },
+  {
+    "file": "failed_goal_orbit.json.gz",
+    "source": "/tmp/lite3-avoidance-moving-7uo8fqsj/result.json",
+    "original_sha256": "22af62e4ca4a33d931caf56d3d575be2a8c7c2d7a2c15d170bccc2520e187c5c",
+    "stored_sha256": "877c20428bd6cc3979f20b55108741c28d9d9b3afd6643fee2dbe6521ea253df"
+  },
+  {
+    "file": "failed_rpp_handoff.json.gz",
+    "source": "/tmp/lite3-avoidance-clear-ca9tzsj7/result.json",
+    "original_sha256": "4158163ce2978d4ccda38f3cca9eb937fd8c5aa74d236aa1c7d02bcd39a418be",
+    "stored_sha256": "c6b5d6898134cc02cbdc70a6312fffa9fe70ffaad904162c4245c4634ff0a74a"
+  },
+  {
+    "file": "warehouse.json.gz",
+    "source": "/tmp/lite3-avoidance-clear-kraggnjs/result.json",
+    "original_sha256": "bfb646e806cea46a2c8aa0e16299c8cfe984334adf4e30fb302c0594da47d74f",
+    "stored_sha256": "087f1371479281a4636f19a2e9c04dc85b81c0e5f8f2deab1dbd3add9ad843ea"
+  }
+]

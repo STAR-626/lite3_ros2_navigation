@@ -32,7 +32,7 @@ controller_server:
     FollowPath:
       plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
       # 0.32 m/s 已验证短直线和一次仓库长路线；不是策略最低运动速度。
-      desired_linear_vel: 0.32
+      desired_linear_vel: 0.6
 
       lookahead_dist: 0.5
       use_velocity_scaled_lookahead_dist: false
@@ -74,14 +74,60 @@ local_costmap:
       height: 4
       resolution: 0.05
       track_unknown_space: true
-      robot_radius: 0.4
+      # 用户指定20cm青圈的仿真调试值：0.80×0.36m，每侧padding=0.02m。
+      # 实际检查长0.84m、宽0.40m、内切半径0.20m；前后长度保持。
+      # 当前站姿碰撞投影宽约0.375m，侧向余量很小，完整步态需实测。
+      footprint: "[[0.40, 0.18], [-0.40, 0.18], [-0.40, -0.18], [0.40, -0.18]]"
+      footprint_padding: 0.02
 
-      plugins: ["static_layer", "inflation_layer"]
+      plugins: ["static_layer", "voxel_layer", "inflation_layer"]
 
       static_layer:
         plugin: "nav2_costmap_2d::StaticLayer"
         map_topic: /map
         map_subscribe_transient_local: true
+
+      voxel_layer:
+        plugin: "lite3_perception::FlatGroundVoxelLayer"
+        enabled: true
+        footprint_clearing_enabled: true
+        ground_height: 0.005
+        ground_tolerance: 0.02
+        origin_z: 0.0
+        z_resolution: 0.05
+        z_voxels: 14
+        min_obstacle_height: 0.025
+        max_obstacle_height: 0.65
+        mark_threshold: 0
+        unknown_threshold: 14
+        publish_voxel_map: false
+        observation_sources: marking clearing
+        marking:
+          topic: /lite3/perception/obstacles
+          data_type: PointCloud2
+          sensor_frame: lidar_link
+          marking: true
+          clearing: false
+          min_obstacle_height: 0.025
+          max_obstacle_height: 0.65
+          obstacle_min_range: 0.12
+          obstacle_max_range: 12.0
+          observation_persistence: 0.0
+          # 秒；无新点云时costmap不再被视为新鲜。
+          expected_update_rate: 0.5
+        clearing:
+          topic: /lite3/perception/clearing
+          data_type: PointCloud2
+          sensor_frame: lidar_link
+          marking: false
+          clearing: true
+          # 清除射线保留地面/高处有效回波，不用投影scan的虚拟原点。
+          min_obstacle_height: -0.1
+          max_obstacle_height: 12.0
+          raytrace_min_range: 0.12
+          raytrace_max_range: 12.0
+          observation_persistence: 0.0
+          expected_update_rate: 0.5
 
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"

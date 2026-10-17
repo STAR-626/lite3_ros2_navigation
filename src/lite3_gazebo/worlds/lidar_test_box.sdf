@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- 手动验收模型，不由主world自动加载。坐标是Gazebo world=当前map坐标。 -->
+<sdf version="1.8">
+  <model name="lite3_demo_box">
+    <static>true</static>
+    <pose>-2.25 1.79 0.205 0 0 0</pose>
+    <link name="box">
+      <visual name="visual">
+        <geometry><box><size>0.3 0.3 0.4</size></box></geometry>
+        <material>
+          <ambient>0.9 0.4 0.1 1</ambient>
+          <diffuse>0.9 0.4 0.1 1</diffuse>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry><box><size>0.3 0.3 0.4</size></box></geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>

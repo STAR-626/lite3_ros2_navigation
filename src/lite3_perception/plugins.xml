@@ -1,0 +1,17 @@
+<library path="lite3_flat_ground_voxel_layer">
+  <class name="lite3_perception::FlatGroundVoxelLayer"
+         type="lite3_perception::FlatGroundVoxelLayer"
+         base_class_type="nav2_costmap_2d::Layer">
+    <description>Nav2 voxel layer with measured flat-ground endpoint clearing.</description>
+  </class>
+  <class name="lite3_perception::ForecastLayer"
+         type="lite3_perception::ForecastLayer"
+         base_class_type="nav2_costmap_2d::Layer">
+    <description>Short-lived lidar motion occupancy forecast, rebuilt every cycle.</description>
+  </class>
+  <class name="lite3_perception::RoutePenaltyLayer"
+         type="lite3_perception::RoutePenaltyLayer"
+         base_class_type="nav2_costmap_2d::Layer">
+    <description>Expiring soft preference against recently unexecutable route sections.</description>
+  </class>
+</library>

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": [
+    "finite movement stops with zero command",
+    "existing named model refused without moving/resetting it",
+    "Ctrl+C stops box",
+    "remove flag deletes only created box"
+  ]
+}

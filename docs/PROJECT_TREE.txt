@@ -1,0 +1,252 @@
+lite3_ws/
+├── docs/
+│   ├── development_history/
+│   │   ├── conversation/
+│   │   │   ├── 2026-10-01.md
+│   │   │   ├── 2026-10-02.md
+│   │   │   ├── 2026-10-03.md
+│   │   │   ├── 2026-10-04.md
+│   │   │   ├── 2026-10-08.md
+│   │   │   ├── 2026-10-09.md
+│   │   │   ├── 2026-10-10.md
+│   │   │   └── EXPORT_METADATA.json
+│   │   ├── evidence/
+│   │   │   ├── continuous_avoidance_2026-10-17/
+│   │   │   │   ├── README.md
+│   │   │   │   ├── failed_goal_drift.json.gz
+│   │   │   │   ├── failed_goal_orbit.json.gz
+│   │   │   │   ├── failed_reactive_collision.json.gz
+│   │   │   │   ├── failed_rpp_handoff.json.gz
+│   │   │   │   ├── forecast_layer.json
+│   │   │   │   ├── manifest.json
+│   │   │   │   ├── mission_protocol.json
+│   │   │   │   ├── motion_modes.json
+│   │   │   │   ├── moving_box_cli.json
+│   │   │   │   ├── moving_with_turn.json.gz
+│   │   │   │   ├── navigation_gate.json
+│   │   │   │   ├── replanning.json
+│   │   │   │   ├── rl_response.json
+│   │   │   │   ├── static_box.json.gz
+│   │   │   │   ├── summary.json
+│   │   │   │   ├── trajectories.png
+│   │   │   │   └── warehouse.json.gz
+│   │   │   ├── faster_replanning_2026-10-17/
+│   │   │   │   ├── README.md
+│   │   │   │   ├── manifest.json
+│   │   │   │   ├── moving_with_turn.json.gz
+│   │   │   │   └── replanning_protocol.json
+│   │   │   ├── footprint_replanning_2026-10-17/
+│   │   │   │   ├── README.md
+│   │   │   │   ├── failed_final_approach.json.gz
+│   │   │   │   ├── failed_final_approach.log.gz
+│   │   │   │   ├── failed_forward_only_costmap.json.gz
+│   │   │   │   ├── failed_forward_only_moving.json.gz
+│   │   │   │   ├── failed_warehouse_goal.json.gz
+│   │   │   │   ├── failed_warehouse_goal_costmap.json.gz
+│   │   │   │   ├── global_costmap_costmap.npy
+│   │   │   │   ├── lattice_preferred_path.json.gz
+│   │   │   │   ├── local_costmap_costmap.npy
+│   │   │   │   ├── manifest.json
+│   │   │   │   ├── map.npy
+│   │   │   │   ├── moving_before_final_approach_fix.json.gz
+│   │   │   │   ├── moving_final.json.gz
+│   │   │   │   ├── moving_final.log.gz
+│   │   │   │   ├── narrow_corner.json.gz
+│   │   │   │   ├── original_footprint_check.json.gz
+│   │   │   │   ├── original_goal_rejected.json.gz
+│   │   │   │   ├── original_plan.json.gz
+│   │   │   │   ├── original_snapshot.json.gz
+│   │   │   │   ├── path_footprint_check.png
+│   │   │   │   ├── protocol_final.json.gz
+│   │   │   │   ├── route_layer.json.gz
+│   │   │   │   ├── soft_preference.json.gz
+│   │   │   │   ├── verification.json
+│   │   │   │   ├── warehouse_final.json.gz
+│   │   │   │   └── warehouse_final.log.gz
+│   │   │   ├── lidar_2026-10-13/
+│   │   │   │   └── result.json
+│   │   │   ├── lidar_3d_2026-10-14/
+│   │   │   │   └── result.json
+│   │   │   ├── mission_action/
+│   │   │   │   ├── mission-0.log
+│   │   │   │   ├── mission-14.log
+│   │   │   │   └── result.json
+│   │   │   ├── navigation_footprint_2026-10-17/
+│   │   │   │   ├── result.json
+│   │   │   │   └── result_20cm.json
+│   │   │   ├── short_route_initial_cancel/
+│   │   │   │   ├── mission.log
+│   │   │   │   └── result.json
+│   │   │   ├── short_route_success/
+│   │   │   │   ├── mission.log
+│   │   │   │   └── result.json
+│   │   │   ├── MANIFEST.json
+│   │   │   ├── warehouse_controller.log
+│   │   │   └── warehouse_mission.log
+│   │   ├── ENVIRONMENT.json
+│   │   ├── ENVIRONMENT_2026-10-17.json
+│   │   ├── PROGRESS_REPORT_2026-10-10.md
+│   │   ├── README.md
+│   │   ├── README_BEFORE_SYNC_2026-10-17.md
+│   │   ├── SNAPSHOT_MANIFEST_2026-10-10.json
+│   │   ├── SYNC_AUDIT_2026-10-04.md
+│   │   ├── SYNC_AUDIT_2026-10-10.md
+│   │   └── TIMELINE.md
+│   ├── ARCHITECTURE.md
+│   ├── CONTINUOUS_AVOIDANCE.md
+│   ├── FOOTPRINT_REPLANNING.md
+│   ├── NAVIGATION_INTERACTION.md
+│   ├── PROGRESS_REPORT.md
+│   ├── PROJECT_FILES.txt
+│   ├── PROJECT_TREE.txt
+│   ├── ROADMAP.md
+│   ├── RUNBOOK.md
+│   ├── SESSION_HANDOFF.md
+│   ├── SNAPSHOT_MANIFEST.json
+│   ├── SYNC_AUDIT.md
+│   └── TERMINAL_COMMANDS.md
+├── external/
+│   └── lite3_rl_deploy/
+│       ├── patches/
+│       │   └── local-simulation-fixes.patch
+│       ├── policy/
+│       │   └── ppo/
+│       │       └── policy.onnx
+│       ├── snapshots/
+│       │   ├── interface/
+│       │   │   └── user_command/
+│       │   │       ├── keyboard_interface.hpp
+│       │   │       └── udp_velocity_interface.hpp
+│       │   ├── run_policy/
+│       │   │   └── lite3_test_policy_runner_onnx.cpp
+│       │   ├── state_machine/
+│       │   │   ├── rl_control_state_onnx.hpp
+│       │   │   └── state_machine.hpp
+│       │   └── main.cpp
+│       ├── LICENSE.DeepRoboticsLab.txt
+│       ├── README.md
+│       ├── UPSTREAM.json
+│       └── requirements-mujoco.txt
+├── src/
+│   ├── lite3_control/
+│   │   ├── src/
+│   │   │   ├── lite3_gazebo_interface.cpp
+│   │   │   └── lite3_motion_node.cpp
+│   │   ├── test/
+│   │   │   └── check_motion_modes.py
+│   │   ├── CMakeLists.txt
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   └── package.xml
+│   ├── lite3_description/
+│   │   ├── launch/
+│   │   │   └── display.launch.py
+│   │   ├── meshes/
+│   │   │   ├── hip.STL
+│   │   │   ├── shank.STL
+│   │   │   ├── thigh.STL
+│   │   │   └── torso.STL
+│   │   ├── rviz/
+│   │   │   └── lite3.rviz
+│   │   ├── urdf/
+│   │   │   ├── Lite3.urdf
+│   │   │   ├── Lite3_gazebo.urdf
+│   │   │   └── Lite3_original.urdf
+│   │   ├── CMakeLists.txt
+│   │   ├── LICENSE.DeepRoboticsLab.txt
+│   │   └── package.xml
+│   ├── lite3_gazebo/
+│   │   ├── config/
+│   │   │   ├── LICENSE.gui-config.Apache-2.0.txt
+│   │   │   └── target_picker.config
+│   │   ├── gui/
+│   │   │   ├── LICENSE
+│   │   │   ├── Lite3TargetPicker.cc
+│   │   │   ├── Lite3TargetPicker.hh
+│   │   │   ├── Lite3TargetPicker.qml
+│   │   │   └── target_picker.qrc
+│   │   ├── launch/
+│   │   │   └── simulation.launch.py
+│   │   ├── maps/
+│   │   │   ├── large_warehouse.pgm
+│   │   │   └── large_warehouse.yaml
+│   │   ├── src/
+│   │   │   └── BoxContacts.cc
+│   │   ├── test/
+│   │   │   ├── check_picker_bridge.py
+│   │   │   ├── check_scan.py
+│   │   │   └── check_target_picker.cc
+│   │   ├── worlds/
+│   │   │   ├── LICENSE.large_warehouse.txt
+│   │   │   ├── large_warehouse.sdf
+│   │   │   ├── lidar_test_box.sdf
+│   │   │   ├── lite3_dynamic_box.sdf
+│   │   │   └── lite3_empty.sdf
+│   │   ├── CMakeLists.txt
+│   │   └── package.xml
+│   ├── lite3_interfaces/
+│   │   ├── action/
+│   │   │   └── NavigateTask.action
+│   │   ├── CMakeLists.txt
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   └── package.xml
+│   ├── lite3_navigation/
+│   │   ├── config/
+│   │   │   ├── controller.yaml
+│   │   │   ├── controller_mppi.yaml
+│   │   │   ├── mission.yaml
+│   │   │   ├── planner.yaml
+│   │   │   └── planner_navfn.yaml
+│   │   ├── launch/
+│   │   │   └── bringup.launch.py
+│   │   ├── rviz/
+│   │   │   └── navigation.rviz
+│   │   ├── scripts/
+│   │   │   ├── bringup_runtime.py
+│   │   │   ├── moving_obstacle.py
+│   │   │   └── navigate.py
+│   │   ├── src/
+│   │   │   ├── avoidance_controller.cpp
+│   │   │   ├── mission_manager.cpp
+│   │   │   └── mission_manager_once.cpp
+│   │   ├── test/
+│   │   │   ├── check_continuous_avoidance.py
+│   │   │   ├── check_lattice_snapshot.py
+│   │   │   ├── check_mission_manager.py
+│   │   │   ├── check_moving_obstacle.py
+│   │   │   ├── check_navigation_footprint.py
+│   │   │   ├── check_navigation_gate.py
+│   │   │   ├── check_replanning.py
+│   │   │   └── check_rl_response.py
+│   │   ├── CMakeLists.txt
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   ├── controller_plugins.xml
+│   │   └── package.xml
+│   └── lite3_perception/
+│       ├── config/
+│       │   └── flat_ground.yaml
+│       ├── scripts/
+│       │   ├── motion_forecast.py
+│       │   └── pointcloud_obstacles.py
+│       ├── src/
+│       │   ├── flat_ground_voxel_layer.cpp
+│       │   ├── forecast_layer.cpp
+│       │   └── route_penalty_layer.cpp
+│       ├── test/
+│       │   ├── check_costmap_scene.py
+│       │   ├── check_forecast_layer.py
+│       │   ├── check_route_penalty_layer.py
+│       │   ├── test_filter.py
+│       │   └── test_motion_forecast.py
+│       ├── CMakeLists.txt
+│       ├── LICENSE
+│       ├── README.md
+│       ├── package.xml
+│       └── plugins.xml
+├── .gitignore
+├── AGENTS.md
+├── CHANGELOG.md
+├── README.md
+└── THIRD_PARTY_NOTICES.md

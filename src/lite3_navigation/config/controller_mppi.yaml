@@ -1,0 +1,239 @@
+# MPPI机身速度控制；原RL负责关节。原RPP见controller.yaml。
+# 动态横穿验收优先保留距离：上限0.40m/s，3秒候选轨迹，完整轮廓/距离惩罚。
+# ax_max/az_max只约束优化器候选轨迹，不在输出端硬放大命令。
+controller_server:
+  ros__parameters:
+    use_sim_time: true
+    bond_heartbeat_period: 0.0
+    controller_frequency: 20.0
+    costmap_update_timeout: 1.0
+    odom_topic: /odom
+    enable_stamped_cmd_vel: false
+    publish_zero_velocity: true
+    min_x_velocity_threshold: 0.001
+    min_y_velocity_threshold: 0.001
+    min_theta_velocity_threshold: 0.001
+    failure_tolerance: 0.5
+    progress_checker_plugins:
+    - progress_checker
+    goal_checker_plugins:
+    - goal_checker
+    controller_plugins:
+    - FollowPath
+    progress_checker:
+      plugin: nav2_controller::SimpleProgressChecker
+      required_movement_radius: 0.1
+      movement_time_allowance: 20.0
+    goal_checker:
+      plugin: nav2_controller::SimpleGoalChecker
+      # 同时满足位置/朝向才成功，不能“曾经经过目标”后边走边转而漂出目标。
+      # 比任务层0.25m/rad稍紧，为ROS/物理停止延迟保留余量。
+      xy_goal_tolerance: 0.20
+      yaw_goal_tolerance: 0.20
+      stateful: false
+    FollowPath:
+      plugin: lite3_navigation::AvoidanceController
+      goal_approach_distance: 0.65
+      goal_approach_retry: 2.0  # 最终接近被挡，先由MPPI机动，再尝试RPP；实际秒。
+      GoalApproach:
+        # RPP在路线末端才接管，首次需能在完整长路线中找到当前位置。
+        max_robot_pose_search_dist: 1000.0
+        desired_linear_vel: 0.32
+        lookahead_dist: 0.5
+        use_velocity_scaled_lookahead_dist: false
+        use_rotate_to_heading: true
+        rotate_to_heading_angular_vel: 0.6
+        rotate_to_heading_min_angle: 0.5
+        max_angular_accel: 12.0
+        allow_reversing: false
+        use_regulated_linear_velocity_scaling: true
+        regulated_linear_scaling_min_radius: 0.9
+        regulated_linear_scaling_min_speed: 0.08
+        min_approach_linear_velocity: 0.32
+        approach_velocity_scaling_dist: 0.6
+        use_collision_detection: true
+        max_allowed_time_to_collision_up_to_carrot: 1.0
+        transform_tolerance: 0.3
+      time_steps: 60
+      model_dt: 0.05
+      batch_size: 1500
+      iteration_count: 1
+      vx_std: 0.25
+      vy_std: 0.0
+      wz_std: 0.35
+      vx_max: 0.4
+      vx_min: -0.30  # 允许短距离后退脱困；仍优先向前，完整轮廓检查不变。
+      vy_max: 0.0
+      wz_max: 0.6
+      ax_max: 8.0
+      ax_min: -2.0
+      ay_max: 1.0
+      az_max: 12.0
+      temperature: 0.3
+      gamma: 0.015
+      motion_model: DiffDrive
+      visualize: true
+      reset_period: 1.0
+      retry_attempt_limit: 1
+      transform_tolerance: 0.3
+      prune_distance: 1.8
+      regenerate_noises: false
+      TrajectoryVisualizer:
+        trajectory_step: 5
+        time_step: 3
+      critics:
+      - ConstraintCritic
+      - CostCritic
+      - ObstaclesCritic
+      - GoalCritic
+      - GoalAngleCritic
+      - PathAlignCritic
+      - PathFollowCritic
+      - PathAngleCritic
+      - PreferForwardCritic
+      - VelocityDeadbandCritic
+      ConstraintCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 4.0
+      CostCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 8.0
+        critical_cost: 300.0
+        consider_footprint: true
+        collision_cost: 1000000.0
+        near_goal_distance: 0.5
+        trajectory_point_step: 2
+      GoalCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 5.0
+        threshold_to_consider: 1.4
+      GoalAngleCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 8.0
+        threshold_to_consider: 0.8
+      PathAlignCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 1.5
+        max_path_occupancy_ratio: 0.05
+        trajectory_point_step: 3
+        threshold_to_consider: 0.5
+        offset_from_furthest: 10
+        use_path_orientations: true
+      PathFollowCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 4.0
+        offset_from_furthest: 5
+        threshold_to_consider: 1.0
+      PathAngleCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 2.0
+        offset_from_furthest: 4
+        threshold_to_consider: 0.5
+        max_angle_to_furthest: 1.0
+        # 按Lattice给出的机身朝向评分，含原地转向段；不只追中心线切线。
+        mode: 2
+      PreferForwardCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 5.0
+        threshold_to_consider: 0.5
+      VelocityDeadbandCritic:
+        # 目标附近必须允许停下转向；持续低速惩罚会逼迫前进并绕目标打圈。
+        enabled: false
+        cost_power: 1
+        cost_weight: 4.0
+        deadband_velocities:
+        - 0.28
+        - 0.0
+        - 0.0
+      ObstaclesCritic:
+        enabled: true
+        cost_power: 1
+        repulsion_weight: 2.0
+        critical_weight: 40.0
+        consider_footprint: true
+        collision_cost: 100000.0
+        collision_margin_distance: 0.2
+        near_goal_distance: 0.5
+        inflation_radius: 0.6
+        cost_scaling_factor: 3.0
+local_costmap:
+  local_costmap:
+    ros__parameters:
+      use_sim_time: true
+      global_frame: odom
+      robot_base_frame: base_footprint
+      transform_tolerance: 0.3
+      update_frequency: 5.0
+      publish_frequency: 2.0
+      rolling_window: true
+      width: 4
+      height: 4
+      resolution: 0.05
+      track_unknown_space: true
+      footprint: '[[0.40, 0.18], [-0.40, 0.18], [-0.40, -0.18], [0.40, -0.18]]'
+      footprint_padding: 0.02
+      plugins:
+      - static_layer
+      - voxel_layer
+      - forecast_layer
+      - inflation_layer
+      static_layer:
+        plugin: nav2_costmap_2d::StaticLayer
+        map_topic: /map
+        map_subscribe_transient_local: true
+      voxel_layer:
+        plugin: lite3_perception::FlatGroundVoxelLayer
+        enabled: true
+        footprint_clearing_enabled: true
+        ground_height: 0.005
+        ground_tolerance: 0.02
+        origin_z: 0.0
+        z_resolution: 0.05
+        z_voxels: 14
+        min_obstacle_height: 0.025
+        max_obstacle_height: 0.65
+        mark_threshold: 0
+        unknown_threshold: 14
+        publish_voxel_map: false
+        observation_sources: marking clearing
+        marking:
+          topic: /lite3/perception/obstacles
+          data_type: PointCloud2
+          sensor_frame: lidar_link
+          marking: true
+          clearing: false
+          min_obstacle_height: 0.025
+          max_obstacle_height: 0.65
+          obstacle_min_range: 0.12
+          obstacle_max_range: 12.0
+          observation_persistence: 0.0
+          expected_update_rate: 0.5
+        clearing:
+          topic: /lite3/perception/clearing
+          data_type: PointCloud2
+          sensor_frame: lidar_link
+          marking: false
+          clearing: true
+          min_obstacle_height: -0.1
+          max_obstacle_height: 12.0
+          raytrace_min_range: 0.12
+          raytrace_max_range: 12.0
+          observation_persistence: 0.0
+          expected_update_rate: 0.5
+      forecast_layer:
+        plugin: lite3_perception::ForecastLayer
+        enabled: true
+        timeout: 0.5
+      inflation_layer:
+        plugin: nav2_costmap_2d::InflationLayer
+        inflation_radius: 0.6
+        cost_scaling_factor: 3.0
+      always_send_full_costmap: true

@@ -1,0 +1,230 @@
+{
+  "scope": "Actual Gazebo+pretrained RL on empty flat ground, isolated domain197",
+  "records": [
+    {
+      "command_vx": 0.2,
+      "command_wz": 0.0,
+      "sim_duration": 2.0,
+      "displacement_m": 0.2760058121274909,
+      "yaw_change_rad": 0.020793495183172868,
+      "average_speed_m_s": 0.13800290606374546,
+      "average_yaw_rate_rad_s": 0.010396747591586434,
+      "end_pose": [
+        -3.740222364478187,
+        -4.0540714834402864,
+        0.021097981765706295
+      ],
+      "stop": {
+        "command_vx": 0.0,
+        "command_wz": 0.0,
+        "sim_duration": 1.5000000000000009,
+        "displacement_m": 0.019047745391128974,
+        "yaw_change_rad": -0.0375438992873093,
+        "average_speed_m_s": 0.012698496927419308,
+        "average_yaw_rate_rad_s": -0.02502926619153952,
+        "end_pose": [
+          -3.722987773496954,
+          -4.062182308194581,
+          -0.016445917521603005
+        ]
+      }
+    },
+    {
+      "command_vx": 0.32,
+      "command_wz": 0.0,
+      "sim_duration": 2.0,
+      "displacement_m": 0.3905564537754338,
+      "yaw_change_rad": 0.01685555392184755,
+      "average_speed_m_s": 0.1952782268877169,
+      "average_yaw_rate_rad_s": 0.008427776960923774,
+      "end_pose": [
+        -3.3324363703196216,
+        -4.060196090215754,
+        0.00040963640024454894
+      ],
+      "stop": {
+        "command_vx": 0.0,
+        "command_wz": 0.0,
+        "sim_duration": 1.5,
+        "displacement_m": 0.058439402945972045,
+        "yaw_change_rad": -0.035213654010452775,
+        "average_speed_m_s": 0.03895960196398136,
+        "average_yaw_rate_rad_s": -0.02347576934030185,
+        "end_pose": [
+          -3.277088180330883,
+          -4.078950867784475,
+          -0.034804017610208224
+        ]
+      }
+    },
+    {
+      "command_vx": 0.45,
+      "command_wz": 0.0,
+      "sim_duration": 2.0,
+      "displacement_m": 0.6649410534095559,
+      "yaw_change_rad": 0.026556368685613348,
+      "average_speed_m_s": 0.33247052670477795,
+      "average_yaw_rate_rad_s": 0.013278184342806674,
+      "end_pose": [
+        -2.612279081699394,
+        -4.092197259225043,
+        -0.008247648924594874
+      ],
+      "stop": {
+        "command_vx": 0.0,
+        "command_wz": 0.0,
+        "sim_duration": 1.5,
+        "displacement_m": 0.09721271433085012,
+        "yaw_change_rad": -0.019013823509726253,
+        "average_speed_m_s": 0.06480847622056675,
+        "average_yaw_rate_rad_s": -0.012675882339817502,
+        "end_pose": [
+          -2.519002047330134,
+          -4.119578031435617,
+          -0.027261472434321126
+        ]
+      }
+    },
+    {
+      "command_vx": 0.6,
+      "command_wz": 0.0,
+      "sim_duration": 1.5009999999999994,
+      "displacement_m": 0.6933638672812631,
+      "yaw_change_rad": 0.03678773717105259,
+      "average_speed_m_s": 0.46193462177299355,
+      "average_yaw_rate_rad_s": 0.024508818901434113,
+      "end_pose": [
+        -1.825662013433055,
+        -4.125326931054364,
+        0.009526264736731465
+      ],
+      "stop": {
+        "command_vx": 0.0,
+        "command_wz": 0.0,
+        "sim_duration": 1.5,
+        "displacement_m": 0.097105569020468,
+        "yaw_change_rad": -0.012343437175219104,
+        "average_speed_m_s": 0.06473704601364534,
+        "average_yaw_rate_rad_s": -0.008228958116812736,
+        "end_pose": [
+          -1.7297476202785387,
+          -4.140490067952438,
+          -0.002817172438487638
+        ]
+      }
+    },
+    {
+      "command_vx": 0.0,
+      "command_wz": 0.2,
+      "sim_duration": 2.0,
+      "displacement_m": 0.011128862550126973,
+      "yaw_change_rad": 0.048457438263898193,
+      "average_speed_m_s": 0.005564431275063487,
+      "average_yaw_rate_rad_s": 0.024228719131949097,
+      "end_pose": [
+        -1.740808263202285,
+        -4.13925971850086,
+        0.045640265825410566
+      ],
+      "stop": {
+        "command_vx": 0.0,
+        "command_wz": 0.0,
+        "sim_duration": 1.5,
+        "displacement_m": 0.008441800367075225,
+        "yaw_change_rad": -0.04675066663833182,
+        "average_speed_m_s": 0.005627866911383484,
+        "average_yaw_rate_rad_s": -0.031167111092221214,
+        "end_pose": [
+          -1.7324121603910518,
+          -4.140136902073867,
+          -0.0011104008129212536
+        ]
+      }
+    },
+    {
+      "command_vx": 0.0,
+      "command_wz": 0.4,
+      "sim_duration": 2.0,
+      "displacement_m": 0.025927834406164137,
+      "yaw_change_rad": 0.3749825156372549,
+      "average_speed_m_s": 0.012963917203082069,
+      "average_yaw_rate_rad_s": 0.18749125781862744,
+      "end_pose": [
+        -1.7579839546468143,
+        -4.135854854020141,
+        0.37387211482433363
+      ],
+      "stop": {
+        "command_vx": 0.0,
+        "command_wz": 0.0,
+        "sim_duration": 1.5,
+        "displacement_m": 0.013591025679295776,
+        "yaw_change_rad": -0.12268636282855862,
+        "average_speed_m_s": 0.009060683786197184,
+        "average_yaw_rate_rad_s": -0.08179090855237241,
+        "end_pose": [
+          -1.7447525616436514,
+          -4.138960690173438,
+          0.25118575199577503
+        ]
+      }
+    },
+    {
+      "command_vx": 0.0,
+      "command_wz": 0.6,
+      "sim_duration": 2.0,
+      "displacement_m": 0.020378004618234476,
+      "yaw_change_rad": 1.0996993058451605,
+      "average_speed_m_s": 0.010189002309117238,
+      "average_yaw_rate_rad_s": 0.5498496529225803,
+      "end_pose": [
+        -1.7601426345589466,
+        -4.125603717167451,
+        1.3508850578409355
+      ],
+      "stop": {
+        "command_vx": 0.0,
+        "command_wz": 0.0,
+        "sim_duration": 1.5,
+        "displacement_m": 0.02059182297795576,
+        "yaw_change_rad": -0.0396936279645308,
+        "average_speed_m_s": 0.013727881985303841,
+        "average_yaw_rate_rad_s": -0.02646241864302053,
+        "end_pose": [
+          -1.744248555594002,
+          -4.112511680373599,
+          1.3111914298764047
+        ]
+      }
+    },
+    {
+      "command_vx": 0.35,
+      "command_wz": 0.4,
+      "sim_duration": 3.0000000000000036,
+      "displacement_m": 0.8148310102892697,
+      "yaw_change_rad": 1.3595111845810717,
+      "average_speed_m_s": 0.2716103367630896,
+      "average_yaw_rate_rad_s": 0.4531703948603567,
+      "end_pose": [
+        -2.137591784851884,
+        -3.3989076730095613,
+        2.6707026144574764
+      ],
+      "stop": {
+        "command_vx": 0.0,
+        "command_wz": 0.0,
+        "sim_duration": 1.5,
+        "displacement_m": 0.07090387829193358,
+        "yaw_change_rad": -0.010739541904923211,
+        "average_speed_m_s": 0.047269252194622385,
+        "average_yaw_rate_rad_s": -0.007159694603282141,
+        "end_pose": [
+          -2.1903034842375817,
+          -3.3514857719014324,
+          2.659963072552553
+        ]
+      }
+    }
+  ],
+  "log_dir": "/tmp/lite3-rl-response-rnd0mo53"
+}
