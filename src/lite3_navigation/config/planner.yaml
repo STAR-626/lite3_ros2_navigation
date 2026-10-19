@@ -10,7 +10,7 @@ planner_server:
       plugin: "nav2_smac_planner::SmacPlannerLattice"
       tolerance: 0.0
       allow_unknown: false
-      # bringup按实际安装位置填入diff运动集，匹配5cm地图，含原地转向。
+      # bringup按实际安装位置填入omni运动集；原RPP回退使用diff，均匹配5cm地图。
       lattice_filepath: ""
       max_iterations: 1000000
       max_on_approach_iterations: 1000
@@ -44,11 +44,11 @@ global_costmap:
       resolution: 0.05
       rolling_window: false
       track_unknown_space: true
-      # 与局部图保持相同轮廓/内切半径，缩小横向保守区。
-      # 用户指定20cm青圈的仿真调试值；包含padding后的总宽度0.40m。
+      # 与局部图保持相同导航保护轮廓，预留跟踪与离散地图误差。
+      # 保护外沿新增每侧5cm误差余量；含padding后0.94×0.50m，内切半径25cm。
       # Lattice在规划时检查矩形随朝向的碰撞；执行阶段仍保留完整轮廓检查。
       footprint: "[[0.40, 0.18], [-0.40, 0.18], [-0.40, -0.18], [0.40, -0.18]]"
-      footprint_padding: 0.02
+      footprint_padding: 0.07
 
       plugins: ["static_layer", "voxel_layer", "forecast_layer", "route_penalty_layer", "inflation_layer"]
 
@@ -64,12 +64,12 @@ global_costmap:
         ground_height: 0.005
         ground_tolerance: 0.02
         origin_z: 0.0
-        z_resolution: 0.05
-        z_voxels: 14
+        z_resolution: 0.1
+        z_voxels: 7
         min_obstacle_height: 0.025
         max_obstacle_height: 0.65
         mark_threshold: 0
-        unknown_threshold: 14
+        unknown_threshold: 7
         publish_voxel_map: false
         observation_sources: marking clearing
         marking:

@@ -44,6 +44,16 @@ class Filtering(unittest.TestCase):
         self.assertEqual(floor.tolist(), [True, False])
         self.assertEqual(obstacles.tolist(), [False, True])
 
+    def test_range_uncertainty_and_no_hit_not_marked(self):
+        sensor=np.array([[1.,0.,0.],[8.,0.,0.],[12.,0.,0.]])
+        world=np.array([[1.,0.,.04],[8.,0.,.04],[12.,0.,.3]])
+        obs,clear,ground=module.classify(sensor,world,world,.005,.02,.65,
+            np.array([-.38,-.28,-.5]),np.array([.38,.28,.18]),.12,12,
+            range_uncertainty=.003)
+        self.assertEqual(obs.tolist(),[True,False,False])
+        self.assertTrue(clear.all())
+        self.assertFalse(ground.any())  # Uncertain low returns cannot clear as floor.
+
     def test_projection(self):
         ranges = module.project(np.array([[2, 0, .1], [1, 0, .5],
                                           [0, 3, .3], [20, 0, .3]]), 720, .12, 12)

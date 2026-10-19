@@ -1,0 +1,20 @@
+{
+  "user_goal_map": "/tmp/lite3-stuck-readonly-20261018-d9ilw7eq",
+  "user_start_map": "/tmp/lite3-stuck-readonly-20261018-3ieoeb75",
+  "native_diff_start205": "/tmp/lite3-lattice-snapshot-2kar1ujd",
+  "native_omni_start_success": "/tmp/lite3-lattice-snapshot-x9ijikie",
+  "rl_lateral": "/tmp/lite3-rl-response-g7rjq3jw",
+  "failed_plane_only_static": "/tmp/lite3-avoidance-static-_4so_d5j",
+  "failed_tf_transient": "/tmp/lite3-avoidance-clear-4akglhe6",
+  "arrived_but_bad_surface_assertion": "/tmp/lite3-avoidance-static-ze18m9by",
+  "intermediate_static_success": "/tmp/lite3-avoidance-static-jzbfk089",
+  "failed_omni_small_commands": "/tmp/lite3-avoidance-moving-bszvm5lo",
+  "failed_response_critic_contact": "/tmp/lite3-avoidance-moving-no1zkyib",
+  "failed_response_guard_blocked": "/tmp/lite3-avoidance-moving-b3v4pxpu",
+  "failed_response_invalid_path103": "/tmp/lite3-avoidance-moving-rkukkjay",
+  "failed_ground_height_assertion": "/tmp/lite3-ground-scene-20261018-_fgmglkq",
+  "final_low_box_clearance": "/tmp/lite3-ground-scene-20261018-v_n2dlhk",
+  "final_native_ground_tag": "/tmp/lite3-ground-tag-u0s00ijq",
+  "final_moving_and_turn": "/tmp/lite3-avoidance-moving-ehaf1nsr",
+  "final_user_box_warehouse": "/tmp/lite3-avoidance-static-bo1o6b0h"
+}

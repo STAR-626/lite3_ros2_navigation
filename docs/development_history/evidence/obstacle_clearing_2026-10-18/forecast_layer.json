@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": [
+    "forecast TF transform and lethal marking; static retained",
+    "moving overlay clears previous cells and inflation",
+    "empty frame clears forecast",
+    "expired observation clears forecast but retains static map"
+  ]
+}

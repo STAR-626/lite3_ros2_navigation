@@ -1,12 +1,59 @@
 # Lite3 ROS2 Navigation Simulation
 
+## 2026-10-19：当前状态与未解决问题
+
+已保存近期感知、规划/控制、后台路线优化和Gazebo双用途面板实现，整体方案不变。
+用户现场报告：三个新增箱子在全局costmap中的部分边沿随观察角度反复出现/消退，
+导航因此可能反复换路。只读采样约12秒、11帧全局地图中，168个格子至少两次切换致命/非致命状态；
+机器人同期移动，合并图还含预测层，因此这不是“168个真实箱子格被误清除”的直接证据。
+遮挡误清除、标记确认、离散体素/TF及预测层均需逐层验证，根因未确认，尚未修复。
+用户本轮要求先暂停排查并同步GitHub；没有为此调整导航逻辑、清除规则或切换阈值。
+
+近期隔离验证通过不等于当前完整Gazebo＋RL动态避障稳定；不能把历史成功写成本版本全部验收。
+详情见[已知问题](docs/KNOWN_ISSUES.md)和[当前架构](docs/CURRENT_ARCHITECTURE.md)。
+后续新增自然语言交互入口属于计划：解析目标/地点和任务意图后复用原任务接口，
+仍保留终端/Gazebo选点、合法性检查、停止锁定；尚未新增节点、模型或API依赖。
+
+## Gazebo图形化动态障碍操作（2026-10-18）
+
+原“Lite3目标选点”面板已扩展为“Lite3 导航与动态障碍”：导航目标页保留原操作；
+动态箱子页支持尺寸/速度设置、点击地面放置、WASD或方向按钮按住移动、松开停止及移除。
+不新增ROS2节点，不控制机器狗速度。界面和独立Gazebo物理验证通过，完整动态导航仍需现场验收。
+详细操作见[双用途面板说明](docs/GAZEBO_DUAL_PANEL.md)。
+
+
+## 最新导航更新：旧障碍清除与行走中路线优化（2026-10-18）
+
+已补齐“确认箱子移走→清除costmap→后台规划→明显缩短时交接新路线”的链路。
+约每2秒检查，至少缩短0.5米且15%才更新，接近终点不切换，不主动暂停当前控制。
+原取消/停止/有限恢复规则保留，没有增加节点。真实雷达/双costmap/Smac/MPPI隔离链路通过，
+测试路线约3.45m→2.33m；尚未进行本版本完整机器狗＋RL实走验收。
+详见[路线优化说明](docs/ROUTE_REFRESH.md)。
+
+
+## 最新感知修复：移走箱子后的地图清除（2026-10-18）
+
+已补充Gazebo三维雷达有效无命中射线的清除信息，修复一种高箱子移走后两张costmap残留问题。
+28项单元与七项真实雷达/双地图隔离验证通过，静态障碍及被遮挡旧记录保留。
+该清除修复的隔离测试未包含RL/机器狗实走；后台路线优化随后已接入，见上节。
+详见[感知说明](src/lite3_perception/README.md)及[证据](docs/development_history/evidence/obstacle_clearing_2026-10-18/README.md)。
+
+
 基于 **Ubuntu 24.04、ROS2 Jazzy、Gazebo Harmonic、RViz2** 的 Lite3 四足机器人导航仿真课程项目。
 使用 DeepRobotics / DeepRoboticsLab 的模型和预训练运动策略：RL负责关节运动，Nav2负责路线与局部避让。
 演示运行策略推理，不现场训练；Gazebo与MuJoCo不需要同时运行。
 
-**当前检查点：2026-10-17。** 本页说明当前成果；旧版首页原样保存在
+**当前检查点：2026-10-19。** 本页说明当前成果；旧版首页原样保存在
 [历史README](docs/development_history/README_BEFORE_SYNC_2026-10-17.md)。
 后续AI先阅读[AGENTS.md](AGENTS.md)和[SESSION_HANDOFF](docs/SESSION_HANDOFF.md)。
+
+## 安全缓冲候选修复：需要重新实走验收
+
+2026-10-18新增实际速度停止预测与缓冲限速；导航保护外沿调整为0.94×0.50m。
+本版本仅临时副本编译、14项数值及合成Nav2数据验证，尚无新配置Gazebo/RL实走结果。
+下面历史实走通过记录属于此前配置，不能冒充本候选已经通过。
+完整应用、参数含义、测试与限制见[安全缓冲手册](docs/SAFETY_BUFFER.md)。
+没有新增节点或改RL；仍未保证长距离后退、路线偏离、全部卡住问题已解决。
 
 ## 已经完成
 
@@ -17,13 +64,20 @@
 - 终端目标或Gazebo选点导航，导航总开关、任务反馈、取消、结果分类、最后结果查询。
 - 三维雷达、平地地面/自身过滤、二维障碍投影，全局与局部costmap融合静态图和实测障碍。
 - 紧凑雷达物体的短期运动估计及独立过期预测层，MPPI途中避让、RPP最终接近。
-- 受阻暂停、等待与有限重规划；Lattice规划时检查矩形朝向，近期失败路段软偏好、必要时后退。
+- 受阻暂停、等待与有限重规划；Lattice规划时检查矩形朝向，近期失败路段软偏好、必要时后退和横移。
 - RViz显示当前执行路线和任务状态，结束/恢复时清除旧执行路线，减少误判“仍在卡住”。
 
-**最新实际验证：** 仓库目标(4,3.5,0°)到达；途中加入并持续横穿的箱子避让到达，追加90°目标也到达。
-后者主任务重规划5次、机器人与箱子接触记录0，接触数据正常。
-这是有限场景的实际证据，不是任意环境零碰撞保证；最终结果与迭代失败均见
-[本轮证据](docs/development_history/evidence/footprint_replanning_2026-10-17/README.md)。
+**本轮修复：** 默认规划/控制匹配横移能力；平地拟合、连续回波确认与远距贴地不确定带；
+竖向体素调整及明确ground清除标记；最终实际速度另做1秒完整轮廓前视检查。
+103本地路径失效可有限重新规划，TF等系统错误仍区别处理。没有缩小机器人轮廓或改RL策略。
+
+**2026-10-18较早配置的实际验证（不是随后安全缓冲和GUI版本的完整验收）：** 原仓库中途加入1m箱，目标(4,3.5,0°)到达、重规划1次；
+持续横穿箱子及追加90°目标均到达，主任务重规划5次。两场测试箱接触均为0，接触数据正常。
+低箱标记/移除清除、高处过滤、20项感知单元、16项任务协议和4项原生体素检查通过。
+移动场景已用满5次恢复，仍有低速响应、遮挡和窄处受阻限制，不能宣称所有卡住问题解决。
+低速评分试验未通过物理回归，代码保留但默认禁用；失败和成功都见
+[2026-10-18证据](docs/development_history/evidence/obstacle_reliability_2026-10-18/README.md)。
+2026-10-19统一保存这些后续修改；各开发证据中的“未提交”描述保留为当时记录。
 
 ## 系统如何运作
 
@@ -85,7 +139,7 @@ Nav2内部还有costmap节点，启动有短时辅助节点；RL和Gazebo插件�
 
 ## 实际目录
 
-完整文件清单与SHA256在[SNAPSHOT_MANIFEST](docs/SNAPSHOT_MANIFEST.json)，本次扫描见[SYNC_AUDIT](docs/SYNC_AUDIT.md)。
+2026-10-19同步的完整文件清单与SHA256在[SNAPSHOT_MANIFEST](docs/SNAPSHOT_MANIFEST.json)，本次检查见[SYNC_AUDIT](docs/SYNC_AUDIT.md)。各次开发证据保留当时配置及验证范围，不能替代当前完整系统验收。
 下面是按当前实际文件生成的主要目录概要，并非仅上传这些列举项：
 
 ```text
@@ -121,7 +175,8 @@ source /opt/ros/jazzy/setup.bash
 cd /home/ma/lite3_ws
 sudo apt-get install python3-colcon-common-extensions python3-rosdep \
   ros-jazzy-ros-gz ros-jazzy-rviz2 ros-jazzy-joint-state-publisher-gui \
-  ros-jazzy-nav2-smac-planner ros-jazzy-nav2-mppi-controller
+  ros-jazzy-nav2-smac-planner ros-jazzy-nav2-mppi-controller \
+  ros-jazzy-nav2-rotation-shim-controller
 # rosdep尚未初始化的电脑先执行sudo rosdep init（只做一次）
 rosdep update
 rosdep install --from-paths src --ignore-src --rosdistro jazzy -r -y

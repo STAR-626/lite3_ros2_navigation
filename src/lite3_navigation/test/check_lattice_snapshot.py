@@ -35,6 +35,7 @@ def main():
     parser.add_argument('--penalty-check', action='store_true', help='开阔地图验证失败路段软代价会改变路线')
     parser.add_argument('--start', type=float, nargs=3, metavar=('X','Y','YAW_RAD'))
     parser.add_argument('--reverse', action='store_true')
+    parser.add_argument('--motion-model', choices=['diff','omni'], default='diff')
     parser.add_argument('--goal-x', type=float, default=-4.137228)
     parser.add_argument('--goal-y', type=float, default=-3.516892)
     parser.add_argument('--goal-yaw', type=float, default=0., help='弧度')
@@ -123,7 +124,7 @@ def main():
                 if args.penalty_check:
                     cm['plugins'].insert(1, 'route_penalty_layer')
                 cp['GridBased']['lattice_filepath'] = str(Path(get_package_share_directory('nav2_smac_planner'))/
-                    'sample_primitives/5cm_resolution/0.5m_turning_radius/diff/output.json')
+                    ('sample_primitives/5cm_resolution/0.5m_turning_radius/'+args.motion_model+'/output.json'))
             f = output/(profile+'.yaml'); f.write_text(yaml.safe_dump(cfg))
             log = (output/(profile+'.log')).open('w')
             current = subprocess.Popen(['ros2', 'run', 'nav2_planner', 'planner_server',

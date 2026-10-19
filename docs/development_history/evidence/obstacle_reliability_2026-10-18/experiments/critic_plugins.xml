@@ -1,0 +1,6 @@
+<library path="lite3_response_critic">
+  <class name="mppi::critics::Lite3ResponseCritic" type="mppi::critics::Lite3ResponseCritic"
+         base_class_type="mppi::critics::CriticFunction">
+    <description>Soft preference for executable RL motion; allows waiting and disables near the final goal.</description>
+  </class>
+</library>

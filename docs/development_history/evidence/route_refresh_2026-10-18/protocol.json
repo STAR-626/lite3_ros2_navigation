@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "checks": [
+    "shorter path preempts once without pause/stop/recovery budget; retired result ignored",
+    "remaining suffix comparison does not mistake normal progress for improvement",
+    "absolute improvement threshold prevents marginal route churn",
+    "relative improvement threshold prevents marginal route churn",
+    "near-goal route is not replaced",
+    "optional planner failure preserves current route",
+    "timed out planner preserves current route",
+    "wrong endpoint preserves current route",
+    "cancel cleans in-flight background planner and prevents late route replacement",
+    "cancel while replacement acceptance is pending cleans both old and late new goals",
+    "arrival waits for background cancellation without disabling navigation",
+    "navigation OFF cancels foreground and background tasks"
+  ],
+  "robot_motion": false
+}

@@ -1,0 +1,11 @@
+{
+  "CMakeLists.txt": "63ed0641a0314d752e1eb8ad3ca66ddee48afed8ca5c4fd0374ee8ebf74ae325",
+  "gui/Lite3TargetPicker.cc": "60e5a0bceaeed95219d6d64070d5494b332c556a4d58619b4ca9006146006e87",
+  "gui/Lite3TargetPicker.hh": "6e22b532072571174dce0616002f046067dbf13d431a89d3613132a2c799400b",
+  "gui/Lite3TargetPicker.qml": "f318c1bbbf9612a5f5f5294a528788e68c5d89b4da19f7d7f6a4a8fb8854ad04",
+  "src/BoxCommandGuard.cc": "711a23d2f482cfb4d38fa7760410c12cdfd12c71c2c66b04514911092fa3b604",
+  "config/target_picker.config": "8f848719181693b3a453827c22074d657311807f8b11445348a9208427fb13ce",
+  "test/check_target_picker.cc": "3bc752bdf3c46e2955307a1efb08679eb0e0e0cb856a68000afeef5a0375b645",
+  "test/check_picker_box_world.cc": "ff32c086278d9bf27d8781ca8b32c65c9b6b0ea9bc4ff6c532a3cd70852b3bee",
+  "test/fixtures/picker_box_world.sdf": "6e28483d01523706740fe4e78e1c941c78998dc6c25027275933a39973533eb3"
+}

@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 #include <cmath>
+#include <algorithm>
+#include <memory>
 #include "nav2_costmap_2d/voxel_layer.hpp"
 #include "pluginlib/class_list_macros.hpp"
 #include "sensor_msgs/point_cloud2_iterator.hpp"
@@ -40,8 +42,18 @@ protected:
     sensor_msgs::PointCloud2Iterator<float> x(*corrected.cloud_, "x");
     sensor_msgs::PointCloud2Iterator<float> y(*corrected.cloud_, "y");
     sensor_msgs::PointCloud2Iterator<float> z(*corrected.cloud_, "z");
+    const bool tagged = std::any_of(corrected.cloud_->fields.begin(),
+      corrected.cloud_->fields.end(), [](const sensor_msgs::msg::PointField & f) {
+        return f.name == "ground" && f.datatype == sensor_msgs::msg::PointField::FLOAT32;
+      });
+    std::unique_ptr<sensor_msgs::PointCloud2Iterator<float>> ground;
+    if (tagged) {ground = std::make_unique<sensor_msgs::PointCloud2Iterator<float>>(
+        *corrected.cloud_, "ground");}
     for (; x != x.end(); ++x, ++y, ++z) {
-      if (std::abs(*z - ground_height_) > ground_tolerance_) {
+      const bool is_ground = tagged ? **ground > .5f :
+        std::abs(*z - ground_height_) <= ground_tolerance_;
+      if (tagged) {++(*ground);}
+      if (!is_ground) {
         continue;
       }
       const double dx = *x - corrected.origin_.x;

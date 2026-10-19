@@ -21,6 +21,13 @@ find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(nav2_core REQUIRED)
 find_package(pluginlib REQUIRED)
+find_package(nav2_mppi_controller REQUIRED)
+
+add_library(lite3_response_critic SHARED src/rl_response_critic.cpp)
+target_compile_features(lite3_response_critic PRIVATE cxx_std_17)
+ament_target_dependencies(lite3_response_critic nav2_mppi_controller pluginlib)
+pluginlib_export_plugin_description_file(nav2_mppi_controller critic_plugins.xml)
+install(TARGETS lite3_response_critic LIBRARY DESTINATION lib)
 
 add_library(lite3_avoidance_controller SHARED src/avoidance_controller.cpp)
 target_compile_features(lite3_avoidance_controller PRIVATE cxx_std_17)

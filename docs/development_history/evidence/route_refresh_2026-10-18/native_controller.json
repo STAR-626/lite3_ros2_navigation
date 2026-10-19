@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "real Rotation Shim/MPPI controller accepts replacement FollowPath",
+    "parent task survives native old-goal preemption",
+    "native velocity output continues after replacement",
+    "no pause/stop calls for optimization; cancel remains authoritative"
+  ],
+  "robot_motion": false,
+  "gazebo_started": false
+}

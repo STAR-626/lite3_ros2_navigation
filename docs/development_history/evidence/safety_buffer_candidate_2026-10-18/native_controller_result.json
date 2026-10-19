@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "checks": [
+    "stationary robot may rotate in free space; native Rotation Shim and MPPI loaded",
+    "measured 0.4m/s momentum towards wall rejects turn/stop request; no nonzero output"
+  ],
+  "buffer_speed_cap_verified": true,
+  "actual_robot_motion": false,
+  "gazebo_started": false,
+  "domain": 209,
+  "log_dir": "/tmp/lite3-safety-controller-ryl2201h"
+}

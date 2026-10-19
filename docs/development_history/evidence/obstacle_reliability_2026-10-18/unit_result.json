@@ -1,0 +1,7 @@
+{
+  "date": "2026-10-18",
+  "command": "python3 -m unittest discover -s src/lite3_perception/test -p 'test_*.py'",
+  "tests": 20,
+  "passed": true,
+  "actual_robot_motion": false
+}

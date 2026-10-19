@@ -33,7 +33,7 @@ target_link_libraries(Lite3TargetPicker PRIVATE
   gz-transport13::core gz-msgs10::gz-msgs10
   Qt5::Core Qt5::Quick Qt5::QuickControls2)
 install(TARGETS Lite3TargetPicker LIBRARY DESTINATION lib)
-add_library(Lite3BoxContacts SHARED src/BoxContacts.cc)
+add_library(Lite3BoxContacts SHARED src/BoxContacts.cc src/BoxCommandGuard.cc)
 target_compile_features(Lite3BoxContacts PRIVATE cxx_std_17)
 target_link_libraries(Lite3BoxContacts PRIVATE
   gz-sim8::gz-sim8 gz-plugin2::gz-plugin2-register
@@ -58,6 +58,15 @@ if(BUILD_TESTING)
   add_test(NAME target_picker_interaction COMMAND check_target_picker)
   set_tests_properties(target_picker_interaction PROPERTIES TIMEOUT 30
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen;QT_QUICK_BACKEND=software;GZ_GUI_PLUGIN_PATH=$<TARGET_FILE_DIR:Lite3TargetPicker>")
+  add_executable(check_picker_box_world test/check_picker_box_world.cc)
+  add_dependencies(check_picker_box_world Lite3TargetPicker Lite3BoxContacts)
+  target_link_libraries(check_picker_box_world PRIVATE gz-gui8::gz-gui8
+    gz-transport13::core gz-msgs10::gz-msgs10 Qt5::Core Qt5::Quick)
+  target_compile_features(check_picker_box_world PRIVATE cxx_std_17)
+  add_test(NAME picker_box_physics COMMAND check_picker_box_world
+    ${CMAKE_CURRENT_SOURCE_DIR}/test/fixtures/picker_box_world.sdf)
+  set_tests_properties(picker_box_physics PROPERTIES TIMEOUT 45
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen;QT_QUICK_BACKEND=software;GZ_GUI_PLUGIN_PATH=$<TARGET_FILE_DIR:Lite3TargetPicker>;GZ_SIM_SYSTEM_PLUGIN_PATH=$<TARGET_FILE_DIR:Lite3BoxContacts>")
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
   # comment the line when a copyright and license is added to all source files

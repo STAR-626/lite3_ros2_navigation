@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "tests": {
+    "target_picker_interaction": {
+      "passed": true,
+      "seconds": 6.58
+    },
+    "picker_box_physics": {
+      "passed": true,
+      "seconds": 7.73
+    }
+  },
+  "scope": [
+    "actual QML with injected scene/key events and mock create/remove/scene services",
+    "actual isolated Gazebo physics, GUI-spawned collidable box, world-axis motion after yaw, release stop, command deadman, owned-only removal"
+  ],
+  "robot_started": false,
+  "rl_started": false,
+  "full_navigation_tested": false
+}

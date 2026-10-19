@@ -1,0 +1,31 @@
+{
+  "passed": false,
+  "out": "/tmp/lite3-clearing-scene-3iwy7gd8",
+  "robot_started": false,
+  "rl_started": false,
+  "after_remove": {
+    "/global_costmap/costmap": 100,
+    "/local_costmap/costmap": 100
+  },
+  "checks": [
+    "initial free area",
+    "both real boxes persist while present"
+  ],
+  "perception_status": {
+    "frame": "lidar_link",
+    "mode": "flat_ground",
+    "finite_input": 14504,
+    "obstacles": 311,
+    "raw_obstacles": 313,
+    "ground": 12331,
+    "clearing": 12918,
+    "ground_plane": [
+      0.00011474717940873597,
+      5.048887543431229e-05,
+      0.002357494566198137
+    ],
+    "max_height_m": 0.65,
+    "moving_clusters": [],
+    "forecast_points": 0
+  }
+}

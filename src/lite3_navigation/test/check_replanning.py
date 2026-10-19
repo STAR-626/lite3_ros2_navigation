@@ -40,7 +40,7 @@ def main():
     log = (directory/'mission.log').open('w')
     executable = Path(get_package_prefix('lite3_navigation'))/'lib/lite3_navigation/mission_manager'
     process = subprocess.Popen([str(executable), '--ros-args', '-p', 'use_sim_time:=false',
-        '-p', 'enable_replanning:=true', '-p', 'max_replans:=2', '-p', 'replan_wait:=0.3',
+        '-p', 'enable_replanning:=true', '-p', 'enable_route_refresh:=false', '-p', 'max_replans:=2', '-p', 'replan_wait:=0.3',
         '-p', 'replan_wait_max:=0.6',
         '-p', 'recovery_timeout:=5.0', '-p', 'stuck_timeout:=0.7',
         '-p', 'task_timeout:=8.0', '-p', 'planning_timeout:=1.5',
@@ -98,6 +98,10 @@ def main():
         prepare({'follow_errors': [106, 105, 0], 'follow_delay': .08})
         outcome(submit(), 0, 2, 4)
         mark('不同可恢复控制错误可以连续恢复，返回真实重规划次数')
+
+        prepare({'follow_errors': [103, 0], 'follow_delay': .08})
+        outcome(submit(), 0, 1, 4)
+        mark('局部路径103失效可重新规划恢复')
 
         before = prepare({'follow_error': 104, 'follow_delay': .08})
         outcome(submit(), 2, 2)

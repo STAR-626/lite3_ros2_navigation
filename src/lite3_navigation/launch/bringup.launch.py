@@ -37,9 +37,10 @@ def _start(context):
         'planner.yaml' if planner_profile == 'lattice' else 'planner_navfn.yaml')]
     if planner_profile == 'lattice':
         primitives = os.path.join(get_package_share_directory('nav2_smac_planner'),
-            'sample_primitives', '5cm_resolution', '0.5m_turning_radius', 'diff', 'output.json')
+            'sample_primitives', '5cm_resolution', '0.5m_turning_radius',
+            'omni' if profile == 'mppi' else 'diff', 'output.json')
         if not os.path.isfile(primitives):
-            raise RuntimeError('缺少5cm diff运动集：' + primitives)
+            raise RuntimeError('缺少5cm导航运动集：' + primitives)
         planner_parameters.append({'GridBased.lattice_filepath': primitives,
                                    'GridBased.allow_reverse_expansion': profile == 'mppi'})
     rl_dir = Path(LaunchConfiguration('rl_dir').perform(context)).expanduser().resolve()

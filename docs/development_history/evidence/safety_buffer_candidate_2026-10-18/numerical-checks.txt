@@ -1,0 +1,15 @@
+PASS stationary body does not invent momentum
+PASS measured forward motion cannot stop before 20cm wall
+PASS zero requested command cannot erase measured momentum
+PASS open stopping path accepted
+PASS reaction plus braking displacement matches 26cm analytical result
+PASS body velocity converted to world heading
+PASS backward stopping checked too
+PASS lateral stopping checked too
+PASS obstacle outside current rectangular body
+PASS rotating body corner sweeps into obstacle despite stationary centre
+PASS instantaneous fast response checked as well as delayed response
+PASS invalid measured velocity rejected
+PASS invalid requested velocity rejected
+PASS open combined translation and turn accepted
+14 numerical checks passed; no Gazebo or RL motion tested

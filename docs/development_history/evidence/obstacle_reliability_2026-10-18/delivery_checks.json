@@ -1,0 +1,10 @@
+{
+  "syntax_yaml_xml": true,
+  "installed_navigation_configs_match": true,
+  "installed_perception_scripts_match": true,
+  "experimental_response_critic_disabled_and_not_listed": true,
+  "git_diff_check": true,
+  "udp_control_ports_free": true,
+  "build": "colcon build --packages-select lite3_perception lite3_navigation",
+  "pushed": false
+}

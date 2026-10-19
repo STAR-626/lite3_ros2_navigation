@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "out": "/tmp/lite3-clearing-route-0_bq5sre",
+  "robot_started": false,
+  "rl_started": false,
+  "clear_wall_seconds": 0.14772888400011652,
+  "initial_path_length": 3.4504893674122723,
+  "updated_path_length": 2.3272728313099265,
+  "route_state": {
+    "navigation_enabled": true,
+    "busy": true,
+    "fault_latched": false,
+    "switch_pending": false,
+    "phase": "FOLLOWING",
+    "route_updates": 1,
+    "route_refresh_pending": false,
+    "last_result_code": null,
+    "last_result_message": ""
+  },
+  "checks": [
+    "initial free area",
+    "both real boxes persist while present",
+    "removed tall box cleared in both maps",
+    "retained real box protected",
+    "static map obstacle protected",
+    "cleared box produces shorter Smac route and native controller path update without task pause",
+    "cancel cleans native foreground and background action goals"
+  ],
+  "perception_status": {
+    "frame": "lidar_link",
+    "mode": "flat_ground",
+    "finite_input": 14859,
+    "obstacles": 0,
+    "raw_obstacles": 1639,
+    "ground": 11403,
+    "clearing": 18229,
+    "no_return_clearing": 4956,
+    "ground_plane": [
+      -6.139691706514304e-05,
+      0.0001836654043604328,
+      0.002379466907419169
+    ],
+    "max_height_m": 0.65,
+    "moving_clusters": [],
+    "forecast_points": 0
+  }
+}

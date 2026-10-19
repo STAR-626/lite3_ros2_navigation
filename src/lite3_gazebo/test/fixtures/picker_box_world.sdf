@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<sdf version="1.9"><world name="large_warehouse">
+  <physics name="default" type="ignored"><max_step_size>0.001</max_step_size><real_time_factor>1</real_time_factor></physics>
+  <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+  <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+  <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+  <model name="fixture_floor"><static>true</static><pose>0 0 -.045 0 0 0</pose><link name="l"><collision name="c"><geometry><box><size>20 20 .1</size></box></geometry></collision></link></model>
+  <model name="fixture_wall"><static>true</static><pose>2 1 .505 0 0 0</pose><link name="l"><collision name="c"><geometry><box><size>.2 1 1</size></box></geometry></collision></link></model>
+  <model name="do_not_remove"><static>true</static><pose>-2 -2 .205 0 0 0</pose><link name="l"><collision name="c"><geometry><box><size>.4 .4 .4</size></box></geometry></collision></link></model>
+</world></sdf>

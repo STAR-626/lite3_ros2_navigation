@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": [
+    "low obstacle initially marked",
+    "non-ground low endpoint does not clear itself",
+    "explicit ground tag survives TF/buffer and clears biased endpoint",
+    "floor ray preserves higher voxel and static obstacle"
+  ]
+}

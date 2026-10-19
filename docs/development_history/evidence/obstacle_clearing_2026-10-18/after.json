@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "out": "/tmp/lite3-clearing-scene-t609re5y",
+  "robot_started": false,
+  "rl_started": false,
+  "clear_wall_seconds": 0.519989952999822,
+  "checks": [
+    "initial free area",
+    "both real boxes persist while present",
+    "occluded former box is not blindly cleared",
+    "removed tall box cleared in both maps",
+    "retained real box protected",
+    "static map obstacle protected",
+    "moving box clears old footprint and marks new footprint"
+  ],
+  "perception_status": {
+    "frame": "lidar_link",
+    "mode": "flat_ground",
+    "finite_input": 14635,
+    "obstacles": 311,
+    "raw_obstacles": 716,
+    "ground": 12065,
+    "clearing": 18192,
+    "no_return_clearing": 5143,
+    "ground_plane": [
+      0.00020778001508720969,
+      -3.760755142561854e-05,
+      0.0024616084850979697
+    ],
+    "max_height_m": 0.65,
+    "moving_clusters": [],
+    "forecast_points": 0
+  }
+}

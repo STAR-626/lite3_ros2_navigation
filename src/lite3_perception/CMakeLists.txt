@@ -18,5 +18,5 @@ install(DIRECTORY config DESTINATION share/${PROJECT_NAME})
 install(FILES LICENSE DESTINATION share/${PROJECT_NAME})
 install(PROGRAMS scripts/pointcloud_obstacles.py DESTINATION lib/${PROJECT_NAME}
   RENAME pointcloud_obstacles)
-install(FILES scripts/motion_forecast.py DESTINATION lib/${PROJECT_NAME})
+install(FILES scripts/motion_forecast.py scripts/flat_ground_fit.py scripts/obstacle_evidence.py scripts/lidar_no_return.py DESTINATION lib/${PROJECT_NAME})
 ament_package()

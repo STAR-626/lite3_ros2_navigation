@@ -4,8 +4,19 @@ lite3_pointcloud_obstacles:
     # 当前 concrete_floor 顶面z=0.005，限平地模式。
     ground_height: 0.005
     ground_tolerance: 0.02
+    ground_fit_enabled: true
+    ground_range_uncertainty: 0.003  # 每米额外3mm低回波不确定带；不作为地面清除标记
     # 固定保守上限，不声称动态测出了所有姿态的最高点。
     max_obstacle_height: 0.65
+    # Only for the matching organized Gazebo GPU lidar (URDF geometry below).
+    # Infinity range = no hit within max_range; NaN/shape mismatch stays invalid.
+    gazebo_no_return_clearing: true
+    lidar_horizontal_samples: 720
+    lidar_vertical_samples: 31
+    lidar_horizontal_min: -3.141592653589793
+    lidar_horizontal_max: 3.141592653589793
+    lidar_vertical_min: -1.047197551196598
+    lidar_vertical_max: 0.523598775598299
     min_range: 0.12
     max_range: 12.0
     scan_samples: 720

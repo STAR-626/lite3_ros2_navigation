@@ -17,6 +17,11 @@ import time
 import xml.etree.ElementTree as ET
 
 import rclpy
+import numpy as np
+from sensor_msgs.msg import PointCloud2
+from sensor_msgs_py import point_cloud2
+from tf2_ros import Buffer, TransformListener
+from rclpy.time import Time
 from geometry_msgs.msg import PoseStamped, Twist
 from nav_msgs.msg import Odometry, OccupancyGrid
 from ros_gz_interfaces.msg import Contacts
@@ -31,6 +36,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--scenario', choices=['moving', 'static', 'clear'], default='moving')
     parser.add_argument('--turn', action='store_true', help='首个任务后追加90度方向导航')
+    parser.add_argument('--user-box', action='store_true', help='复现用户1m箱子(0.6294,0.618)，仓库中途加入')
     parser.add_argument('--warehouse', action='store_true', help='使用原仓库及配套地图回归')
     parser.add_argument('--goal-x', type=float, default=-.5)
     parser.add_argument('--goal-y', type=float, default=-4.)
@@ -62,10 +68,15 @@ def main():
     node = rclpy.create_node('continuous_avoidance_probe')
     latest = {}
     samples = []
+    audit = []
+    tf_buffer = Buffer()
+    tf_listener = TransformListener(tf_buffer, node)
+    last_audit = 0.0
     contacts = []
     floor_contact_messages = []
     for topic, kind in [('/odom', Odometry), ('/lite3/ground_truth/odom', Odometry),
                         ('/lite3/dynamic_box/pose', PoseStamped),
+                        ('/lite3/perception/obstacles', PointCloud2),
                         ('/local_costmap/costmap', OccupancyGrid), ('/global_costmap/costmap', OccupancyGrid)]:
         node.create_subscription(kind, topic, lambda m, t=topic: latest.update({t: m}), qos_profile_sensor_data)
     node.create_subscription(String, '/lite3/perception/status',
@@ -100,7 +111,29 @@ def main():
         '--ros-args', '-r', '__node:=avoidance_test_box_bridge'], 'box-bridge.log')
 
     def tick():
+        nonlocal last_audit
         rclpy.spin_once(node, timeout_sec=.02)
+        if not args.warehouse and time.monotonic()-last_audit > .5 and '/lite3/perception/obstacles' in latest:
+            # Read-only audit: empty test world has only floor, robot and box.
+            # No truth coordinates are ever sent to the navigation stack.
+            cloud = latest['/lite3/perception/obstacles']
+            try:
+                tf = tf_buffer.lookup_transform('odom', cloud.header.frame_id, Time.from_msg(cloud.header.stamp)).transform
+                import sys
+                sys.path.insert(0, str(root/'src/lite3_perception/scripts'))
+                from pointcloud_obstacles import apply
+                xyz = point_cloud2.read_points_numpy(cloud, field_names=['x','y','z'], skip_nans=True)
+                world_points = apply(xyz, tf)
+                distance = np.linalg.norm(xyz, axis=1)
+                false = distance > .65
+                if '/lite3/dynamic_box/pose' in latest:
+                    bp = latest['/lite3/dynamic_box/pose'].pose.position
+                    false &= ((np.abs(world_points[:,0]-bp.x) > .28) | (np.abs(world_points[:,1]-bp.y) > .28))
+                audit.append({'stamp': cloud.header.stamp.sec+cloud.header.stamp.nanosec*1e-9,
+                    'outside_box_count': int(false.sum()), 'outside_box_points': world_points[false][::max(1,int(false.sum())//80)].tolist()})
+                last_audit = time.monotonic()
+            except Exception:
+                pass  # Audit cannot affect controller behaviour or readiness.
         if contacts:
             raise AssertionError('记录到机器人与箱子真实接触：' + str(contacts[:3]))
         if proc.poll() is not None:
@@ -112,14 +145,18 @@ def main():
             row['yaw'] = math.atan2(2*(q.w*q.z+q.x*q.y), 1-2*(q.y*q.y+q.z*q.z))
             if 'forecast_status' in latest:
                 row['moving_clusters'] = latest['forecast_status'].get('moving_clusters', [])
+                row['ground_plane'] = latest['forecast_status'].get('ground_plane')
             if '/lite3/dynamic_box/pose' in latest:
                 b = latest['/lite3/dynamic_box/pose'].pose.position
                 row['box'] = [b.x, b.y, b.z]
                 if '/local_costmap/costmap' in latest:
                     grid = latest['/local_costmap/costmap']
                     vals = []
-                    for dx in [-.1, 0., .1]:
-                        for dy in [-.1, 0., .1]:
+                    # A one-metre box is observed on its surface, not its hidden centre.
+                    half = .5 if args.user_box else .2
+                    offsets = [-half, -half+.025, 0., half-.025, half]
+                    for dx in offsets:
+                        for dy in offsets:
                             ix = int((b.x+dx-grid.info.origin.position.x)/grid.info.resolution)
                             iy = int((b.y+dy-grid.info.origin.position.y)/grid.info.resolution)
                             if 0 <= ix < grid.info.width and 0 <= iy < grid.info.height:
@@ -159,10 +196,10 @@ def main():
             stdout=subprocess.DEVNULL)
 
     commands = []
-    node.create_subscription(Twist, '/nav_cmd_vel', lambda m: commands.append([m.linear.x,m.angular.z]), 10)
+    node.create_subscription(Twist, '/nav_cmd_vel', lambda m: commands.append([m.linear.x,m.linear.y,m.angular.z]), 10)
     feedback = []
     output = {'scenario': args.scenario, 'warehouse': args.warehouse,
-              'goal': [args.goal_x, args.goal_y, args.goal_yaw_deg], 'log_dir': str(directory)}
+              'nav_command_fields': ['vx', 'vy', 'wz'], 'goal': [args.goal_x, args.goal_y, args.goal_yaw_deg], 'user_box': args.user_box, 'log_dir': str(directory)}
     try:
         wait(lambda: gate.service_is_ready() and action.server_is_ready() and '/odom' in latest)
         # FastDDS双向响应端点发现可能晚于service_is_ready；首个请求前等待图收敛。
@@ -181,12 +218,18 @@ def main():
         end = time.monotonic() + 100
         while not finished.done() and time.monotonic() < end:
             tick()
-            if args.scenario != 'clear' and not spawned and latest['/odom'].pose.pose.position.x > start_x + .35:
+            if args.scenario != 'clear' and not spawned and latest['/odom'].pose.pose.position.x > start_x + (3.0 if args.user_box else .35):
                 box_file = root/'src/lite3_gazebo/worlds/lite3_dynamic_box.sdf'
                 if args.scenario == 'static':
                     box_file_copy = directory/'stationary.sdf'
                     box_file_copy.write_text(box_file.read_text().replace('-1.8 -4.6 0.205', '-1.8 -4.0 0.205'))
                     box_file = box_file_copy
+                if args.user_box:
+                    box_xml = ET.parse(box_file)
+                    box_xml.getroot().find('model/pose').text = '0.6294 0.618 0.505 0 0 0'
+                    for size in box_xml.getroot().findall('.//box/size'): size.text = '1 1 1'
+                    box_file = directory/'user_box.sdf'
+                    box_xml.write(box_file, encoding='utf-8', xml_declaration=True)
                 gz_service('create', 'gz.msgs.EntityFactory', 'sdf_filename: "' + str(box_file) + '"')
                 spawned = True
                 if args.scenario == 'moving':
@@ -235,6 +278,7 @@ def main():
         from rosidl_runtime_py.convert import message_to_ordereddict
         if '/global_costmap/costmap' in latest:
             (directory/'global_costmap.json').write_text(json.dumps(message_to_ordereddict(latest['/global_costmap/costmap'])))
+        (directory/'observation_audit.json').write_text(json.dumps(audit))
         (directory/'result.json').write_text(json.dumps(output, ensure_ascii=False, indent=2))
         print('RESULT_FILE', directory/'result.json', flush=True)
         for child in reversed(processes):

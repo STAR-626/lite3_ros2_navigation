@@ -57,7 +57,7 @@ with the plugin. This does not change the licensing of older package files.
 ## Smac Lattice runtime dependency (2026-10-17)
 
 Navigation uses the installed ROS2 Jazzy `nav2_smac_planner` plugin and its packaged
-5cm/0.5m/diff motion primitives. Launch resolves the installed package share directory;
+5cm/0.5m/omni motion primitives by default (diff for the RPP fallback). Launch resolves the installed package share directory;
 no copy of that upstream repository or primitive asset is embedded here. Upstream:
 https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_smac_planner .
 See the installed package's LICENSE when redistributing its binaries/assets.

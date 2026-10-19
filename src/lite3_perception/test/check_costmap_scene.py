@@ -106,8 +106,9 @@ def main():
         spawn(['ros2', 'run', 'nav2_map_server', 'map_server', '--ros-args',
                '-p', 'yaml_filename:=' + str(gz/'maps/large_warehouse.yaml'),
                '-p', 'use_sim_time:=true', '-p', 'bond_heartbeat_period:=0.0'], 'map')
+        # This fixture tests sensor layers, not the planner search model.
         spawn(['ros2', 'run', 'nav2_planner', 'planner_server', '--ros-args',
-               '--params-file', str(nav/'config/planner.yaml')], 'planner')
+               '--params-file', str(nav/'config/planner_navfn.yaml')], 'planner')
         spawn(['ros2', 'run', 'nav2_controller', 'controller_server', '--ros-args',
                '--params-file', str(nav/'config/controller.yaml'), '-r', 'cmd_vel:=/nav_cmd_vel'], 'controller')
         for name in ['map_server', 'planner_server', 'controller_server']:
@@ -134,7 +135,7 @@ def main():
             return xyz @ row + tf.translation.z
         gh = heights(ground); oh = heights(obstacle)
         assert len(gh) > 100 and np.max(np.abs(gh-.005)) <= .02001
-        assert len(oh) and oh.min() > .02499 and oh.max() <= .65001
+        assert len(oh) and oh.min() > .02499 and oh.max() <= .65001, ('world_obstacle_z', float(oh.min()) if len(oh) else None, float(oh.max()) if len(oh) else None)
         scan = latest['/scan']
         assert scan.header.frame_id == 'base_footprint' and len(scan.ranges) == 720
         pose = latest['/odom'].pose.pose.position

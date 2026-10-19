@@ -2,6 +2,13 @@ mission_manager:
   ros__parameters:
     use_sim_time: true
     enable_replanning: true
+    # Background geometric route improvement; recovery retries remain separate.
+    enable_route_refresh: true
+    route_refresh_period: 2.0
+    route_refresh_timeout: 1.5
+    route_refresh_min_gain: 0.5
+    route_refresh_min_ratio: 0.15
+    route_refresh_goal_distance: 1.0
     max_replans: 5
     replan_wait: 0.5
     replan_wait_max: 2.0

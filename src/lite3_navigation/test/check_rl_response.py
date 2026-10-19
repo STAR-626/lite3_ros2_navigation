@@ -3,6 +3,7 @@
 
 必须先退出用户系统。不会连接默认ROS域，不训练或修改RL。
 """
+import argparse
 import importlib.util
 import json
 import math
@@ -24,6 +25,9 @@ from std_srvs.srv import SetBool
 
 
 def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--lateral-only',action='store_true')
+    args=parser.parse_args()
     assert os.environ.get('ROS_DOMAIN_ID') == '197'
     assert os.environ.get('GZ_PARTITION') == 'lite3_avoidance_validation_20261017'
     for port in (20001, 30010, 30011):
@@ -83,7 +87,7 @@ def main():
         return (p.position.x, p.position.y,
                 math.atan2(2*(q.w*q.z+q.x*q.y), 1-2*(q.y*q.y+q.z*q.z)))
 
-    def run(vx, wz, duration):
+    def run(vx, wz, duration, vy=0.):
         start = sim()
         first = pose()
         positions = []
@@ -94,6 +98,7 @@ def main():
             if time.monotonic() - last_send > .04:
                 command = Twist()
                 command.linear.x = vx
+                command.linear.y = vy
                 command.angular.z = wz
                 publisher.publish(command)
                 last_send = time.monotonic()
@@ -109,7 +114,7 @@ def main():
         last = pose()
         distance = math.hypot(last[0]-first[0], last[1]-first[1])
         angle = math.atan2(math.sin(last[2]-first[2]), math.cos(last[2]-first[2]))
-        return {'command_vx': vx, 'command_wz': wz, 'sim_duration': sim()-start,
+        return {'command_vx': vx, 'command_vy': vy, 'command_wz': wz, 'start_pose': first, 'sim_duration': sim()-start,
                 'displacement_m': distance, 'yaw_change_rad': angle,
                 'average_speed_m_s': distance/(sim()-start),
                 'average_yaw_rate_rad_s': angle/(sim()-start), 'end_pose': last}
@@ -134,10 +139,9 @@ def main():
         wait(future.done, 5)
         assert future.result().success
         run(0., 0., 1.)
-        for vx, wz, duration in [(.2, 0., 2.), (.32, 0., 2.), (.45, 0., 2.),
-                                (.6, 0., 1.5), (0., .2, 2.), (0., .4, 2.),
-                                (0., .6, 2.), (.35, .4, 3.)]:
-            record = run(vx, wz, duration)
+        cases = [(0.,0.,2.,.30),(0.,0.,2.,-.30),(.30,0.,2.,.25)] if args.lateral_only else [(vx,wz,dur,0.) for vx,wz,dur in [(.2,0.,2.),(.32,0.,2.),(.45,0.,2.),(.6,0.,1.5),(0.,.2,2.),(0.,.4,2.),(0.,.6,2.),(.35,.4,3.)]]
+        for vx, wz, duration, vy in cases:
+            record = run(vx, wz, duration, vy)
             record['stop'] = run(0., 0., 1.5)
             records.append(record)
             print(json.dumps(record), flush=True)

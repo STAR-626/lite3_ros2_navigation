@@ -1,0 +1,38 @@
+Start testing: Oct 18 22:51 CST
+----------------------------------------------------------
+1/8 Testing: target_picker_interaction
+1/8 Test: target_picker_interaction
+Command: "/home/ma/lite3_ws/build/lite3_gazebo/check_target_picker"
+Directory: /home/ma/lite3_ws/build/lite3_gazebo
+"target_picker_interaction" start time: Oct 18 22:51 CST
+Output:
+----------------------------------------------------------
+[Lite3 picker] Ready; new selections require navigation master switch.
+[Lite3 picker] Selected x=-2.5 y=3.25 z=0; new click published.
+PASS: real plugin/QML, scene-event pairing, filtering, clipboard, transport, dual-mode box lifecycle, WASD/focus stop and cleanup. No robot navigation sent.
+<end of output>
+Test time =   6.58 sec
+----------------------------------------------------------
+Test Passed.
+"target_picker_interaction" end time: Oct 18 22:51 CST
+"target_picker_interaction" time elapsed: 00:00:06
+----------------------------------------------------------
+
+2/8 Testing: picker_box_physics
+2/8 Test: picker_box_physics
+Command: "/home/ma/lite3_ws/build/lite3_gazebo/check_picker_box_world" "/home/ma/lite3_ws/src/lite3_gazebo/test/fixtures/picker_box_world.sdf"
+Directory: /home/ma/lite3_ws/build/lite3_gazebo
+"picker_box_physics" start time: Oct 18 22:51 CST
+Output:
+----------------------------------------------------------
+[Lite3 picker] Ready; new selections require navigation master switch.
+PASS: real GUI-created dimensions/collision, hold/release motion, world axes after yaw, server deadman and owned-only removal. No robot or RL.
+<end of output>
+Test time =   7.73 sec
+----------------------------------------------------------
+Test Passed.
+"picker_box_physics" end time: Oct 18 22:51 CST
+"picker_box_physics" time elapsed: 00:00:07
+----------------------------------------------------------
+
+End testing: Oct 18 22:51 CST
