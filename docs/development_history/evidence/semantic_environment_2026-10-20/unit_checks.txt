@@ -33,10 +33,10 @@ test 1
 1: test_runtime_created_model (test_environment_catalog.Catalog.test_runtime_created_model) ... ok
 1: test_scene_protocol (test_environment_catalog.Catalog.test_scene_protocol) ... ok
 1: test_unobserved_and_removed_no_pose (test_environment_catalog.Catalog.test_unobserved_and_removed_no_pose) ... ok
-1: 
+1:
 1: ----------------------------------------------------------------------
 1: Ran 16 tests in 0.052s
-1: 
+1:
 1: OK
 1/5 Test #1: environment_catalog ..............   Passed    0.12 sec
 test 2
@@ -58,10 +58,10 @@ test 2
 2: test_no_invented_name (test_language_context.Context.test_no_invented_name) ... ok
 2: test_other_state_reasons (test_language_context.Context.test_other_state_reasons) ... ok
 2: test_save_not_silently_renamed (test_language_context.Context.test_save_not_silently_renamed) ... ok
-2: 
+2:
 2: ----------------------------------------------------------------------
 2: Ran 13 tests in 0.001s
-2: 
+2:
 2: OK
 2/5 Test #2: language_context .................   Passed    0.04 sec
 test 3
@@ -89,10 +89,10 @@ test 3
 3: test_symlink (test_deepseek_parser.Adapter.test_symlink) ... ok
 3: test_system_history_rejected (test_deepseek_parser.Adapter.test_system_history_rejected) ... ok
 3: test_truncated (test_deepseek_parser.Adapter.test_truncated) ... ok
-3: 
+3:
 3: ----------------------------------------------------------------------
 3: Ran 19 tests in 0.004s
-3: 
+3:
 3: OK
 3/5 Test #3: deepseek_parser ..................   Passed    0.07 sec
 test 4
@@ -104,10 +104,10 @@ test 4
 4: test_known_error (test_language_worker.Worker.test_known_error) ... ok
 4: test_nonblocking_singleflight (test_language_worker.Worker.test_nonblocking_singleflight) ... ok
 4: test_unexpected_error_redacted (test_language_worker.Worker.test_unexpected_error_redacted) ... ok
-4: 
+4:
 4: ----------------------------------------------------------------------
 4: Ran 3 tests in 0.006s
-4: 
+4:
 4: OK
 4/5 Test #4: language_worker ..................   Passed    0.07 sec
 test 5
@@ -132,10 +132,10 @@ test 5
 5: test_route (test_interaction_core.Interaction.test_route) ... ok
 5: test_snapshot (test_interaction_core.Interaction.test_snapshot) ... ok
 5: test_stop_exact (test_interaction_core.Interaction.test_stop_exact) ... ok
-5: 
+5:
 5: ----------------------------------------------------------------------
 5: Ran 16 tests in 0.015s
-5: 
+5:
 5: OK
 5/5 Test #5: interaction_core .................   Passed    0.06 sec
 

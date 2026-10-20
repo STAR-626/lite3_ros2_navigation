@@ -23,6 +23,7 @@ GitHub实际为PUBLIC；用户本轮明确要求“保留公开并上传”，�
 - 无build/install/log、虚拟环境、符号链接或超过10MiB文件；模型资源与许可继续保留。
 - 外部RL六份修改/新增源码与snapshots逐字节及UPSTREAM.json哈希一致，策略SHA一致。
   本次无需更新补丁，不向DeepRoboticsLab上游推送，也不保存MuJoCo生成日志或.venv。
+- 上传归档中的文本日志与一处源码空行已规范行尾空白，不改变测试输出含义或程序行为；历史source_hashes仍对应当时测试版本。
 - manifest记录当前有效文件的SHA256；自身哈希排除，避免循环。文件清单和目录树一并更新。
 
 ## 实际验证边界

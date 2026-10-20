@@ -118,7 +118,7 @@ class InteractionBackend(Node):
         try:
             if len(msg.data)>4096:raise InvalidCommand('请求过长。')
             obj=json.loads(msg.data);session=obj['session'];request=obj.get('id','')
-            
+
             if not isinstance(session,str):raise InvalidCommand('会话编号必须是字符串。')
             uuid.UUID(session)
             if not isinstance(request,str) or len(request)>64:raise InvalidCommand('请求编号不合法。')

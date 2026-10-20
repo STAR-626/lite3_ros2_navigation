@@ -14,4 +14,3 @@ marker {
   ns: "lite3_places/test/\347\202\2711"
   id: 4
 }
-

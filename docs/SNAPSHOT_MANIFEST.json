@@ -146,8 +146,8 @@
     },
     {
       "path": "docs/SYNC_AUDIT.md",
-      "bytes": 2688,
-      "sha256": "690ff66db46a201159481f1fe18ef4ca894e1ab6554e10be2ac88c3d2dd793b7"
+      "bytes": 2860,
+      "sha256": "011aad7b1dc074405346ea8d51c0fea760fa941f6247ea8a21cab50680584f2d"
     },
     {
       "path": "docs/TERMINAL_COMMANDS.md",
@@ -326,8 +326,8 @@
     },
     {
       "path": "docs/development_history/evidence/agent_tools_2026-10-20/unit_checks.txt",
-      "bytes": 12802,
-      "sha256": "d55d7d4d357e1d234835bac920a209c1371df8fdd7bdb6ffb98e22598b805367"
+      "bytes": 12788,
+      "sha256": "419a91e6b90cd4d3d5e2be59185529f7c2bb07bf9cbbe4b04954b1836bd33fd6"
     },
     {
       "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/README.md",
@@ -666,8 +666,8 @@
     },
     {
       "path": "docs/development_history/evidence/interaction_2026-10-20/gazebo_marker_ids.txt",
-      "bytes": 237,
-      "sha256": "8184bcbf216911b092a97106ac6ec6a9dafdb9803e8b93f68ad3d1b13cd661f2"
+      "bytes": 236,
+      "sha256": "3d5e6a6b874817c322bb331970181c434c1093aed005a744ea40c268a3d3f0e8"
     },
     {
       "path": "docs/development_history/evidence/interaction_2026-10-20/gazebo_markers.json",
@@ -761,8 +761,8 @@
     },
     {
       "path": "docs/development_history/evidence/object_approach_2026-10-20/unit_checks.txt",
-      "bytes": 11325,
-      "sha256": "4a3798db633da74c752a3ae38d39398fa810dfff0dd98bdff9d1642e570baba5"
+      "bytes": 11313,
+      "sha256": "126d9f949c1db2ccfaf255eec66ec0c73c1fa737165fc06e73b1899bbe780624"
     },
     {
       "path": "docs/development_history/evidence/obstacle_clearing_2026-10-18/README.md",
@@ -1576,8 +1576,8 @@
     },
     {
       "path": "docs/development_history/evidence/semantic_environment_2026-10-20/unit_checks.txt",
-      "bytes": 9376,
-      "sha256": "490ee22abc8d145c6adce0c105cd0cfd8ffa672511c0f1c405e31071794df2b1"
+      "bytes": 9366,
+      "sha256": "6d1554d8a474d27d05f271a597ed24259da22118a6645a126a57e87237c6fb84"
     },
     {
       "path": "docs/development_history/evidence/short_route_initial_cancel/mission.log",
@@ -1611,8 +1611,8 @@
     },
     {
       "path": "docs/development_history/evidence/warehouse_cleanup_2026-10-20/scene.txt",
-      "bytes": 124892,
-      "sha256": "7d78f4a068f6557275a2eb8737775f85cb3ed78cfc247436e638862f5e03e7ac"
+      "bytes": 124891,
+      "sha256": "56e540a0bc22210b644cd5b01e4d3b109c3a8d164a28fd65e5fc6ffff33fcf52"
     },
     {
       "path": "docs/development_history/evidence/warehouse_cleanup_2026-10-20/scene_check.log",
@@ -2071,8 +2071,8 @@
     },
     {
       "path": "src/lite3_navigation/scripts/interaction_backend.py",
-      "bytes": 29214,
-      "sha256": "fd317c42aecff6dd77aaae89c52297d2221d9cadf20dca860ceb877368ec683f"
+      "bytes": 29202,
+      "sha256": "35d203d1e5ad45a6598332ab0f1d465378a0d56f4686951d58c21aaad771b6f2"
     },
     {
       "path": "src/lite3_navigation/scripts/interaction_core.py",
