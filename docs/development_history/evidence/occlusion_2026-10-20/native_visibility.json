@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "checks": [
+    "low obstacle initially marked",
+    "non-ground low endpoint does not clear itself",
+    "explicit ground tag survives TF/buffer and clears biased endpoint",
+    "floor ray preserves higher voxel and static obstacle",
+    "nearer same-height hit blocks contradictory clearing of old voxel",
+    "replayed same timestamp cannot accumulate free confirmations",
+    "distinct visible free scans clear old voxel while local window shifts"
+  ]
+}

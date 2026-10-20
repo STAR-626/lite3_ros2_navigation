@@ -1,0 +1,13 @@
+{
+  "src/lite3_navigation/scripts/agent_tools.py": "805bf6ee66efc2c269d11351f8a084b46d48a3f1f2c7c11593c5cc2cb6c2d3f4",
+  "src/lite3_navigation/scripts/deepseek_agent.py": "e2c318fda6c6a5f6182788d67a9392e4a5c50478873e8f8d2671abdb5d0e8f7f",
+  "src/lite3_navigation/scripts/agent_runtime.py": "b04dad7741c784e087c5e1f871833db7838c37a63b40835bae3b51755c7d1547",
+  "src/lite3_navigation/scripts/interaction_backend.py": "fd317c42aecff6dd77aaae89c52297d2221d9cadf20dca860ceb877368ec683f",
+  "src/lite3_navigation/scripts/ai_console.py": "4dfdb0292fd6893d4d0a9d83c6fbc720f3ec51630e018df3d57051c0abfe7eb5",
+  "src/lite3_navigation/scripts/approach_executor.py": "569f25764cbb6be891cb7531a3c252011c1a686156518d6cbbda9a2e709e1f21",
+  "src/lite3_navigation/launch/bringup.launch.py": "1921c23fcf4f49da6e1977cc071fd7cd29827d3e2f667894eba533c9bdfdea5f",
+  "src/lite3_navigation/CMakeLists.txt": "324065bc1fb90c42b337de2b320953fa466bbdca8868e0c13f8b716cbfe38189",
+  "src/lite3_navigation/test/test_agent_tools.py": "14a3832d6385eafe0010a3cd0f51cd082731cebe2964ffd67453ae5a53524f84",
+  "src/lite3_navigation/test/check_agent_backend.py": "37c2ec0d5316672af3caed52fd87407fcac61b65bd272900cdfe38ada9882191",
+  "src/lite3_navigation/test/check_object_approach.py": "76c361f1236038cd2c0a35ee1cec3b7392ced69997b23a833de573cbe2f9a5c0"
+}

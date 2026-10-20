@@ -1,0 +1,11 @@
+{
+  "scripts/language_context.py": "2b75390df3e0d960fafe33a13ad1a684ca4fcf11b6075b6ae61ce0be6348b32c",
+  "scripts/interaction_backend.py": "25dc3ce2346479a0cc6ce0aa82d59bc91d46e9a246e0ad1fbad1a05b4281e77d",
+  "scripts/deepseek_parser.py": "f824c01f6c2d9b6ecfe35f9f431fc77d19786bf76b190c4bcb62022d3ecd247a",
+  "scripts/deepseek_preview.py": "53386596d51dc67ca1b3ee02f70b18c379a7f844396d86b6226625fd1146c0e3",
+  "scripts/ai_console.py": "78e20ae3b1dfcade359b8cd43cb931355d03f83092789db068226bc09b5214cb",
+  "CMakeLists.txt": "680a6ea3eb6586bc8d4b1637dad5b7fd8a942e43de3a2a404ec8265f24b7e1e9",
+  "test/test_language_context.py": "155f7aba4ec68a2b8c24836b6bded400ffd6b893a2e46d3050a337662b34d89e",
+  "test/test_deepseek_parser.py": "2e7eb9eb06f2254ea2bddc7726a74c607a97d8d7da416286ef4ebf0ac4d5af5f",
+  "test/check_deepseek_execution.py": "b5fb5d15e18a6186b9f04e048236a3339f11c4aa551a74718a7b78f2ee57e7ce"
+}

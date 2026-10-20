@@ -28,3 +28,7 @@ Thumbs.db
 .env.*
 !.env.example
 !.env.sample
+
+# Runtime credentials and user-specific navigation data
+deepseek.json
+places.json

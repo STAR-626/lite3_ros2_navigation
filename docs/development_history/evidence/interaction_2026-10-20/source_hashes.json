@@ -1,0 +1,13 @@
+{
+  "src/lite3_navigation/scripts/interaction_backend.py": "5afbc9bd7901edb5cbac7e6da5a16f7ba6fbbc94a1d8e3313cec7cf25bd66d00",
+  "src/lite3_navigation/scripts/interaction_core.py": "784331222970bb28a5333d2fd4ebdc190b42b1384b238e3d8d3a6389c445a3cb",
+  "src/lite3_navigation/scripts/ai_console.py": "ac256bb2b974e3e229dbaac5a18e299f51718b5dc5799e402bf9e8cc5e74f8dd",
+  "src/lite3_navigation/scripts/place_markers.py": "5dec7a577c21de7b054c9bd19955dc49203e874bcf941ff4e4a67542b7f848cd",
+  "src/lite3_navigation/launch/bringup.launch.py": "e7cf750765197464980d3a0aa58ff93f9791cc2cb664d6f721098ed6aabb1203",
+  "src/lite3_navigation/src/place_marker_transport.cpp": "6e8d38da59a7b656f999e99e0cc59d8e8169d05050294c4edf9a2eb0e07177e5",
+  "src/lite3_navigation/CMakeLists.txt": "d573d68f7fbdec3542f14bbdbdcdf055a65616870150c962c40a3f270811a038",
+  "src/lite3_navigation/package.xml": "cbb2ffb1e8aec7db567432dc4ddff1f2b22cc90f2feeb9b64d5b742d1ebea501",
+  "src/lite3_navigation/test/test_interaction_core.py": "3c5b04c1e208bf06764c0d836083324053a959b732850c559e96f2d12f859685",
+  "src/lite3_navigation/test/check_interaction_backend.py": "487cb871f58889a1686dc3a791b3574c74116eeaa156f9a7b3b3ee53fb5801be",
+  "src/lite3_navigation/test/check_place_markers.py": "2adbf69eb92a1168c43818092cadcc2702de34cffc04b1e802a55d008c2f5f17"
+}

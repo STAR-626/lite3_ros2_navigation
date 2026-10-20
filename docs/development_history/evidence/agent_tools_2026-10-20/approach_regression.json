@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "checks": [
+    "closed gate: no planner/navigation goal and no implicit unlock",
+    "unknown/full blocked grid: no candidate accepted or navigation started",
+    "stale costmap rejected",
+    "validated model approach + first unreachable candidate fallback; target not persisted",
+    "stop during planning discards result and cancels planner without movement",
+    "stop before late planner acceptance cancels accepted handle; no mission dispatch",
+    "object moved during planning invalidates temporary target",
+    "planner endpoint mismatch rejected",
+    "planner timeout: late result cannot dispatch mission",
+    "object moved during navigation cancels existing task and closes gate",
+    "console heartbeat loss cancels approach preflight and late dispatch"
+  ],
+  "planned_candidates": 9,
+  "mission_targets": [
+    [
+      -1.1700000000000002,
+      -0.3905,
+      -0.0
+    ],
+    [
+      -0.125,
+      -1.701,
+      1.5707963267948966
+    ]
+  ],
+  "real_api_called": false,
+  "robot_started": false,
+  "rl_started": false,
+  "out": "/tmp/lite3-approach-protocol-yp7tojap"
+}

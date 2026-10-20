@@ -1,0 +1,11 @@
+{
+  "scripts/interaction_backend.py": "149baeda7648d9e0a0dda6d4b26e06809d1af3a3f6a22601baa852d583439bc8",
+  "scripts/ai_console.py": "1bc224f554406da9de9bab4eb1e5770ea2f5d018ef73373251c7824b4ce9e468",
+  "scripts/deepseek_parser.py": "cbff30b9d09d145c0dd9d6b341d8e9eeb72236daa15b9e2902ba90120c9d262b",
+  "scripts/language_worker.py": "0151b935da4069232b2394d1c604de49750dc0d10d1003046b8de34abcc4cfba",
+  "launch/bringup.launch.py": "44edc42dade5d5aaf5f97f7db190c324a99b9c5f2212e6cc48d2ea87228899da",
+  "CMakeLists.txt": "926ce524341f27d8d00a3ad5ca63c9b8a572025ef34dc73cf5ee96279985c3c6",
+  "test/test_language_worker.py": "ad50855bb4a8f7c03cc0cf59894dfe994146dfdaafba7e71ed56b09eec963009",
+  "test/test_deepseek_parser.py": "5ede6d3c974e07a2163b8aa502bf832b21d8cb6b556b8a56fb7901d61612dd25",
+  "test/check_deepseek_execution.py": "b1bb0b4aedf27c5951ec465de03d02dbbdde8c8bc850c205cb6522f88f226b0d"
+}

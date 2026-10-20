@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "checks": [
+    "disabled navigation rejects approach without unlocking or issuing NavigateTask",
+    "real Smac/full-footprint costmap selects reachable temporary pose, then existing NavigateTask receives it",
+    "temporary targets are not written to Places or semantic annotations",
+    "world-south approach honors explicit body-edge clearance and faces shelf"
+  ],
+  "targets": [
+    [
+      -2.60188246741579,
+      1.4238288186580537,
+      1.5696999999999999
+    ],
+    [
+      -2.6019921000733177,
+      1.32382887875467,
+      1.5696999999999999
+    ]
+  ],
+  "real_planner": true,
+  "synthetic_map_publisher": true,
+  "sensor_layers_enabled": false,
+  "mocked_navigate_task": true,
+  "robot_started": false,
+  "rl_started": false,
+  "real_api_called": false,
+  "out": "/tmp/lite3-object-approach-qoe_qw74"
+}

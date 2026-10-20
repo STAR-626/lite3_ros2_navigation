@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "checks": [
+    "complete original sentence + spatial directory passed; environment query→east wall→shelf1→task-start, actual results gate each step",
+    "completed tool history supports subsequent reference to previous second object",
+    "model queries actual places then atomically deletes all; home and object directory retained",
+    "status/stop remain local during HTTP; delayed tool response cannot move robot",
+    "stop cancels active leg and prevents queued second object",
+    "failed action fed to model after stop cleanup; queued motion blocked even when model requested it",
+    "whole tool batch validated; unsupported shell tool never executes",
+    "heartbeat loss invalidates delayed native tool response and closes navigation"
+  ],
+  "goals": [
+    [
+      4.1556999999999995,
+      -2.5,
+      -0.0
+    ],
+    [
+      -0.5092380630653488,
+      2.466535223616222,
+      3.1404963267948967
+    ],
+    [
+      -4.0,
+      -4.0,
+      0.0
+    ],
+    [
+      -2.60188246741579,
+      1.4238288186580534,
+      1.5697
+    ],
+    [
+      -2.60188246741579,
+      1.4238288186580534,
+      1.5697
+    ],
+    [
+      -2.60188246741579,
+      1.4238288186580534,
+      1.5697
+    ]
+  ],
+  "real_api_called": false,
+  "robot_started": false,
+  "rl_started": false,
+  "out": "/tmp/lite3-agent-tools-lqmkuqva"
+}

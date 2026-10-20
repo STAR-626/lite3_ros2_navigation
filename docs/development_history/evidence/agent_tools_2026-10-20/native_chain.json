@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "agent_tools": true,
+  "checks": [
+    "native tool loop uses real Gazebo scene/poses and Smac/full-footprint costmap for east wall then shelf1",
+    "mocked task success updates TF; subsequent native planning starts at actual previous endpoint; final returns to initial pose",
+    "temporary multi-object targets are not persisted; no real API/robot/RL"
+  ],
+  "targets": [
+    [
+      4.1556999999999995,
+      -2.5,
+      -0.0
+    ],
+    [
+      -0.5092380630653488,
+      2.4665352236162215,
+      3.1404963267948967
+    ],
+    [
+      -4.0,
+      -4.0,
+      0.0
+    ]
+  ],
+  "real_planner": true,
+  "synthetic_map_publisher": true,
+  "sensor_layers_enabled": false,
+  "mocked_navigate_task": true,
+  "robot_started": false,
+  "rl_started": false,
+  "real_api_called": false,
+  "out": "/tmp/lite3-object-approach-mity1o9o"
+}

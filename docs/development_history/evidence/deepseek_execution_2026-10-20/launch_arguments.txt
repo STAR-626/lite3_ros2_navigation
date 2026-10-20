@@ -1,0 +1,49 @@
+Arguments (pass arguments as '<name>:=<value>'):
+
+    'ai_control':
+        启用交互/地点与任务队列后台
+        (default: 'false')
+
+    'language_mode':
+        rules固定句式；deepseek模型理解后检查执行
+        (default: 'rules')
+
+    'places_file':
+        命名地点JSON；按地图校验，重启保留
+        (default: '/home/ma/.local/share/lite3_navigation/places.json')
+
+    'gui':
+        显示 Gazebo 窗口
+        (default: 'true')
+
+    'rviz':
+        显示导航 RViz
+        (default: 'true')
+
+    'controller':
+        mppi持续局部避障；rpp原路线跟随回退
+        (default: 'mppi')
+
+    'planner':
+        lattice完整轮廓/朝向；navfn旧中心线规划回退
+        (default: 'lattice')
+
+    'enable_replanning':
+        受阻后等待和有限重规划
+        (default: 'true')
+
+    'world':
+        SDF绝对路径，world名须为large_warehouse
+        (default: '/home/ma/lite3_ws/install/lite3_gazebo/share/lite3_gazebo/worlds/large_warehouse.sdf')
+
+    'map_yaml':
+        与world对齐的静态地图yaml绝对路径
+        (default: '/home/ma/lite3_ws/install/lite3_gazebo/share/lite3_gazebo/maps/large_warehouse.yaml')
+
+    'rl_dir':
+        已有官方 RL 部署项目根目录
+        (default: '/home/ma/Lite3_rl_deploy')
+
+    'startup_timeout':
+        自动准备总超时，实际秒
+        (default: '120')

@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "checks": [
+    "native Gazebo model directory: 17 shelves plus walls, filtered ground/markers/removed models",
+    "local labels/name/aliases query without model or API",
+    "existing place registry unchanged; semantic category and alias references work",
+    "model-centre navigation rejected locally before any task dispatch",
+    "native model pose updates after set_pose, not cached initial SDF coordinates",
+    "runtime creation/removal: annotations retained but removed objects have no live pose",
+    "annotations survive backend restart; private file reused",
+    "synthetic model receives real semantic context and uses whitelist query/label; object route rejected",
+    "annotations changed during model parsing invalidate the old semantic result",
+    "Gazebo unavailable: stale position withheld instead of reported as current"
+  ],
+  "real_api_called": false,
+  "robot_started": false,
+  "rl_started": false,
+  "out": "/tmp/lite3-environment-lvfce2x8"
+}

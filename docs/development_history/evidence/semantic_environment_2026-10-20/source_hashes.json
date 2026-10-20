@@ -1,0 +1,12 @@
+{
+  "src/lite3_navigation/src/environment_transport.cpp": "4f32bd8a83b27b2c324d135cf2f397770543ad2e99df0ae96fbc5bf22ff75b5f",
+  "src/lite3_navigation/scripts/environment_catalog.py": "ebeb787b46a9c8e2142e3d0ad534ba6ef8fe2c33081a471b32251ab39c466b3b",
+  "src/lite3_navigation/scripts/environment_reader.py": "1bcaf7f66e028c70a04c0d674a6a5d89cc29b5770ea218990c8178ee9db70ff9",
+  "src/lite3_navigation/scripts/interaction_backend.py": "8a15d396bbd317f3b4018579c1312d7fc06ed2ef07d5b63329d27752811b2396",
+  "src/lite3_navigation/scripts/deepseek_parser.py": "864908e2f8ec30d28d96a62ba3dd77e455be19320c31e4a6d74c0788f8af8bce",
+  "src/lite3_navigation/scripts/language_context.py": "697907586876cab4a05c9b398d8d283c2af33f625a2e11da030d68f6c4a4a097",
+  "src/lite3_navigation/launch/bringup.launch.py": "77f1e1aee5e29bda46dce5054265cfc81e03d40ec7de51a69889dfdc5a16ffca",
+  "src/lite3_navigation/CMakeLists.txt": "2399360490a6ca3ed3b09d574c1258a8ef1aaf7488fbbd0b3fef7c779b72dd08",
+  "src/lite3_navigation/test/test_environment_catalog.py": "273bc51984133ddd68ea017cd2267ee35847c84d6af27735eddf3ac35e4c712d",
+  "src/lite3_navigation/test/check_environment_catalog.py": "da36db9a44c6f59c37a936f9e934f322c22fccce7c7b914ee16d38c99e500712"
+}

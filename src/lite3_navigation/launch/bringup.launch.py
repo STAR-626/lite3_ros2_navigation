@@ -72,7 +72,7 @@ def _start(context):
         reserved = {'lite3_motion_node', 'mission_manager', 'map_server',
                     'planner_server', 'controller_server', 'ros_gz_bridge',
                     'robot_state_publisher', 'map_to_odom', 'lite3_startup',
-                    'lite3_pointcloud_obstacles'}
+                    'lite3_pointcloud_obstacles', 'lite3_interaction'}
         while time.monotonic() < deadline:
             executor.spin_once(timeout_sec=0.05)
             conflicts.update(reserved.intersection(probe_node.get_node_names()))
@@ -97,6 +97,20 @@ def _start(context):
                    name='mission_manager', parameters=[os.path.join(navigation, 'config', 'mission.yaml'),
                      {'use_sim_time': True, 'enable_replanning': ParameterValue(
                        LaunchConfiguration('enable_replanning'), value_type=bool)}], output='screen')
+    ai_value = LaunchConfiguration('ai_control').perform(context).lower()
+    if ai_value not in ('true', 'false'):
+        raise RuntimeError('ai_control必须为true或false')
+    language_value = LaunchConfiguration('language_mode').perform(context).lower()
+    if language_value not in ('rules', 'deepseek'):
+        raise RuntimeError('language_mode必须为rules或deepseek')
+    interaction = Node(package='lite3_navigation', executable='interaction_backend',
+        name='lite3_interaction', parameters=[{'use_sim_time': True,
+          'map_yaml': LaunchConfiguration('map_yaml'),
+          'world_sdf': LaunchConfiguration('world'),
+          'environment_file': LaunchConfiguration('environment_file'),
+          'places_file': LaunchConfiguration('places_file'),
+          'language_mode': language_value,
+          'agent_tools': ParameterValue(LaunchConfiguration('agent_tools'),value_type=bool)}], output='screen')
     buffers = {}
     ready = False
 
@@ -120,6 +134,8 @@ def _start(context):
                 temporary.replace(mode_file)
             if event.action is runtime and '[Lite3 startup] READY' in line and not ready:
                 ready = True
+                if ai_value == 'true':
+                    actions += [interaction, LogInfo(msg='交互后台已启动；另一个终端运行 ros2 run lite3_navigation ai_console。')]
                 actions += [mission, LogInfo(msg='Lite3 已就绪：先开启 /lite3/set_navigation_enabled，再选点或输入终端目标。')]
         return actions
 
@@ -138,7 +154,7 @@ def _start(context):
                       additional_env={'OMP_NUM_THREADS': '1'},
                       remappings=[('cmd_vel', '/nav_cmd_vel')], output='screen')
     monitors = [RegisterEventHandler(OnProcessExit(target_action=node, on_exit=failed))
-                for node in (runtime, map_server, planner, controller, mission)]
+                for node in (runtime, map_server, planner, controller, mission, *([interaction] if ai_value == 'true' else []))]
     return [
         RegisterEventHandler(OnProcessIO(on_stdout=lambda e: observe(e, 'out'),
                                          on_stderr=lambda e: observe(e, 'err'))),
@@ -160,6 +176,11 @@ def _start(context):
 
 def generate_launch_description():
     return LaunchDescription([
+        DeclareLaunchArgument('ai_control', default_value='false', description='启用交互/地点与任务队列后台'),
+        DeclareLaunchArgument('agent_tools', default_value='true', description='DeepSeek原生工具闭环；false回退旧单次JSON解析'),
+        DeclareLaunchArgument('language_mode', default_value='rules', description='rules固定句式；deepseek模型理解后检查执行'),
+        DeclareLaunchArgument('environment_file', default_value='', description='语义标注JSON；留空按地图和场景指纹选择独立文件'),
+        DeclareLaunchArgument('places_file', default_value=str(Path.home()/'.local/share/lite3_navigation/places.json'), description='命名地点JSON；按地图校验，重启保留'),
         DeclareLaunchArgument('gui', default_value='true', description='显示 Gazebo 窗口'),
         DeclareLaunchArgument('rviz', default_value='true', description='显示导航 RViz'),
         DeclareLaunchArgument('controller', default_value='mppi', description='mppi持续局部避障；rpp原路线跟随回退'),

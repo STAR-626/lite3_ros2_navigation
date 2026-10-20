@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "robot_started": false,
+  "rl_started": false,
+  "checks": [
+    "actual MarkerManager contains GUI marker namespace",
+    "Chinese label converted to rendered line geometry; no Ogre2 invalid marker type",
+    "GUI sphere intersects rays but adds zero lidar obstacle hits",
+    "no world models created",
+    "place ring/label/arrow removed from actual MarkerManager"
+  ],
+  "before_near_hits": 0,
+  "after_near_hits": 0,
+  "out": "/tmp/lite3-markers-mgg0wjo4"
+}

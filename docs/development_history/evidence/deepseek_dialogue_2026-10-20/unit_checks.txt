@@ -1,0 +1,14 @@
+Internal ctest changing into directory: /home/ma/lite3_ws/build/lite3_navigation
+Test project /home/ma/lite3_ws/build/lite3_navigation
+    Start 1: language_context
+1/4 Test #1: language_context .................   Passed    0.05 sec
+    Start 2: deepseek_parser
+2/4 Test #2: deepseek_parser ..................   Passed    0.06 sec
+    Start 3: language_worker
+3/4 Test #3: language_worker ..................   Passed    0.06 sec
+    Start 4: interaction_core
+4/4 Test #4: interaction_core .................   Passed    0.07 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   0.24 sec

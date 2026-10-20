@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "robot_started": false,
+  "rl_started": false,
+  "real_api_called": false,
+  "checks": [
+    "validated model save reaches durable place storage",
+    "clarification/unsupported/malformed/API failure never execute",
+    "two clarification turns retain current-position intent; existing point still requires overwrite confirmation",
+    "stop and completed action clear dialogue context",
+    "digit place/query aliases resolve; disabled gate reports precise reason without enabling",
+    "model route uses existing NavigateTask and sequential success gating",
+    "HTTP worker does not block status/heartbeat; stop invalidates delayed enable",
+    "explicit close discards delayed model output",
+    "expired model response cannot execute",
+    "place changes invalidate model context instead of using stale coordinates",
+    "heartbeat loss cancels pending model response before it can start navigation",
+    "model cannot substitute for explicit overwrite confirmation",
+    "local stop cancels active model-generated route and queued home"
+  ],
+  "goals": [
+    [
+      1.0,
+      2.0,
+      0.0
+    ],
+    [
+      -3.0,
+      -4.0,
+      0.0
+    ],
+    [
+      1.2,
+      2.0,
+      0.0
+    ]
+  ],
+  "out": "/tmp/lite3-deepseek-exec-wzwi4dbb"
+}

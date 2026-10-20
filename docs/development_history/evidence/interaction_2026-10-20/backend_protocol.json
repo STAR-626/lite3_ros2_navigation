@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "robot_started": false,
+  "rl_started": false,
+  "checks": [
+    "named/current places persist; home uses current TF",
+    "overwrite requires explicit matching confirmation",
+    "missing place rejects whole route before motion",
+    "three NavigateTask goals execute sequentially after successful result",
+    "failed first leg cancels remaining route and closes navigation",
+    "status works while busy; stop clears queued goals",
+    "lost heartbeat cancels active and queued work",
+    "duplicate request id cannot start a second task",
+    "stop during delayed goal acceptance cancels late handle and prevents next leg",
+    "session reconnect and place deletion",
+    "explicit close confirms stop",
+    "installed ai_console accepts terminal input and exits after stop acknowledgment",
+    "Ctrl+C keeps ROS context alive until explicit stop acknowledgment"
+  ],
+  "goals": [
+    [
+      2.0,
+      3.0,
+      0.0
+    ],
+    [
+      -3.0,
+      -4.0,
+      0.0
+    ],
+    [
+      -3.0,
+      -4.0,
+      0.0
+    ],
+    [
+      2.0,
+      3.0,
+      0.0
+    ],
+    [
+      2.0,
+      3.0,
+      0.0
+    ],
+    [
+      2.0,
+      3.0,
+      0.0
+    ],
+    [
+      2.0,
+      3.0,
+      0.0
+    ],
+    [
+      2.0,
+      3.0,
+      0.0
+    ]
+  ],
+  "out": "/tmp/lite3-interaction-5thque2a"
+}

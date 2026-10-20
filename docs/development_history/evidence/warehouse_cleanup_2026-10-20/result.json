@@ -1,0 +1,61 @@
+{
+  "removed": [
+    "destination_marker_1",
+    "destination_marker_2",
+    "box_obstacle_1",
+    "box_obstacle_2",
+    "box_obstacle_3"
+  ],
+  "remaining_models": 24,
+  "all_other_world_elements_unchanged": true,
+  "map_regions": [
+    {
+      "name": "destination_marker_1",
+      "x": 4.4586,
+      "y": 4.3795,
+      "half_extent": 0.35,
+      "checked_cells": 225,
+      "all_cells_free": true
+    },
+    {
+      "name": "destination_marker_2",
+      "x": 4.459,
+      "y": -0.9218,
+      "half_extent": 0.35,
+      "checked_cells": 225,
+      "all_cells_free": true
+    },
+    {
+      "name": "box_obstacle_1",
+      "x": -4.2,
+      "y": 0.6173,
+      "half_extent": 0.05,
+      "checked_cells": 12,
+      "all_cells_free": true
+    },
+    {
+      "name": "box_obstacle_2",
+      "x": -4.2,
+      "y": 1.617,
+      "half_extent": 0.05,
+      "checked_cells": 12,
+      "all_cells_free": true
+    },
+    {
+      "name": "box_obstacle_3",
+      "x": -4.2,
+      "y": 2.617,
+      "half_extent": 0.05,
+      "checked_cells": 12,
+      "all_cells_free": true
+    }
+  ],
+  "map_unchanged": true,
+  "map_sha256": "e18542d452debf7cb9ea4ba2f8662cd7bcd1c1b417ffff6b2269c553242fcdb9",
+  "map_yaml_sha256": "58c731701481f4373a4a8336dcbc06eff811a554d3d2157a63d55f212b20c87f",
+  "backup": "/home/ma/lite3_ws_backups/warehouse_cleanup_20261020_175347",
+  "installed_assets_match_source": true,
+  "sdf_validation": "Valid",
+  "isolated_gazebo_scene_check": "passed",
+  "robot_rl_started": false
+}

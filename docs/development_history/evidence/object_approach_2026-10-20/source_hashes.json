@@ -1,0 +1,15 @@
+{
+  "src/lite3_navigation/scripts/approach_geometry.py": "560e0a9801bff72ae703622436013b3d4a724003299dd75b71a84e7891095d13",
+  "src/lite3_navigation/scripts/approach_executor.py": "9c408f8c71f0c001eaff343da6597dbd1e5bc270ed7ecf068edd325e85af25df",
+  "src/lite3_navigation/scripts/interaction_backend.py": "8565e2ce5d5627c65115ffcf34f4d9538743e97a29c796028d22f4fb9abbd27e",
+  "src/lite3_navigation/scripts/deepseek_parser.py": "f1e56fc1d123ba6a2d6299a2613516c4a3ee79910151e7689c5953c51c4f0077",
+  "src/lite3_navigation/scripts/environment_catalog.py": "e55da5c895a53e8d9f988b6c58a25aeab49dd133cba343b93dbfd37ddd3e70a6",
+  "src/lite3_navigation/scripts/environment_reader.py": "8c3e32ed03074ad3827aa0078931e141d25b7eaf8f3bafad1d55c89991859180",
+  "src/lite3_navigation/scripts/language_context.py": "4e0ec9246589e78ae72501e66461f24f8b69ed7c69a4200cfc1182d29940da80",
+  "src/lite3_navigation/src/environment_transport.cpp": "4c9adc0b50e9fb60e79a3afc741c391527450c7c173c3aa44e86b2e284c702d2",
+  "src/lite3_navigation/CMakeLists.txt": "d14795e807a8651eb22651185bee255aa2ca537a665ba0176defff848f82db98",
+  "src/lite3_navigation/package.xml": "08f9e2515030e2c8fcd6c6eb3171d0a9bf7e34cb4ef60ad3b705616338dc5e5f",
+  "src/lite3_navigation/test/test_approach_geometry.py": "d670a925e2a1d62578ffe6557066254d2c57d762a9ef5f57ec1465d62d708308",
+  "src/lite3_navigation/test/check_object_approach.py": "a58f68899b50d329a83f1c3e0b5ebb3b1255edab60fcb47b7e3990d3d725f203",
+  "src/lite3_navigation/test/check_approach_protocol.py": "bfcafbae0076b1c7f895bf92c2ec4b1a3925c4b10583ccc761880e34b684178d"
+}

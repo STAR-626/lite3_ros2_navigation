@@ -1,0 +1,50 @@
+test_ground_and_low_obstacle (test_filter.Filtering.test_ground_and_low_obstacle) ... ok
+test_projection (test_filter.Filtering.test_projection) ... ok
+test_range_uncertainty_and_no_hit_not_marked (test_filter.Filtering.test_range_uncertainty_and_no_hit_not_marked) ... ok
+test_tilt_transform (test_filter.Filtering.test_tilt_transform) ... ok
+test_excessive_tilt_or_height_rejected (test_ground_fit.GroundFit.test_excessive_tilt_or_height_rejected) ... ok
+test_low_and_overhead_objects_not_fitted_away (test_ground_fit.GroundFit.test_low_and_overhead_objects_not_fitted_away) ... ok
+test_misprojected_ground_not_obstacle (test_ground_fit.GroundFit.test_misprojected_ground_not_obstacle) ... ok
+test_no_evidence (test_ground_fit.GroundFit.test_no_evidence) ... ok
+test_outliers_and_nonfinite (test_ground_fit.GroundFit.test_outliers_and_nonfinite) ... ok
+test_small_flat_box_not_accepted_as_floor (test_ground_fit.GroundFit.test_small_flat_box_not_accepted_as_floor) ... ok
+test_changing_visible_surface_is_not_translation (test_motion_forecast.ForecastTests.test_changing_visible_surface_is_not_translation) ... ok
+test_consistent_motion_projects_forward (test_motion_forecast.ForecastTests.test_consistent_motion_projects_forward) ... ok
+test_disappearance_and_clock_jump_reset (test_motion_forecast.ForecastTests.test_disappearance_and_clock_jump_reset) ... ok
+test_large_wall_not_forecast (test_motion_forecast.ForecastTests.test_large_wall_not_forecast) ... ok
+test_new_cluster_not_instantly_moving (test_motion_forecast.ForecastTests.test_new_cluster_not_instantly_moving) ... ok
+test_stationary_no_forecast (test_motion_forecast.ForecastTests.test_stationary_no_forecast) ... ok
+test_all_nan_is_not_free_space (test_no_return.NoReturn.test_all_nan_is_not_free_space) ... ok
+test_finite_hits_are_not_extended (test_no_return.NoReturn.test_finite_hits_are_not_extended) ... ok
+test_inverted_range_is_invalid (test_no_return.NoReturn.test_inverted_range_is_invalid) ... ok
+test_partial_invalid_is_not_invented (test_no_return.NoReturn.test_partial_invalid_is_not_invented) ... ok
+test_self_occlusion (test_no_return.NoReturn.test_self_occlusion) ... ok
+test_shape_mismatch (test_no_return.NoReturn.test_shape_mismatch) ... ok
+test_urdf_matches_configured_scan (test_no_return.NoReturn.test_urdf_matches_configured_scan) ... ok
+test_valid_infinity_range (test_no_return.NoReturn.test_valid_infinity_range) ... ok
+test_confirm_surface_and_reject_isolated (test_obstacle_evidence.Evidence.test_confirm_surface_and_reject_isolated) ... ok
+test_moving_object_confirmed_without_trail (test_obstacle_evidence.Evidence.test_moving_object_confirmed_without_trail) ... ok
+test_supported_low_box_remains (test_obstacle_evidence.Evidence.test_supported_low_box_remains) ... ok
+test_time_jump_or_gap_resets_confirmation (test_obstacle_evidence.Evidence.test_time_jump_or_gap_resets_confirmation) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.036s
+
+OK
+Internal ctest changing into directory: /home/ma/lite3_ws/build/lite3_perception
+Test project /home/ma/lite3_ws/build/lite3_perception
+    Start 1: occlusion_evidence
+1/1 Test #1: occlusion_evidence ...............   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.00 sec
+PASS no invented occluder
+PASS near hit protects hidden old voxel
+PASS far hit does not hide nearer voxel
+PASS different height is not whole-column occlusion
+PASS unrelated direction stays clearable
+PASS azimuth wrap protects rear seam
+PASS cell-edge uncertainty retains surface
+PASS shadow is angularly bounded
+PASS invalid hit is ignored

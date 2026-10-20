@@ -1,0 +1,1907 @@
+{
+  "record_date": "2026-10-19",
+  "baseline_commit": "580ac460d1a1801e08d930fcad3140083da3a19b",
+  "repository": "https://github.com/STAR-626/lite3_ros2_navigation",
+  "visibility": "PRIVATE",
+  "snapshot_file_count_including_manifest": 380,
+  "excluded_from_own_hash": [
+    "docs/SNAPSHOT_MANIFEST.json"
+  ],
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 369,
+      "sha256": "89e7d8015db8585c23db796adcec6f590fe85d9a02e2c6d3d9bdac63bf1af7b6"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 36521,
+      "sha256": "3be67753996fd7853de47cbd49e0d11d4c4bddd41e680bfa5b6da42bf27186e1"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 20555,
+      "sha256": "3f8bf609aa0daf2a862839ee9f31c17b5ad1e78cd1d71db8bb17f833eddb4cfd"
+    },
+    {
+      "path": "README.md",
+      "bytes": 15920,
+      "sha256": "0596fd17fbd266af17ade9f043405dbecdf379004e651d9537f33e824f17ac26"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 5065,
+      "sha256": "7a1e617ee232dc9f4196aeffeeb649819f8d549ce752ea49a8bdd2a88c8323a1"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "bytes": 16369,
+      "sha256": "afc42f6d223040ba874f9bf08ce52e26d1a2d53b19d590e211ee5090e0506e4e"
+    },
+    {
+      "path": "docs/CONTINUOUS_AVOIDANCE.md",
+      "bytes": 17324,
+      "sha256": "7c6ced8f957e1c534e58ad5f401ec7a7f4d072b425072710219814ef14ad36d3"
+    },
+    {
+      "path": "docs/CURRENT_ARCHITECTURE.md",
+      "bytes": 3068,
+      "sha256": "a83be3b15ac539ff29d4e4b954b272a2eec77907108e07cfcbad5cade01c54e2"
+    },
+    {
+      "path": "docs/FOOTPRINT_REPLANNING.md",
+      "bytes": 10333,
+      "sha256": "e4c3c4427d3911b763f9a4d9673825d4338eb555849d94c12a55e114df82bb7c"
+    },
+    {
+      "path": "docs/GAZEBO_DUAL_PANEL.md",
+      "bytes": 4853,
+      "sha256": "b55a1c4c559754a35f867b2b53e8cbef3b7db681e876a1b28155ebb42740743e"
+    },
+    {
+      "path": "docs/KNOWN_ISSUES.md",
+      "bytes": 2134,
+      "sha256": "81883ca193f5e1a2595888a9a9b3d18b673cf1c29203c063898356f183803bb8"
+    },
+    {
+      "path": "docs/NAVIGATION_INTERACTION.md",
+      "bytes": 8053,
+      "sha256": "f044cae44e778564ad308c6ba123a5360c9e863dbb07399bc5825e9f7dbe270d"
+    },
+    {
+      "path": "docs/PROGRESS_REPORT.md",
+      "bytes": 3305,
+      "sha256": "55db41a1625e57641328f796beca83c8e47e4377a4fb85b785e337b846f38250"
+    },
+    {
+      "path": "docs/PROJECT_FILES.txt",
+      "bytes": 28868,
+      "sha256": "d372cba24b7dbabaf2d0dd96c979fda0f97e62ff58706387a5088b739c2df960"
+    },
+    {
+      "path": "docs/PROJECT_TREE.txt",
+      "bytes": 22316,
+      "sha256": "3e78f460bcad4baeed7f5be4f3fbdba4c63d86a78e2a704f246a6fd443247694"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "bytes": 6976,
+      "sha256": "3425c586aea65154895e01c3016372f132373248465fa85812b689bb7f56ff9a"
+    },
+    {
+      "path": "docs/ROUTE_REFRESH.md",
+      "bytes": 5230,
+      "sha256": "312d3e1eb2d44657aacf47c506440edaa5070fc0bca5f65e8cdf9cf54ec027f8"
+    },
+    {
+      "path": "docs/RUNBOOK.md",
+      "bytes": 15340,
+      "sha256": "a04787c763c826da29f02a12f3d72d82e315492286a1841959565c83adc6e954"
+    },
+    {
+      "path": "docs/SAFETY_BUFFER.md",
+      "bytes": 7841,
+      "sha256": "91835c7f8fa308f237fb2d925199d152af0a870509c5248d322811411dbc8374"
+    },
+    {
+      "path": "docs/SESSION_HANDOFF.md",
+      "bytes": 93916,
+      "sha256": "1d64baa3aa6bcb5d4f9709f5e0fc85dab3e01fa75136cb5fe0486e9959feefe3"
+    },
+    {
+      "path": "docs/SYNC_AUDIT.md",
+      "bytes": 3691,
+      "sha256": "b28ba0cceada2022993dc85407b5bc1d8d46491d860eb08657633c2924268f50"
+    },
+    {
+      "path": "docs/TERMINAL_COMMANDS.md",
+      "bytes": 58535,
+      "sha256": "21afb77019c6a79b5dc2cde3a18e4bb6f36e3bc0e80d43ac7504a0eefcbb9297"
+    },
+    {
+      "path": "docs/development_history/ENVIRONMENT.json",
+      "bytes": 1380,
+      "sha256": "5d2841974c7aca6605c67d0cb5bde86378943366d46bdbf59b282c87e527e363"
+    },
+    {
+      "path": "docs/development_history/ENVIRONMENT_2026-10-17.json",
+      "bytes": 840,
+      "sha256": "c36fcd99c5ce7e214d1fb1572e35f5c16cda99a803324789ebe6d42114b8b8ea"
+    },
+    {
+      "path": "docs/development_history/HISTORICAL_LINKS.md",
+      "bytes": 465,
+      "sha256": "6a32d7a916f8440bf0648278e9239c72f5af598fe81670c52632fc9722f5563f"
+    },
+    {
+      "path": "docs/development_history/PROGRESS_REPORT_2026-10-10.md",
+      "bytes": 2466,
+      "sha256": "986d033e662fc3f18366a7a6f8f25732d919cdaa0f605c743e509adcafe12423"
+    },
+    {
+      "path": "docs/development_history/PROJECT_FILES_2026-10-17.txt",
+      "bytes": 10892,
+      "sha256": "f3b19046fe3b175827bd0ca5f9734801592a87b41a05ca8f564dbdef37d4b699"
+    },
+    {
+      "path": "docs/development_history/PROJECT_TREE_2026-10-17.txt",
+      "bytes": 11045,
+      "sha256": "559c5c46c495eb596bb5f705d5aef7c01db4624f1d995ff738c4cac8252fcfe6"
+    },
+    {
+      "path": "docs/development_history/README.md",
+      "bytes": 4225,
+      "sha256": "285ef232c1b68f1be1917e97f297d82650c5459a1079607924013f5efaa5ef07"
+    },
+    {
+      "path": "docs/development_history/README_BEFORE_SYNC_2026-10-17.md",
+      "bytes": 44201,
+      "sha256": "ef03fdfb476ed48f9b8137ebd7de7644cc61d88dfe2db86eb853e0b4f619415f"
+    },
+    {
+      "path": "docs/development_history/SNAPSHOT_MANIFEST_2026-10-10.json",
+      "bytes": 15622,
+      "sha256": "a8a7d4252f6207bef2eebeb9bddcdd1aa1b8a08e81340264c9ad4f3778a912df"
+    },
+    {
+      "path": "docs/development_history/SNAPSHOT_MANIFEST_2026-10-17.json",
+      "bytes": 37515,
+      "sha256": "5188abc0cf4ad6cd2e332344bd0843b809853040cd64786f4d9f4e3a78192df7"
+    },
+    {
+      "path": "docs/development_history/SYNC_AUDIT_2026-10-04.md",
+      "bytes": 5299,
+      "sha256": "9dd211190508874a93f393d31a8accf5d48b91d19eab17c35e35c22cc6f067b8"
+    },
+    {
+      "path": "docs/development_history/SYNC_AUDIT_2026-10-10.md",
+      "bytes": 13493,
+      "sha256": "464c468c5a97e9a59cc1b6e9169c779feae7532a9ddc3f1acab939675c2b4e27"
+    },
+    {
+      "path": "docs/development_history/SYNC_AUDIT_2026-10-17.md",
+      "bytes": 4530,
+      "sha256": "7f012aef55109a6264890bf16769802979a4a45aac3291d7ab0ba7f71cd85ac9"
+    },
+    {
+      "path": "docs/development_history/TIMELINE.md",
+      "bytes": 6403,
+      "sha256": "da697b9ec509a1392f0cae290668e3a2978d7eb4c8e371bbf713729d48f4016a"
+    },
+    {
+      "path": "docs/development_history/conversation/2026-10-01.md",
+      "bytes": 103065,
+      "sha256": "b73be288c8e2533dfe8308693dcaaa09a4970f5d7b12ff0357e3c3268e462b3e"
+    },
+    {
+      "path": "docs/development_history/conversation/2026-10-02.md",
+      "bytes": 22009,
+      "sha256": "a303fe469c26d5752e044dbb6e16abca38ec770884079fbf9c1923bc776afd17"
+    },
+    {
+      "path": "docs/development_history/conversation/2026-10-03.md",
+      "bytes": 36854,
+      "sha256": "c50b12f2957061382ba4969e899d9231a70dc388fcb675b83b82bfd2aea4a9a7"
+    },
+    {
+      "path": "docs/development_history/conversation/2026-10-04.md",
+      "bytes": 109312,
+      "sha256": "62ccb7276b022cdaee48904d2517c09817d7b4fc87524c1cacc1dbf4c34f3227"
+    },
+    {
+      "path": "docs/development_history/conversation/2026-10-08.md",
+      "bytes": 76733,
+      "sha256": "eb9cd69e72d03fdab4c199130476bbea1733f71c32edee219849f1e5b5c3ab9c"
+    },
+    {
+      "path": "docs/development_history/conversation/2026-10-09.md",
+      "bytes": 58526,
+      "sha256": "c2a852e9b8bfd7ce66fdc792b994668d9262a42ec405ab712404e51a510a252e"
+    },
+    {
+      "path": "docs/development_history/conversation/2026-10-10.md",
+      "bytes": 137314,
+      "sha256": "76feeff45ca0a0dfc32019e3a05fe08644ae9fb3380322d23259534a7ccd9cb0"
+    },
+    {
+      "path": "docs/development_history/conversation/EXPORT_METADATA.json",
+      "bytes": 1907,
+      "sha256": "a9819cccbe805617eaaa100874a1036625ecc21d814dc5c9efcc3e14356d70b8"
+    },
+    {
+      "path": "docs/development_history/evidence/MANIFEST.json",
+      "bytes": 2130,
+      "sha256": "c15614bb53b725b2caf435d0074602e9241fbfa7f2c8938a327f2942386061aa"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/README.md",
+      "bytes": 3914,
+      "sha256": "5add80eb7716c456eae40b99e60c5c7db5f8dc1434e9c5a3558af1a30e72347f"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/failed_goal_drift.json.gz",
+      "bytes": 117991,
+      "sha256": "358b93fd5c0411f395c1103e65ed8fb2b832c1948b21f9427ece400bfd48ea0b"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/failed_goal_orbit.json.gz",
+      "bytes": 300659,
+      "sha256": "877c20428bd6cc3979f20b55108741c28d9d9b3afd6643fee2dbe6521ea253df"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/failed_reactive_collision.json.gz",
+      "bytes": 24570,
+      "sha256": "7dc37fcbfdff6aa50c9a31c3e0c0268dc25b6aabe59986543ab6fb1fb359017e"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/failed_rpp_handoff.json.gz",
+      "bytes": 91081,
+      "sha256": "c6b5d6898134cc02cbdc70a6312fffa9fe70ffaad904162c4245c4634ff0a74a"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/forecast_layer.json",
+      "bytes": 262,
+      "sha256": "d4ec494437f62f19d236af9b787c71e139bc71c1bb1ea3761de10882ca17308f"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/manifest.json",
+      "bytes": 4047,
+      "sha256": "872162b62054c77850c90e2dfd15c58839d5368c261f9ebf4a32f79bbb43aeb5"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/mission_protocol.json",
+      "bytes": 1051,
+      "sha256": "464d705aef778ef8ccfe9926b82ae9d91ea9e9ce9dbcb46dfe4017efe79d713a"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/motion_modes.json",
+      "bytes": 1348,
+      "sha256": "b2efbaf406962e6243208e968540a0a42214793b9e115218e87d59b4c6ad7f00"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/moving_box_cli.json",
+      "bytes": 217,
+      "sha256": "d53f3b0215e1481708d0b855f674621582864c88dc6ce8efb273c7f05d402d37"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/moving_with_turn.json.gz",
+      "bytes": 137119,
+      "sha256": "384ebf1a0aa8e643922bcc467129c4b26ebea7f94416af7e5b81695014f79ac4"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/navigation_gate.json",
+      "bytes": 1112,
+      "sha256": "3f7575bef3442ebcb1f37dcfc202afc1220598f2d151957d35340e5591f742a3"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/replanning.json",
+      "bytes": 925,
+      "sha256": "a3c28f97c68f096e91535d26d1b9248ed18b18c08f3ab6596836ec929e7eef33"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/rl_response.json",
+      "bytes": 6830,
+      "sha256": "65d1cee234494cac204ee36ba2b346f99172eaed4f0f80c5a4add7d33523a302"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/static_box.json.gz",
+      "bytes": 51775,
+      "sha256": "72d5bc9a65ba541c5c69e0c633a556d74b812666ce891e4a917e50c6cde1f7d3"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/summary.json",
+      "bytes": 2482,
+      "sha256": "5d47a32f8f9c1b7492d241f77816ff0958bd8fcb4ff7240edf4548db16a3b9b5"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/trajectories.png",
+      "bytes": 146223,
+      "sha256": "53c4bbc67308b97c00b7a316d71689e968f0fb8515c473da504264e235cb4cd1"
+    },
+    {
+      "path": "docs/development_history/evidence/continuous_avoidance_2026-10-17/warehouse.json.gz",
+      "bytes": 99672,
+      "sha256": "087f1371479281a4636f19a2e9c04dc85b81c0e5f8f2deab1dbd3add9ad843ea"
+    },
+    {
+      "path": "docs/development_history/evidence/dual_picker_2026-10-18/README.md",
+      "bytes": 1157,
+      "sha256": "909ecea42e584fdaab56cc80ff09e7fad9d833a6cee289c09c96b08aaa1a2c69"
+    },
+    {
+      "path": "docs/development_history/evidence/dual_picker_2026-10-18/ctest.log",
+      "bytes": 1851,
+      "sha256": "9c53f7ce35a37e9ec2a2662eb1d03c91d3b2805747f2ec1ed5eb8813630d3f12"
+    },
+    {
+      "path": "docs/development_history/evidence/dual_picker_2026-10-18/panel-preview.png",
+      "bytes": 42595,
+      "sha256": "aedb124218ecbb58ba0815c5a17a651c31a3c98651210d8e22fb29baa038c661"
+    },
+    {
+      "path": "docs/development_history/evidence/dual_picker_2026-10-18/result.json",
+      "bytes": 537,
+      "sha256": "c8b90ed121084fc96a3a9582ee7a640ef92ab9a942a324ea108eb311572fbf6e"
+    },
+    {
+      "path": "docs/development_history/evidence/dual_picker_2026-10-18/source_hashes.json",
+      "bytes": 896,
+      "sha256": "3b503fa85c00f4ed178655ee4653785b74d80d9961878504cd62922c5660942c"
+    },
+    {
+      "path": "docs/development_history/evidence/faster_replanning_2026-10-17/README.md",
+      "bytes": 1602,
+      "sha256": "e2c5488fc418079247277ac06691de31fb71804942d2c2900ebbd66d410ede56"
+    },
+    {
+      "path": "docs/development_history/evidence/faster_replanning_2026-10-17/manifest.json",
+      "bytes": 585,
+      "sha256": "c9b160b91da288e515e831815c0bc89bbbffdbfb53e3b3be16b2b6d0a7a1f853"
+    },
+    {
+      "path": "docs/development_history/evidence/faster_replanning_2026-10-17/moving_with_turn.json.gz",
+      "bytes": 149165,
+      "sha256": "22587e34fcc35a8e23ffa35329b493a5329b3d4c9bd63e8813214dfd6fba2fe1"
+    },
+    {
+      "path": "docs/development_history/evidence/faster_replanning_2026-10-17/replanning_protocol.json",
+      "bytes": 1090,
+      "sha256": "6c2b4a356262ce0ffa313d43ad21400e9496e81b34c94c2d288af2dec122a7f3"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/README.md",
+      "bytes": 2687,
+      "sha256": "2cb7a7cbc0135715fb4712ecc531908fd3b6f556a79c815b988e81319e5844eb"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/failed_final_approach.json.gz",
+      "bytes": 122921,
+      "sha256": "9bac8bdf579aceea5f586a24a77a44129feaa3d753a48188b8f8327768bfb0d0"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/failed_final_approach.log.gz",
+      "bytes": 25578,
+      "sha256": "28d3096a3eda2926e2e6725b2bf64216240c0a3caab99624e83e8d884fb7ae2a"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/failed_forward_only_costmap.json.gz",
+      "bytes": 7372,
+      "sha256": "df0f1bdb0703c02d25e857d0948d2098b6bc7368fa430f91f106ab2bbcb8d558"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/failed_forward_only_moving.json.gz",
+      "bytes": 56208,
+      "sha256": "e3e16c3f28eb69d5109191c08d6c562d97597f075bdcaa0ca207c3fdc54af299"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/failed_warehouse_goal.json.gz",
+      "bytes": 18648,
+      "sha256": "de989af23b9e3096df5ba14359332793241373d47ebb502607828325a285ae79"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/failed_warehouse_goal_costmap.json.gz",
+      "bytes": 5486,
+      "sha256": "4d865d99b9864acb87d6b1a9391f07f924f5925cd4f9cc2721edaac6f03f0dfa"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/global_costmap_costmap.npy",
+      "bytes": 100480,
+      "sha256": "dfb827ff5fb8bf39e0ced766569410a9f698506a1a15bfaaa7567f9de2c029b7"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/lattice_preferred_path.json.gz",
+      "bytes": 4623,
+      "sha256": "bd927fd28c4479bd889f736d3b1927929b29d86d2c4ec1a1d73784890798d3d1"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/local_costmap_costmap.npy",
+      "bytes": 12928,
+      "sha256": "6cffe5eefbc9e082c297fc400c6f35c3b0d5eb6516e8cce31cbb4607a555dc7d"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/manifest.json",
+      "bytes": 4265,
+      "sha256": "c929ed6ae80f284b18866008b530244aaf84300ef1a2bd29b1901a63e12d0c05"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/map.npy",
+      "bytes": 100480,
+      "sha256": "482819f3fb4df6c1f39a42224c206ba0e2f4b88af3c9607e86a5aaf25004907a"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/moving_before_final_approach_fix.json.gz",
+      "bytes": 157911,
+      "sha256": "87d01076ff5b7033efddf98d509561f10114bcf446fda6af3dd4b59325d75826"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/moving_final.json.gz",
+      "bytes": 144708,
+      "sha256": "ce2cf6269792520b240dc80dc159df7694c73657cd4b781fbfccf99449ba3214"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/moving_final.log.gz",
+      "bytes": 26108,
+      "sha256": "0d80479695db5dbfd60ca5a224df0a0a7dcd702013ac5a74555e5387c2984b24"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/narrow_corner.json.gz",
+      "bytes": 108,
+      "sha256": "ea573ab1583cd36bda3f16cd4a67e4480fc0868beccba86cc129a352903f4319"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/original_footprint_check.json.gz",
+      "bytes": 2349,
+      "sha256": "652cba92656e4a02bc455cdde72a8b55d03e67a65a64b5ac3d9b1daaf10ac6e8"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/original_goal_rejected.json.gz",
+      "bytes": 108,
+      "sha256": "b1685db7eed904877cc924a62af097e89fd6f8674e99ab25efb8896b4f5eb9fd"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/original_plan.json.gz",
+      "bytes": 5919,
+      "sha256": "a122f4b6201332a9f46a505bcac251080b98b210d68a8f9f1d9009fbad95849f"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/original_snapshot.json.gz",
+      "bytes": 2597,
+      "sha256": "9e8fdae975e6f1329e9624e18fb9048f07e9f53b3e3f31d4bfbfda10293a50f7"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/path_footprint_check.png",
+      "bytes": 70061,
+      "sha256": "e1d642d72bb6dd76df1fc2a98f91bcdf77149b5994fb2330d364a5a1b93c7373"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/protocol_final.json.gz",
+      "bytes": 864,
+      "sha256": "1eb22d57f594cac759233fc1dac177f9e78eb2189bc14303169dfad19e7b907d"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/route_layer.json.gz",
+      "bytes": 164,
+      "sha256": "326b11c538596fb8069c3a9c460441528471fcc4e8abb380fbd12ee28ba9e267"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/soft_preference.json.gz",
+      "bytes": 166,
+      "sha256": "385cfc6a5d7e8dac61203962c8ac2a85c3658eb6c0af560052fd59e5403ac88b"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/verification.json",
+      "bytes": 495,
+      "sha256": "51bde7da04ed6b75096b7612b24a775e222a566fdcde3782a87eceb507330800"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/warehouse_final.json.gz",
+      "bytes": 113341,
+      "sha256": "da5ad523f1e697d71b64f8081f28fa2884838ce674c855345814eb64b2b64fcc"
+    },
+    {
+      "path": "docs/development_history/evidence/footprint_replanning_2026-10-17/warehouse_final.log.gz",
+      "bytes": 23003,
+      "sha256": "884f473ed5d27b8e0689d3c17569b32b4d2405437c64fd603fe653ced21d7d61"
+    },
+    {
+      "path": "docs/development_history/evidence/lidar_2026-10-13/result.json",
+      "bytes": 916,
+      "sha256": "06a0a82a909aff40157416fbd62a658d0d813d34228a85cbf250e88abdaa7ffe"
+    },
+    {
+      "path": "docs/development_history/evidence/lidar_3d_2026-10-14/result.json",
+      "bytes": 1219,
+      "sha256": "09396b9d33b66a3cd2a33231955a48a483115e1360413d913de45dacaaf44d21"
+    },
+    {
+      "path": "docs/development_history/evidence/mission_action/mission-0.log",
+      "bytes": 9886,
+      "sha256": "1c38d75f5718bd990d735f258ace407a91062ea23e6732d5475d48f9846ed18a"
+    },
+    {
+      "path": "docs/development_history/evidence/mission_action/mission-14.log",
+      "bytes": 995,
+      "sha256": "20a17274a7c21a4b0408be1ea13884aa677f90c348e9c0f8b45da6ce16e8bf73"
+    },
+    {
+      "path": "docs/development_history/evidence/mission_action/result.json",
+      "bytes": 1042,
+      "sha256": "85e57d15e305d624b1a22e4e41d5578b6de501f983bfd60386a2c2f633625be8"
+    },
+    {
+      "path": "docs/development_history/evidence/navigation_footprint_2026-10-17/result.json",
+      "bytes": 1311,
+      "sha256": "94033335e44b91a1deacb52d17b23c2939cb5b2793c53077d4eacc1954e70c5c"
+    },
+    {
+      "path": "docs/development_history/evidence/navigation_footprint_2026-10-17/result_20cm.json",
+      "bytes": 4809,
+      "sha256": "a78748c2577b5c3675eb8b0296ac8a6b405bfbcd72288a6beaba3a80d83a2a81"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_clearing_2026-10-18/README.md",
+      "bytes": 1152,
+      "sha256": "f14fd48c29b47eb81e8e9c9cd1d849bdbd8d692f0d0220e819f99cb4ba9df6d4"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_clearing_2026-10-18/after.json",
+      "bytes": 907,
+      "sha256": "a37553a5c8c1f43b267bd72b38e842bffc22eca5d72d15a84eba7785fe81713e"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_clearing_2026-10-18/before.json",
+      "bytes": 696,
+      "sha256": "d2158762ad2a399d2dc141eabd5c7836d5602ef2f6583efa094f08f2caf215d9"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_clearing_2026-10-18/forecast_layer.json",
+      "bytes": 262,
+      "sha256": "d4ec494437f62f19d236af9b787c71e139bc71c1bb1ea3761de10882ca17308f"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_clearing_2026-10-18/ground_tag.json",
+      "bytes": 261,
+      "sha256": "b7e15bc32349f1ed704eded297161dde9d57167db96de953a1a750eac396554a"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_clearing_2026-10-18/sensor_layout.json",
+      "bytes": 76,
+      "sha256": "49a25214d4d889ee809a3477aaad13f80ae25ec935c92cc66ba1179d6e68871f"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/README.md",
+      "bytes": 5036,
+      "sha256": "00a32d26a8cdc0f16e385024e97c713dea81942903f649acdfad55128dde36d1"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/SHA256SUMS",
+      "bytes": 15053,
+      "sha256": "fa2f1e92820e8c17979ee5bd3a0d1ecef2eca00dd7145fccb7a2471b1e8eee04"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/case_sources.json",
+      "bytes": 1264,
+      "sha256": "712a87bdf9af02569f20b377909c88fd08ac76101076781e5c57513106a5397d"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/arrived_but_bad_surface_assertion/box-bridge.log.gz",
+      "bytes": 264,
+      "sha256": "4d0bdf8574d83e0b2ae236bfdade670452128c2c316545f03f506a0d18a2c950"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/arrived_but_bad_surface_assertion/bringup.log.gz",
+      "bytes": 32831,
+      "sha256": "3bc61366721809c8f9ddea9c6e3ec5b36ec197a3599acac865d5d418997f2b87"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/arrived_but_bad_surface_assertion/empty.sdf.gz",
+      "bytes": 2853,
+      "sha256": "e1440ceea651d6f0dfe32d85ada6c51c3e2abf05e9eba38998eac87f57cb70a1"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/arrived_but_bad_surface_assertion/global_costmap.json.gz",
+      "bytes": 5342,
+      "sha256": "779aa22f1bf424c0c88376600454c470b41330540c03c9feccc6ccc5105aa863"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/arrived_but_bad_surface_assertion/map.yaml.gz",
+      "bytes": 118,
+      "sha256": "b1546b66df5237110cd20a0c572f3ec029046e0addf908a3ff6e541923763f4d"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/arrived_but_bad_surface_assertion/result.json.gz",
+      "bytes": 171117,
+      "sha256": "71c19be0758425c43eda394c715a06a629da863e1fd3f3f8245d2b59070cd8ca"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/arrived_but_bad_surface_assertion/stationary.sdf.gz",
+      "bytes": 682,
+      "sha256": "8567efd09c8f68b2ca2c2530ee81f3f188c8dfa39baf8bf55d9154731598d733"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/arrived_but_bad_surface_assertion/user_box.sdf.gz",
+      "bytes": 578,
+      "sha256": "0665eb6c09eaf893297e21251d2f2673a86e6e16a050b37b62735b088b671997"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_ground_height_assertion/probe.log.gz",
+      "bytes": 211,
+      "sha256": "c52f201a850236f5eb81e8126bac1df4e0b30c64788d9674e6ffe8c0eea9796b"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_ground_height_assertion/simulation.log.gz",
+      "bytes": 9123,
+      "sha256": "3cf09ab644ba17447088bf06beea44cbc80e38593e076cc1823fbd049cca7701"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_ground_height_assertion/warehouse.sdf.gz",
+      "bytes": 2937,
+      "sha256": "65ce540a4b8f6d8b966b2c13fed529763d6409e0c3c04b6c98a6df9ffd5a583d"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_omni_small_commands/box-bridge.log.gz",
+      "bytes": 265,
+      "sha256": "baa28b5768229dc156f845e248a3e7a7b2b6a89cde2d4db9e126c2cb30901a1b"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_omni_small_commands/bringup.log.gz",
+      "bytes": 18289,
+      "sha256": "36427c333c7c7f36d316800576962e5d4e4996c5d4e02352f7d676353e156915"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_omni_small_commands/empty.sdf.gz",
+      "bytes": 685,
+      "sha256": "75eca691dfc4339166ffde7b799b54029fbd037ba48a5c14b20ef3f342505420"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_omni_small_commands/global_costmap.json.gz",
+      "bytes": 3138,
+      "sha256": "457d39dd25aeb4771dd5e537e7c8214fb48b44e06e12f8c69915f3b9c5922220"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_omni_small_commands/map.yaml.gz",
+      "bytes": 118,
+      "sha256": "b1546b66df5237110cd20a0c572f3ec029046e0addf908a3ff6e541923763f4d"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_omni_small_commands/result.json.gz",
+      "bytes": 78801,
+      "sha256": "01f0e232646b7d9325fdaaa869d98dc95cea4337a756cc481116095bf0b4861f"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_plane_only_static/box-bridge.log.gz",
+      "bytes": 265,
+      "sha256": "c68f488a0f74dcec133e13d7bf6c439a9d8f38c0092a51a17594956e5ec2a36a"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_plane_only_static/bringup.log.gz",
+      "bytes": 25767,
+      "sha256": "1d5cad6bff4d6226d438de6d21aade5de14c8f9126f0896fe0b77eac5b153680"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_plane_only_static/empty.sdf.gz",
+      "bytes": 2853,
+      "sha256": "e1440ceea651d6f0dfe32d85ada6c51c3e2abf05e9eba38998eac87f57cb70a1"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_plane_only_static/global_costmap.json.gz",
+      "bytes": 6325,
+      "sha256": "1c5cf9ad19f8c6357591f4f4bc89151e519ec9a76d61150060b850fe22029345"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_plane_only_static/map.yaml.gz",
+      "bytes": 118,
+      "sha256": "b1546b66df5237110cd20a0c572f3ec029046e0addf908a3ff6e541923763f4d"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_plane_only_static/result.json.gz",
+      "bytes": 114683,
+      "sha256": "b16893613626a4ae76243660622dfb3dc63c037ee5e40d988eb163a97b5cd639"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_plane_only_static/stationary.sdf.gz",
+      "bytes": 682,
+      "sha256": "8567efd09c8f68b2ca2c2530ee81f3f188c8dfa39baf8bf55d9154731598d733"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_plane_only_static/user_box.sdf.gz",
+      "bytes": 578,
+      "sha256": "0665eb6c09eaf893297e21251d2f2673a86e6e16a050b37b62735b088b671997"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_critic_contact/box-bridge.log.gz",
+      "bytes": 265,
+      "sha256": "96f5b58b1bca79b28bcb93b96ab14820d2b60d43ccd457cb0cfa095df79e7427"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_critic_contact/bringup.log.gz",
+      "bytes": 15117,
+      "sha256": "e9f92ee0a7326ce096e73c6360a216c4b838928975e24171a4acf5efabaae19d"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_critic_contact/empty.sdf.gz",
+      "bytes": 685,
+      "sha256": "75eca691dfc4339166ffde7b799b54029fbd037ba48a5c14b20ef3f342505420"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_critic_contact/global_costmap.json.gz",
+      "bytes": 2096,
+      "sha256": "26214d88ead289e97d986eee6d942dd855fa22b5cc7c7697a4593cbf23527103"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_critic_contact/map.yaml.gz",
+      "bytes": 118,
+      "sha256": "b1546b66df5237110cd20a0c572f3ec029046e0addf908a3ff6e541923763f4d"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_critic_contact/result.json.gz",
+      "bytes": 46179,
+      "sha256": "9c7863f3d4c97da1abd9d97af58b237f9f00f7b7d620857ab0f17abbd0b2ed3c"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_guard_blocked/box-bridge.log.gz",
+      "bytes": 264,
+      "sha256": "13da0c77c46a1ba3797ea999d68b684c895c8dccdb3e83abfb0409d6faa02f42"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_guard_blocked/bringup.log.gz",
+      "bytes": 15804,
+      "sha256": "02b672e8b066403d6a555c4b65464eaa487998badb55e629376e56a59cdbd1c3"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_guard_blocked/empty.sdf.gz",
+      "bytes": 685,
+      "sha256": "75eca691dfc4339166ffde7b799b54029fbd037ba48a5c14b20ef3f342505420"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_guard_blocked/global_costmap.json.gz",
+      "bytes": 3070,
+      "sha256": "d50a8382403f920264229ae058e2013e569cd7d0bd9db88f1df13e23a68ee736"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_guard_blocked/map.yaml.gz",
+      "bytes": 118,
+      "sha256": "b1546b66df5237110cd20a0c572f3ec029046e0addf908a3ff6e541923763f4d"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_guard_blocked/result.json.gz",
+      "bytes": 64251,
+      "sha256": "8712ddbbeb88cd46405bdf2338a7d033e4b98be3a002934c193f16276e054c6b"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_invalid_path103/box-bridge.log.gz",
+      "bytes": 265,
+      "sha256": "6974c14405d28ce9389751a12bd22c11e0b050cfa2f7316ecb013840e1ca1588"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_invalid_path103/bringup.log.gz",
+      "bytes": 26870,
+      "sha256": "c354a8753dcbef6f94e02a9185a87331153d2e4982b17e2b77aa055d1cc73da2"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_invalid_path103/empty.sdf.gz",
+      "bytes": 685,
+      "sha256": "75eca691dfc4339166ffde7b799b54029fbd037ba48a5c14b20ef3f342505420"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_invalid_path103/global_costmap.json.gz",
+      "bytes": 2594,
+      "sha256": "ac3c9aa6ff97bcf466a56f0d181bac3e5d952bdc548b0d689401a6c418c79cca"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_invalid_path103/map.yaml.gz",
+      "bytes": 118,
+      "sha256": "b1546b66df5237110cd20a0c572f3ec029046e0addf908a3ff6e541923763f4d"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_invalid_path103/observation_audit.json.gz",
+      "bytes": 10165,
+      "sha256": "163a0e1ce5e25ec7ae5ed427aaca9edf9ebb236a3b542a416749b6ff885b606e"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_response_invalid_path103/result.json.gz",
+      "bytes": 172296,
+      "sha256": "30d106fbcffb20fd48179ed6ac8abcc7fb769d8e717bb41a775f2c21d79a4a04"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_tf_transient/box-bridge.log.gz",
+      "bytes": 265,
+      "sha256": "0f614d538429b5b212a6559f7ed7dcab6b58eeb86b9a8af37bc290339f3fa7b0"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_tf_transient/bringup.log.gz",
+      "bytes": 10454,
+      "sha256": "1ec4d8c5151775b9c19388b5d531affc79397ffee2e07f5102ce259d77adf725"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_tf_transient/empty.sdf.gz",
+      "bytes": 2853,
+      "sha256": "e1440ceea651d6f0dfe32d85ada6c51c3e2abf05e9eba38998eac87f57cb70a1"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_tf_transient/global_costmap.json.gz",
+      "bytes": 6158,
+      "sha256": "85c45c97bd4a344af921b3085793e832f8e40622e69c3191927cf5d3f96dabf5"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_tf_transient/map.yaml.gz",
+      "bytes": 118,
+      "sha256": "b1546b66df5237110cd20a0c572f3ec029046e0addf908a3ff6e541923763f4d"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/failed_tf_transient/result.json.gz",
+      "bytes": 21208,
+      "sha256": "e422659bba2320ddb2964d6f4d5f7a9faaa40691f57b87533546962cb342ebf6"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_low_box_clearance/probe.log.gz",
+      "bytes": 405,
+      "sha256": "ae219edabb9b28158ef1b5f2b6df9298b11f9e8ecea87c0fa3590a1b65b0f747"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_low_box_clearance/result.json.gz",
+      "bytes": 347,
+      "sha256": "60c3e0075aeac4404035410a08fc72cddb3b6532820a21fdaf13381165533a18"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_low_box_clearance/simulation.log.gz",
+      "bytes": 9656,
+      "sha256": "27e8a5b9ed81659b3c16c66c41bdb8325cc62282d24431f0bcee3e878cb1484c"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_low_box_clearance/warehouse.sdf.gz",
+      "bytes": 2937,
+      "sha256": "65ce540a4b8f6d8b966b2c13fed529763d6409e0c3c04b6c98a6df9ffd5a583d"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_moving_and_turn/box-bridge.log.gz",
+      "bytes": 265,
+      "sha256": "3ae08a00eb16de0152b3bd90c3985f2666707987ea87e714591dea12ca816f0c"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_moving_and_turn/bringup.log.gz",
+      "bytes": 26413,
+      "sha256": "e7df65114039d2237162b55571a397f6ababf741d388cb22018ae14dd786a6b2"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_moving_and_turn/empty.sdf.gz",
+      "bytes": 685,
+      "sha256": "75eca691dfc4339166ffde7b799b54029fbd037ba48a5c14b20ef3f342505420"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_moving_and_turn/global_costmap.json.gz",
+      "bytes": 1742,
+      "sha256": "b00a4665d866ebd956fc9f03b6707013af350c13b0825887adfebefc0ad71203"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_moving_and_turn/map.yaml.gz",
+      "bytes": 118,
+      "sha256": "b1546b66df5237110cd20a0c572f3ec029046e0addf908a3ff6e541923763f4d"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_moving_and_turn/observation_audit.json.gz",
+      "bytes": 323,
+      "sha256": "0dbfad97c501a55a6dd3425cac9da589173070ea48a779ecf674b5f96c580287"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_moving_and_turn/result.json.gz",
+      "bytes": 172535,
+      "sha256": "22674ff4277c404ca3827122c1628e5d407e57eb21045e68e2e38c5632c2122f"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_native_ground_tag/controller.log.gz",
+      "bytes": 999,
+      "sha256": "f736790cca6bd227016f00bd97787160e927c9d79d99af33b548f11f45bb1a2a"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_native_ground_tag/params.yaml.gz",
+      "bytes": 1141,
+      "sha256": "51d8aa4f701a99cbbb45e9da7bc9ee7f97aefc20c6bd2b4e1a8d5acc4ca5b64f"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_native_ground_tag/result.json.gz",
+      "bytes": 191,
+      "sha256": "929b0427e60199e62d71162eb625cef6c639fad309980c856ed837b13501d539"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_replanning_protocol/mission.log.gz",
+      "bytes": 3672,
+      "sha256": "d18e501a6620eed183d3f65f1534a2a8f4a218084bb8a37c0971bc588ec4abac"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_replanning_protocol/result.json.gz",
+      "bytes": 916,
+      "sha256": "f032beef3e6d4c4b654e27938c0da2db44ca1c1e634dc145aa8f8a9a9b8013f5"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_user_box_warehouse/box-bridge.log.gz",
+      "bytes": 265,
+      "sha256": "432ba3f78800b1072668d374eb8a05b49c0b058432610dcf198c534b288e7360"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_user_box_warehouse/bringup.log.gz",
+      "bytes": 35745,
+      "sha256": "b397b252869144885f066d5ba9a0484fcea87d0fd2ad455575b6347803417569"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_user_box_warehouse/empty.sdf.gz",
+      "bytes": 2853,
+      "sha256": "e1440ceea651d6f0dfe32d85ada6c51c3e2abf05e9eba38998eac87f57cb70a1"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_user_box_warehouse/global_costmap.json.gz",
+      "bytes": 5022,
+      "sha256": "f2d14bb03b89cd39e5d9c1c9a9fc7bfe8a5dcd59fddf2b56c852929303a8171f"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_user_box_warehouse/map.yaml.gz",
+      "bytes": 118,
+      "sha256": "b1546b66df5237110cd20a0c572f3ec029046e0addf908a3ff6e541923763f4d"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_user_box_warehouse/observation_audit.json.gz",
+      "bytes": 22,
+      "sha256": "64406e753d82e11c6bd63d1d04bb6aa083eefa0a46949bbfce994d556b989f0f"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_user_box_warehouse/result.json.gz",
+      "bytes": 229168,
+      "sha256": "6e2e213a95243f860b3e105d8eae96656afbe094b3b90dc4deffd66e469f19bd"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_user_box_warehouse/stationary.sdf.gz",
+      "bytes": 682,
+      "sha256": "8567efd09c8f68b2ca2c2530ee81f3f188c8dfa39baf8bf55d9154731598d733"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/final_user_box_warehouse/user_box.sdf.gz",
+      "bytes": 578,
+      "sha256": "0665eb6c09eaf893297e21251d2f2673a86e6e16a050b37b62735b088b671997"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/intermediate_static_success/box-bridge.log.gz",
+      "bytes": 263,
+      "sha256": "2214806c74d5b420d367e44ed4b0a69e1bac8517e651f70f76226f0d99653e60"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/intermediate_static_success/bringup.log.gz",
+      "bytes": 36367,
+      "sha256": "0575c22d5c6e8cd35331d3e5f1f81ee7787fd9c79e785be57735e69574830d89"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/intermediate_static_success/empty.sdf.gz",
+      "bytes": 2853,
+      "sha256": "e1440ceea651d6f0dfe32d85ada6c51c3e2abf05e9eba38998eac87f57cb70a1"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/intermediate_static_success/global_costmap.json.gz",
+      "bytes": 5438,
+      "sha256": "c70424d3d331a80b3f93371ace3ad5c5001541ee3c21080853553f7c890b0d54"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/intermediate_static_success/map.yaml.gz",
+      "bytes": 118,
+      "sha256": "b1546b66df5237110cd20a0c572f3ec029046e0addf908a3ff6e541923763f4d"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/intermediate_static_success/result.json.gz",
+      "bytes": 195901,
+      "sha256": "b9d122651ec0d76eccf6d3e81ec9296b40228820c080d27ddf170a158aea5cd6"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/intermediate_static_success/stationary.sdf.gz",
+      "bytes": 682,
+      "sha256": "8567efd09c8f68b2ca2c2530ee81f3f188c8dfa39baf8bf55d9154731598d733"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/intermediate_static_success/user_box.sdf.gz",
+      "bytes": 578,
+      "sha256": "0665eb6c09eaf893297e21251d2f2673a86e6e16a050b37b62735b088b671997"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/native_diff_start205/lattice.log.gz",
+      "bytes": 1142,
+      "sha256": "f277bcfa63f1bf5059cc4e436cadfe970cd7ebcddfd5637e9302170b59771158"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/native_diff_start205/lattice.yaml.gz",
+      "bytes": 1124,
+      "sha256": "eddbb9b849548fde05ece180a36c2f975049092754cbc78f5332137e0ab710a3"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/native_diff_start205/lattice_result.json.gz",
+      "bytes": 171,
+      "sha256": "4fd860f7f94bfbf71c360bca20672bbc86a680b85eda50ac780764808cef65d5"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/native_diff_start205/navfn.log.gz",
+      "bytes": 787,
+      "sha256": "3da05f0946ac146de281e0ecc97c52775d59adb83237a82bbc60f745818ffec8"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/native_diff_start205/navfn.yaml.gz",
+      "bytes": 814,
+      "sha256": "1162dd09b1c788c2aa6ce55bac8de02afa3b38f97b02ede0d6d4dbcb916f3652"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/native_diff_start205/navfn_result.json.gz",
+      "bytes": 6251,
+      "sha256": "7d01e260edc8625b9f96095b0181ce4fcb33411c80b93b3feeee69071137e00b"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/native_diff_start205/result.json.gz",
+      "bytes": 108,
+      "sha256": "ffd81b0fc2b3b13536b709b1843b2baf87d7ec3eb80f612612f714d7abc6bc55"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/native_omni_start_success/lattice.log.gz",
+      "bytes": 1097,
+      "sha256": "6d109f0a03aea219ee9da05703004214cdd159fb5109ddbc4a98e9bc072d8361"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/native_omni_start_success/lattice.yaml.gz",
+      "bytes": 1124,
+      "sha256": "55eb68ac7d957dd6ea34859653c0694cd9ded99893f25fc25d13fb16fb53788e"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/native_omni_start_success/lattice_result.json.gz",
+      "bytes": 4531,
+      "sha256": "80f3633d8aa9a8c3cb859e0f513acc67bd5ed81bf56ae8d54f486388f0e42b1c"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/native_omni_start_success/navfn.log.gz",
+      "bytes": 794,
+      "sha256": "fbb77246dc1f70e8993f754805570982b608c60b0c17380cf402bf3ba1c79a5c"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/native_omni_start_success/navfn.yaml.gz",
+      "bytes": 814,
+      "sha256": "1162dd09b1c788c2aa6ce55bac8de02afa3b38f97b02ede0d6d4dbcb916f3652"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/native_omni_start_success/navfn_result.json.gz",
+      "bytes": 6256,
+      "sha256": "0892f65688270e0c84f952be28a6311cc73c474dbccfb86e3fd0a47ffc209354"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/native_omni_start_success/result.json.gz",
+      "bytes": 102,
+      "sha256": "3916392d95814094cbc663326ec9ce980e61e947d0da854fdecb6a5273182bbb"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/rl_lateral/empty.sdf.gz",
+      "bytes": 685,
+      "sha256": "75eca691dfc4339166ffde7b799b54029fbd037ba48a5c14b20ef3f342505420"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/rl_lateral/result.json.gz",
+      "bytes": 956,
+      "sha256": "a0f569ec09977f6f20c75a5917b707d8c9472a6db53c75e39d614d30ac2ead1a"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/rl_lateral/rl.log.gz",
+      "bytes": 1137,
+      "sha256": "899c564d75c530e70eb4cfe0dc262841dce8cc1e241796ad3bf913cd051b80c0"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/rl_lateral/simulation.log.gz",
+      "bytes": 6306,
+      "sha256": "b50c68f0d94b364797a591d887ba92fbd054bf427092fe7427e682a33a7495a1"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_goal_map/_global_costmap_costmap.npy.gz",
+      "bytes": 5522,
+      "sha256": "050fe2a0e481bc7885a5cb7267bd96feb90b88f64303acdbf68bb54d76baf9dd"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_goal_map/_lite3_avoidance_failed_route.json.gz",
+      "bytes": 88,
+      "sha256": "7a1f5858416511d7068d51af8e9f7af0f73400c55f34ee4d23f414514660d670"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_goal_map/_lite3_lidar_points_world.npy.gz",
+      "bytes": 416752,
+      "sha256": "637b057aef899f9360b51a59aad0108b969502ebe5740568dfb442d89a181bce"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_goal_map/_lite3_navigation_path.json.gz",
+      "bytes": 88,
+      "sha256": "7a1f5858416511d7068d51af8e9f7af0f73400c55f34ee4d23f414514660d670"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_goal_map/_lite3_perception_forecast.npy.gz",
+      "bytes": 88,
+      "sha256": "9094fcea80ee7464cd8641c4ac659eea583d692e52f5899a273abe6f37bb29eb"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_goal_map/_lite3_perception_ground_world.npy.gz",
+      "bytes": 183821,
+      "sha256": "c564da56b4a03307aee34ffddb328d6443732c5266d8cf0253d77f74e45832d7"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_goal_map/_lite3_perception_obstacles.npy.gz",
+      "bytes": 44001,
+      "sha256": "314a7bb759fe32efc3d9f84bcb0d40813372f848f5ac5b57ddd3d39a3787f39e"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_goal_map/_lite3_perception_obstacles_world.npy.gz",
+      "bytes": 94654,
+      "sha256": "0d772533dda0985288c77ee7a979374194edeb29086161e7b6bf0bfa6aa4192b"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_goal_map/_local_costmap_costmap.npy.gz",
+      "bytes": 969,
+      "sha256": "e8768d0c5a32ca073a3816f6b1e902145d1e53e19f75bdf326e0d96d93efc022"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_goal_map/_map.npy.gz",
+      "bytes": 695,
+      "sha256": "72affa75d8849c49d068766c2b06b687f268952840df2263f8cf6585fbfa1699"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_goal_map/cloud_check.json.gz",
+      "bytes": 318,
+      "sha256": "bfdbd7d91b5e53c39653d536d46d322a54c55518b393dccc08cec14ac5883039"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_goal_map/diagnosis.png",
+      "bytes": 92633,
+      "sha256": "97f83d53607f9dfc07713af5a23431a1e4e46718a99de9db43aacc4a85f5cf93"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_goal_map/snapshot.json.gz",
+      "bytes": 1553,
+      "sha256": "bf6674509cbd1349aea32ce7e0afe0fdb7aa755bc6e7182fcc72fe140172cc08"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_start_map/_global_costmap_costmap.npy.gz",
+      "bytes": 5939,
+      "sha256": "acc8a62ae72850a1a6cce348e37473fed51417a51e1f9452189bda60d1b57992"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_start_map/_lite3_avoidance_failed_route.json.gz",
+      "bytes": 89,
+      "sha256": "fa9c5f1046bfc0b9bfa4f53f07838b9bb7949b6bf76658ef615cfb0495747d5f"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_start_map/_lite3_navigation_path.json.gz",
+      "bytes": 89,
+      "sha256": "fa9c5f1046bfc0b9bfa4f53f07838b9bb7949b6bf76658ef615cfb0495747d5f"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_start_map/_lite3_perception_forecast.npy.gz",
+      "bytes": 88,
+      "sha256": "9094fcea80ee7464cd8641c4ac659eea583d692e52f5899a273abe6f37bb29eb"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_start_map/_lite3_perception_obstacles.npy.gz",
+      "bytes": 80170,
+      "sha256": "1079016da1566d349bc36155ad7c8f30af866b571e460a1ca56e6f1326668dc3"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_start_map/_local_costmap_costmap.npy.gz",
+      "bytes": 1344,
+      "sha256": "fc397d7f7ee3ceecf31ae22348f5539a62e4fdbfdfca71de2ed4eff64570eb7c"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_start_map/_map.npy.gz",
+      "bytes": 695,
+      "sha256": "72affa75d8849c49d068766c2b06b687f268952840df2263f8cf6585fbfa1699"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_start_map/global_costmap_costmap.npy.gz",
+      "bytes": 5939,
+      "sha256": "acc8a62ae72850a1a6cce348e37473fed51417a51e1f9452189bda60d1b57992"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/cases/user_start_map/snapshot.json.gz",
+      "bytes": 1475,
+      "sha256": "2b8bb32d1355a65494f3ed6c9ce1cef1fb2c56b40fafb01606c8dc04be00b488"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/delivery_checks.json",
+      "bytes": 343,
+      "sha256": "dda561687c74307154b0d3120e4d61c3fd204817b163f26693b3463c0c5f691f"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/diagnostic_helpers/lite3_cloud_check_20261018.py",
+      "bytes": 1684,
+      "sha256": "70bbb5708e7ce422e1d3547c24d2a96d7701799c1b17d15fef12ecf334e64518"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/diagnostic_helpers/lite3_read_stuck_20261018.py",
+      "bytes": 4018,
+      "sha256": "42a7c008c88898f2b24d61f752f20177b0820fa3fae785e886d8e17115ac4a29"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/diagnostic_helpers/lite3_run_ground_scene_20261018.py",
+      "bytes": 1785,
+      "sha256": "b3ca5c829c7510e014ac2d41da3108f146f05f1489425e861a4f66330cbb74f7"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/experiments/critic_plugins.xml",
+      "bytes": 334,
+      "sha256": "9e084c118596b42fba895eafecbf0e884820f6cc2b7aa4f12d23a0e78d9b8ff7"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/experiments/rl_response_critic.cpp",
+      "bytes": 2267,
+      "sha256": "58defed69f4a4df3aa91d1e8c00574d7218d565cb3e93c0f59a36bbb52a22721"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/source_hashes.json",
+      "bytes": 3208,
+      "sha256": "57cddc80916e3140cc2a92c96bb92d9c313f9e5529e5760f69f7833473b198a1"
+    },
+    {
+      "path": "docs/development_history/evidence/obstacle_reliability_2026-10-18/unit_result.json",
+      "bytes": 180,
+      "sha256": "9f33d1421cd00550f2769309aff5b5029711bcf3b91326d4902f4ad20dc7f4cf"
+    },
+    {
+      "path": "docs/development_history/evidence/route_refresh_2026-10-18/README.md",
+      "bytes": 1298,
+      "sha256": "5406ebaafae1e55aa4ac87bd4d35a63bddc20e32e6d646a630b2b52c5fba9b3a"
+    },
+    {
+      "path": "docs/development_history/evidence/route_refresh_2026-10-18/clearing_to_route.json",
+      "bytes": 1327,
+      "sha256": "0e2773bf64973913ec9f77e0fa3bd31c3334cf8dc8bc5478e7a491f84c760c5e"
+    },
+    {
+      "path": "docs/development_history/evidence/route_refresh_2026-10-18/native_controller.json",
+      "bytes": 350,
+      "sha256": "59b14793a9ff0ae7fb2ef3d037a35cfc164d0739d74020bd2f7bcea8ab1eae07"
+    },
+    {
+      "path": "docs/development_history/evidence/route_refresh_2026-10-18/protocol.json",
+      "bytes": 881,
+      "sha256": "95920484b58110f034e88b26fb4ef4aca4283e16a20edd4f95905db3d253254d"
+    },
+    {
+      "path": "docs/development_history/evidence/route_refresh_2026-10-18/recovery_regression.json",
+      "bytes": 1405,
+      "sha256": "5799cf6dca743857ecc161ed583a50e70bab98366beeb45771268dc6e0a25e7f"
+    },
+    {
+      "path": "docs/development_history/evidence/safety_buffer_candidate_2026-10-18/diagnosis.json",
+      "bytes": 6089,
+      "sha256": "d30c88dc4c7a54a1158156fd9b6e2785dbdafc8f1993227c703f1af30f49fbb8"
+    },
+    {
+      "path": "docs/development_history/evidence/safety_buffer_candidate_2026-10-18/native_controller_result.json",
+      "bytes": 383,
+      "sha256": "d7cc32342764c73e4663dc091db8bf0245ee013ecf7aa4dcfcb1d14b935fc4af"
+    },
+    {
+      "path": "docs/development_history/evidence/safety_buffer_candidate_2026-10-18/numerical-checks.txt",
+      "bytes": 759,
+      "sha256": "8a5e99b154039d3bb6af3c3a636e20bc6e3dfd3b8701c97af54ede202851602d"
+    },
+    {
+      "path": "docs/development_history/evidence/short_route_initial_cancel/mission.log",
+      "bytes": 2175,
+      "sha256": "b32e1e1fa12f3c2861724062fa7e0fd9bbabcaa71eafb442c95b7aab5256dc9b"
+    },
+    {
+      "path": "docs/development_history/evidence/short_route_initial_cancel/result.json",
+      "bytes": 702,
+      "sha256": "f5ef495cc2bbc491712859e78ead1076c7b20f70fc167f90516121b7e9799e64"
+    },
+    {
+      "path": "docs/development_history/evidence/short_route_success/mission.log",
+      "bytes": 1120,
+      "sha256": "3044b4b84a730fcb5b0165c1ace1d3a356f18d3ba3e14efeefbe95b9bc680536"
+    },
+    {
+      "path": "docs/development_history/evidence/short_route_success/result.json",
+      "bytes": 678,
+      "sha256": "372fe847b1912158f4beffb33cd64d65320f5b79dfd206fc12c73f0d64fa27f5"
+    },
+    {
+      "path": "docs/development_history/evidence/warehouse_controller.log",
+      "bytes": 7692,
+      "sha256": "e46ca69a268b4359739ee7bdaeedaefcd27c460f6918cc1e330e3a2b9fe2c617"
+    },
+    {
+      "path": "docs/development_history/evidence/warehouse_mission.log",
+      "bytes": 5921,
+      "sha256": "2b4005c12d1b01e6b8dbaafcd4312ce5b110503bba3430c13a591e1e8db9a2e7"
+    },
+    {
+      "path": "external/lite3_rl_deploy/LICENSE.DeepRoboticsLab.txt",
+      "bytes": 1502,
+      "sha256": "f4eb10324b16b709ebe0f9538a6354bb9307277fe6e251278b4882ed33df4a0a"
+    },
+    {
+      "path": "external/lite3_rl_deploy/README.md",
+      "bytes": 5780,
+      "sha256": "531ef923965e041b11298a18a244fb4310e139191c4c1d9a402bb5419c8ef377"
+    },
+    {
+      "path": "external/lite3_rl_deploy/UPSTREAM.json",
+      "bytes": 1802,
+      "sha256": "2c574b849d9cb12270e75a024d1854b7f0abf25cdf0e6ca3c78ecf038fa06635"
+    },
+    {
+      "path": "external/lite3_rl_deploy/patches/local-simulation-fixes.patch",
+      "bytes": 16392,
+      "sha256": "892cd2a9fd72a804b583574a8378a409b86be0f944cbbd3d91492dddef851b1c"
+    },
+    {
+      "path": "external/lite3_rl_deploy/policy/ppo/policy.onnx",
+      "bytes": 758441,
+      "sha256": "efa6581d314d8c0442881453d39fc082c09b28bbaa3029d328fcd61fa25b57c7"
+    },
+    {
+      "path": "external/lite3_rl_deploy/requirements-mujoco.txt",
+      "bytes": 163,
+      "sha256": "75419cd9c74aec5f8702bb11733d66983fddffb78fd35e195766323859b00cd2"
+    },
+    {
+      "path": "external/lite3_rl_deploy/snapshots/interface/user_command/keyboard_interface.hpp",
+      "bytes": 7287,
+      "sha256": "377fbfe864bf249b09509a689d00f6bf22e1306cb3ca98585635cf6b7d9f0a40"
+    },
+    {
+      "path": "external/lite3_rl_deploy/snapshots/interface/user_command/udp_velocity_interface.hpp",
+      "bytes": 5830,
+      "sha256": "77e32a5e9d77b833372ed154e29b2a752e5616f3190afffc4e6ede6c84d6418a"
+    },
+    {
+      "path": "external/lite3_rl_deploy/snapshots/main.cpp",
+      "bytes": 1169,
+      "sha256": "bfcaf6bf2c730ab1d4470b6c684d9afba359111e80756e190142e4f48ebf272e"
+    },
+    {
+      "path": "external/lite3_rl_deploy/snapshots/run_policy/lite3_test_policy_runner_onnx.cpp",
+      "bytes": 8085,
+      "sha256": "65f394ea6004c918dcc45f08e94b7740f1074250dcf00c3b7bdd534da60aaa75"
+    },
+    {
+      "path": "external/lite3_rl_deploy/snapshots/state_machine/rl_control_state_onnx.hpp",
+      "bytes": 5018,
+      "sha256": "020c40ddc442ce528c8e918841106a927b653624a5410de8b430e8783e9be5e4"
+    },
+    {
+      "path": "external/lite3_rl_deploy/snapshots/state_machine/state_machine.hpp",
+      "bytes": 8712,
+      "sha256": "868e7b71dbaa1ba0b7616998ae58c424d1fb1f49eae4c8787c75ee43a0c2d358"
+    },
+    {
+      "path": "src/lite3_control/CMakeLists.txt",
+      "bytes": 2093,
+      "sha256": "7110e9f0688a9410f7a7da56e9bc6fac7895ab080466f1634525d1ff51256916"
+    },
+    {
+      "path": "src/lite3_control/LICENSE",
+      "bytes": 1459,
+      "sha256": "143077f9f6a8de5a99f78c2c2472801fb53cf240277ef661642f079b9acdfff8"
+    },
+    {
+      "path": "src/lite3_control/README.md",
+      "bytes": 10736,
+      "sha256": "f62e58ef54d37e88516a35250d0a2b4cc9e5256717f79a997f4c69e76412f727"
+    },
+    {
+      "path": "src/lite3_control/package.xml",
+      "bytes": 949,
+      "sha256": "bb871f92f946fd8c6db806aea960c8a3e85959f1db8b1b3a7b754ebfc0042820"
+    },
+    {
+      "path": "src/lite3_control/src/lite3_gazebo_interface.cpp",
+      "bytes": 18010,
+      "sha256": "b9fdd894f16d7399c7215b8b6d066a66b9c05c8e92dd7a72a0da146e8ce145ea"
+    },
+    {
+      "path": "src/lite3_control/src/lite3_motion_node.cpp",
+      "bytes": 16477,
+      "sha256": "0334cf7b4c8904e720c113934072e94e6f83b7fde68eb8ffe4388a1033dab2f5"
+    },
+    {
+      "path": "src/lite3_control/test/check_motion_modes.py",
+      "bytes": 12039,
+      "sha256": "37b14d129ca2cdeb70201bbdd7d3ab598f82fc03102c0ffb90195c2ca7e07554"
+    },
+    {
+      "path": "src/lite3_description/CMakeLists.txt",
+      "bytes": 994,
+      "sha256": "d5548bb6d2f180305a973f20b7493098641008d43e3285d1c34e62ca24cdaf64"
+    },
+    {
+      "path": "src/lite3_description/LICENSE.DeepRoboticsLab.txt",
+      "bytes": 1502,
+      "sha256": "6bc5967b1cfbdb83b0798942a5f11d4e0555ad8de17697bd4d7eaab6e22f9be5"
+    },
+    {
+      "path": "src/lite3_description/launch/display.launch.py",
+      "bytes": 2808,
+      "sha256": "8bd4f6eae5d60a30b056e787c339db70b5d631afab43fc1d8d5e883d738ba8ec"
+    },
+    {
+      "path": "src/lite3_description/meshes/hip.STL",
+      "bytes": 326084,
+      "sha256": "3386fa94992dbfc4d3e06c6d9fb110e2c4abd87f94c3ac766fdcce85c43341f3"
+    },
+    {
+      "path": "src/lite3_description/meshes/shank.STL",
+      "bytes": 1352184,
+      "sha256": "5410bae3b9b1e9fbc30343041450a80fc609806c2a83418bd2288b0720aec098"
+    },
+    {
+      "path": "src/lite3_description/meshes/thigh.STL",
+      "bytes": 499284,
+      "sha256": "f29ea97407a9a30cb4549206d080848350d8b455bf4b9a63441241cdacab1719"
+    },
+    {
+      "path": "src/lite3_description/meshes/torso.STL",
+      "bytes": 1318334,
+      "sha256": "6f3f5fc4b9985db56d741ac1b6b93e11d9fb283eb128f8800ad9603772bbcda2"
+    },
+    {
+      "path": "src/lite3_description/package.xml",
+      "bytes": 862,
+      "sha256": "13898a4a0fa5ea15266991966efd8d98fb714f00b41f7a40ac20fa15b77a8d1b"
+    },
+    {
+      "path": "src/lite3_description/rviz/lite3.rviz",
+      "bytes": 7510,
+      "sha256": "d70b0d238fbf2b17ca6c807aadd8ee876a622535d1e11a2852a74a72f268035b"
+    },
+    {
+      "path": "src/lite3_description/urdf/Lite3.urdf",
+      "bytes": 15859,
+      "sha256": "0c4195faa73d0aabaafed4a2e49e09d5ddcc440287bb483ef8f9ef7ae7dc31a0"
+    },
+    {
+      "path": "src/lite3_description/urdf/Lite3_gazebo.urdf",
+      "bytes": 18253,
+      "sha256": "ce0ee3acb24103fce91c8869e8ca1fe43381b779a322154d9f5eded6984a9a1b"
+    },
+    {
+      "path": "src/lite3_description/urdf/Lite3_original.urdf",
+      "bytes": 15495,
+      "sha256": "ff71ca27f756fb465f8d17e463c71b03b16dc3bb50e981f587a6d61b85c06fca"
+    },
+    {
+      "path": "src/lite3_gazebo/CMakeLists.txt",
+      "bytes": 3928,
+      "sha256": "63ed0641a0314d752e1eb8ad3ca66ddee48afed8ca5c4fd0374ee8ebf74ae325"
+    },
+    {
+      "path": "src/lite3_gazebo/config/LICENSE.gui-config.Apache-2.0.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "src/lite3_gazebo/config/target_picker.config",
+      "bytes": 9821,
+      "sha256": "8f848719181693b3a453827c22074d657311807f8b11445348a9208427fb13ce"
+    },
+    {
+      "path": "src/lite3_gazebo/gui/LICENSE",
+      "bytes": 1514,
+      "sha256": "2ab6f46409aa1361c538e36ca12b6a4248d76792adb9126669b0f0b697c3f29d"
+    },
+    {
+      "path": "src/lite3_gazebo/gui/Lite3TargetPicker.cc",
+      "bytes": 17560,
+      "sha256": "60e5a0bceaeed95219d6d64070d5494b332c556a4d58619b4ca9006146006e87"
+    },
+    {
+      "path": "src/lite3_gazebo/gui/Lite3TargetPicker.hh",
+      "bytes": 3546,
+      "sha256": "6e22b532072571174dce0616002f046067dbf13d431a89d3613132a2c799400b"
+    },
+    {
+      "path": "src/lite3_gazebo/gui/Lite3TargetPicker.qml",
+      "bytes": 8607,
+      "sha256": "f318c1bbbf9612a5f5f5294a528788e68c5d89b4da19f7d7f6a4a8fb8854ad04"
+    },
+    {
+      "path": "src/lite3_gazebo/gui/target_picker.qrc",
+      "bytes": 109,
+      "sha256": "40f0ba68e85c45806fda3c201afbb1bf841170d46ff57062679f32b252e3bdad"
+    },
+    {
+      "path": "src/lite3_gazebo/launch/simulation.launch.py",
+      "bytes": 7108,
+      "sha256": "9cd63ee630f4911185a5fc7fbe17711d9f36a63286ebe93119676da6d40070c5"
+    },
+    {
+      "path": "src/lite3_gazebo/maps/large_warehouse.pgm",
+      "bytes": 50191,
+      "sha256": "e18542d452debf7cb9ea4ba2f8662cd7bcd1c1b417ffff6b2269c553242fcdb9"
+    },
+    {
+      "path": "src/lite3_gazebo/maps/large_warehouse.yaml",
+      "bytes": 142,
+      "sha256": "58c731701481f4373a4a8336dcbc06eff811a554d3d2157a63d55f212b20c87f"
+    },
+    {
+      "path": "src/lite3_gazebo/package.xml",
+      "bytes": 1221,
+      "sha256": "5bbc0ddb41a5c9bb942d4aff0fee52ca6eeafa671df980b5fa9ababa20ef3d4b"
+    },
+    {
+      "path": "src/lite3_gazebo/src/BoxCommandGuard.cc",
+      "bytes": 2829,
+      "sha256": "711a23d2f482cfb4d38fa7760410c12cdfd12c71c2c66b04514911092fa3b604"
+    },
+    {
+      "path": "src/lite3_gazebo/src/BoxContacts.cc",
+      "bytes": 3173,
+      "sha256": "83a82d176d2663da60cb0f539c04a508c9fc9edde712648271688bf8a0b6b809"
+    },
+    {
+      "path": "src/lite3_gazebo/test/check_picker_box_world.cc",
+      "bytes": 7466,
+      "sha256": "ff32c086278d9bf27d8781ca8b32c65c9b6b0ea9bc4ff6c532a3cd70852b3bee"
+    },
+    {
+      "path": "src/lite3_gazebo/test/check_picker_bridge.py",
+      "bytes": 3760,
+      "sha256": "78a4e2d0c36acd75d55259476f8d5ee741cc9830c1c31c196bd033c2d4a5675f"
+    },
+    {
+      "path": "src/lite3_gazebo/test/check_scan.py",
+      "bytes": 3124,
+      "sha256": "87b6bd2e4ebbd56b0d07126569f24a6ada5ee68dfa0319d55e3c1470035fce44"
+    },
+    {
+      "path": "src/lite3_gazebo/test/check_target_picker.cc",
+      "bytes": 12765,
+      "sha256": "3bc752bdf3c46e2955307a1efb08679eb0e0e0cb856a68000afeef5a0375b645"
+    },
+    {
+      "path": "src/lite3_gazebo/test/fixtures/picker_box_world.sdf",
+      "bytes": 1059,
+      "sha256": "6e28483d01523706740fe4e78e1c941c78998dc6c25027275933a39973533eb3"
+    },
+    {
+      "path": "src/lite3_gazebo/worlds/LICENSE.large_warehouse.txt",
+      "bytes": 1080,
+      "sha256": "797b38b4780d1d8a4840d1d6420ee6f5a75c7e1cfba7466c6ef2e1a32a6de4db"
+    },
+    {
+      "path": "src/lite3_gazebo/worlds/large_warehouse.sdf",
+      "bytes": 89905,
+      "sha256": "76593061b2d32a30af8aa2614a5950d47f03294eebf51a4a96ec3d09d0f8e70f"
+    },
+    {
+      "path": "src/lite3_gazebo/worlds/lidar_test_box.sdf",
+      "bytes": 646,
+      "sha256": "19d51fcf9a75f81fd1ce26402292e22f51fb0d163a7915a1bfe02aa80ea28823"
+    },
+    {
+      "path": "src/lite3_gazebo/worlds/lite3_dynamic_box.sdf",
+      "bytes": 1556,
+      "sha256": "b979bc7c399d929cbb85f87fa511e6c5062e87a36484156d584070cc90071295"
+    },
+    {
+      "path": "src/lite3_gazebo/worlds/lite3_empty.sdf",
+      "bytes": 1392,
+      "sha256": "8f2620c61244b830f9762900043f7e809b1fbdf55e65713615b330d438a846cc"
+    },
+    {
+      "path": "src/lite3_interfaces/CMakeLists.txt",
+      "bytes": 467,
+      "sha256": "5e7fc0f5011f700b197c4de224dc0d3b3b370bf0434c5df571c8514575514d0e"
+    },
+    {
+      "path": "src/lite3_interfaces/LICENSE",
+      "bytes": 1459,
+      "sha256": "143077f9f6a8de5a99f78c2c2472801fb53cf240277ef661642f079b9acdfff8"
+    },
+    {
+      "path": "src/lite3_interfaces/README.md",
+      "bytes": 2330,
+      "sha256": "e5ece3441cfca6b8f4c0774cf81fe2479ae24e2e19739b9eb0fcdc2ecea99305"
+    },
+    {
+      "path": "src/lite3_interfaces/action/NavigateTask.action",
+      "bytes": 1086,
+      "sha256": "8bf90b9caba9adf533b957351b9b7702e7eb8f554c3bfc7a1ba7b7cbfe206022"
+    },
+    {
+      "path": "src/lite3_interfaces/package.xml",
+      "bytes": 787,
+      "sha256": "3e7c702b0ea81f584eaa59cfc71c9e6006b85199d2c7269eb6e029c290d4631b"
+    },
+    {
+      "path": "src/lite3_navigation/CMakeLists.txt",
+      "bytes": 3176,
+      "sha256": "bb34b91931de75199ce0c2fca8acb88c54b6c566e411cf5d1646d627b727dd42"
+    },
+    {
+      "path": "src/lite3_navigation/LICENSE",
+      "bytes": 1514,
+      "sha256": "2ab6f46409aa1361c538e36ca12b6a4248d76792adb9126669b0f0b697c3f29d"
+    },
+    {
+      "path": "src/lite3_navigation/README.md",
+      "bytes": 14283,
+      "sha256": "142a93e706079f46b369e0ff58153d66dc1b70c498031e90059d2b66de62eca4"
+    },
+    {
+      "path": "src/lite3_navigation/config/controller.yaml",
+      "bytes": 4415,
+      "sha256": "4ac01093b609cb0a93116bae5b1923aba65bed81ca53f2234e9a95d8911f2e29"
+    },
+    {
+      "path": "src/lite3_navigation/config/controller_mppi.yaml",
+      "bytes": 8558,
+      "sha256": "f29d4b60ff2e6c625ccaf38e290597113112a7095798b62ca961d7c39b6b6ee9"
+    },
+    {
+      "path": "src/lite3_navigation/config/mission.yaml",
+      "bytes": 580,
+      "sha256": "89889d6f48834c3862d73ab6c38f525ae6d81475e8dfb12c359e1ecf809a0f7a"
+    },
+    {
+      "path": "src/lite3_navigation/config/planner.yaml",
+      "bytes": 3851,
+      "sha256": "6634261278eac5e44080255dacac2434318ac87a34fb78c41c4a63796e57c0bd"
+    },
+    {
+      "path": "src/lite3_navigation/config/planner_navfn.yaml",
+      "bytes": 3053,
+      "sha256": "d36dbd2927eaf8373b39dc5dc281e143f9c136ffb9d7fdd11d139d42e6d05731"
+    },
+    {
+      "path": "src/lite3_navigation/controller_plugins.xml",
+      "bytes": 321,
+      "sha256": "62707683e42f86ab6fb39bf419b9ec272997b061882e1062630e8e5819c790b5"
+    },
+    {
+      "path": "src/lite3_navigation/critic_plugins.xml",
+      "bytes": 334,
+      "sha256": "9e084c118596b42fba895eafecbf0e884820f6cc2b7aa4f12d23a0e78d9b8ff7"
+    },
+    {
+      "path": "src/lite3_navigation/launch/bringup.launch.py",
+      "bytes": 10449,
+      "sha256": "efe51b69f927a6da35c7ce313b7a3bc3c2e4abcd76f66341f76caffdddb2f9b9"
+    },
+    {
+      "path": "src/lite3_navigation/package.xml",
+      "bytes": 1876,
+      "sha256": "495fc5dd661fe315961ba350031128d291dc0b582d942842159fd0d7d6499291"
+    },
+    {
+      "path": "src/lite3_navigation/rviz/navigation.rviz",
+      "bytes": 9903,
+      "sha256": "8e596237dffa58bd7e995d15c262610c47da9c70d11292e97b830be4e4855963"
+    },
+    {
+      "path": "src/lite3_navigation/scripts/bringup_runtime.py",
+      "bytes": 11531,
+      "sha256": "80a2de2b07bb29281416aef57c65b3b794ba844662eba3460117d3fb2b6a7ade"
+    },
+    {
+      "path": "src/lite3_navigation/scripts/moving_obstacle.py",
+      "bytes": 4336,
+      "sha256": "ed2177f05e77f3e5bb8c8495ec1c0f11bd2295fb2a04a77845ddd344cd5e04f3"
+    },
+    {
+      "path": "src/lite3_navigation/scripts/navigate.py",
+      "bytes": 3102,
+      "sha256": "f333249f79d20272f1c7337f4e4e9b4b87af3b911becf3e06be849bdbb1e1fdb"
+    },
+    {
+      "path": "src/lite3_navigation/src/avoidance_controller.cpp",
+      "bytes": 13058,
+      "sha256": "722485d276d56d200db6ccccd8104c753ddc754e1a19347db88123642074929b"
+    },
+    {
+      "path": "src/lite3_navigation/src/mission_manager.cpp",
+      "bytes": 51074,
+      "sha256": "b3e617b12b9368a9a87a9918ad6bf6741d15c93ad754e057dbd01b2a46e41297"
+    },
+    {
+      "path": "src/lite3_navigation/src/mission_manager_once.cpp",
+      "bytes": 7357,
+      "sha256": "1689b0c166f4c2fa70dd92b54a31ed723fbdbc765e71b63ad0ee48c7055b7836"
+    },
+    {
+      "path": "src/lite3_navigation/src/rl_response_critic.cpp",
+      "bytes": 2267,
+      "sha256": "58defed69f4a4df3aa91d1e8c00574d7218d565cb3e93c0f59a36bbb52a22721"
+    },
+    {
+      "path": "src/lite3_navigation/src/safety_motion.hpp",
+      "bytes": 3969,
+      "sha256": "ac15d9ccb2f49e3d113c3b8aec79f31fd0f76aec0996711af1a2e26041bc2f6b"
+    },
+    {
+      "path": "src/lite3_navigation/test/check_continuous_avoidance.py",
+      "bytes": 16922,
+      "sha256": "431412141a0e4e35ede6cd78ee65d4a51dcd925291f365b6d15af8a164af909f"
+    },
+    {
+      "path": "src/lite3_navigation/test/check_lattice_snapshot.py",
+      "bytes": 10677,
+      "sha256": "ce83bc3dd3a8648df8a7b9e112e902508f3d28b5d9c6287f26d1e85d638a4f5d"
+    },
+    {
+      "path": "src/lite3_navigation/test/check_mission_manager.py",
+      "bytes": 15177,
+      "sha256": "1cadf48fed7cb2c515a2b38a65cfd247a703335d5a311ca4105bd3f6de98133f"
+    },
+    {
+      "path": "src/lite3_navigation/test/check_moving_obstacle.py",
+      "bytes": 6441,
+      "sha256": "03dee7094e48d0a5b0924a27dc5b404460990eaeb8cc4a7a283471dc74ddbfff"
+    },
+    {
+      "path": "src/lite3_navigation/test/check_navigation_footprint.py",
+      "bytes": 10009,
+      "sha256": "dc879c3addbde6f3b2a86ad5f06a89cd16d5b73be37cffc2ed041b32b47abb7b"
+    },
+    {
+      "path": "src/lite3_navigation/test/check_navigation_gate.py",
+      "bytes": 9172,
+      "sha256": "29b39c9774ccc1ec6acac537439eafe67872f177a8baa6c169e849512c4d7221"
+    },
+    {
+      "path": "src/lite3_navigation/test/check_replanning.py",
+      "bytes": 10314,
+      "sha256": "a318c64778aaad70374c68bc7d7106701ce108a93bdf9b263cd6b88d173703a7"
+    },
+    {
+      "path": "src/lite3_navigation/test/check_rl_response.py",
+      "bytes": 7184,
+      "sha256": "8a079c636cf1fe537df370a8c1a36ae8df1c0259e2e12889f737874a3326ae97"
+    },
+    {
+      "path": "src/lite3_navigation/test/check_route_refresh.py",
+      "bytes": 8155,
+      "sha256": "5933b99fbb2e734e52bb7409a4f5fca8465a54ee834d67ca292097d8a506c277"
+    },
+    {
+      "path": "src/lite3_navigation/test/check_route_refresh_clearing.py",
+      "bytes": 10468,
+      "sha256": "e662c1a15400d5de102e9409041a0b1d04b7534ea4099707c1c0013037bb6274"
+    },
+    {
+      "path": "src/lite3_navigation/test/check_route_refresh_native.py",
+      "bytes": 6417,
+      "sha256": "6d90bbb1065b1c321a5c51aba3a9be5a8d4971a5a34e1d6ec61e82fa2c132f7c"
+    },
+    {
+      "path": "src/lite3_navigation/test/check_safety_controller.py",
+      "bytes": 6136,
+      "sha256": "f916f9e2c2a9ecaee2b805025af9a69c5d544badd9a2a5a9036cf786c8f1d95e"
+    },
+    {
+      "path": "src/lite3_navigation/test/check_safety_motion.cpp",
+      "bytes": 2832,
+      "sha256": "5679fb37a913f54c62daec6a3c2f1fad37a4187b52ef83f83058c9c6a85ad60b"
+    },
+    {
+      "path": "src/lite3_perception/CMakeLists.txt",
+      "bytes": 1199,
+      "sha256": "ed68c11e457efad18a806fff317b3d9b0fb9508742cd1299f74be8b9fc3a87d8"
+    },
+    {
+      "path": "src/lite3_perception/LICENSE",
+      "bytes": 1459,
+      "sha256": "143077f9f6a8de5a99f78c2c2472801fb53cf240277ef661642f079b9acdfff8"
+    },
+    {
+      "path": "src/lite3_perception/README.md",
+      "bytes": 10745,
+      "sha256": "596d293c215e268d7138db461ca020529ce08a4a59a23c0c70c8ea8e53bbc006"
+    },
+    {
+      "path": "src/lite3_perception/config/flat_ground.yaml",
+      "bytes": 1314,
+      "sha256": "b701741aa40fa9251ffc4c20f53b3bc3728d4f257be9fb00e3c7ca4625e23cc6"
+    },
+    {
+      "path": "src/lite3_perception/package.xml",
+      "bytes": 768,
+      "sha256": "02ba961c94c4a5e71343c3d9284d1cd8c8e5d652bbad78f7e9af452b308e8c11"
+    },
+    {
+      "path": "src/lite3_perception/plugins.xml",
+      "bytes": 846,
+      "sha256": "3328d892a2b201ffb7b23e56713c34f410255ac0b89ff1d62740457efe74da5d"
+    },
+    {
+      "path": "src/lite3_perception/scripts/flat_ground_fit.py",
+      "bytes": 2947,
+      "sha256": "2d269d424625be241f3336375723ded11db86ab12f0eaee59d843bc6ab4d706c"
+    },
+    {
+      "path": "src/lite3_perception/scripts/lidar_no_return.py",
+      "bytes": 3661,
+      "sha256": "109385287f78c5be9b3fb3e0eb9f13114a341ac22cc4aa825323d2b5050e1896"
+    },
+    {
+      "path": "src/lite3_perception/scripts/motion_forecast.py",
+      "bytes": 4914,
+      "sha256": "88b9c452b1c4213345457b1dcd16413f3bbc2cefe8032642c76c04650e462b91"
+    },
+    {
+      "path": "src/lite3_perception/scripts/obstacle_evidence.py",
+      "bytes": 1592,
+      "sha256": "bcd0cd3f3a8b6254d1efe37c69076867bede32d2d01922925bea0c50fb6ee40c"
+    },
+    {
+      "path": "src/lite3_perception/scripts/pointcloud_obstacles.py",
+      "bytes": 14363,
+      "sha256": "c0597ff5d0594cba9dc4f590f90713b5005b249acaf1e591c9c4c5ea63fa7171"
+    },
+    {
+      "path": "src/lite3_perception/src/flat_ground_voxel_layer.cpp",
+      "bytes": 3331,
+      "sha256": "dba8514e73652643813ae315c76e5e7b2a474ae67e2ce9586c847f00df50a979"
+    },
+    {
+      "path": "src/lite3_perception/src/forecast_layer.cpp",
+      "bytes": 4612,
+      "sha256": "4b078f84436720733dc2bb753fb1e568b0a983bfb68b5bb48bffc4071d6ad502"
+    },
+    {
+      "path": "src/lite3_perception/src/route_penalty_layer.cpp",
+      "bytes": 4166,
+      "sha256": "87efb58d0556a6ba64e8856a3d251a07d48d571dbf62eec88199d80b340bd49b"
+    },
+    {
+      "path": "src/lite3_perception/test/check_costmap_scene.py",
+      "bytes": 9820,
+      "sha256": "608596e8ca8607db381bdc3bc008d8b97fea6e7f40a9059e4e3919e7847515c0"
+    },
+    {
+      "path": "src/lite3_perception/test/check_forecast_layer.py",
+      "bytes": 5658,
+      "sha256": "49b4e63d4aea8cd9012506fd9e2e412ce86f0bd28e4c34d6e628b4241911da38"
+    },
+    {
+      "path": "src/lite3_perception/test/check_ground_tag_layer.py",
+      "bytes": 4953,
+      "sha256": "ef4a6c78493fab4ff27fc7bbd6d15a3e3a12fa5b5eaefa07f9d5b316cbc11be8"
+    },
+    {
+      "path": "src/lite3_perception/test/check_removed_obstacle.py",
+      "bytes": 8474,
+      "sha256": "0ee015ce1dc4a495753d493e5ec946488ee77e2798cbc190b3111c7ce3e665db"
+    },
+    {
+      "path": "src/lite3_perception/test/check_route_penalty_layer.py",
+      "bytes": 5901,
+      "sha256": "b1ab50e9403ddbf305f52a68ffe7bd2cde4bafe3c49c03488c5671e17c8a72cf"
+    },
+    {
+      "path": "src/lite3_perception/test/fixtures/clearing_lidar.sdf",
+      "bytes": 1288,
+      "sha256": "00e33d2381a489385725f16f2c5611f83bb1705dda6ac0905cb0713507c01cdd"
+    },
+    {
+      "path": "src/lite3_perception/test/test_filter.py",
+      "bytes": 3163,
+      "sha256": "64cabdb090984ac9703e994f032f4f8a5bd7a2ad410a403eaed24a5182b57b3f"
+    },
+    {
+      "path": "src/lite3_perception/test/test_ground_fit.py",
+      "bytes": 2198,
+      "sha256": "327bd81284fe9ea5f5e78d1e6cb495c96c4cf9c6f7a0c3bbafc759a2fd2f2e27"
+    },
+    {
+      "path": "src/lite3_perception/test/test_motion_forecast.py",
+      "bytes": 2446,
+      "sha256": "07f47803fa85a4aa215785ed12be976e21ffd7f93d1e1938e51e976e4f0df75a"
+    },
+    {
+      "path": "src/lite3_perception/test/test_no_return.py",
+      "bytes": 3076,
+      "sha256": "3f33a41051d4a351826bdf1b49f728245ec8950a6a70fc0ee0fc6498cf996a31"
+    },
+    {
+      "path": "src/lite3_perception/test/test_obstacle_evidence.py",
+      "bytes": 1381,
+      "sha256": "c338ac06f28091832c5f8a488e33d9ec5bde091179a1dc7f9b3b6712ac58955b"
+    }
+  ]
+}

@@ -1,7 +1,168 @@
 # Lite3 项目终端交互操作手册
 
-最后审核：2026-10-19。本次同步没有新增或修改交互命令。当前全局障碍记录波动尚未定位，
-见[已知问题](KNOWN_ISSUES.md)；不要把重新开启总开关当作地图问题已修复。
+## 新增：DeepSeek工具模式，多物体顺序任务（2026-10-20）
+
+先退出旧console/bringup。本轮已构建安装，终端1：
+
+```bash
+source /opt/ros/jazzy/setup.bash
+source /home/ma/lite3_ws/install/setup.bash
+ros2 launch lite3_navigation bringup.launch.py ai_control:=true language_mode:=deepseek
+```
+
+终端2：
+
+```bash
+source /opt/ros/jazzy/setup.bash
+source /home/ma/lite3_ws/install/setup.bash
+ros2 run lite3_navigation ai_console
+```
+
+应显示“DeepSeek工具模式”。先输入 `开启导航`，确认成功后输入：
+
+```text
+先去东墙，再去货架1，最后回到出发的位置
+```
+
+这是完整任务，模型通过环境含义和位置理解对象，按实际到达结果继续下一项；不存长期检查点。
+“回来”为本轮指令出发位置，“回家”为本次启动原点。模型可查询环境/状态，管理点位并按上下文理解后续指代。
+原固定几何接近限制仍保留；本轮没有视觉检查或动态目标追踪。
+本地 `停止` / `查询状态` 不等待API；停止/失联取消后续任务，失败后不自动恢复。
+自由任务执行中暂不接收另一个自由任务，请先等待或停止。
+
+查询和组合可能触发多次API调用，发送环境位置、机器人位置及近3轮工具记录；密钥不放进对话。
+退出仍为console“退出”或Ctrl+C，等待停止确认，再在bringup终端Ctrl+C。
+回退旧JSON入口：启动命令追加 `agent_tools:=false`；固定规则仍用 `language_mode:=rules`。
+完整能力与验证边界见[工具模式说明](AI_TOOL_AGENT.md)。
+
+2026-10-20货架编号已自动配置：`shelf_1`～`shelf_17` 对应“货架1”～“货架17”，支持“1号货架”“一号货架”等别名。当前场景标注已保存，之后无需手动定义货架A；直接输入 `去三号货架旁边` 或 `去17号货架旁边`，导航仍需先显式开启。内部Gazebo模型名不改，原自定义名字可作为别名继续使用。
+
+## 新增：去货架旁边，不保存长期地点（2026-10-20）
+
+先退出旧console/bringup，再按本手册原命令重启，构建安装已完成；
+使用 `ai_control:=true language_mode:=deepseek`，或无需API的 `ai_control:=true language_mode:=rules`。
+另一个终端仍运行 `ros2 run lite3_navigation ai_console`；两个终端先source Jazzy及工作空间。
+
+在交互终端逐条输入（不是shell）：
+
+```text
+查询物体 shelf_1
+标注物体 shelf_1 名称=货架A 类别=货架 别名=一号货架
+开启导航
+去货架A旁边
+```
+
+前两项只查询/标注，已有标注时可省略；确认导航开启成功后，最后一项会计算临时站立位置并启动原导航任务。
+不必存点1，不会把临时位置写入地图/地点库。显示候选验证、“已选临时接近点”后进入原任务。
+指定地图南侧和间距：`去一号货架南侧 距离=0.5`；北/南/东/西为地图+Y/-Y/+X/-X。
+距离单位米，范围0.15～1.5，默认0.4，表示导航保护轮廓前缘到物体外包边界的期望间隔，额外留5cm离散余量。
+
+状态：`查询状态`；停止：`停止`。计算或执行期间物体移动/消失/位置失效会取消本次接近；需要重新请求。
+当前支持原场景固定货架等基本碰撞模型、默认Smac Lattice，不支持动态新箱子/mesh或多物体巡检。
+正常退出方式不变。算法、限制和验证见[临时接近说明](OBJECT_APPROACH.md)。
+
+## 新增：环境物体与地点语义（2026-10-20）
+
+构建安装已完成。先退出旧console/bringup，再按本手册的原DeepSeek启动命令启动；
+不使用API可用 `ros2 launch lite3_navigation bringup.launch.py ai_control:=true language_mode:=rules`。
+两个终端均需先source `/opt/ros/jazzy/setup.bash` 和 `/home/ma/lite3_ws/install/setup.bash`；
+终端2仍运行 `ros2 run lite3_navigation ai_console`。
+
+以下输入交互终端，不是shell命令；两种模式均由本机直接处理，不调用API，也不发运动任务：
+
+```text
+列出环境
+列出类别 货架
+查询物体 shelf_1
+标注物体 shelf_1 名称=货架A 类别=货架 别名=一号货架,左侧货架 用途=到点巡检
+查询物体 一号货架
+```
+
+已有点1后可输入 `标注地点 点1 类别=检查点 别名=设备区`，再输入 `列出类别 检查点`。
+类别、别名等是语义元数据，不改变原物体/点名、坐标、GUI文字或障碍地图。
+模型位姿字段为世界[x米,y米,z米,yaw度]，普通地点pose_map为[x米,y米,yaw度]。
+标注首次写入 `/home/ma/.local/share/lite3_navigation/environment_<指纹>.json`，完整路径在启动日志中；
+重启保留，地图/world改动后使用独立文件。物体移动位置更新，删除后为不存在，场景断线时不提供旧位置。
+
+已标注普通地点的别名可以沿原方式导航；“去货架A”会拒绝，不能导航到实体内部。
+按类别自动巡检/安全接近点计算尚未实现。详情与验证见[环境语义说明](ENVIRONMENT_SEMANTICS.md)。
+退出方式不变：console输入“退出”或Ctrl+C，等待停止确认，再在bringup终端Ctrl+C。
+
+2026-10-20场景清理：默认仓库已永久移除两个绿色目标标记和三个旧小箱子；黄色起点标记保留。二维静态地图原对应范围已经空闲，无需修改PGM/YAML。构建安装已完成，直接按原命令重启bringup生效，AI与非AI入口均适用，无需清空已保存地点。
+
+2026-10-20交互修正：DeepSeek模式和独立预览现支持最近3轮/90秒待澄清上下文，可以直接补充名字或坐标；完成/停止/断线后清空。数字点名引用可匹配已有点，精确同名优先；关闭导航会给出明确原因，仍需显式开启后重发目标。启动命令不变，更新后需退出旧系统并重启，见[执行说明](DEEPSEEK_EXECUTION.md)。
+
+## 新增：DeepSeek正式控制模式（2026-10-20）
+
+先退出旧console/bringup，终端1：
+
+```bash
+source /opt/ros/jazzy/setup.bash
+source /home/ma/lite3_ws/install/setup.bash
+ros2 launch lite3_navigation bringup.launch.py ai_control:=true language_mode:=deepseek
+```
+
+READY后终端2加载相同环境并运行`ros2 run lite3_navigation ai_console`。确认提示为DeepSeek执行模式，再用自由表达发布任务；模型解析通过本地检查后会实际执行。输入“停止”优先本地处理。规则备用模式为`language_mode:=rules`，默认仍是rules。
+完整说明见[DeepSeek执行入口](DEEPSEEK_EXECUTION.md)。独立deepseek_preview仍然只是预览，不能用于实际停车。
+
+## 新增：DeepSeek只解析预览（不控制机器狗）
+
+在空闲终端执行：
+
+```bash
+python3 /home/ma/lite3_ws/src/lite3_navigation/scripts/deepseek_setup.py
+python3 /home/ma/lite3_ws/src/lite3_navigation/scripts/deepseek_preview.py
+```
+
+第一条由你隐藏输入密钥并保存，第二条才会按输入调用API，显示JSON但不执行。预览中的“停止”不会实际停车；实际控制仍使用原ai_console。每次API请求发送本句话和已有点名，使用账户额度。操作和边界见[DeepSeek预览](DEEPSEEK_PREVIEW.md)。
+
+## 新增：规则自然语言终端（2026-10-20，尚未接入模型）
+
+终端1：
+
+```bash
+source /opt/ros/jazzy/setup.bash
+source /home/ma/lite3_ws/install/setup.bash
+ros2 launch lite3_navigation bringup.launch.py ai_control:=true
+```
+
+等待READY，终端2：
+
+```bash
+source /opt/ros/jazzy/setup.bash
+source /home/ma/lite3_ws/install/setup.bash
+ros2 run lite3_navigation ai_console
+```
+
+进入后直接输入：`帮助`、`开启导航`、`把坐标3、2，朝向90度设成点1`、`把当前位置设成点2`、`列出地点`、`点1在哪里`、`去点1`、`先去点1，再去点2，然后回到原点`、`查询状态`、`停止`。示例坐标需换成实际空闲目标。
+`exit`、`退出`或Ctrl+C退出console会请求停止并清空队列；终端1再Ctrl+C退出整套系统。断线超过2.5实际秒同样停止；重新进入后需显式开启导航。
+详细语法、地点文件、覆盖确认、地图校验和限制见[规则交互说明](NATURAL_LANGUAGE_CONTROL.md)。这不是任意自然语言理解，也不会执行任意Ubuntu命令。
+
+
+最后审核：2026-10-20。新增移动视角下的遮挡保护/清除确认，终端交互命令不变。
+本次已构建感知插件和导航配置；重启完整系统加载新版。完整导航仍需现场复测。
+见[遮挡清除说明](OBSTACLE_VISIBILITY.md)；重新开总开关不能代替地图问题排查。
+
+### 本次更新后怎样复测
+
+先在旧bringup终端按Ctrl+C退出，再在一个终端执行：
+
+```bash
+source /opt/ros/jazzy/setup.bash
+source /home/ma/lite3_ws/install/setup.bash
+ros2 launch lite3_navigation bringup.launch.py
+```
+
+等待READY，另一个终端执行：
+
+```bash
+source /opt/ros/jazzy/setup.bash
+source /home/ma/lite3_ws/install/setup.bash
+ros2 service call /lite3/set_navigation_enabled std_srvs/srv/SetBool '{data: true}'
+```
+
+然后使用Gazebo原面板选目标/放箱，按[遮挡清除说明](OBSTACLE_VISIBILITY.md)对照观察。
+隔离开发测试不需要平时运行；需要重跑时先关闭完整系统，说明中的测试会自行启动和退出测试进程。
 
 ## 2026-10-18：Gazebo选点插件扩展为导航/动态箱子两用
 

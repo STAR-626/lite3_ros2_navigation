@@ -5,13 +5,20 @@ lite3_ws/
 ├── README.md
 ├── THIRD_PARTY_NOTICES.md
 ├── docs/
+│   ├── AI_TOOL_AGENT.md
 │   ├── ARCHITECTURE.md
 │   ├── CONTINUOUS_AVOIDANCE.md
 │   ├── CURRENT_ARCHITECTURE.md
+│   ├── DEEPSEEK_EXECUTION.md
+│   ├── DEEPSEEK_PREVIEW.md
+│   ├── ENVIRONMENT_SEMANTICS.md
 │   ├── FOOTPRINT_REPLANNING.md
 │   ├── GAZEBO_DUAL_PANEL.md
 │   ├── KNOWN_ISSUES.md
+│   ├── NATURAL_LANGUAGE_CONTROL.md
 │   ├── NAVIGATION_INTERACTION.md
+│   ├── OBJECT_APPROACH.md
+│   ├── OBSTACLE_VISIBILITY.md
 │   ├── PROGRESS_REPORT.md
 │   ├── PROJECT_FILES.txt
 │   ├── PROJECT_TREE.txt
@@ -23,300 +30,369 @@ lite3_ws/
 │   ├── SNAPSHOT_MANIFEST.json
 │   ├── SYNC_AUDIT.md
 │   ├── TERMINAL_COMMANDS.md
-│   └── development_history/
-│       ├── ENVIRONMENT.json
-│       ├── ENVIRONMENT_2026-10-17.json
-│       ├── HISTORICAL_LINKS.md
-│       ├── PROGRESS_REPORT_2026-10-10.md
-│       ├── PROJECT_FILES_2026-10-17.txt
-│       ├── PROJECT_TREE_2026-10-17.txt
-│       ├── README.md
-│       ├── README_BEFORE_SYNC_2026-10-17.md
-│       ├── SNAPSHOT_MANIFEST_2026-10-10.json
-│       ├── SNAPSHOT_MANIFEST_2026-10-17.json
-│       ├── SYNC_AUDIT_2026-10-04.md
-│       ├── SYNC_AUDIT_2026-10-10.md
-│       ├── SYNC_AUDIT_2026-10-17.md
-│       ├── TIMELINE.md
-│       ├── conversation/
-│       │   ├── 2026-10-01.md
-│       │   ├── 2026-10-02.md
-│       │   ├── 2026-10-03.md
-│       │   ├── 2026-10-04.md
-│       │   ├── 2026-10-08.md
-│       │   ├── 2026-10-09.md
-│       │   ├── 2026-10-10.md
-│       │   └── EXPORT_METADATA.json
-│       └── evidence/
-│           ├── MANIFEST.json
-│           ├── continuous_avoidance_2026-10-17/
-│           │   ├── README.md
-│           │   ├── failed_goal_drift.json.gz
-│           │   ├── failed_goal_orbit.json.gz
-│           │   ├── failed_reactive_collision.json.gz
-│           │   ├── failed_rpp_handoff.json.gz
-│           │   ├── forecast_layer.json
-│           │   ├── manifest.json
-│           │   ├── mission_protocol.json
-│           │   ├── motion_modes.json
-│           │   ├── moving_box_cli.json
-│           │   ├── moving_with_turn.json.gz
-│           │   ├── navigation_gate.json
-│           │   ├── replanning.json
-│           │   ├── rl_response.json
-│           │   ├── static_box.json.gz
-│           │   ├── summary.json
-│           │   ├── trajectories.png
-│           │   └── warehouse.json.gz
-│           ├── dual_picker_2026-10-18/
-│           │   ├── README.md
-│           │   ├── ctest.log
-│           │   ├── panel-preview.png
-│           │   ├── result.json
-│           │   └── source_hashes.json
-│           ├── faster_replanning_2026-10-17/
-│           │   ├── README.md
-│           │   ├── manifest.json
-│           │   ├── moving_with_turn.json.gz
-│           │   └── replanning_protocol.json
-│           ├── footprint_replanning_2026-10-17/
-│           │   ├── README.md
-│           │   ├── failed_final_approach.json.gz
-│           │   ├── failed_final_approach.log.gz
-│           │   ├── failed_forward_only_costmap.json.gz
-│           │   ├── failed_forward_only_moving.json.gz
-│           │   ├── failed_warehouse_goal.json.gz
-│           │   ├── failed_warehouse_goal_costmap.json.gz
-│           │   ├── global_costmap_costmap.npy
-│           │   ├── lattice_preferred_path.json.gz
-│           │   ├── local_costmap_costmap.npy
-│           │   ├── manifest.json
-│           │   ├── map.npy
-│           │   ├── moving_before_final_approach_fix.json.gz
-│           │   ├── moving_final.json.gz
-│           │   ├── moving_final.log.gz
-│           │   ├── narrow_corner.json.gz
-│           │   ├── original_footprint_check.json.gz
-│           │   ├── original_goal_rejected.json.gz
-│           │   ├── original_plan.json.gz
-│           │   ├── original_snapshot.json.gz
-│           │   ├── path_footprint_check.png
-│           │   ├── protocol_final.json.gz
-│           │   ├── route_layer.json.gz
-│           │   ├── soft_preference.json.gz
-│           │   ├── verification.json
-│           │   ├── warehouse_final.json.gz
-│           │   └── warehouse_final.log.gz
-│           ├── lidar_2026-10-13/
-│           │   └── result.json
-│           ├── lidar_3d_2026-10-14/
-│           │   └── result.json
-│           ├── mission_action/
-│           │   ├── mission-0.log
-│           │   ├── mission-14.log
-│           │   └── result.json
-│           ├── navigation_footprint_2026-10-17/
-│           │   ├── result.json
-│           │   └── result_20cm.json
-│           ├── obstacle_clearing_2026-10-18/
-│           │   ├── README.md
-│           │   ├── after.json
-│           │   ├── before.json
-│           │   ├── forecast_layer.json
-│           │   ├── ground_tag.json
-│           │   └── sensor_layout.json
-│           ├── obstacle_reliability_2026-10-18/
-│           │   ├── README.md
-│           │   ├── SHA256SUMS
-│           │   ├── case_sources.json
-│           │   ├── cases/
-│           │   │   ├── arrived_but_bad_surface_assertion/
-│           │   │   │   ├── box-bridge.log.gz
-│           │   │   │   ├── bringup.log.gz
-│           │   │   │   ├── empty.sdf.gz
-│           │   │   │   ├── global_costmap.json.gz
-│           │   │   │   ├── map.yaml.gz
-│           │   │   │   ├── result.json.gz
-│           │   │   │   ├── stationary.sdf.gz
-│           │   │   │   └── user_box.sdf.gz
-│           │   │   ├── failed_ground_height_assertion/
-│           │   │   │   ├── probe.log.gz
-│           │   │   │   ├── simulation.log.gz
-│           │   │   │   └── warehouse.sdf.gz
-│           │   │   ├── failed_omni_small_commands/
-│           │   │   │   ├── box-bridge.log.gz
-│           │   │   │   ├── bringup.log.gz
-│           │   │   │   ├── empty.sdf.gz
-│           │   │   │   ├── global_costmap.json.gz
-│           │   │   │   ├── map.yaml.gz
-│           │   │   │   └── result.json.gz
-│           │   │   ├── failed_plane_only_static/
-│           │   │   │   ├── box-bridge.log.gz
-│           │   │   │   ├── bringup.log.gz
-│           │   │   │   ├── empty.sdf.gz
-│           │   │   │   ├── global_costmap.json.gz
-│           │   │   │   ├── map.yaml.gz
-│           │   │   │   ├── result.json.gz
-│           │   │   │   ├── stationary.sdf.gz
-│           │   │   │   └── user_box.sdf.gz
-│           │   │   ├── failed_response_critic_contact/
-│           │   │   │   ├── box-bridge.log.gz
-│           │   │   │   ├── bringup.log.gz
-│           │   │   │   ├── empty.sdf.gz
-│           │   │   │   ├── global_costmap.json.gz
-│           │   │   │   ├── map.yaml.gz
-│           │   │   │   └── result.json.gz
-│           │   │   ├── failed_response_guard_blocked/
-│           │   │   │   ├── box-bridge.log.gz
-│           │   │   │   ├── bringup.log.gz
-│           │   │   │   ├── empty.sdf.gz
-│           │   │   │   ├── global_costmap.json.gz
-│           │   │   │   ├── map.yaml.gz
-│           │   │   │   └── result.json.gz
-│           │   │   ├── failed_response_invalid_path103/
-│           │   │   │   ├── box-bridge.log.gz
-│           │   │   │   ├── bringup.log.gz
-│           │   │   │   ├── empty.sdf.gz
-│           │   │   │   ├── global_costmap.json.gz
-│           │   │   │   ├── map.yaml.gz
-│           │   │   │   ├── observation_audit.json.gz
-│           │   │   │   └── result.json.gz
-│           │   │   ├── failed_tf_transient/
-│           │   │   │   ├── box-bridge.log.gz
-│           │   │   │   ├── bringup.log.gz
-│           │   │   │   ├── empty.sdf.gz
-│           │   │   │   ├── global_costmap.json.gz
-│           │   │   │   ├── map.yaml.gz
-│           │   │   │   └── result.json.gz
-│           │   │   ├── final_low_box_clearance/
-│           │   │   │   ├── probe.log.gz
-│           │   │   │   ├── result.json.gz
-│           │   │   │   ├── simulation.log.gz
-│           │   │   │   └── warehouse.sdf.gz
-│           │   │   ├── final_moving_and_turn/
-│           │   │   │   ├── box-bridge.log.gz
-│           │   │   │   ├── bringup.log.gz
-│           │   │   │   ├── empty.sdf.gz
-│           │   │   │   ├── global_costmap.json.gz
-│           │   │   │   ├── map.yaml.gz
-│           │   │   │   ├── observation_audit.json.gz
-│           │   │   │   └── result.json.gz
-│           │   │   ├── final_native_ground_tag/
-│           │   │   │   ├── controller.log.gz
-│           │   │   │   ├── params.yaml.gz
-│           │   │   │   └── result.json.gz
-│           │   │   ├── final_replanning_protocol/
-│           │   │   │   ├── mission.log.gz
-│           │   │   │   └── result.json.gz
-│           │   │   ├── final_user_box_warehouse/
-│           │   │   │   ├── box-bridge.log.gz
-│           │   │   │   ├── bringup.log.gz
-│           │   │   │   ├── empty.sdf.gz
-│           │   │   │   ├── global_costmap.json.gz
-│           │   │   │   ├── map.yaml.gz
-│           │   │   │   ├── observation_audit.json.gz
-│           │   │   │   ├── result.json.gz
-│           │   │   │   ├── stationary.sdf.gz
-│           │   │   │   └── user_box.sdf.gz
-│           │   │   ├── intermediate_static_success/
-│           │   │   │   ├── box-bridge.log.gz
-│           │   │   │   ├── bringup.log.gz
-│           │   │   │   ├── empty.sdf.gz
-│           │   │   │   ├── global_costmap.json.gz
-│           │   │   │   ├── map.yaml.gz
-│           │   │   │   ├── result.json.gz
-│           │   │   │   ├── stationary.sdf.gz
-│           │   │   │   └── user_box.sdf.gz
-│           │   │   ├── native_diff_start205/
-│           │   │   │   ├── lattice.log.gz
-│           │   │   │   ├── lattice.yaml.gz
-│           │   │   │   ├── lattice_result.json.gz
-│           │   │   │   ├── navfn.log.gz
-│           │   │   │   ├── navfn.yaml.gz
-│           │   │   │   ├── navfn_result.json.gz
-│           │   │   │   └── result.json.gz
-│           │   │   ├── native_omni_start_success/
-│           │   │   │   ├── lattice.log.gz
-│           │   │   │   ├── lattice.yaml.gz
-│           │   │   │   ├── lattice_result.json.gz
-│           │   │   │   ├── navfn.log.gz
-│           │   │   │   ├── navfn.yaml.gz
-│           │   │   │   ├── navfn_result.json.gz
-│           │   │   │   └── result.json.gz
-│           │   │   ├── rl_lateral/
-│           │   │   │   ├── empty.sdf.gz
-│           │   │   │   ├── result.json.gz
-│           │   │   │   ├── rl.log.gz
-│           │   │   │   └── simulation.log.gz
-│           │   │   ├── user_goal_map/
-│           │   │   │   ├── _global_costmap_costmap.npy.gz
-│           │   │   │   ├── _lite3_avoidance_failed_route.json.gz
-│           │   │   │   ├── _lite3_lidar_points_world.npy.gz
-│           │   │   │   ├── _lite3_navigation_path.json.gz
-│           │   │   │   ├── _lite3_perception_forecast.npy.gz
-│           │   │   │   ├── _lite3_perception_ground_world.npy.gz
-│           │   │   │   ├── _lite3_perception_obstacles.npy.gz
-│           │   │   │   ├── _lite3_perception_obstacles_world.npy.gz
-│           │   │   │   ├── _local_costmap_costmap.npy.gz
-│           │   │   │   ├── _map.npy.gz
-│           │   │   │   ├── cloud_check.json.gz
-│           │   │   │   ├── diagnosis.png
-│           │   │   │   └── snapshot.json.gz
-│           │   │   └── user_start_map/
-│           │   │       ├── _global_costmap_costmap.npy.gz
-│           │   │       ├── _lite3_avoidance_failed_route.json.gz
-│           │   │       ├── _lite3_navigation_path.json.gz
-│           │   │       ├── _lite3_perception_forecast.npy.gz
-│           │   │       ├── _lite3_perception_obstacles.npy.gz
-│           │   │       ├── _local_costmap_costmap.npy.gz
-│           │   │       ├── _map.npy.gz
-│           │   │       ├── global_costmap_costmap.npy.gz
-│           │   │       └── snapshot.json.gz
-│           │   ├── delivery_checks.json
-│           │   ├── diagnostic_helpers/
-│           │   │   ├── lite3_cloud_check_20261018.py
-│           │   │   ├── lite3_read_stuck_20261018.py
-│           │   │   └── lite3_run_ground_scene_20261018.py
-│           │   ├── experiments/
-│           │   │   ├── critic_plugins.xml
-│           │   │   └── rl_response_critic.cpp
-│           │   ├── source_hashes.json
-│           │   └── unit_result.json
-│           ├── route_refresh_2026-10-18/
-│           │   ├── README.md
-│           │   ├── clearing_to_route.json
-│           │   ├── native_controller.json
-│           │   ├── protocol.json
-│           │   └── recovery_regression.json
-│           ├── safety_buffer_candidate_2026-10-18/
-│           │   ├── diagnosis.json
-│           │   ├── native_controller_result.json
-│           │   └── numerical-checks.txt
-│           ├── short_route_initial_cancel/
-│           │   ├── mission.log
-│           │   └── result.json
-│           ├── short_route_success/
-│           │   ├── mission.log
-│           │   └── result.json
-│           ├── warehouse_controller.log
-│           └── warehouse_mission.log
+│   ├── development_history/
+│   │   ├── ENVIRONMENT.json
+│   │   ├── ENVIRONMENT_2026-10-17.json
+│   │   ├── HISTORICAL_LINKS.md
+│   │   ├── PROGRESS_REPORT_2026-10-10.md
+│   │   ├── PROJECT_FILES_2026-10-17.txt
+│   │   ├── PROJECT_FILES_2026-10-19.txt
+│   │   ├── PROJECT_TREE_2026-10-17.txt
+│   │   ├── PROJECT_TREE_2026-10-19.txt
+│   │   ├── README.md
+│   │   ├── README_BEFORE_SYNC_2026-10-17.md
+│   │   ├── SNAPSHOT_MANIFEST_2026-10-10.json
+│   │   ├── SNAPSHOT_MANIFEST_2026-10-17.json
+│   │   ├── SNAPSHOT_MANIFEST_2026-10-19.json
+│   │   ├── SYNC_AUDIT_2026-10-04.md
+│   │   ├── SYNC_AUDIT_2026-10-10.md
+│   │   ├── SYNC_AUDIT_2026-10-17.md
+│   │   ├── SYNC_AUDIT_2026-10-19.md
+│   │   ├── TIMELINE.md
+│   │   ├── conversation/
+│   │   │   ├── 2026-10-01.md
+│   │   │   ├── 2026-10-02.md
+│   │   │   ├── 2026-10-03.md
+│   │   │   ├── 2026-10-04.md
+│   │   │   ├── 2026-10-08.md
+│   │   │   ├── 2026-10-09.md
+│   │   │   ├── 2026-10-10.md
+│   │   │   └── EXPORT_METADATA.json
+│   │   └── evidence/
+│   │       ├── MANIFEST.json
+│   │       ├── warehouse_controller.log
+│   │       ├── warehouse_mission.log
+│   │       ├── agent_tools_2026-10-20/
+│   │       │   ├── README.md
+│   │       │   ├── agent_protocol.json
+│   │       │   ├── approach_regression.json
+│   │       │   ├── legacy_regression.json
+│   │       │   ├── native_chain.json
+│   │       │   ├── rules_regression.json
+│   │       │   ├── source_hashes.json
+│   │       │   └── unit_checks.txt
+│   │       ├── continuous_avoidance_2026-10-17/
+│   │       │   ├── README.md
+│   │       │   ├── failed_goal_drift.json.gz
+│   │       │   ├── failed_goal_orbit.json.gz
+│   │       │   ├── failed_reactive_collision.json.gz
+│   │       │   ├── failed_rpp_handoff.json.gz
+│   │       │   ├── forecast_layer.json
+│   │       │   ├── manifest.json
+│   │       │   ├── mission_protocol.json
+│   │       │   ├── motion_modes.json
+│   │       │   ├── moving_box_cli.json
+│   │       │   ├── moving_with_turn.json.gz
+│   │       │   ├── navigation_gate.json
+│   │       │   ├── replanning.json
+│   │       │   ├── rl_response.json
+│   │       │   ├── static_box.json.gz
+│   │       │   ├── summary.json
+│   │       │   ├── trajectories.png
+│   │       │   └── warehouse.json.gz
+│   │       ├── deepseek_dialogue_2026-10-20/
+│   │       │   ├── README.md
+│   │       │   ├── dialogue_protocol.json
+│   │       │   ├── rules_regression.json
+│   │       │   ├── source_hashes.json
+│   │       │   └── unit_checks.txt
+│   │       ├── deepseek_execution_2026-10-20/
+│   │       │   ├── README.md
+│   │       │   ├── launch_arguments.txt
+│   │       │   ├── model_execution_protocol.json
+│   │       │   ├── rules_regression.json
+│   │       │   ├── source_hashes.json
+│   │       │   └── unit_checks.txt
+│   │       ├── dual_picker_2026-10-18/
+│   │       │   ├── README.md
+│   │       │   ├── ctest.log
+│   │       │   ├── panel-preview.png
+│   │       │   ├── result.json
+│   │       │   └── source_hashes.json
+│   │       ├── faster_replanning_2026-10-17/
+│   │       │   ├── README.md
+│   │       │   ├── manifest.json
+│   │       │   ├── moving_with_turn.json.gz
+│   │       │   └── replanning_protocol.json
+│   │       ├── footprint_replanning_2026-10-17/
+│   │       │   ├── README.md
+│   │       │   ├── failed_final_approach.json.gz
+│   │       │   ├── failed_final_approach.log.gz
+│   │       │   ├── failed_forward_only_costmap.json.gz
+│   │       │   ├── failed_forward_only_moving.json.gz
+│   │       │   ├── failed_warehouse_goal.json.gz
+│   │       │   ├── failed_warehouse_goal_costmap.json.gz
+│   │       │   ├── global_costmap_costmap.npy
+│   │       │   ├── lattice_preferred_path.json.gz
+│   │       │   ├── local_costmap_costmap.npy
+│   │       │   ├── manifest.json
+│   │       │   ├── map.npy
+│   │       │   ├── moving_before_final_approach_fix.json.gz
+│   │       │   ├── moving_final.json.gz
+│   │       │   ├── moving_final.log.gz
+│   │       │   ├── narrow_corner.json.gz
+│   │       │   ├── original_footprint_check.json.gz
+│   │       │   ├── original_goal_rejected.json.gz
+│   │       │   ├── original_plan.json.gz
+│   │       │   ├── original_snapshot.json.gz
+│   │       │   ├── path_footprint_check.png
+│   │       │   ├── protocol_final.json.gz
+│   │       │   ├── route_layer.json.gz
+│   │       │   ├── soft_preference.json.gz
+│   │       │   ├── verification.json
+│   │       │   ├── warehouse_final.json.gz
+│   │       │   └── warehouse_final.log.gz
+│   │       ├── interaction_2026-10-20/
+│   │       │   ├── README.md
+│   │       │   ├── backend_protocol.json
+│   │       │   ├── gazebo_marker_ids.txt
+│   │       │   ├── gazebo_markers.json
+│   │       │   ├── launch_arguments.txt
+│   │       │   ├── source_hashes.json
+│   │       │   └── unit_checks.txt
+│   │       ├── lidar_2026-10-13/
+│   │       │   └── result.json
+│   │       ├── lidar_3d_2026-10-14/
+│   │       │   └── result.json
+│   │       ├── mission_action/
+│   │       │   ├── mission-0.log
+│   │       │   ├── mission-14.log
+│   │       │   └── result.json
+│   │       ├── navigation_footprint_2026-10-17/
+│   │       │   ├── result.json
+│   │       │   └── result_20cm.json
+│   │       ├── object_approach_2026-10-20/
+│   │       │   ├── README.md
+│   │       │   ├── approach_protocol.json
+│   │       │   ├── deepseek_regression.json
+│   │       │   ├── native_planner.json
+│   │       │   ├── rules_regression.json
+│   │       │   ├── semantic_regression.json
+│   │       │   ├── source_hashes.json
+│   │       │   └── unit_checks.txt
+│   │       ├── obstacle_clearing_2026-10-18/
+│   │       │   ├── README.md
+│   │       │   ├── after.json
+│   │       │   ├── before.json
+│   │       │   ├── forecast_layer.json
+│   │       │   ├── ground_tag.json
+│   │       │   └── sensor_layout.json
+│   │       ├── obstacle_reliability_2026-10-18/
+│   │       │   ├── README.md
+│   │       │   ├── SHA256SUMS
+│   │       │   ├── case_sources.json
+│   │       │   ├── delivery_checks.json
+│   │       │   ├── source_hashes.json
+│   │       │   ├── unit_result.json
+│   │       │   ├── cases/
+│   │       │   │   ├── arrived_but_bad_surface_assertion/
+│   │       │   │   │   ├── box-bridge.log.gz
+│   │       │   │   │   ├── bringup.log.gz
+│   │       │   │   │   ├── empty.sdf.gz
+│   │       │   │   │   ├── global_costmap.json.gz
+│   │       │   │   │   ├── map.yaml.gz
+│   │       │   │   │   ├── result.json.gz
+│   │       │   │   │   ├── stationary.sdf.gz
+│   │       │   │   │   └── user_box.sdf.gz
+│   │       │   │   ├── failed_ground_height_assertion/
+│   │       │   │   │   ├── probe.log.gz
+│   │       │   │   │   ├── simulation.log.gz
+│   │       │   │   │   └── warehouse.sdf.gz
+│   │       │   │   ├── failed_omni_small_commands/
+│   │       │   │   │   ├── box-bridge.log.gz
+│   │       │   │   │   ├── bringup.log.gz
+│   │       │   │   │   ├── empty.sdf.gz
+│   │       │   │   │   ├── global_costmap.json.gz
+│   │       │   │   │   ├── map.yaml.gz
+│   │       │   │   │   └── result.json.gz
+│   │       │   │   ├── failed_plane_only_static/
+│   │       │   │   │   ├── box-bridge.log.gz
+│   │       │   │   │   ├── bringup.log.gz
+│   │       │   │   │   ├── empty.sdf.gz
+│   │       │   │   │   ├── global_costmap.json.gz
+│   │       │   │   │   ├── map.yaml.gz
+│   │       │   │   │   ├── result.json.gz
+│   │       │   │   │   ├── stationary.sdf.gz
+│   │       │   │   │   └── user_box.sdf.gz
+│   │       │   │   ├── failed_response_critic_contact/
+│   │       │   │   │   ├── box-bridge.log.gz
+│   │       │   │   │   ├── bringup.log.gz
+│   │       │   │   │   ├── empty.sdf.gz
+│   │       │   │   │   ├── global_costmap.json.gz
+│   │       │   │   │   ├── map.yaml.gz
+│   │       │   │   │   └── result.json.gz
+│   │       │   │   ├── failed_response_guard_blocked/
+│   │       │   │   │   ├── box-bridge.log.gz
+│   │       │   │   │   ├── bringup.log.gz
+│   │       │   │   │   ├── empty.sdf.gz
+│   │       │   │   │   ├── global_costmap.json.gz
+│   │       │   │   │   ├── map.yaml.gz
+│   │       │   │   │   └── result.json.gz
+│   │       │   │   ├── failed_response_invalid_path103/
+│   │       │   │   │   ├── box-bridge.log.gz
+│   │       │   │   │   ├── bringup.log.gz
+│   │       │   │   │   ├── empty.sdf.gz
+│   │       │   │   │   ├── global_costmap.json.gz
+│   │       │   │   │   ├── map.yaml.gz
+│   │       │   │   │   ├── observation_audit.json.gz
+│   │       │   │   │   └── result.json.gz
+│   │       │   │   ├── failed_tf_transient/
+│   │       │   │   │   ├── box-bridge.log.gz
+│   │       │   │   │   ├── bringup.log.gz
+│   │       │   │   │   ├── empty.sdf.gz
+│   │       │   │   │   ├── global_costmap.json.gz
+│   │       │   │   │   ├── map.yaml.gz
+│   │       │   │   │   └── result.json.gz
+│   │       │   │   ├── final_low_box_clearance/
+│   │       │   │   │   ├── probe.log.gz
+│   │       │   │   │   ├── result.json.gz
+│   │       │   │   │   ├── simulation.log.gz
+│   │       │   │   │   └── warehouse.sdf.gz
+│   │       │   │   ├── final_moving_and_turn/
+│   │       │   │   │   ├── box-bridge.log.gz
+│   │       │   │   │   ├── bringup.log.gz
+│   │       │   │   │   ├── empty.sdf.gz
+│   │       │   │   │   ├── global_costmap.json.gz
+│   │       │   │   │   ├── map.yaml.gz
+│   │       │   │   │   ├── observation_audit.json.gz
+│   │       │   │   │   └── result.json.gz
+│   │       │   │   ├── final_native_ground_tag/
+│   │       │   │   │   ├── controller.log.gz
+│   │       │   │   │   ├── params.yaml.gz
+│   │       │   │   │   └── result.json.gz
+│   │       │   │   ├── final_replanning_protocol/
+│   │       │   │   │   ├── mission.log.gz
+│   │       │   │   │   └── result.json.gz
+│   │       │   │   ├── final_user_box_warehouse/
+│   │       │   │   │   ├── box-bridge.log.gz
+│   │       │   │   │   ├── bringup.log.gz
+│   │       │   │   │   ├── empty.sdf.gz
+│   │       │   │   │   ├── global_costmap.json.gz
+│   │       │   │   │   ├── map.yaml.gz
+│   │       │   │   │   ├── observation_audit.json.gz
+│   │       │   │   │   ├── result.json.gz
+│   │       │   │   │   ├── stationary.sdf.gz
+│   │       │   │   │   └── user_box.sdf.gz
+│   │       │   │   ├── intermediate_static_success/
+│   │       │   │   │   ├── box-bridge.log.gz
+│   │       │   │   │   ├── bringup.log.gz
+│   │       │   │   │   ├── empty.sdf.gz
+│   │       │   │   │   ├── global_costmap.json.gz
+│   │       │   │   │   ├── map.yaml.gz
+│   │       │   │   │   ├── result.json.gz
+│   │       │   │   │   ├── stationary.sdf.gz
+│   │       │   │   │   └── user_box.sdf.gz
+│   │       │   │   ├── native_diff_start205/
+│   │       │   │   │   ├── lattice.log.gz
+│   │       │   │   │   ├── lattice.yaml.gz
+│   │       │   │   │   ├── lattice_result.json.gz
+│   │       │   │   │   ├── navfn.log.gz
+│   │       │   │   │   ├── navfn.yaml.gz
+│   │       │   │   │   ├── navfn_result.json.gz
+│   │       │   │   │   └── result.json.gz
+│   │       │   │   ├── native_omni_start_success/
+│   │       │   │   │   ├── lattice.log.gz
+│   │       │   │   │   ├── lattice.yaml.gz
+│   │       │   │   │   ├── lattice_result.json.gz
+│   │       │   │   │   ├── navfn.log.gz
+│   │       │   │   │   ├── navfn.yaml.gz
+│   │       │   │   │   ├── navfn_result.json.gz
+│   │       │   │   │   └── result.json.gz
+│   │       │   │   ├── rl_lateral/
+│   │       │   │   │   ├── empty.sdf.gz
+│   │       │   │   │   ├── result.json.gz
+│   │       │   │   │   ├── rl.log.gz
+│   │       │   │   │   └── simulation.log.gz
+│   │       │   │   ├── user_goal_map/
+│   │       │   │   │   ├── _global_costmap_costmap.npy.gz
+│   │       │   │   │   ├── _lite3_avoidance_failed_route.json.gz
+│   │       │   │   │   ├── _lite3_lidar_points_world.npy.gz
+│   │       │   │   │   ├── _lite3_navigation_path.json.gz
+│   │       │   │   │   ├── _lite3_perception_forecast.npy.gz
+│   │       │   │   │   ├── _lite3_perception_ground_world.npy.gz
+│   │       │   │   │   ├── _lite3_perception_obstacles.npy.gz
+│   │       │   │   │   ├── _lite3_perception_obstacles_world.npy.gz
+│   │       │   │   │   ├── _local_costmap_costmap.npy.gz
+│   │       │   │   │   ├── _map.npy.gz
+│   │       │   │   │   ├── cloud_check.json.gz
+│   │       │   │   │   ├── diagnosis.png
+│   │       │   │   │   └── snapshot.json.gz
+│   │       │   │   └── user_start_map/
+│   │       │   │       ├── _global_costmap_costmap.npy.gz
+│   │       │   │       ├── _lite3_avoidance_failed_route.json.gz
+│   │       │   │       ├── _lite3_navigation_path.json.gz
+│   │       │   │       ├── _lite3_perception_forecast.npy.gz
+│   │       │   │       ├── _lite3_perception_obstacles.npy.gz
+│   │       │   │       ├── _local_costmap_costmap.npy.gz
+│   │       │   │       ├── _map.npy.gz
+│   │       │   │       ├── global_costmap_costmap.npy.gz
+│   │       │   │       └── snapshot.json.gz
+│   │       │   ├── diagnostic_helpers/
+│   │       │   │   ├── lite3_cloud_check_20261018.py
+│   │       │   │   ├── lite3_read_stuck_20261018.py
+│   │       │   │   └── lite3_run_ground_scene_20261018.py
+│   │       │   └── experiments/
+│   │       │       ├── critic_plugins.xml
+│   │       │       └── rl_response_critic.cpp
+│   │       ├── occlusion_2026-10-20/
+│   │       │   ├── README.md
+│   │       │   ├── ground_regression.json
+│   │       │   ├── moving_after.json
+│   │       │   ├── moving_before.json
+│   │       │   ├── native_visibility.json
+│   │       │   ├── removed_box_regression.json
+│   │       │   ├── scan_gap_attempt.json
+│   │       │   ├── source_hashes.json
+│   │       │   └── unit_checks.txt
+│   │       ├── route_refresh_2026-10-18/
+│   │       │   ├── README.md
+│   │       │   ├── clearing_to_route.json
+│   │       │   ├── native_controller.json
+│   │       │   ├── protocol.json
+│   │       │   └── recovery_regression.json
+│   │       ├── safety_buffer_candidate_2026-10-18/
+│   │       │   ├── diagnosis.json
+│   │       │   ├── native_controller_result.json
+│   │       │   └── numerical-checks.txt
+│   │       ├── semantic_environment_2026-10-20/
+│   │       │   ├── README.md
+│   │       │   ├── deepseek_regression.json
+│   │       │   ├── environment_protocol.json
+│   │       │   ├── rules_regression.json
+│   │       │   ├── source_hashes.json
+│   │       │   └── unit_checks.txt
+│   │       ├── short_route_initial_cancel/
+│   │       │   ├── mission.log
+│   │       │   └── result.json
+│   │       ├── short_route_success/
+│   │       │   ├── mission.log
+│   │       │   └── result.json
+│   │       └── warehouse_cleanup_2026-10-20/
+│   │           ├── README.md
+│   │           ├── result.json
+│   │           ├── scene.txt
+│   │           └── scene_check.log
+│   └── reports/
+│       ├── Lite3_AI_ROS2_Report_2026-10-20.docx
+│       ├── Lite3_Navigation_Course_Report_2026-10-19.docx
+│       └── README.md
 ├── external/
 │   └── lite3_rl_deploy/
 │       ├── LICENSE.DeepRoboticsLab.txt
 │       ├── README.md
 │       ├── UPSTREAM.json
+│       ├── requirements-mujoco.txt
 │       ├── patches/
 │       │   └── local-simulation-fixes.patch
 │       ├── policy/
 │       │   └── ppo/
 │       │       └── policy.onnx
-│       ├── requirements-mujoco.txt
 │       └── snapshots/
+│           ├── main.cpp
 │           ├── interface/
 │           │   └── user_command/
 │           │       ├── keyboard_interface.hpp
 │           │       └── udp_velocity_interface.hpp
-│           ├── main.cpp
 │           ├── run_policy/
 │           │   └── lite3_test_policy_runner_onnx.cpp
 │           └── state_machine/
@@ -336,6 +412,7 @@ lite3_ws/
     ├── lite3_description/
     │   ├── CMakeLists.txt
     │   ├── LICENSE.DeepRoboticsLab.txt
+    │   ├── package.xml
     │   ├── launch/
     │   │   └── display.launch.py
     │   ├── meshes/
@@ -343,7 +420,6 @@ lite3_ws/
     │   │   ├── shank.STL
     │   │   ├── thigh.STL
     │   │   └── torso.STL
-    │   ├── package.xml
     │   ├── rviz/
     │   │   └── lite3.rviz
     │   └── urdf/
@@ -352,6 +428,7 @@ lite3_ws/
     │       └── Lite3_original.urdf
     ├── lite3_gazebo/
     │   ├── CMakeLists.txt
+    │   ├── package.xml
     │   ├── config/
     │   │   ├── LICENSE.gui-config.Apache-2.0.txt
     │   │   └── target_picker.config
@@ -366,7 +443,6 @@ lite3_ws/
     │   ├── maps/
     │   │   ├── large_warehouse.pgm
     │   │   └── large_warehouse.yaml
-    │   ├── package.xml
     │   ├── src/
     │   │   ├── BoxCommandGuard.cc
     │   │   └── BoxContacts.cc
@@ -387,58 +463,90 @@ lite3_ws/
     │   ├── CMakeLists.txt
     │   ├── LICENSE
     │   ├── README.md
-    │   ├── action/
-    │   │   └── NavigateTask.action
-    │   └── package.xml
+    │   ├── package.xml
+    │   └── action/
+    │       └── NavigateTask.action
     ├── lite3_navigation/
     │   ├── CMakeLists.txt
     │   ├── LICENSE
     │   ├── README.md
+    │   ├── controller_plugins.xml
+    │   ├── critic_plugins.xml
+    │   ├── package.xml
     │   ├── config/
     │   │   ├── controller.yaml
     │   │   ├── controller_mppi.yaml
     │   │   ├── mission.yaml
     │   │   ├── planner.yaml
     │   │   └── planner_navfn.yaml
-    │   ├── controller_plugins.xml
-    │   ├── critic_plugins.xml
     │   ├── launch/
     │   │   └── bringup.launch.py
-    │   ├── package.xml
     │   ├── rviz/
     │   │   └── navigation.rviz
     │   ├── scripts/
+    │   │   ├── agent_runtime.py
+    │   │   ├── agent_tools.py
+    │   │   ├── ai_console.py
+    │   │   ├── approach_executor.py
+    │   │   ├── approach_geometry.py
     │   │   ├── bringup_runtime.py
+    │   │   ├── deepseek_agent.py
+    │   │   ├── deepseek_parser.py
+    │   │   ├── deepseek_preview.py
+    │   │   ├── deepseek_setup.py
+    │   │   ├── environment_catalog.py
+    │   │   ├── environment_reader.py
+    │   │   ├── interaction_backend.py
+    │   │   ├── interaction_core.py
+    │   │   ├── language_context.py
+    │   │   ├── language_worker.py
     │   │   ├── moving_obstacle.py
-    │   │   └── navigate.py
+    │   │   ├── navigate.py
+    │   │   └── place_markers.py
     │   ├── src/
     │   │   ├── avoidance_controller.cpp
+    │   │   ├── environment_transport.cpp
     │   │   ├── mission_manager.cpp
     │   │   ├── mission_manager_once.cpp
+    │   │   ├── place_marker_transport.cpp
     │   │   ├── rl_response_critic.cpp
     │   │   └── safety_motion.hpp
     │   └── test/
+    │       ├── check_agent_backend.py
+    │       ├── check_approach_protocol.py
     │       ├── check_continuous_avoidance.py
+    │       ├── check_deepseek_execution.py
+    │       ├── check_environment_catalog.py
+    │       ├── check_interaction_backend.py
     │       ├── check_lattice_snapshot.py
     │       ├── check_mission_manager.py
     │       ├── check_moving_obstacle.py
     │       ├── check_navigation_footprint.py
     │       ├── check_navigation_gate.py
+    │       ├── check_object_approach.py
+    │       ├── check_place_markers.py
     │       ├── check_replanning.py
     │       ├── check_rl_response.py
     │       ├── check_route_refresh.py
     │       ├── check_route_refresh_clearing.py
     │       ├── check_route_refresh_native.py
     │       ├── check_safety_controller.py
-    │       └── check_safety_motion.cpp
+    │       ├── check_safety_motion.cpp
+    │       ├── test_agent_tools.py
+    │       ├── test_approach_geometry.py
+    │       ├── test_deepseek_parser.py
+    │       ├── test_environment_catalog.py
+    │       ├── test_interaction_core.py
+    │       ├── test_language_context.py
+    │       └── test_language_worker.py
     └── lite3_perception/
         ├── CMakeLists.txt
         ├── LICENSE
         ├── README.md
-        ├── config/
-        │   └── flat_ground.yaml
         ├── package.xml
         ├── plugins.xml
+        ├── config/
+        │   └── flat_ground.yaml
         ├── scripts/
         │   ├── flat_ground_fit.py
         │   ├── lidar_no_return.py
@@ -448,17 +556,21 @@ lite3_ws/
         ├── src/
         │   ├── flat_ground_voxel_layer.cpp
         │   ├── forecast_layer.cpp
+        │   ├── occlusion_evidence.hpp
         │   └── route_penalty_layer.cpp
         └── test/
+            ├── check_clearing_visibility.py
             ├── check_costmap_scene.py
             ├── check_forecast_layer.py
             ├── check_ground_tag_layer.py
+            ├── check_moving_occlusion.py
+            ├── check_occlusion_evidence.cpp
             ├── check_removed_obstacle.py
             ├── check_route_penalty_layer.py
-            ├── fixtures/
-            │   └── clearing_lidar.sdf
             ├── test_filter.py
             ├── test_ground_fit.py
             ├── test_motion_forecast.py
             ├── test_no_return.py
-            └── test_obstacle_evidence.py
+            ├── test_obstacle_evidence.py
+            └── fixtures/
+                └── clearing_lidar.sdf

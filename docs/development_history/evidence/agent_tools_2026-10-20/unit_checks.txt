@@ -1,0 +1,199 @@
+Internal ctest changing into directory: /home/ma/lite3_ws/build/lite3_navigation
+UpdateCTestConfiguration  from :/home/ma/lite3_ws/build/lite3_navigation/CTestConfiguration.ini
+Parse Config file:/home/ma/lite3_ws/build/lite3_navigation/CTestConfiguration.ini
+ Add coverage exclude regular expressions.
+UpdateCTestConfiguration  from :/home/ma/lite3_ws/build/lite3_navigation/CTestConfiguration.ini
+Parse Config file:/home/ma/lite3_ws/build/lite3_navigation/CTestConfiguration.ini
+Test project /home/ma/lite3_ws/build/lite3_navigation
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: agent_tools
+
+1: Test command: /usr/bin/python3 "-m" "unittest" "discover" "-s" "/home/ma/lite3_ws/src/lite3_navigation/test" "-p" "test_agent_tools.py" "-v"
+1: Working Directory: /home/ma/lite3_ws/build/lite3_navigation
+1: Test timeout computed to be: 10000000
+1: test_batch_whole_validated_before_return (test_agent_tools.Tools.test_batch_whole_validated_before_return) ... ok
+1: test_capability_registry_has_no_shell_or_unlock (test_agent_tools.Tools.test_capability_registry_has_no_shell_or_unlock) ... ok
+1: test_duplicate_call_id (test_agent_tools.Tools.test_duplicate_call_id) ... ok
+1: test_duplicate_json_and_nonfinite (test_agent_tools.Tools.test_duplicate_json_and_nonfinite) ... ok
+1: test_invalid_calls (test_agent_tools.Tools.test_invalid_calls) ... ok
+1: test_multiple_queries_and_tool_results_forwarded (test_agent_tools.Tools.test_multiple_queries_and_tool_results_forwarded) ... ok
+1: test_request_size_limit_before_credentials (test_agent_tools.Tools.test_request_size_limit_before_credentials) ... ok
+1: test_tool_schema_is_closed (test_agent_tools.Tools.test_tool_schema_is_closed) ... ok
+1: test_truncated_or_empty (test_agent_tools.Tools.test_truncated_or_empty) ... ok
+1: test_valid_calls (test_agent_tools.Tools.test_valid_calls) ... ok
+1: 
+1: ----------------------------------------------------------------------
+1: Ran 10 tests in 0.002s
+1: 
+1: OK
+1/7 Test #1: agent_tools ......................   Passed    0.07 sec
+test 2
+    Start 2: approach_geometry
+
+2: Test command: /usr/bin/python3 "-m" "unittest" "discover" "-s" "/home/ma/lite3_ws/src/lite3_navigation/test" "-p" "test_approach_geometry.py" "-v"
+2: Working Directory: /home/ma/lite3_ws/build/lite3_navigation
+2: Test timeout computed to be: 10000000
+2: test_cell_edge_overlap_without_centre_inside (test_approach_geometry.Geometry.test_cell_edge_overlap_without_centre_inside) ... ok
+2: test_footprint_interior_obstacle_rejected (test_approach_geometry.Geometry.test_footprint_interior_obstacle_rejected) ... ok
+2: test_four_sides_and_physical_edge_gap (test_approach_geometry.Geometry.test_four_sides_and_physical_edge_gap) ... ok
+2: test_grid_unknown_and_outside_rejected (test_approach_geometry.Geometry.test_grid_unknown_and_outside_rejected) ... ok
+2: test_inflation_not_all_treated_lethal (test_approach_geometry.Geometry.test_inflation_not_all_treated_lethal) ... ok
+2: test_known_shelf_real_collision (test_approach_geometry.Geometry.test_known_shelf_real_collision) ... ok
+2: test_near_candidates_ranked_first (test_approach_geometry.Geometry.test_near_candidates_ranked_first) ... ok
+2: test_object_change_invalidates (test_approach_geometry.Geometry.test_object_change_invalidates) ... ok
+2: test_rotated_corner_collision_rejected (test_approach_geometry.Geometry.test_rotated_corner_collision_rejected) ... ok
+2: test_side_and_distance_protocol (test_approach_geometry.Geometry.test_side_and_distance_protocol) ... ok
+2: test_unknown_dynamic_mesh_and_relative_frames_refused (test_approach_geometry.Geometry.test_unknown_dynamic_mesh_and_relative_frames_refused) ... ok
+2: test_world_north_after_object_rotation (test_approach_geometry.Geometry.test_world_north_after_object_rotation) ... ok
+2: 
+2: ----------------------------------------------------------------------
+2: Ran 12 tests in 0.005s
+2: 
+2: OK
+2/7 Test #2: approach_geometry ................   Passed    0.06 sec
+test 3
+    Start 3: environment_catalog
+
+3: Test command: /usr/bin/python3 "-m" "unittest" "discover" "-s" "/home/ma/lite3_ws/src/lite3_navigation/test" "-p" "test_environment_catalog.py" "-v"
+3: Working Directory: /home/ma/lite3_ws/build/lite3_navigation
+3: Test timeout computed to be: 10000000
+3: test_context_is_sent_as_user_data_without_coordinates (test_environment_catalog.Catalog.test_context_is_sent_as_user_data_without_coordinates) ... ok
+3: test_current_position_is_not_persisted (test_environment_catalog.Catalog.test_current_position_is_not_persisted) ... ok
+3: test_duplicate_alias_is_ambiguous (test_environment_catalog.Catalog.test_duplicate_alias_is_ambiguous) ... ok
+3: test_explicit_commands_both_sources (test_environment_catalog.Catalog.test_explicit_commands_both_sources) ... ok
+3: test_filter_and_categories (test_environment_catalog.Catalog.test_filter_and_categories) ... ok
+3: test_malformed_labels_fail (test_environment_catalog.Catalog.test_malformed_labels_fail) ... ok
+3: test_map_and_world_binding (test_environment_catalog.Catalog.test_map_and_world_binding) ... ok
+3: test_model_whitelist (test_environment_catalog.Catalog.test_model_whitelist) ... ok
+3: test_no_coordinate_upload_in_context (test_environment_catalog.Catalog.test_no_coordinate_upload_in_context) ... ok
+3: test_no_object_centre_navigation (test_environment_catalog.Catalog.test_no_object_centre_navigation) ... ok
+3: test_patch_preserves_fields (test_environment_catalog.Catalog.test_patch_preserves_fields) ... ok
+3: test_persistent_atomic_labels_and_permissions (test_environment_catalog.Catalog.test_persistent_atomic_labels_and_permissions) ... ok
+3: test_place_alias_navigation_and_exact_name_priority (test_environment_catalog.Catalog.test_place_alias_navigation_and_exact_name_priority) ... ok
+3: test_runtime_created_model (test_environment_catalog.Catalog.test_runtime_created_model) ... ok
+3: test_scene_protocol (test_environment_catalog.Catalog.test_scene_protocol) ... ok
+3: test_unobserved_and_removed_no_pose (test_environment_catalog.Catalog.test_unobserved_and_removed_no_pose) ... ok
+3: 
+3: ----------------------------------------------------------------------
+3: Ran 16 tests in 0.049s
+3: 
+3: OK
+3/7 Test #3: environment_catalog ..............   Passed    0.11 sec
+test 4
+    Start 4: language_context
+
+4: Test command: /usr/bin/python3 "-m" "unittest" "discover" "-s" "/home/ma/lite3_ws/src/lite3_navigation/test" "-p" "test_language_context.py" "-v"
+4: Working Directory: /home/ma/lite3_ws/build/lite3_navigation
+4: Test timeout computed to be: 10000000
+4: test_bounded (test_language_context.Context.test_bounded) ... ok
+4: test_clarification_chain (test_language_context.Context.test_clarification_chain) ... ok
+4: test_clear (test_language_context.Context.test_clear) ... ok
+4: test_digit_reference_alias (test_language_context.Context.test_digit_reference_alias) ... ok
+4: test_disabled_reason (test_language_context.Context.test_disabled_reason) ... ok
+4: test_empty (test_language_context.Context.test_empty) ... ok
+4: test_exact_name_wins (test_language_context.Context.test_exact_name_wins) ... ok
+4: test_expiry (test_language_context.Context.test_expiry) ... ok
+4: test_friendly_description (test_language_context.Context.test_friendly_description) ... ok
+4: test_malformed_state (test_language_context.Context.test_malformed_state) ... ok
+4: test_no_invented_name (test_language_context.Context.test_no_invented_name) ... ok
+4: test_other_state_reasons (test_language_context.Context.test_other_state_reasons) ... ok
+4: test_save_not_silently_renamed (test_language_context.Context.test_save_not_silently_renamed) ... ok
+4: 
+4: ----------------------------------------------------------------------
+4: Ran 13 tests in 0.001s
+4: 
+4: OK
+4/7 Test #4: language_context .................   Passed    0.05 sec
+test 5
+    Start 5: deepseek_parser
+
+5: Test command: /usr/bin/python3 "-m" "unittest" "discover" "-s" "/home/ma/lite3_ws/src/lite3_navigation/test" "-p" "test_deepseek_parser.py" "-v"
+5: Working Directory: /home/ma/lite3_ws/build/lite3_navigation
+5: Test timeout computed to be: 10000000
+5: test_actions (test_deepseek_parser.Adapter.test_actions) ... ok
+5: test_auth_error_redacted (test_deepseek_parser.Adapter.test_auth_error_redacted) ... ok
+5: test_clarification (test_deepseek_parser.Adapter.test_clarification) ... ok
+5: test_coordinate_save (test_deepseek_parser.Adapter.test_coordinate_save) ... ok
+5: test_current_save (test_deepseek_parser.Adapter.test_current_save) ... ok
+5: test_duplicate_json (test_deepseek_parser.Adapter.test_duplicate_json) ... ok
+5: test_empty (test_deepseek_parser.Adapter.test_empty) ... ok
+5: test_header_injection (test_deepseek_parser.Adapter.test_header_injection) ... ok
+5: test_history_sent_as_bounded_messages (test_deepseek_parser.Adapter.test_history_sent_as_bounded_messages) ... ok
+5: test_mock_api (test_deepseek_parser.Adapter.test_mock_api) ... ok
+5: test_network_failure (test_deepseek_parser.Adapter.test_network_failure) ... ok
+5: test_nonfinite_json (test_deepseek_parser.Adapter.test_nonfinite_json) ... ok
+5: test_oversized_history_rejected (test_deepseek_parser.Adapter.test_oversized_history_rejected) ... ok
+5: test_permission (test_deepseek_parser.Adapter.test_permission) ... ok
+5: test_rejections (test_deepseek_parser.Adapter.test_rejections) ... ok
+5: test_route (test_deepseek_parser.Adapter.test_route) ... ok
+5: test_symlink (test_deepseek_parser.Adapter.test_symlink) ... ok
+5: test_system_history_rejected (test_deepseek_parser.Adapter.test_system_history_rejected) ... ok
+5: test_truncated (test_deepseek_parser.Adapter.test_truncated) ... ok
+5: 
+5: ----------------------------------------------------------------------
+5: Ran 19 tests in 0.004s
+5: 
+5: OK
+5/7 Test #5: deepseek_parser ..................   Passed    0.06 sec
+test 6
+    Start 6: language_worker
+
+6: Test command: /usr/bin/python3 "-m" "unittest" "discover" "-s" "/home/ma/lite3_ws/src/lite3_navigation/test" "-p" "test_language_worker.py" "-v"
+6: Working Directory: /home/ma/lite3_ws/build/lite3_navigation
+6: Test timeout computed to be: 10000000
+6: test_known_error (test_language_worker.Worker.test_known_error) ... ok
+6: test_nonblocking_singleflight (test_language_worker.Worker.test_nonblocking_singleflight) ... ok
+6: test_unexpected_error_redacted (test_language_worker.Worker.test_unexpected_error_redacted) ... ok
+6: 
+6: ----------------------------------------------------------------------
+6: Ran 3 tests in 0.006s
+6: 
+6: OK
+6/7 Test #6: language_worker ..................   Passed    0.06 sec
+test 7
+    Start 7: interaction_core
+
+7: Test command: /usr/bin/python3 "-m" "unittest" "discover" "-s" "/home/ma/lite3_ws/src/lite3_navigation/test" "-p" "test_interaction_core.py" "-v"
+7: Working Directory: /home/ma/lite3_ws/build/lite3_navigation
+7: Test timeout computed to be: 10000000
+7: test_atomic_store_and_reload (test_interaction_core.Interaction.test_atomic_store_and_reload) ... ok
+7: test_chinese_number (test_interaction_core.Interaction.test_chinese_number) ... ok
+7: test_current (test_interaction_core.Interaction.test_current) ... ok
+7: test_enable (test_interaction_core.Interaction.test_enable) ... ok
+7: test_home_not_map_zero (test_interaction_core.Interaction.test_home_not_map_zero) ... ok
+7: test_invalid_commands (test_interaction_core.Interaction.test_invalid_commands) ... ok
+7: test_map_mismatch_preserves_file (test_interaction_core.Interaction.test_map_mismatch_preserves_file) ... ok
+7: test_missing_stops_whole_route (test_interaction_core.Interaction.test_missing_stops_whole_route) ... ok
+7: test_named_save (test_interaction_core.Interaction.test_named_save) ... ok
+7: test_nonfinite_store (test_interaction_core.Interaction.test_nonfinite_store) ... ok
+7: test_omitted_yaw (test_interaction_core.Interaction.test_omitted_yaw) ... ok
+7: test_place_operations (test_interaction_core.Interaction.test_place_operations) ... ok
+7: test_reserved_home (test_interaction_core.Interaction.test_reserved_home) ... ok
+7: test_route (test_interaction_core.Interaction.test_route) ... ok
+7: test_snapshot (test_interaction_core.Interaction.test_snapshot) ... ok
+7: test_stop_exact (test_interaction_core.Interaction.test_stop_exact) ... ok
+7: 
+7: ----------------------------------------------------------------------
+7: Ran 16 tests in 0.020s
+7: 
+7: OK
+7/7 Test #7: interaction_core .................   Passed    0.06 sec
+
+The following tests passed:
+	agent_tools
+	approach_geometry
+	environment_catalog
+	language_context
+	deepseek_parser
+	language_worker
+	interaction_core
+
+100% tests passed, 0 tests failed out of 7
+
+Total Test time (real) =   0.49 sec

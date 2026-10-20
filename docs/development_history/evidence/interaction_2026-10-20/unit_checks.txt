@@ -1,0 +1,29 @@
+Internal ctest changing into directory: /home/ma/lite3_ws/build/lite3_navigation
+Test project /home/ma/lite3_ws/build/lite3_navigation
+    Start 1: interaction_core
+1/1 Test #1: interaction_core .................   Passed    0.07 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.07 sec
+test_atomic_store_and_reload (test_interaction_core.Interaction.test_atomic_store_and_reload) ... ok
+test_chinese_number (test_interaction_core.Interaction.test_chinese_number) ... ok
+test_current (test_interaction_core.Interaction.test_current) ... ok
+test_enable (test_interaction_core.Interaction.test_enable) ... ok
+test_home_not_map_zero (test_interaction_core.Interaction.test_home_not_map_zero) ... ok
+test_invalid_commands (test_interaction_core.Interaction.test_invalid_commands) ... ok
+test_map_mismatch_preserves_file (test_interaction_core.Interaction.test_map_mismatch_preserves_file) ... ok
+test_missing_stops_whole_route (test_interaction_core.Interaction.test_missing_stops_whole_route) ... ok
+test_named_save (test_interaction_core.Interaction.test_named_save) ... ok
+test_nonfinite_store (test_interaction_core.Interaction.test_nonfinite_store) ... ok
+test_omitted_yaw (test_interaction_core.Interaction.test_omitted_yaw) ... ok
+test_place_operations (test_interaction_core.Interaction.test_place_operations) ... ok
+test_reserved_home (test_interaction_core.Interaction.test_reserved_home) ... ok
+test_route (test_interaction_core.Interaction.test_route) ... ok
+test_snapshot (test_interaction_core.Interaction.test_snapshot) ... ok
+test_stop_exact (test_interaction_core.Interaction.test_stop_exact) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.013s
+
+OK

@@ -1,0 +1,8214 @@
+ambient {
+  r: 0.4
+  g: 0.4
+  b: 0.4
+  a: 1
+}
+background {
+  r: 0.7
+  g: 0.7
+  b: 0.7
+  a: 1
+}
+shadows: true
+grid: true
+model {
+  name: "ground_plane"
+  id: 4
+  pose {
+    position {
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 5
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+  }
+}
+model {
+  name: "concrete_floor"
+  id: 7
+  pose {
+    position {
+      x: 0.038
+      z: 0.0025
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 8
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "visual"
+      id: 9
+      parent_id: 8
+      cast_shadows: true
+      pose {
+        position {
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 10.6
+            y: 10.4
+            z: 0.005
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.48
+          g: 0.48
+          b: 0.5
+          a: 1
+        }
+        diffuse {
+          r: 0.56
+          g: 0.56
+          b: 0.58
+          a: 1
+        }
+        specular {
+          r: 0.06
+          g: 0.06
+          b: 0.06
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "wall_south"
+  id: 11
+  pose {
+    position {
+      y: -5
+      z: 0.45
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 12
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis"
+      id: 13
+      parent_id: 12
+      cast_shadows: true
+      pose {
+        position {
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 10.4
+            y: 0.2
+            z: 0.9
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.3
+          g: 0.35
+          b: 0.4
+          a: 1
+        }
+        diffuse {
+          r: 0.3
+          g: 0.35
+          b: 0.4
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "wall_north"
+  id: 15
+  pose {
+    position {
+      y: 5
+      z: 0.45
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 16
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis"
+      id: 17
+      parent_id: 16
+      cast_shadows: true
+      pose {
+        position {
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 10.4
+            y: 0.2
+            z: 0.9
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.3
+          g: 0.35
+          b: 0.4
+          a: 1
+        }
+        diffuse {
+          r: 0.3
+          g: 0.35
+          b: 0.4
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "wall_west"
+  id: 19
+  pose {
+    position {
+      x: -5.1
+      z: 0.45
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 20
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis"
+      id: 21
+      parent_id: 20
+      cast_shadows: true
+      pose {
+        position {
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 10
+            z: 0.9
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.3
+          g: 0.35
+          b: 0.4
+          a: 1
+        }
+        diffuse {
+          r: 0.3
+          g: 0.35
+          b: 0.4
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "wall_east"
+  id: 23
+  pose {
+    position {
+      x: 5.1757
+      z: 0.45
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 24
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis"
+      id: 25
+      parent_id: 24
+      cast_shadows: true
+      pose {
+        position {
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 10
+            z: 0.9
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.3
+          g: 0.35
+          b: 0.4
+          a: 1
+        }
+        diffuse {
+          r: 0.3
+          g: 0.35
+          b: 0.4
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "spawn_marker"
+  id: 27
+  pose {
+    position {
+      x: -4.5
+      y: -4.5
+      z: 0.01
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 28
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "visual"
+      id: 29
+      parent_id: 28
+      cast_shadows: true
+      pose {
+        position {
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CYLINDER
+        cylinder {
+          radius: 0.35
+          length: 0.01
+        }
+      }
+      material {
+        ambient {
+          r: 1
+          g: 0.85
+          a: 1
+        }
+        diffuse {
+          r: 1
+          g: 0.85
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_1"
+  id: 30
+  pose {
+    position {
+      x: -2.2101
+      y: 2.5934
+      z: 0.03
+    }
+    orientation {
+      z: 0.70671906491360537
+      w: 0.70749428498585
+    }
+  }
+  link {
+    id: 31
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 32
+      parent_id: 31
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.765
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 33
+      parent_id: 31
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.765
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 34
+      parent_id: 31
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.51
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 35
+      parent_id: 31
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.51
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 36
+      parent_id: 31
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.51
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 37
+      parent_id: 31
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.51
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 38
+      parent_id: 31
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.4
+          z: 0.115
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.24
+            y: 0.3
+            z: 0.18
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 39
+      parent_id: 31
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.3
+          z: 0.1
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.26
+            z: 0.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        diffuse {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 40
+      parent_id: 31
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.2
+          z: 0.5075
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.08
+          length: 0.22
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b3"
+      id: 41
+      parent_id: 31
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.35
+          z: 0.4825
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.24
+            z: 0.17
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        diffuse {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b4"
+      id: 42
+      parent_id: 31
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.1
+          z: 0.8625
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.25
+            z: 0.19
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.42
+          g: 0.46
+          b: 0.5
+          a: 1
+        }
+        diffuse {
+          r: 0.42
+          g: 0.46
+          b: 0.5
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c2"
+      id: 43
+      parent_id: 31
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.2
+          z: 1.26
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.08
+          length: 0.22
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_2"
+  id: 56
+  pose {
+    position {
+      x: 1.7745
+      y: 2.6018
+      z: 0.03
+    }
+    orientation {
+      z: 0.70671906491360537
+      w: 0.70749428498585
+    }
+  }
+  link {
+    id: 57
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 58
+      parent_id: 57
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.765
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 59
+      parent_id: 57
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.765
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 60
+      parent_id: 57
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.51
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 61
+      parent_id: 57
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.51
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 62
+      parent_id: 57
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.51
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 63
+      parent_id: 57
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.51
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 64
+      parent_id: 57
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.2
+          z: 0.125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.24
+            y: 0.3
+            z: 0.2
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 65
+      parent_id: 57
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.3
+          z: 0.4975
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.07
+          length: 0.2
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 66
+      parent_id: 57
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.15
+          z: 0.4775
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.24
+            z: 0.16
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.2
+          g: 0.55
+          b: 0.35
+          a: 1
+        }
+        diffuse {
+          r: 0.2
+          g: 0.55
+          b: 0.35
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b3"
+      id: 67
+      parent_id: 57
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.15
+          z: 0.8525
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.25
+            z: 0.17
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        diffuse {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_3"
+  id: 78
+  pose {
+    position {
+      x: 3.8275
+      y: 0.0136
+      z: 0.03
+    }
+    orientation {
+      z: 0.70671906491360537
+      w: 0.70749428498585
+    }
+  }
+  link {
+    id: 79
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 80
+      parent_id: 79
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.765
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 81
+      parent_id: 79
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.765
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 82
+      parent_id: 79
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.51
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 83
+      parent_id: 79
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.51
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 84
+      parent_id: 79
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.51
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 85
+      parent_id: 79
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.51
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 86
+      parent_id: 79
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.2
+          z: 0.115
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.28
+            z: 0.18
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 87
+      parent_id: 79
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.3
+          z: 0.5075
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.08
+          length: 0.22
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 88
+      parent_id: 79
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.1
+          z: 0.8475
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.22
+            z: 0.16
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        diffuse {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_4"
+  id: 98
+  pose {
+    position {
+      x: 3.05
+      y: -1.61
+      z: 0.03
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 99
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 100
+      parent_id: 99
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 101
+      parent_id: 99
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 102
+      parent_id: 99
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 103
+      parent_id: 99
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 104
+      parent_id: 99
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 105
+      parent_id: 99
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 106
+      parent_id: 99
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.2
+          z: 0.115
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.26
+            z: 0.18
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 107
+      parent_id: 99
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.18
+          z: 0.4975
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.07
+          length: 0.2
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 108
+      parent_id: 99
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.18
+          z: 0.4725
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.18
+            y: 0.22
+            z: 0.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        diffuse {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b3"
+      id: 109
+      parent_id: 99
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.08
+          z: 0.8525
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.25
+            z: 0.17
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.42
+          g: 0.46
+          b: 0.5
+          a: 1
+        }
+        diffuse {
+          r: 0.42
+          g: 0.46
+          b: 0.5
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_5"
+  id: 120
+  pose {
+    position {
+      x: 4.65
+      y: -4
+      z: 0.03
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 121
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 122
+      parent_id: 121
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 123
+      parent_id: 121
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 124
+      parent_id: 121
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 125
+      parent_id: 121
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 126
+      parent_id: 121
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 127
+      parent_id: 121
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 128
+      parent_id: 121
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.2
+          z: 0.115
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.28
+            z: 0.18
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 129
+      parent_id: 121
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.18
+          z: 0.105
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.24
+            z: 0.16
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        diffuse {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 130
+      parent_id: 121
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.18
+          z: 0.4975
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.07
+          length: 0.2
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b3"
+      id: 131
+      parent_id: 121
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.2
+          z: 0.4725
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.18
+            y: 0.22
+            z: 0.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.2
+          g: 0.55
+          b: 0.35
+          a: 1
+        }
+        diffuse {
+          r: 0.2
+          g: 0.55
+          b: 0.35
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b4"
+      id: 132
+      parent_id: 121
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.08
+          z: 0.8525
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.24
+            z: 0.17
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        diffuse {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c2"
+      id: 133
+      parent_id: 121
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.15
+          z: 1.26
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.08
+          length: 0.22
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_6"
+  id: 146
+  pose {
+    position {
+      x: 4.65
+      y: 2.6745
+      z: 0.03
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 147
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 148
+      parent_id: 147
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 149
+      parent_id: 147
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 150
+      parent_id: 147
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 151
+      parent_id: 147
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 152
+      parent_id: 147
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 153
+      parent_id: 147
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 154
+      parent_id: 147
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.15
+          z: 0.115
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.25
+            z: 0.18
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 155
+      parent_id: 147
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.15
+          z: 0.4975
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.07
+          length: 0.2
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 156
+      parent_id: 147
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.08
+          z: 0.8475
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.18
+            y: 0.22
+            z: 0.16
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        diffuse {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_7"
+  id: 166
+  pose {
+    position {
+      x: -2.2101
+      y: 0.2662
+      z: 0.03
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 167
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 168
+      parent_id: 167
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 169
+      parent_id: 167
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 170
+      parent_id: 167
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 171
+      parent_id: 167
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 172
+      parent_id: 167
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 173
+      parent_id: 167
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 174
+      parent_id: 167
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.18
+          z: 0.11
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.26
+            z: 0.17
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 175
+      parent_id: 167
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.18
+          z: 0.4975
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.07
+          length: 0.2
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 176
+      parent_id: 167
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.08
+          z: 0.8525
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.24
+            z: 0.17
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.2
+          g: 0.55
+          b: 0.35
+          a: 1
+        }
+        diffuse {
+          r: 0.2
+          g: 0.55
+          b: 0.35
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_8"
+  id: 186
+  pose {
+    position {
+      x: 0.1082
+      y: -1.788
+      z: 0.03
+    }
+    orientation {
+      z: -0.70915570949709961
+      w: 0.705051898577449
+    }
+  }
+  link {
+    id: 187
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 188
+      parent_id: 187
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 189
+      parent_id: 187
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 190
+      parent_id: 187
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 191
+      parent_id: 187
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 192
+      parent_id: 187
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 193
+      parent_id: 187
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 194
+      parent_id: 187
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.18
+          z: 0.115
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.24
+            y: 0.28
+            z: 0.18
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        diffuse {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 195
+      parent_id: 187
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.15
+          z: 0.4775
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.24
+            z: 0.16
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 196
+      parent_id: 187
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.26
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.08
+          length: 0.22
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_9"
+  id: 206
+  pose {
+    position {
+      x: -4.59
+      y: -1.47
+      z: 0.03
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 207
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 208
+      parent_id: 207
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 209
+      parent_id: 207
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 210
+      parent_id: 207
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 211
+      parent_id: 207
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 212
+      parent_id: 207
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 213
+      parent_id: 207
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 214
+      parent_id: 207
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.18
+          z: 0.11
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.28
+            z: 0.17
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 215
+      parent_id: 207
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.2
+          z: 0.1
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.24
+            z: 0.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.42
+          g: 0.46
+          b: 0.5
+          a: 1
+        }
+        diffuse {
+          r: 0.42
+          g: 0.46
+          b: 0.5
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b3"
+      id: 216
+      parent_id: 207
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.15
+          z: 0.4775
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.18
+            y: 0.24
+            z: 0.16
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        diffuse {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 217
+      parent_id: 207
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.2
+          z: 0.4975
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.07
+          length: 0.2
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b4"
+      id: 218
+      parent_id: 207
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.08
+          z: 0.8525
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.26
+            z: 0.17
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        diffuse {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c2"
+      id: 219
+      parent_id: 207
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.15
+          z: 1.26
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.08
+          length: 0.22
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_10"
+  id: 232
+  pose {
+    position {
+      x: -0.6226
+      y: 3.9863
+      z: 0.03
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 233
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 234
+      parent_id: 233
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 235
+      parent_id: 233
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 236
+      parent_id: 233
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 237
+      parent_id: 233
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 238
+      parent_id: 233
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 239
+      parent_id: 233
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 240
+      parent_id: 233
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.18
+          z: 0.11
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.26
+            z: 0.17
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 241
+      parent_id: 233
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.18
+          z: 0.4975
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.07
+          length: 0.2
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 242
+      parent_id: 233
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.08
+          z: 0.8525
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.24
+            z: 0.17
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.2
+          g: 0.55
+          b: 0.35
+          a: 1
+        }
+        diffuse {
+          r: 0.2
+          g: 0.55
+          b: 0.35
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_11"
+  id: 252
+  pose {
+    position {
+      x: -3.395
+      y: -2.203
+      z: 0.03
+    }
+    orientation {
+      z: -0.709508146787238
+      w: 0.70469723260598882
+    }
+  }
+  link {
+    id: 253
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 254
+      parent_id: 253
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 255
+      parent_id: 253
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 256
+      parent_id: 253
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 257
+      parent_id: 253
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 258
+      parent_id: 253
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 259
+      parent_id: 253
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 260
+      parent_id: 253
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.18
+          z: 0.115
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.24
+            y: 0.28
+            z: 0.18
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        diffuse {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 261
+      parent_id: 253
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.15
+          z: 0.4775
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.24
+            z: 0.16
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 262
+      parent_id: 253
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.26
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.08
+          length: 0.22
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_12"
+  id: 272
+  pose {
+    position {
+      x: -3.6
+      y: 3.8
+      z: 0.03
+    }
+    orientation {
+      z: 0.70682518110536585
+      w: 0.70738826916719977
+    }
+  }
+  link {
+    id: 273
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 274
+      parent_id: 273
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 275
+      parent_id: 273
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 276
+      parent_id: 273
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 277
+      parent_id: 273
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 278
+      parent_id: 273
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 279
+      parent_id: 273
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 280
+      parent_id: 273
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.2
+          z: 0.115
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.28
+            z: 0.18
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 281
+      parent_id: 273
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.18
+          z: 0.4975
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.07
+          length: 0.2
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 282
+      parent_id: 273
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.05
+          z: 0.8525
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.24
+            z: 0.17
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.2
+          g: 0.55
+          b: 0.35
+          a: 1
+        }
+        diffuse {
+          r: 0.2
+          g: 0.55
+          b: 0.35
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_13"
+  id: 292
+  pose {
+    position {
+      x: 1.8
+      y: 0.1
+      z: 0.03
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 293
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 294
+      parent_id: 293
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 295
+      parent_id: 293
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 296
+      parent_id: 293
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 297
+      parent_id: 293
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 298
+      parent_id: 293
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 299
+      parent_id: 293
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 300
+      parent_id: 293
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.15
+          z: 0.11
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.25
+            z: 0.17
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        diffuse {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 301
+      parent_id: 293
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.18
+          z: 0.4775
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.24
+            z: 0.16
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 302
+      parent_id: 293
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.1
+          z: 1.26
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.08
+          length: 0.22
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_14"
+  id: 312
+  pose {
+    position {
+      x: 1.5
+      y: -3.6
+      z: 0.03
+    }
+    orientation {
+      w: 1
+    }
+  }
+  link {
+    id: 313
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 314
+      parent_id: 313
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 315
+      parent_id: 313
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 316
+      parent_id: 313
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 317
+      parent_id: 313
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 318
+      parent_id: 313
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 319
+      parent_id: 313
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 320
+      parent_id: 313
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.15
+          z: 0.115
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.24
+            y: 0.26
+            z: 0.18
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 321
+      parent_id: 313
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.18
+          z: 0.4975
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.07
+          length: 0.2
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 322
+      parent_id: 313
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.05
+          z: 0.8475
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.22
+            z: 0.16
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        diffuse {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_15"
+  id: 332
+  pose {
+    position {
+      x: 2.2
+      y: 4.1
+      z: 0.03
+    }
+    orientation {
+      z: 0.70682518110536585
+      w: 0.70738826916719977
+    }
+  }
+  link {
+    id: 333
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 334
+      parent_id: 333
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 335
+      parent_id: 333
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 336
+      parent_id: 333
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 337
+      parent_id: 333
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 338
+      parent_id: 333
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 339
+      parent_id: 333
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 340
+      parent_id: 333
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.18
+          z: 0.11
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.22
+            y: 0.26
+            z: 0.17
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        diffuse {
+          r: 0.15
+          g: 0.35
+          b: 0.65
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 341
+      parent_id: 333
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.18
+          z: 0.4975
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.07
+          length: 0.2
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 342
+      parent_id: 333
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.08
+          z: 0.8525
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.24
+            z: 0.17
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.2
+          g: 0.55
+          b: 0.35
+          a: 1
+        }
+        diffuse {
+          r: 0.2
+          g: 0.55
+          b: 0.35
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_16"
+  id: 352
+  pose {
+    position {
+      x: -1.8
+      y: -3.8
+      z: 0.03
+    }
+    orientation {
+      z: 0.70682518110536585
+      w: 0.70738826916719977
+    }
+  }
+  link {
+    id: 353
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 354
+      parent_id: 353
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 355
+      parent_id: 353
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 356
+      parent_id: 353
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 357
+      parent_id: 353
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 358
+      parent_id: 353
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 359
+      parent_id: 353
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 360
+      parent_id: 353
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.18
+          z: 0.115
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.24
+            y: 0.28
+            z: 0.18
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 361
+      parent_id: 353
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.15
+          z: 0.4775
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.24
+            z: 0.16
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        diffuse {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 362
+      parent_id: 353
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.26
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.08
+          length: 0.22
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+model {
+  name: "shelf_17"
+  id: 372
+  pose {
+    position {
+      x: -0.4378
+      y: 1.5866
+      z: 0.03
+    }
+    orientation {
+      z: 0.87474047335361749
+      w: 0.48459168820470827
+    }
+  }
+  link {
+    id: 373
+    name: "link"
+    pose {
+      position {
+      }
+      orientation {
+        w: 1
+      }
+    }
+    visual {
+      name: "vis_left"
+      id: 374
+      parent_id: 373
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_right"
+      id: 375
+      parent_id: 373
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.545
+          z: 0.575
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 0.032
+            z: 1.15
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_lower"
+      id: 376
+      parent_id: 373
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.0125
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_1"
+      id: 377
+      parent_id: 373
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.385
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_shelf_2"
+      id: 378
+      parent_id: 373
+      cast_shadows: true
+      pose {
+        position {
+          z: 0.755
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.025
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_upper"
+      id: 379
+      parent_id: 373
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.14
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.5
+            y: 1.07
+            z: 0.02
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        diffuse {
+          r: 0.5
+          g: 0.3
+          b: 0.1
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b1"
+      id: 380
+      parent_id: 373
+      cast_shadows: true
+      pose {
+        position {
+          y: -0.18
+          z: 0.115
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.24
+            y: 0.28
+            z: 0.18
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        diffuse {
+          r: 0.62
+          g: 0.46
+          b: 0.28
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_b2"
+      id: 381
+      parent_id: 373
+      cast_shadows: true
+      pose {
+        position {
+          y: 0.15
+          z: 0.4775
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        box {
+          size {
+            x: 0.2
+            y: 0.24
+            z: 0.16
+          }
+        }
+      }
+      material {
+        ambient {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        diffuse {
+          r: 0.75
+          g: 0.22
+          b: 0.2
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+    visual {
+      name: "vis_c1"
+      id: 382
+      parent_id: 373
+      cast_shadows: true
+      pose {
+        position {
+          z: 1.26
+        }
+        orientation {
+          w: 1
+        }
+      }
+      geometry {
+        type: CONE
+        cone {
+          radius: 0.08
+          length: 0.22
+        }
+      }
+      material {
+        ambient {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        diffuse {
+          r: 0.95
+          g: 0.42
+          b: 0.05
+          a: 1
+        }
+        specular {
+          a: 1
+        }
+        emissive {
+          a: 1
+        }
+        lighting: true
+      }
+    }
+  }
+}
+light {
+  name: "sun_main"
+  type: DIRECTIONAL
+  pose {
+    position {
+      z: 15
+    }
+    orientation {
+      w: 1
+    }
+  }
+  diffuse {
+    r: 0.85
+    g: 0.85
+    b: 0.85
+    a: 1
+  }
+  specular {
+    r: 0.2
+    g: 0.2
+    b: 0.2
+    a: 1
+  }
+  attenuation_constant: 1
+  attenuation_linear: 1
+  direction {
+    x: -0.2
+    y: -0.2
+    z: -0.9
+  }
+  range: 10
+  id: 392
+  parent_id: 1
+  intensity: 1
+  visualize_visual: true
+}
+light {
+  name: "sun_fill"
+  type: DIRECTIONAL
+  pose {
+    position {
+      z: 12
+    }
+    orientation {
+      w: 1
+    }
+  }
+  diffuse {
+    r: 0.4
+    g: 0.4
+    b: 0.4
+    a: 1
+  }
+  specular {
+    r: 0.1
+    g: 0.1
+    b: 0.1
+    a: 1
+  }
+  attenuation_constant: 1
+  attenuation_linear: 1
+  direction {
+    x: 0.2
+    y: 0.2
+    z: -0.9
+  }
+  range: 10
+  id: 394
+  parent_id: 1
+  intensity: 1
+  visualize_visual: true
+}
+origin_visual: true
+
